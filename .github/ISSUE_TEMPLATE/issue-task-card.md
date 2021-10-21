@@ -1,7 +1,7 @@
 ---
 name: Issue Task Card
 about: Issue Task Card
-title: Issue Task Card
+title: "[FBE/Task] "
 labels: ''
 assignees: ''
 

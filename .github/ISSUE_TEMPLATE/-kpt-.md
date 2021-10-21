@@ -3,7 +3,7 @@ name: "[KPT]"
 about: "[KPT]"
 title: ''
 labels: KPT
-assignees: 95mg, chayezo, raonzane, Mokodoko
+assignees: 95mg, chayezo, Mokodoko, raonzane
 
 ---
 

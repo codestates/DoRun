@@ -2,7 +2,7 @@
 name: Error Handling Card
 about: Error Handling Card
 title: "[Error Handling]"
-labels: ''
+labels: Error Handling
 assignees: ''
 
 ---

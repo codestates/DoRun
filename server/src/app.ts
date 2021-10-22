@@ -13,8 +13,8 @@ app.get("/",(req : express.Request , res : express.Response) =>{
   ServerPort ${process.env.SERVER_PORT}`);
 })
 
-app.listen(80, () => {
-  console.log("Hello, World!"); 
+app.listen(process.env.SERVER_PORT, () => {
+ // console.log("Hello, World!"); 
 });
 
 

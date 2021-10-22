@@ -7,4 +7,6 @@ export DATABASE_PORT=$(aws ssm get-parameters --region ap-northeast-2 --names DA
 export DATABASE_HOST=$(aws ssm get-parameters --region ap-northeast-2 --names DATABASE_HOST --query Parameters[0].Value | sed 's/"//g')
 export SERVER_PORT=$(aws ssm get-parameters --region ap-northeast-2 --names SERVER_PORT --query Parameters[0].Value | sed 's/"//g')
 END
-authbind --deep pm2 start /dist/app.js
+
+
+authbind --deep pm2 start dist/app.js

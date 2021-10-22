@@ -11,6 +11,6 @@ app.get("/",(req : express.Request , res : express.Response) =>{
     process.env.DATABASE_PASSWORD,process.env.DATABASE_PORT]);
 })
 
-app.listen(1234, () => {
+app.listen(8000, () => {
   console.log("Hello, World!"); 
 });

@@ -1,13 +1,13 @@
-//const express = require('express');
 import express from "express"; 
-const dotenv = require('dotenv');
-//import dotenv = from "dotenv"
+import 'dotenv/config'
+
 const app = express(); 
 
 
 
 app.get("/",(req : express.Request , res : express.Response) =>{
-  res.send("Hello, ");
+  res.send(`Hello, ${process.env.DATABASE_HOST,process.env.DATABASE_USER,
+    process.env.DATABASE_PASSWORD,process.env.DATABASE_PORT,process.env.SERVER_PORT}`);
 })
 
 app.listen(80, () => {

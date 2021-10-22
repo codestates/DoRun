@@ -9,4 +9,4 @@ export SERVER_PORT=$(aws ssm get-parameters --region ap-northeast-2 --names SERV
 END
 
 
-authbind --deep pm2 start /dist/app.js
+authbind --deep pm2 start dist/app.js

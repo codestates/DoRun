@@ -6,8 +6,10 @@ const app = express();
 
 
 app.get("/",(req : express.Request , res : express.Response) =>{
-  res.send(`Hello, ${process.env.DATABASE_HOST,process.env.DATABASE_USER,
-    process.env.DATABASE_PASSWORD,process.env.DATABASE_PORT,process.env.SERVER_PORT}`);
+  res.send(`H, host = ${process.env.DATABASE_HOST}
+  DBuser = ${process.env.DATABASE_USER}
+  DBpassword = ${process.env.DATABASE_PASSWORD}
+  ServerPort = ${process.env.DATABASE_PORT,process.env.SERVER_PORT}`);
 })
 
 app.listen(80, () => {

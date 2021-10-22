@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { Component }  from 'react' // eslint-disable-line no-unused-vars
+import React from 'react'
+import { Switch, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage/LandingPage';
+import MapPage from './pages/MapPage/MapPage';
+import MyPage from './pages/MyPage/MyPage';
+import ChattingPage from './pages/ChattingPage/ChattingPage';
+import Test from './pages/test';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Switch>
+        <Route exact path='/' component={LandingPage} />
+        <Route path='/map' component={MapPage} />
+        <Route path='/mypage' component={MyPage} />
+        <Route path='/chatting' component={ChattingPage} />
+        <Route path='/test' component={Test} />        
+      </Switch>
+    </>
   );
 }
 

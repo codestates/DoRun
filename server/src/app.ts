@@ -6,12 +6,15 @@ const app = express();
 
 
 app.get("/",(req : express.Request , res : express.Response) =>{
-  res.send(`Hello, ${process.env.DATABASE_HOST,process.env.DATABASE_USER,
-    process.env.DATABASE_PASSWORD,process.env.DATABASE_PORT,process.env.SERVER_PORT}`);
+  res.send(`H, host = ${process.env.DATABASE_HOST}\n
+  DBuser = ${process.env.DATABASE_USER}\n
+  DBpassword = ${process.env.DATABASE_PASSWORD}\n
+  DBPort = ${process.env.DATABASE_PORT}\n
+  ServerPort = ${process.env.SERVER_PORT}`);
 })
 
-app.listen(80, () => {
-  console.log("Hello, World!"); 
+app.listen(process.env.SERVER_PORT, () => {
+ // console.log("Hello, World!"); 
 });
 
 

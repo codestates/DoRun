@@ -4,12 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var dotenv = require('dotenv');
+require("dotenv/config");
 var app = (0, express_1.default)();
 app.get("/", function (req, res) {
-    res.send([process.env.DATABASE_HOST, process.env.DATABASE_USER,
-        process.env.DATABASE_PASSWORD, process.env.DATABASE_PORT]);
+    res.send("H, host = " + process.env.DATABASE_HOST + "\n\n  DBuser = " + process.env.DATABASE_USER + "\n\n  DBpassword = " + process.env.DATABASE_PASSWORD + "\n\n  DBPort = " + process.env.DATABASE_PORT + "\n\n  ServerPort = " + process.env.SERVER_PORT);
 });
-app.listen(1234, function () {
-    console.log("Hello, World!");
+app.listen(process.env.SERVER_PORT, function () {
 });

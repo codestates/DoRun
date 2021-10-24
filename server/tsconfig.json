@@ -1,12 +1,25 @@
 {
   "compilerOptions": {
+    "lib": [
+      "es5",
+      "es6",
+      "esnext"
+    ],
     "target": "es5", // 컴파일 후 생성될 파일의 ECMAScript 버전
     "module": "commonjs", // 컴파일 후 생성될 파일이 사용하는 모듈 버전
-    "outDir": "dist/", // 파일이 생성될 폴더
-    "esModuleInterop": true, // 'require'와 'import' 호환
-    "removeComments": true // 컴파일 후 주석제거
+    //"rootDir": "./src",
+    "outDir": "dist", // 파일이 생성될 폴더
+    "moduleResolution": "node", //typeORM
+    //"esModuleInterop": true, // 'require'와 'import' 호환
+    // "removeComments": false, // 컴파일 후 주석제거
+    "emitDecoratorMetadata": true, // typeORM
+    "experimentalDecorators": true, // typeORM
+    "sourceMap": true
   },
-  "include": [
-    "src/*.ts"
-  ] // 사용할 폴더 및 파일
+  // "include": [
+  //   "src/*.ts"
+  // ] // 사용할 폴더 및 파일
+  // "exclude": [
+  //   "node_modules"
+  // ]
 }

@@ -4,6 +4,8 @@ import {
   REGISTER_USER,
   AUTH_USER
 } from './types';
+
+
 export function loginUser(dataToSubmit) {
 
   const request = axios.post('/api/users/login', dataToSubmit)
@@ -15,6 +17,7 @@ export function loginUser(dataToSubmit) {
   }
 }
 
+
 export function registerUser(dataToSubmit) {
 
   const request = axios.post('/api/users/register', dataToSubmit)
@@ -25,7 +28,6 @@ export function registerUser(dataToSubmit) {
     payload: request
   }
 }
-
 
 
 export function auth() {

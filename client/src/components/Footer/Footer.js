@@ -1,5 +1,5 @@
-import React from "react";
-import "./Footer.scss";
+import React from 'react';
+import './Footer.scss';
 
 const Footer = () => {
   return (
@@ -24,7 +24,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Client {"&"} Server
+              Client {'&'} Server
             </a>
           </div>
 
@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer__copyright">
-        <p>Copyright © 2021 DoRun All rights reserved.</p>
+        <span>Copyright © 2021 DoRun All rights reserved.</span>
       </div>
     </div>
   );

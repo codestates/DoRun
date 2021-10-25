@@ -1,6 +1,6 @@
-import axios from 'axios';
-import React from 'react'
-import { useHistory } from 'react-router-dom';
+import axios from "axios";
+import React from "react";
+import { useHistory } from "react-router-dom";
 const { Kakao } = window;
 
 /*
@@ -9,25 +9,23 @@ const { Kakao } = window;
 => Redirect URI : https://server.dorunapp.com/oauth/kakao
 */
 
-
 const SocialLoginKakao = () => {
-
-  const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=526ab21916301f258e4289fd4e2e601e&redirect_uri=http://localhost:3000`
+  const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=526ab21916301f258e4289fd4e2e601e&redirect_uri=http://localhost:3000`;
 
   const handleKakaoLogin = () => {
-    window.location.assign(kakaoAPI)
-    let requestURL = new URL(window.location.href)
-    new URL(window.location.href).searchParams.get('code')
-  }
-
+    window.location.assign(kakaoAPI);
+    let requestURL = new URL(window.location.href);
+    console.log(requestURL);
+    new URL(window.location.href).searchParams.get("code");
+  };
 
   return (
     <div>
-      <button style={{ width: '100%' }} onClick={handleKakaoLogin}>
+      <button style={{ width: "100%" }} onClick={handleKakaoLogin}>
         Kakao
       </button>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default SocialLoginKakao
+export default SocialLoginKakao;

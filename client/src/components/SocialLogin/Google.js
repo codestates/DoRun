@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin, onSuccess, onFailure } from 'react-google-login';
 import axios from 'axios';
 
 const Google = () => {

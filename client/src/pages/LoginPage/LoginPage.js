@@ -1,77 +1,78 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import Footer from '../../components/Footer/Footer';
+import Google from '../../components/SocialLogin/Google';
 
 
 
 const LoginPage = (props) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [visibility, setVisibility] = useState('password');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [visibility, setVisibility] = useState('password');
 
-    const isVisible = () => {
-        if(visibility === 'password') {
-            setVisibility('text');
-        }
-        else {
-            setVisibility('password');
-        }
+  const isVisible = () => {
+    if (visibility === 'password') {
+      setVisibility('text');
     }
-
-    const onSubmitHandler = (e) => {
-
+    else {
+      setVisibility('password');
     }
+  }
 
-    return (
-        <>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh'}}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
+  const onSubmitHandler = (e) => {
 
-                <div>X</div>
-                <h1>Login</h1>
+  }
 
-                <br />
+  return (
+    <>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
 
-                <div>유효성 검사 메시지</div>
+          <div>X</div>
+          <h1>Login</h1>
 
-                <br />
+          <br />
 
-                <div>
-                    <input 
-                        type="email" 
-                        value={email}
-                        placeholder='Email'
-                        onChange={(e) => setEmail(e.target.value)} 
-                    />
-                </div>
-                <div>
-                    <input 
-                        type={visibility}
-                        value={password} 
-                        placeholder='Password'
-                        onChange={(e) => setPassword(e.target.value)} 
-                    />
-                    <button onClick={isVisible}>show</button>
-                </div>
+          <div>유효성 검사 메시지</div>
 
-                <br />
-                <div>Forgot your password?</div>
-                <button onClick={onSubmitHandler}>Login</button>
-                <button >Google</button>
-                <button >Kakao</button>
+          <br />
 
-                <br />
+          <div>
+            <input
+              type="email"
+              value={email}
+              placeholder='Email'
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              type={visibility}
+              value={password}
+              placeholder='Password'
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={isVisible}>show</button>
+          </div>
 
-                <div>
-                    <span>아직 회원이 아니신가요?</span>
-                    <button>회원가입 하기</button>
-                </div>
+          <br />
+          <div>Forgot your password?</div>
+          <button onClick={onSubmitHandler}>Login</button>
+          <Google />
+          <button >Kakao</button>
 
-                </div>
-            </div>
-            <Footer />
-        </>
-    )
+          <br />
+
+          <div>
+            <span>아직 회원이 아니신가요?</span>
+            <button>회원가입 하기</button>
+          </div>
+
+        </div>
+      </div>
+      <Footer />
+    </>
+  )
 }
 
 export default LoginPage

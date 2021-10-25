@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../../components/Footer/Footer';
-import Google from '../../components/SocialLogin/Google';
+import SocialLoginGoogle from '../../components/SocialLogin/Google';
+import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 
 
 
@@ -39,7 +40,7 @@ const LoginPage = (props) => {
 
           <div>
             <input
-              type="email"
+              type='email'
               value={email}
               placeholder='Email'
               onChange={(e) => setEmail(e.target.value)}
@@ -58,9 +59,8 @@ const LoginPage = (props) => {
           <br />
           <div>Forgot your password?</div>
           <button onClick={onSubmitHandler}>Login</button>
-          <Google />
-          <button >Kakao</button>
-
+          <SocialLoginGoogle />
+          <SocialLoginKakao />
           <br />
 
           <div>

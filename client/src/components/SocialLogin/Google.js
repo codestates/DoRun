@@ -14,10 +14,10 @@ const Google = () => {
     const { email, imageUrl, name } = response.profileObj;
 
     const handleLogin = async (e) => {
-      await axios.post('https://server.dorunapp.com/user/oauth', { email, imageUrl, name }, { headers: { 'Content-Type': 'application/json' } })
+      await axios.post('https://server.dorunapp.com/oauth/google', { email, imageUrl, name }, { headers: { 'Content-Type': 'application/json' } })
         .then((res) => {
           // isAuth = res.data.isAuth; 
-          props.history.push('/landing')
+          props.history.push('/')
         })
         .catch((e) => {
           console.log(e)

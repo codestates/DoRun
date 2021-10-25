@@ -17,5 +17,5 @@ export default function (state = {}, action) {
           break;
       default:
           return state;
-  }
+   }
 }

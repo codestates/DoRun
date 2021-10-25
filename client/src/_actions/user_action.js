@@ -13,7 +13,6 @@ export function loginUser(dataToSubmit) {
         type: LOGIN_USER,
         payload: request
     }
-}
 
 export function registerUser(dataToSubmit) {
 

@@ -1,129 +1,108 @@
+$backgroundColor: #f8f9fa;
+$backgroundColorWhite: #ffffff;
+$inputBorder: #dee2e6;
+$inputBackground: #eeeeee;
+$cyan: #3bc9db;
+$cyanDark: #15aabf;
+$gray_6: #868e96;
+$gray_7: #495057;
+$error: #ff7545;
+
 * {
-  background-color: #f8f9fa;
+  margin: 0 auto;
+  background: $backgroundColor;
 }
+
 .registerBlock {
-  margin-top: 3rem;
+  margin-top: 7rem;
   margin-bottom: 4rem;
 }
+
 .registerWrapper {
+  background: $backgroundColorWhite;
   max-width: 430px;
   margin: 0 auto;
-  border: 1px solid #dee2e6;
+  border: 1px solid $inputBorder;
   border-radius: 30px;
   height: 55rem;
+
+  h1 {
+    font-weight: 700;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    color: $gray_7;
+    text-align: center;
+    padding-bottom: 10px;
+    background: $backgroundColorWhite;
+  }
 }
+
 .registerFrm {
+  background: $backgroundColorWhite;
   width: 390px;
   margin: 0 auto;
-}
 
-.registerTitle {
-  font-weight: 700;
-  margin-top: 5rem;
-  margin-bottom: 3rem;
-  font-size: 3rem;
-  color: #555;
-  text-align: center;
-  padding-bottom: 10px;
-}
+  p {
+    color: $error;
+    background: $backgroundColorWhite;
+    font-weight: 500;
+    font-size: 0.5rem;
+    &::before {
+      display: inline;
+      content: "⚠ ";
+    }
+  }
 
-p {
-  color: #ff7545;
-  font-weight: 500;
-}
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid $inputBorder;
+    padding: 10px 15px;
+    font-size: 14px;
+    background: $inputBackground;
+  }
 
-p::before {
-  display: inline;
-  content: "⚠ ";
-}
+  input[type="submit"] {
+    background: $cyan;
+    color: $backgroundColorWhite;
+    text-transform: uppercase;
+    border: none;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 10px;
+    cursor: pointer;
+    border-radius: 100px;
+    -webkit-appearance: none;
 
-input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid #dee2e6;
-  padding: 10px 15px;
-  font-size: 14px;
-  background-color: #eeeeee;
-}
+    &:hover {
+      background: $cyanDark;
+    }
+    &:active {
+      transition: 0.3s all;
+      transform: translateY(3px);
+      border: 1px solid transparent;
+      opacity: 0.8;
+    }
+  }
 
-label {
-  line-height: 2;
-  text-align: left;
-  display: block;
-  margin-top: 10px;
-  color: #777;
-  font-size: 14px;
-  font-weight: 500;
-}
+  input:disabled {
+    opacity: 0.3;
+  }
 
-button[type="submit"],
-input[type="submit"] {
-  background: #3bc9db;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 10px;
-  cursor: pointer;
-  border-radius: 100px;
-}
-
-button[type="submit"]:hover,
-input[type="submit"]:hover {
-  background: #15aabf;
-}
-
-button[type="submit"]:active,
-input[type="button"]:active,
-input[type="submit"]:active {
-  transition: 0.3s all;
-  transform: translateY(3px);
-  border: 1px solid transparent;
-  opacity: 0.8;
-}
-
-input:disabled {
-  opacity: 0.4;
-}
-
-input[type="button"]:hover {
-  transition: 0.3s all;
-}
-
-button[type="submit"],
-input[type="button"],
-input[type="submit"] {
-  -webkit-appearance: none;
-}
-
-button[type="button"] {
-  display: block;
-  appearance: none;
-  background: #333;
-  color: white;
-  border: none;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 100px;
-}
-
-hr {
-  margin-top: 30px;
-}
-
-button {
-  display: block;
-  appearance: none;
-  margin-top: 40px;
-  border: 1px solid #333;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 4px;
+  label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    margin-top: 10px;
+    color: $gray_6;
+    font-size: 14px;
+    font-weight: 500;
+    background: $backgroundColorWhite;
+  }
 }
 
 @media screen and (max-width: 768px) {

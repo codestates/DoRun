@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./LoginPage.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { loginUser } from "../../_actions/user_action";
-import { withRouter } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './LoginPage.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginUser } from '../../_actions/user_action';
+import { withRouter } from 'react-router-dom';
+import Footer from '../../components/Footer/Footer';
 
 const LoginPage = (props) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [visibility, setVisibility] = useState("password");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [visibility, setVisibility] = useState('password');
   const [mismatched, setMismatched] = useState(false);
   const user = useSelector((state) => state.user);
 
   const isVisible = () => {
-    if (visibility === "password") {
-      setVisibility("text");
+    if (visibility === 'password') {
+      setVisibility('text');
     } else {
-      setVisibility("password");
+      setVisibility('password');
     }
   };
 
@@ -29,8 +29,8 @@ const LoginPage = (props) => {
       password: password,
     };
     dispatch(loginUser(body));
-    if (user.loginSuccess === "success") {
-      props.history.push("/");
+    if (user.loginSuccess === 'success') {
+      props.history.push('/');
     } else {
       setMismatched(true);
     }
@@ -42,7 +42,9 @@ const LoginPage = (props) => {
         <div className="loginWrapper">
           <h1 className="loginTitle">Login</h1>
 
-          <div className="errMsg">{mismatched ? "⚠ 이메일과 비밀번호를 확인해 주세요" : ""}</div>
+          <div className="errMsg">
+            {mismatched ? '⚠ 이메일과 비밀번호를 확인해 주세요' : ''}
+          </div>
 
           <form className="loginFrm" onSubmit={onSubmitHandler}>
             <label>이메일</label>
@@ -67,7 +69,7 @@ const LoginPage = (props) => {
               </button>
             </div>
             <div className="findPassword">Forgot your password?</div>
-            <input type="submit" name="login" style={{ marginTop: "100px" }} />
+            <input type="submit" name="login" style={{ marginTop: '100px' }} />
 
             <div className="isRegisted">
               <span>아직 회원이 아니신가요?</span>

@@ -1,5 +1,5 @@
-import React from "react";
-import "./Footer.scss";
+import React from 'react';
+import './Footer.scss';
 
 const Footer = () => {
   return (
@@ -19,26 +19,46 @@ const Footer = () => {
             >
               Wiki
             </a>
-            <a href="https://github.com/codestates/DoRun" target="_blank" rel="noopener noreferrer">
-              Client {"&"} Server
+            <a
+              href="https://github.com/codestates/DoRun"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Client {'&'} Server
             </a>
           </div>
 
           <div className="footer__wrap__content">
             <div className="footer__title">Contact</div>
             <div>
-              <a href="https://github.com/95mg" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/95mg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 김민경
               </a>
-              <a href="https://github.com/raonzane" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/raonzane"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 김현수
               </a>
             </div>
             <div>
-              <a href="https://github.com/Mokodoko" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/Mokodoko"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 안지균
               </a>
-              <a href="https://github.com/chayezo" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/chayezo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 차예진
               </a>
             </div>

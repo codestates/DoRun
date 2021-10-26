@@ -8,7 +8,7 @@ import MyPage from './pages/MyPage/MyPage';
 import ChattingPage from './pages/ChattingPage/ChattingPage';
 import Auth from './hoc/auth';
 import Test from './pages/test';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 
 const App = () => {
   return (

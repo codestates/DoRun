@@ -4,6 +4,8 @@ import './LoginPage.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
 import { withRouter } from 'react-router-dom';
+import SocialLoginGoogle from '../../components/SocialLogin/Google';
+import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import Footer from '../../components/Footer/Footer';
 
 const LoginPage = (props) => {
@@ -38,48 +40,9 @@ const LoginPage = (props) => {
 
   return (
     <>
-<<<<<<< HEAD
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh' }}>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-
-          <div>X</div>
-          <h1>Login</h1>
-
-          <br />
-
-          <div>유효성 검사 메시지</div>
-
-          <br />
-
-          <div>
-            <input
-              type='email'
-              value={email}
-              placeholder='Email'
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              type={visibility}
-              value={password}
-              placeholder='Password'
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={isVisible}>show</button>
-          </div>
-
-          <br />
-          <div>Forgot your password?</div>
-          <button onClick={onSubmitHandler}>Login</button>
-          <SocialLoginGoogle />
-          <SocialLoginKakao />
-          <br />
-=======
       <div className="loginBlock">
         <div className="loginWrapper">
           <h1 className="loginTitle">Login</h1>
->>>>>>> 8cbbcb8916ec0f902507afae06d8fe9cde96fe32
 
           <div className="errMsg">
             {mismatched ? '⚠ 이메일과 비밀번호를 확인해 주세요' : ''}
@@ -118,6 +81,8 @@ const LoginPage = (props) => {
             </div>
           </form>
         </div>
+        <SocialLoginGoogle />
+        <SocialLoginKakao />
       </div>
       <Footer />
     </>

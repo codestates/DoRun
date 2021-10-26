@@ -30,12 +30,14 @@ const LoginPage = (props) => {
       email: email,
       password: password,
     };
-    dispatch(loginUser(body));
-    if (user.loginSuccess === 'success') {
-      props.history.push('/');
-    } else {
-      setMismatched(true);
-    }
+
+    dispatch(loginUser(body)).then((res) => {
+      if (res.payload.loginSuccess) {
+        props.history.push('/');
+      } else {
+        setMismatched(true);
+      }
+    });
   };
 
   return (

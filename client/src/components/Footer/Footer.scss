@@ -10,9 +10,8 @@ a:visited {
   text-decoration: none;
 }
 
-
 .footer {
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
   padding: 50px;
 }
 .footer__logo {
@@ -35,7 +34,7 @@ a:visited {
 .footer__title {
   font-size: 20px;
   font-weight: bold;
-  color: #3BC9DB;
+  color: #3bc9db;
   margin-bottom: 10px;
 }
 
@@ -51,6 +50,6 @@ a:visited {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5vw
+    gap: 5vw;
   }
 }

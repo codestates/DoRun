@@ -9,7 +9,7 @@ $gray_7: #495057;
 $error: #ff7545;
 
 * {
-  margin: 0 auto;
+  // margin: 0 auto;
   background: $backgroundColor;
 }
 
@@ -50,7 +50,7 @@ $error: #ff7545;
     font-size: 0.5rem;
     &::before {
       display: inline;
-      content: "⚠ ";
+      content: '⚠ ';
     }
   }
 
@@ -65,7 +65,7 @@ $error: #ff7545;
     background: $inputBackground;
   }
 
-  input[type="submit"] {
+  input[type='submit'] {
     background: $cyan;
     color: $backgroundColorWhite;
     text-transform: uppercase;

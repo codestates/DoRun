@@ -80,11 +80,11 @@ const LoginPage = (props) => {
               <Link className="toRegister" to="/register">
                 회원가입 하기
               </Link>
+              <SocialLoginGoogle />
+              <SocialLoginKakao />
             </div>
           </form>
         </div>
-        <SocialLoginGoogle />
-        <SocialLoginKakao />
       </div>
       <Footer />
     </>

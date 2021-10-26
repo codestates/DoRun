@@ -4,6 +4,8 @@ import './LoginPage.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
 import { withRouter } from 'react-router-dom';
+import SocialLoginGoogle from '../../components/SocialLogin/Google';
+import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import Footer from '../../components/Footer/Footer';
 
 const LoginPage = (props) => {
@@ -78,6 +80,8 @@ const LoginPage = (props) => {
               <Link className="toRegister" to="/register">
                 회원가입 하기
               </Link>
+              <SocialLoginGoogle />
+              <SocialLoginKakao />
             </div>
           </form>
         </div>

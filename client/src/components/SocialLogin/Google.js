@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { GoogleLogin, onSuccess, onFailure } from 'react-google-login';
 import axios from 'axios';
 
-const Google = () => {
+const SocialLoginGoogle = () => {
 
   const clientID = '517912812246-617k8sv5u7noe8ij90d9jtnfb683esq1.apps.googleusercontent.com'
   const history = useHistory();
@@ -51,4 +51,4 @@ const Google = () => {
   )
 }
 
-export default Google
+export default SocialLoginGoogle

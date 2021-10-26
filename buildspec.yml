@@ -5,6 +5,7 @@ phases:
     commands:
       - cd client
       - npm install --no-optional
+      - npm install --no-optional
   build:
     commands:
       - npm run build

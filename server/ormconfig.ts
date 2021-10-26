@@ -10,11 +10,13 @@ const config: ConnectionOptions =  {
    "database": process.env.DATABASE_NAME,
    "synchronize": true,
    "logging": false,
-   "entities": [
-      //"../**/*.entity.{ts,js}"
-      //"src/entity/**/*.ts",
-      "dist/src/entity/**/*{.js,.ts}"
-   ],
+   // "entities": [
+   //    //"../**/*.entity.{ts,js}"
+   //    //"src/entity/**/*.ts",
+   //    //"dist/src/entity/**/*{.js,.ts}"
+   //    [__dirname + '/**/*.entity.{ts,js}',
+   // ],
+   entities: process.env.NODE_ENV === 'dev' ? ["src/entity/**/*.ts"] : ["dist/src/entity/**/*{.js,.ts}"],
    "migrations": [
       "src/migration/**/*.ts"
      // __dirname + '/migrations/**/*{.ts,.js}',

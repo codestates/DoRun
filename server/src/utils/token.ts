@@ -30,7 +30,8 @@ const AccessTokenVerify = (accessToken: string) => {
   try {
     return verify(accessToken, process.env.ACCESS_SECRET);
   } catch (err) {
-    return err;
+    console.log(err);
+    return null;
   }
 };
 
@@ -38,8 +39,9 @@ const RefreshTokenVerify = (accessToken: string) => {
   try {
     return verify(accessToken, process.env.REFRESH_SECRET);
   } catch (err) {
-    return err;
+    console.log(err);
+    return null;
   }
 };
 
-export { TokensCreate, AccessTokenVerify, RefreshTokenVerify };
+export { TokensCreate, AccessTokenCreate, AccessTokenVerify, RefreshTokenVerify };

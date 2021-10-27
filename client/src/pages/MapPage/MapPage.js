@@ -1,6 +1,13 @@
-import './MapPage.scss';
-import axios from 'axios';
+import React from 'react';
+import Map from '../../components/Map/Map';
 
+const MapPage = () => {
+  return (
+    <>
+      <Map />
+    </>
+  );
+};
 
 function MapPage() {
 

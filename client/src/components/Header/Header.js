@@ -19,18 +19,10 @@ const Navbar = () => {
         </Hamburger>
 
         <NavMenu isOpen={isOpen}>
-          <NavLink to="/map" activeStyle>
-            DoRun!
-          </NavLink>
-          <NavLink to="/mypage" activeStyle>
-            MyPage
-          </NavLink>
-          <NavLink to="/login" activeStyle>
-            Login
-          </NavLink>
-          <NavLink to="/register" activeStyle>
-            SignUp
-          </NavLink>
+          <NavLink to="/map">DoRun!</NavLink>
+          <NavLink to="/mypage">MyPage</NavLink>
+          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/register">SignUp</NavLink>
         </NavMenu>
       </Nav>
     </>

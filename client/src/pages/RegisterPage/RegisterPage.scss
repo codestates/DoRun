@@ -1,4 +1,3 @@
-$backgroundColor: #f8f9fa;
 $backgroundColorWhite: #ffffff;
 $inputBorder: #dee2e6;
 $inputBackground: #eeeeee;
@@ -8,13 +7,8 @@ $gray_6: #868e96;
 $gray_7: #495057;
 $error: #ff7545;
 
-* {
-  // margin: 0 auto;
-  background: $backgroundColor;
-}
-
 .registerBlock {
-  margin-top: 7rem;
+  margin-top: 3rem;
   margin-bottom: 4rem;
 }
 

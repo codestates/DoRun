@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import './RegisterPage.scss';
-
+// 안돼~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../../_actions/user_action';

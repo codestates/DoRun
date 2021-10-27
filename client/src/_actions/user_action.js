@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOGIN_USER, REGISTER_USER, AUTH_USER } from './types';
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, KAKAO_USER, GOOGLE_USER } from './types';
 
 export function loginUser(dataToSubmit) {
   const request = axios
@@ -33,3 +33,29 @@ export function auth() {
     payload: request,
   };
 }
+
+export function googleUser(dataToSubmit) {
+
+  const { email, imageUrl, name, isauth } = dataToSubmit;
+  const request = axios.post('http://localhost:3001/oauth/google', 
+  { email, imageUrl, name, isauth }, 
+  { headers: { 'Content-Type': 'application/json' } })
+  .then(res => res.data.data);
+
+  return {
+    type: GOOGLE_USER,
+    payload: request,
+  }
+}
+
+export function kakaoUser(dataToSubmit) {
+  const request = axios.post('http://localhost:3001/oauth/kakao', {authorizationCode : dataToSubmit})
+  .then((response) => response.data.data)
+
+  return {
+    type: KAKAO_USER,
+    payload: request
+  }
+}
+
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './LoginPage.scss';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,8 +7,10 @@ import { withRouter } from 'react-router-dom';
 import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import Footer from '../../components/Footer/Footer';
+import axios from 'axios';
 
 const LoginPage = (props) => {
+
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

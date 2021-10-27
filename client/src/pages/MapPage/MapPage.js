@@ -1,7 +1,17 @@
-import React from 'react';
+import './MapPage.scss';
+import axios from 'axios';
 
-const MapPage = () => {
-  return <div>MapPage</div>;
-};
+
+function MapPage() {
+
+
+
+  return (
+    <div className="App">
+    </div>
+  );
+}
+
+
 
 export default MapPage;

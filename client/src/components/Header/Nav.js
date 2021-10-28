@@ -16,9 +16,9 @@ const Nav = () => {
         />
         <nav className="navbar" onClick={(e) => e.stopPropagation()}>
           <div className="nav-container">
-            <NavLink to="/" className="nav-logo">
+            <a className="nav-logo" href="/">
               <img src="DoRun.png" alt="logo" width="120px" />
-            </NavLink>
+            </a>
 
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className="nav-item">
@@ -75,17 +75,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-// const Bars = styled(FaBars)`
-//   display: none;
-//   color: #222;
-//   @media screen and (max-width: 768px) {
-//     display: block;
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     transform: translate(-100%, 75%);
-//     font-size: 1.8rem;
-//     cursor: pointer;
-//   }
-// `;

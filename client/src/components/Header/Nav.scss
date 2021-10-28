@@ -12,8 +12,6 @@
 .navbar {
   height: 5rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -22,22 +20,27 @@
 
 .nav-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  // flex-wrap: wrap;
   width: 100%;
   max-width: 1500px;
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
   padding: 0 1rem;
   cursor: pointer;
-  flex-grow: 1;
+  // flex-grow: 1;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
   text-align: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-links {

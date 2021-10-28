@@ -32,7 +32,7 @@ const SocialLoginKakao = () => {
 
   return (
     <div >
-       <Kakao src="https://user-images.githubusercontent.com/64679541/139064326-3d5b494b-3941-44ea-9d98-3ad176e1c5e7.png"/>
+       <Kakao src="https://user-images.githubusercontent.com/64679541/139064326-3d5b494b-3941-44ea-9d98-3ad176e1c5e7.png" onClick={handleKakaoLogin}/>
     </div>
   );
 };

@@ -3,16 +3,16 @@
   margin-bottom: 4rem;
 }
 .loginWrapper {
-  max-width: 430px;
+  max-width: 390px;
   margin: 0 auto;
   border: 1px solid #dee2e6;
-  border-radius: 30px;
+  border-radius: 2rem;
   height: 50rem;
   background-color: #ffffff;
 }
 .loginFrm {
   background-color: #ffffff;
-  width: 390px;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -157,7 +157,10 @@ button {
 }
 
 @media screen and (max-width: 768px) {
+  .loginBlock {
+    margin-top: 0;
+  }
   .loginWrapper {
-    width: 420px;
+    min-width: 320px;
   }
 }

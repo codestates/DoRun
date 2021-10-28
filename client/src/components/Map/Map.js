@@ -34,7 +34,7 @@ const Map = () => {
 
 
         //! 마커를 위에 표시 될 customOverlay 내용
-        var content = '<div class="wrap">' + 
+        var content = '<div class="wrapping">' + 
             '    <div class="info">' + 
             '        <div class="title">' + 
             '            카카오 스페이스닷원' + 

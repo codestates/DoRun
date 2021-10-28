@@ -34,15 +34,17 @@
   border-radius: 4px;
   border: 1px solid #dee2e6;
   font-size: 14px;
+  background-color: #eeeeee;
 }
 .input {
   width: 100%;
   padding: 10px 15px;
   border: none;
+  border-radius: 4px;
   background-color: #eeeeee;
 }
 .showBtn {
-  margin: 0px;
+  margin: 1px;
   padding: 10px 15px;
   border: none;
   background-color: #eeeeee;
@@ -81,7 +83,7 @@ label {
   text-align: left;
   display: block;
   margin-top: 10px;
-  color: #777;
+  color: #868e96;
   font-size: 14px;
   font-weight: 500;
   background-color: #ffffff;

@@ -8,12 +8,12 @@ import MyPage from './pages/MyPage/MyPage';
 import ChattingPage from './pages/ChattingPage/ChattingPage';
 import Auth from './hoc/auth';
 import Test from './pages/test';
-import Header from './components/Header/Header';
+import Nav from './components/Header/Nav';
 
 const App = () => {
   return (
     <>
-      <Header />
+      <Nav />
       <Switch>
         <Route exact path="/" component={Auth(LandingPage, null)} />
         <Route path="/login" component={Auth(LoginPage, false)} />

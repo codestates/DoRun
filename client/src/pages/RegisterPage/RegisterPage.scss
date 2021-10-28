@@ -10,14 +10,15 @@ $error: #ff7545;
 .registerBlock {
   margin-top: 3rem;
   margin-bottom: 4rem;
+  width: 100%;
 }
 
 .registerWrapper {
   background: $backgroundColorWhite;
-  max-width: 430px;
+  max-width: 390px;
   margin: 0 auto;
   border: 1px solid $inputBorder;
-  border-radius: 30px;
+  border-radius: 2rem;
   height: 55rem;
 
   h1 {
@@ -34,7 +35,7 @@ $error: #ff7545;
 
 .registerFrm {
   background: $backgroundColorWhite;
-  width: 390px;
+  width: 90%;
   margin: 0 auto;
 
   p {
@@ -100,7 +101,10 @@ $error: #ff7545;
 }
 
 @media screen and (max-width: 768px) {
+  .registerBlock {
+    margin-top: 0;
+  }
   .registerWrapper {
-    width: 420px;
+    min-width: 320px;
   }
 }

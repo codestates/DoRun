@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-const { Kakao } = window;
+import styled from 'styled-components';
 axios.defaults.withCredentials = true
 
 /*
@@ -23,12 +23,16 @@ const SocialLoginKakao = () => {
     window.location.assign(kakaoAPI)
   }
   
+  const Kakao = styled.img`
+  width:202px;
+  height:47px;
   
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 255, .2);`
+
   return (
-    <div>
-      <button style={{ width: '100%' }} onClick={handleKakaoLogin}>
-        Kakao
-      </button>
+    <div >
+       <Kakao src="https://user-images.githubusercontent.com/64679541/139064326-3d5b494b-3941-44ea-9d98-3ad176e1c5e7.png"/>
     </div>
   );
 };

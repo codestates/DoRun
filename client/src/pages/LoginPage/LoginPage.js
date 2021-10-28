@@ -9,6 +9,8 @@ import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import Footer from '../../components/Footer/Footer';
 import axios from 'axios';
 
+import Modal from '../../components/Common/Modal/Modal';
+
 const LoginPage = (props) => {
 
   const dispatch = useDispatch();

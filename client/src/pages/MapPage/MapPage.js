@@ -9,15 +9,6 @@ const MapPage = () => {
   );
 };
 
-function MapPage() {
-
-
-
-  return (
-    <div className="App">
-    </div>
-  );
-}
 
 
 

@@ -34,12 +34,13 @@ const SocialLoginGoogle = () => {
     <div>
       <GoogleLogin
         clientId={clientID}
-        buttonText={'Sign in with Google'}
+        buttonText={'Login with Google'}
         responseType={"id_token"}
         onSuccess={responseSucess}
         onFailure={responseFail}
         cookiePolicy={'single_host_origin'}
-
+        className='google'
+        style={{width:"200px"}}
       />
     </div>
   )

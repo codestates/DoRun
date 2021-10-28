@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Modal.scss';
+import './ConfirmModal.scss';
 
-// const [isOpen, setIsOpen] = useState(false);
-// const modalHandler = () => {
-//   isOpen ? setIsOpen(false) : setIsOpen(true);
+// const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+// const confirmModalHandler = () => {
+//   isConfirmModalOpen ? setIsConfirmModalOpen(false) : setIsConfirmModalOpen(true);
 // };
-// {isOpen && <Modal modalHandler={modalHandler} />}
+// {isConfirmModalOpen && <ConfirmModal confirmModalHandler={confirmModalHandler} />}
 
-const Modal = ({ modalHandler }) => {
+const ConfirmModal = ({ confirmModalHandler }) => {
   return (
     <div className="modalContainer">
       <div className="modal">
         <div className="modalHeader">
-          <div className="modalExit" onClick={modalHandler}>
+          <div className="modalExit" onClick={confirmModalHandler}>
             x
           </div>
         </div>
@@ -27,7 +27,7 @@ const Modal = ({ modalHandler }) => {
           <Link to="/login">
             <div className="toLogin">이동하기</div>
           </Link>
-          <div className="toExit" onClick={modalHandler}>
+          <div className="toExit" onClick={confirmModalHandler}>
             나가기
           </div>
         </div>
@@ -37,4 +37,4 @@ const Modal = ({ modalHandler }) => {
   );
 };
 
-export default Modal;
+export default ConfirmModal;

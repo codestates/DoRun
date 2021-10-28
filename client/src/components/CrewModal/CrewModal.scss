@@ -1,0 +1,155 @@
+.crewModal {
+  padding: 5px;
+  box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+  border-radius: 10px;
+  background-color: #f8f9fa;
+}
+
+.crewModalHeader {
+  display: flex;
+  flex-direction: column;
+
+  .crewModalExit {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 10px 20px;
+    cursor: pointer;
+  }
+
+  .crewTitle {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    margin: 0px 20px;
+    color: #3bc9db;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #3bc9db;
+  }
+}
+
+.bodyTop {
+  text-align: center;
+
+  .leaderImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+}
+
+.bodyMid {
+  padding: 10px;
+  .mid_option {
+    color: #3bc9db;
+    font-weight: bold;
+    display: flex;
+    gap: 3vw;
+
+    .left_title {
+      width: 86px;
+      height: 40px;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+    .left_details {
+      width: 86px;
+      height: 40px;
+      display: flex;
+      flex-direction: row-reverse;
+      margin-top: 10px;
+    }
+
+    .right_text {
+      width: 245px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .right_options {
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1vw;
+
+      .right_option {
+        width: 75px;
+        height: 30px;
+        padding: 5px 10px 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: #c2c2c2;
+        font-weight: bold;
+        border: 1px solid #3bc9db;
+        border-radius: 10px;
+      }
+      .focused {
+        width: 75px;
+        height: 30px;
+        padding: 5px 10px 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-color: #3bc9db;
+        color: #ffffff;
+        font-weight: bold;
+        border: 1px solid #3bc9db;
+        border-radius: 10px;
+      }
+    }
+
+    .right_details {
+      width: 245px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      color: #6e6e6e;
+      font-weight: normal;
+    }
+  }
+}
+
+.crewModalFooter {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  .toDoRun {
+    padding: 5px 10px 6px;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #3bc9db;
+    border: 1px solid #3bc9db;
+    border-radius: 10px;
+  }
+
+  .toChat {
+    padding: 5px 10px 6px;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ffd70e;
+    border: 1px solid #ffd70e;
+    border-radius: 10px;
+  }
+}

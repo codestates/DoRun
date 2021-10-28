@@ -4,7 +4,7 @@ import { User } from "../entity/User";
 
 const AccessTokenCreate = (data: object) => {
   try {
-    return sign(data, process.env.ACCESS_SECRET, { expiresIn: "3d" });
+    return sign(data, process.env.ACCESS_SECRET, { expiresIn: "3h" });
   } catch (err) {
     return err;
   }

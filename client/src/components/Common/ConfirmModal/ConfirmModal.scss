@@ -6,7 +6,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 9998;
 }
 
@@ -44,16 +44,20 @@
   gap: 20px;
 }
 .toLogin {
-  padding: 5px 10px;
+  padding: 5px 10px 6px;
+  display: flex;
+  justify-content: center;
   cursor: pointer;
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
   background-color: #3bc9db;
   border: 1px solid #3bc9db;
   border-radius: 10px;
 }
 .toExit {
-  padding: 5px 10px;
+  padding: 5px 10px 6px;
+  display: flex;
+  justify-content: center;
   cursor: pointer;
   color: #3bc9db;
   font-weight: bold;

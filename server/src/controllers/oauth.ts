@@ -12,18 +12,19 @@ const Google = async (req: Request, res: Response) => {
     let userinfo = await User.findOne({ email: req.body.email });
 
     if (!userinfo) {
-      let userinfo = User.create({
+      let userInfo = User.create({
         nickname: req.body.name,
         email: req.body.email,
         image: req.body.imageUrl,
+        oauth: "google",
         isauth: true,
       });
-      userinfo = await User.save(userinfo);
+      userInfo = await User.save(userInfo);
     }
 
     const { accessToken, refreshToken } = await TokensCreate(userinfo);
     res.cookie("refreshToken", refreshToken, {
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: 60 * 60 * 24 * 7, //7day
       sameSite: "none",
       httpOnly: true,
       secure: true,
@@ -76,21 +77,22 @@ const Kakao = async (req: Request, res: Response) => {
 
     const kakaoEmail = `${kakaoUserInfo.data["id"]}@kakao.com`;
 
-    let userinfo = await User.findOne({ email: kakaoEmail });
-    if (!userinfo) {
+    let userInfo = await User.findOne({ email: kakaoEmail });
+    if (!userInfo) {
       const nickname = kakaoUserInfo.data["kakao_account"].profile.nickname;
       const image = kakaoUserInfo.data["kakao_account"].profile.profile_image_url;
-      userinfo = User.create({
+      userInfo = User.create({
         nickname,
         image,
         email: kakaoEmail,
         password: kakaoUserInfo.data["id"],
+        oauth: "kakao",
         isauth: true,
       });
-      userinfo = await User.save(userinfo);
+      userInfo = await User.save(userInfo);
     }
 
-    const { accessToken, refreshToken } = await TokensCreate(userinfo);
+    const { accessToken, refreshToken } = await TokensCreate(userInfo);
     res.cookie("refreshToken", refreshToken, {
       maxAge: 60 * 60 * 24 * 7, //7day
       sameSite: "none",
@@ -98,7 +100,7 @@ const Kakao = async (req: Request, res: Response) => {
       secure: true,
     });
 
-    return res.status(200).send({ data: userinfo, accessToken, message: "success" });
+    return res.status(200).send({ data: userInfo, accessToken, message: "success" });
   } catch (err) {
     console.log(err);
     return res.status(500).send({ message: "Internal Server Error", err: err });

@@ -14,6 +14,9 @@ const RegisterPage = (props) => {
   password.current = watch('password');
 
   const onSubmit = async (data) => {
+    
+    console.log('data', data);
+
     const { email, nickname, password } = getValues();
     let body = {
       email,
@@ -23,6 +26,7 @@ const RegisterPage = (props) => {
 
     dispatch(registerUser(body)).then((res) => {
       if (res.payload.message === 'success') {
+        console.log('res.payload', res.payload);
         props.history.push('/login');
       } else {
         alert('Failed to sign up');

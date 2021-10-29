@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom';
 import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import Footer from '../../components/Footer/Footer';
-import axios from 'axios';
 
 const LoginPage = (props) => {
   const dispatch = useDispatch();

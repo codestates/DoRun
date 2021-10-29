@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ConfirmModal from '../Common/ConfirmModal/ConfirmModal';
+import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import './CrewModal.scss';
 
 const CrewModal = ({ crewModalHandler }) => {

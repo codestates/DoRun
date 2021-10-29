@@ -3,7 +3,7 @@ import { LOGIN_USER, REGISTER_USER, AUTH_USER, KAKAO_USER, GOOGLE_USER } from '.
 
 export function loginUser(dataToSubmit) {
   const request = axios
-    .post('/api/users/login', dataToSubmit)
+    .post('/users/login', dataToSubmit)
     .then((response) => response.data);
 
   return {
@@ -14,7 +14,7 @@ export function loginUser(dataToSubmit) {
 
 export function registerUser(dataToSubmit) {
   const request = axios
-    .post('/api/users/register', dataToSubmit)
+    .post('/users/register', dataToSubmit)
     .then((response) => response.data);
 
   return {
@@ -25,7 +25,7 @@ export function registerUser(dataToSubmit) {
 
 export function auth() {
   const request = axios
-    .get('/api/users/auth')
+    .get('/users/auth')
     .then((response) => response.data);
 
   return {
@@ -34,13 +34,13 @@ export function auth() {
   };
 }
 
-export function googleUser(dataToSubmit) {
+export async function googleUser(dataToSubmit) {
 
   const { email, imageUrl, name, isauth } = dataToSubmit;
-  const request = axios.post('http://localhost:3001/oauth/google', 
+  const request = await axios.post('http://localhost:3001/oauth/google', 
   { email, imageUrl, name, isauth }, 
   { headers: { 'Content-Type': 'application/json' } })
-  .then(res => res.data.data);
+  .then((res) => {console.log('구글 로그인 자료입니다.', res.data.data), res.data.data});
 
   return {
     type: GOOGLE_USER,
@@ -48,9 +48,9 @@ export function googleUser(dataToSubmit) {
   }
 }
 
-export function kakaoUser(dataToSubmit) {
-  const request = axios.post('http://localhost:3001/oauth/kakao', {authorizationCode : dataToSubmit})
-  .then((response) => response.data.data)
+export async function kakaoUser(dataToSubmit) {
+  const request = await axios.post('http://localhost:3001/oauth/kakao', { authorizationCode : dataToSubmit })
+  .then((response) => {console.log('제말이 들리시나요ㅠㅠ', response.data.data), response.data.data})
 
   return {
     type: KAKAO_USER,

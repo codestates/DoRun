@@ -8,13 +8,12 @@
 
   <!--socia lLogin for Google -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id"
-    content="517912812246-617k8sv5u7noe8ij90d9jtnfb683esq1.apps.googleusercontent.com" />
+  <meta name="google-signin-client_id" content=`${process.env.REACT_APP_GOOGLE_CLIENT_ID}` />
 
   <!--social Login for Kakao -->
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   <script>
-    Kakao.init("526ab21916301f258e4289fd4e2e601e")
+    Kakao.init(`${REACT_APP_KAKAO_SOCIAL_LOGIN}`)
   </script>
 
   <meta name="description" content="Web site created using create-react-app" />
@@ -46,7 +45,7 @@
 <body>
   <div id="root"></div>
   <script type="text/javascript"
-    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%REACT_APP_KAKAO_MAP%&libraries=services,clusterer,drawing"></script>
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%REACT_APP_KAKAO_MAP%&libraries=services,clusterer,drawing"></script>>
   </script>
 </body>
 

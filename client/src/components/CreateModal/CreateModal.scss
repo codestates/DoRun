@@ -1,5 +1,9 @@
-// .crewModal {
-// }
+.crewModal {
+  padding: 5px;
+  box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+  border-radius: 10px;
+  background-color: #f8f9fa;
+}
 
 .crewModalHeader {
   display: flex;
@@ -11,11 +15,6 @@
     margin: 10px 20px;
     cursor: pointer;
   }
-}
-
-.bodyTop {
-  text-align: center;
-  padding: 10px;
 
   .crewTitle {
     display: flex;
@@ -23,10 +22,14 @@
     padding-bottom: 10px;
     margin: 0px 20px;
     color: #3bc9db;
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: bold;
     border-bottom: 1px solid #3bc9db;
   }
+}
+
+.bodyTop {
+  text-align: center;
 
   .leaderImg {
     width: 100px;
@@ -148,24 +151,5 @@
     background-color: #ffd70e;
     border: 1px solid #ffd70e;
     border-radius: 10px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .crewModalBody {
-    height: 300px;
-    overflow: auto;
-  }
-  .crewModalBody::-webkit-scrollbar {
-    width: 7px;
-  }
-  .crewModalBody::-webkit-scrollbar-thumb {
-    background-color: #3bc9db;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  .crewModalBody::-webkit-scrollbar-track {
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
   }
 }

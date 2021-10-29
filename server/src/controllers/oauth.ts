@@ -17,7 +17,7 @@ const Google = async (req: Request, res: Response) => {
         email: req.body.email,
         image: req.body.imageUrl,
         oauth: "google",
-        isauth: true,
+        //isauth: true,
       });
       userInfo = await User.save(userInfo);
     }
@@ -50,7 +50,6 @@ const Kakao = async (req: Request, res: Response) => {
       tokenUrl,
       formUrlEncoded({
         code: req.body.authorizationCode,
-        //code: req.query.code,
         grant_type: "authorization_code",
         client_id: process.env.KAKAO_CLIENT_ID,
         redirect_uri: process.env.KAKAO_REDIRECT_URL,
@@ -87,7 +86,7 @@ const Kakao = async (req: Request, res: Response) => {
         email: kakaoEmail,
         password: kakaoUserInfo.data["id"],
         oauth: "kakao",
-        isauth: true,
+        //isauth: true,
       });
       userInfo = await User.save(userInfo);
     }

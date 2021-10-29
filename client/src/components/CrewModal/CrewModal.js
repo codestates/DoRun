@@ -19,13 +19,12 @@ const CrewModal = ({ crewModalHandler }) => {
           <div className="crewModalExit" onClick={crewModalHandler}>
             x
           </div>
-          <div className="crewTitle">여의도 10km 함께 뛰어요 :) </div>
         </div>
-
-        <br />
 
         <div className="crewModalBody">
           <div className="bodyTop">
+            <div className="crewTitle">여의도 10km 함께 뛰어요 :) </div>
+            <br />
             <img className="leaderImg" src="defaultImg.png" alt="" />
           </div>
           <div className="bodyMid">
@@ -73,23 +72,22 @@ const CrewModal = ({ crewModalHandler }) => {
                 감사하겠습니다 :)
               </div>
             </div>
+            <br />
+
+            <div className="crewModalFooter">
+              <button className="toDoRun" onClick={confirmModalHandler}>
+                Do Run!!
+              </button>
+              <button className="toChat" onClick={confirmModalHandler}>
+                Do Chat!!
+              </button>
+              {isConfirmModalOpen && (
+                <ConfirmModal confirmModalHandler={confirmModalHandler} />
+              )}
+            </div>
+            <br />
           </div>
         </div>
-
-        <br />
-
-        <div className="crewModalFooter">
-          <button className="toDoRun" onClick={confirmModalHandler}>
-            Do Run!!
-          </button>
-          <button className="toChat" onClick={confirmModalHandler}>
-            Do Chat!!
-          </button>
-          {isConfirmModalOpen && (
-            <ConfirmModal confirmModalHandler={confirmModalHandler} />
-          )}
-        </div>
-        <br />
       </div>
     </div>
   );
@@ -121,14 +119,64 @@ export default CrewModal;
 // ! CSS
 // .up {
 //   position: fixed;
-//   left: 20vw;
+//   left: 20%;
 //   top: 50%;
 //   transform: translate(-50%, -50%);
 //   transition: all 0.5s;
+//   padding: 10px;
+//   box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+//   border-radius: 10px;
+//   background-color: #f8f9fa;
+//   z-index: 9000;
 // }
+
 // .down {
 //   position: fixed;
-//   left: 20vw;
+//   left: 20%;
 //   top: 150%;
 //   transform: translate(-50%, -50%);
 //   transition: all 0.5s;
+// }
+
+// @media screen and (max-width: 1023px) {
+//   .up {
+//     position: fixed;
+//     left: 30%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+//     transition: all 0.5s;
+//     padding: 10px;
+//     box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+//     border-radius: 10px;
+//     background-color: #f8f9fa;
+//   }
+
+//   .down {
+//     position: fixed;
+//     left: 30%;
+//     top: 150%;
+//     transform: translate(-50%, -50%);
+//     transition: all 0.5s;
+//   }
+// }
+
+// @media screen and (max-width: 768px) {
+//   .up {
+//     position: fixed;
+//     left: 50%;
+//     top: 72%;
+//     transform: translate(-50%, -50%);
+//     transition: all 0.5s;
+//     padding: 10px;
+//     box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+//     border-radius: 10px;
+//     background-color: #f8f9fa;
+//   }
+//   .down {
+//     position: fixed;
+//     left: 50%;
+//     top: 150%;
+//     transform: translate(-50%, -50%);
+//     transition: all 0.5s;
+//   }
+// }

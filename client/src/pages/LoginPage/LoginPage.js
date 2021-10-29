@@ -24,20 +24,21 @@ const LoginPage = (props) => {
     }
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     let body = {
       email: email,
       password: password,
     };
-
-    dispatch(loginUser(body)).then((res) => {
-      if (res.payload.loginSuccess) {
-        props.history.push('/');
-      } else {
+    dispatch(loginUser(body))
+      .then((res) => {
+        if (res.payload.message === 'success') {
+          props.history.push('/');
+        }
+      })
+      .catch((error) => {
         setMismatched(true);
-      }
-    });
+      });
   };
 
   return (

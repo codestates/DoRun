@@ -1,11 +1,16 @@
 import axios from 'axios';
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, KAKAO_USER, GOOGLE_USER } from './types';
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_USER,
+  KAKAO_USER,
+  GOOGLE_USER,
+} from './types';
 
 export function loginUser(dataToSubmit) {
   const request = axios
-    .post('/users/login', dataToSubmit)
+    .post('http://localhost:3001/user/login', dataToSubmit)
     .then((response) => response.data);
-
   return {
     type: LOGIN_USER,
     payload: request,
@@ -14,7 +19,7 @@ export function loginUser(dataToSubmit) {
 
 export function registerUser(dataToSubmit) {
   const request = axios
-    .post('/users/register', dataToSubmit)
+    .post('http://localhost:3001/user/signup', dataToSubmit)
     .then((response) => response.data);
 
   return {
@@ -45,7 +50,7 @@ export async function googleUser(dataToSubmit) {
   return {
     type: GOOGLE_USER,
     payload: request,
-  }
+  };
 }
 
 export async function kakaoUser(dataToSubmit) {
@@ -54,8 +59,6 @@ export async function kakaoUser(dataToSubmit) {
 
   return {
     type: KAKAO_USER,
-    payload: request
-  }
+    payload: request,
+  };
 }
-
-

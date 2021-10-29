@@ -10,12 +10,11 @@ const RegisterPage = (props) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, getValues, watch, errors } = useForm();
 
-  console.log(watch('email'));
-
   const password = useRef();
   password.current = watch('password');
 
   const onSubmit = async (data) => {
+    
     console.log('data', data);
 
     const { email, nickname, password } = getValues();
@@ -26,7 +25,8 @@ const RegisterPage = (props) => {
     };
 
     dispatch(registerUser(body)).then((res) => {
-      if (res.payload.message) {
+      if (res.payload.message === 'success') {
+        console.log('res.payload', res.payload);
         props.history.push('/login');
         console.log('res' + res.payload);
       } else {

@@ -28,6 +28,7 @@ const RegisterPage = (props) => {
       if (res.payload.message === 'success') {
         console.log('res.payload', res.payload);
         props.history.push('/login');
+        console.log('res' + res.payload);
       } else {
         alert('Failed to sign up');
       }

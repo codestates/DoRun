@@ -11,7 +11,6 @@ export function loginUser(dataToSubmit) {
   const request = axios
     .post('http://localhost:3001/user/login', dataToSubmit)
     .then((response) => response.data);
-
   return {
     type: LOGIN_USER,
     payload: request,

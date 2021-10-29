@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom';
 import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import Footer from '../../components/Footer/Footer';
-import axios from 'axios';
 
 const LoginPage = (props) => {
   const dispatch = useDispatch();
@@ -25,20 +24,21 @@ const LoginPage = (props) => {
     }
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     let body = {
       email: email,
       password: password,
     };
-
-    dispatch(loginUser(body)).then((res) => {
-      if (res.payload.message) {
-        props.history.push('/');
-      } else {
+    dispatch(loginUser(body))
+      .then((res) => {
+        if (res.payload.message === 'success') {
+          props.history.push('/');
+        }
+      })
+      .catch((error) => {
         setMismatched(true);
-      }
-    });
+      });
   };
 
   return (

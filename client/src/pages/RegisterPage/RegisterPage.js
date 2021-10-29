@@ -10,12 +10,11 @@ const RegisterPage = (props) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, getValues, watch, errors } = useForm();
 
-  console.log(watch('email'));
-
   const password = useRef();
   password.current = watch('password');
 
   const onSubmit = async (data) => {
+    
     console.log('data', data);
 
     const { email, nickname, password } = getValues();

@@ -1,5 +1,3 @@
-
-  
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 import config from "../ormconfig";
@@ -28,7 +26,7 @@ app.use(
     origin: true,
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE"],
-  }),
+  })
 );
 
 app.use("/", router);

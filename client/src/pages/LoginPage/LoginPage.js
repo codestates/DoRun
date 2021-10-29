@@ -33,7 +33,7 @@ const LoginPage = (props) => {
     };
 
     dispatch(loginUser(body)).then((res) => {
-      if (res.payload.loginSuccess) {
+      if (res.payload.message) {
         props.history.push('/');
       } else {
         setMismatched(true);

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../../_actions/user_action';
 
-const RegisterPage = () => {
+const RegisterPage = (props) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, getValues, watch, errors } = useForm();
 
@@ -18,15 +18,16 @@ const RegisterPage = () => {
   const onSubmit = async (data) => {
     console.log('data', data);
 
-    const { email, name, password } = getValues();
+    const { email, nickname, password } = getValues();
     let body = {
       email,
-      name,
+      nickname,
       password,
     };
 
     dispatch(registerUser(body)).then((res) => {
-      if (res.payload.success) {
+      if (res.payload.message === 'success') {
+        console.log('res.payload', res.payload);
         props.history.push('/login');
       } else {
         alert('Failed to sign up');
@@ -57,16 +58,16 @@ const RegisterPage = () => {
 
           <label>사용자 이름</label>
           <input
-            name="name"
+            name="nickname"
             ref={register({
               required: true,
               maxLength: 6,
             })}
           />
-          {errors.name && errors.name.type === 'required' && (
+          {errors.nickname && errors.nickname.type === 'required' && (
             <p> 이름을 입력해주세요.</p>
           )}
-          {errors.name && errors.name.type === 'maxLength' && (
+          {errors.nickname && errors.nickname.type === 'maxLength' && (
             <p> 이름은 최대 6글자까지 입력 가능합니다.</p>
           )}
 

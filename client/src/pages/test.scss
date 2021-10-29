@@ -8,6 +8,7 @@
   box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
   border-radius: 10px;
   background-color: #f8f9fa;
+  z-index: 9000;
 }
 
 .down {
@@ -53,6 +54,69 @@
     background-color: #f8f9fa;
   }
   .down {
+    position: fixed;
+    left: 50%;
+    top: 150%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+  }
+}
+
+.createUp {
+  position: fixed;
+  left: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s;
+  padding: 10px;
+  box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+  border-radius: 10px;
+  background-color: #f8f9fa;
+}
+
+.createDown {
+  position: fixed;
+  left: 20%;
+  top: 150%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s;
+}
+
+@media screen and (max-width: 1023px) {
+  .createUp {
+    position: fixed;
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+    padding: 10px;
+    box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+    border-radius: 10px;
+    background-color: #f8f9fa;
+  }
+
+  .createDown {
+    position: fixed;
+    left: 30%;
+    top: 150%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .createUp {
+    position: fixed;
+    left: 50%;
+    top: 72%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+    padding: 10px;
+    box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+    border-radius: 10px;
+    background-color: #f8f9fa;
+  }
+  .createDown {
     position: fixed;
     left: 50%;
     top: 150%;

@@ -1,7 +1,6 @@
 import { User } from "../entity/User";
 import { Request, Response } from "express";
 import { TokensCreate } from "../utils/token";
-import { userInfo } from "os";
 
 const SignUp = async (req: Request, res: Response) => {
   try {
@@ -18,7 +17,7 @@ const SignUp = async (req: Request, res: Response) => {
       password,
       email,
       image: req.body.imageUrl || null, //확인필요
-      isauth: true,
+      //isauth: true,
     });
 
     userInfo = await User.save(userInfo);
@@ -55,7 +54,7 @@ const Login = async (req: Request, res: Response) => {
     const userInfo = await User.findOne({ email });
 
     if (!userInfo || password !== userInfo.password) {
-      return res.status(400).send({ message: "invalid user Profile" });
+      return res.status(400).send(); //400은 message를 줄수없음
     }
     const isauth = true;
     await User.update(userInfo.id, { isauth });
@@ -76,8 +75,8 @@ const Login = async (req: Request, res: Response) => {
 const logout = async (req: Request, res: Response) => {
   try {
     const userInfo = await User.findOne(req.body.userId);
-    const isauth = false;
-    await User.update(userInfo.id, { isauth });
+    //const isauth = false;
+    //await User.update(userInfo.id, { isauth });
     res.clearCookie("refreshToken");
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
@@ -97,10 +96,34 @@ const Edit = async (req: Request, res: Response) => {
     console.log(userInfo);
 
     const updateUser = await User.save(userInfo);
+    if (req.body.token) {
+      const accessToken = req.body.token;
+      return res.status(201).send({ data: updateUser, accessToken, message: "success" });
+    }
+
     return res.status(201).send({ data: updateUser, message: "success" });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
 };
 
-export { SignUp, SignOut, Login, logout, Edit };
+const userInfo = async (req: Request, res: Response) => {
+  try {
+    const { userId }: any = req.params;
+
+    const userInfo = await User.findOne({ id: userId });
+
+    if (!userInfo) return res.status(400).send({ message: "invalid userId" });
+
+    if (req.body.token) {
+      const accessToken = req.body.token;
+      return res.status(201).send({ data: userInfo, accessToken, message: "success" });
+    }
+
+    return res.status(200).send({ data: userInfo, message: "success" });
+  } catch (err) {
+    return res.status(500).send({ message: "Internal Server Error", err: err });
+  }
+};
+
+export { SignUp, SignOut, Login, logout, Edit, userInfo };

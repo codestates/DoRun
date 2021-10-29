@@ -27,6 +27,7 @@ const SocialLoginKakao = () => {
 
   if (code) {
     dispatch(kakaoUser(code));
+    history.push('/map')
   }
   
 

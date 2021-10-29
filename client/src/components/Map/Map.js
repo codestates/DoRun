@@ -1,16 +1,26 @@
 /*global kakao*/
 import React, { useState, useEffect } from 'react';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
+import CreateModal from '../CreateModal/CreateModal';
 import './Map.css';
 const APP_KEY = '887dddeb1554071f577f2ad9bef8d920';
 
 const Map = () => {
   const [map, setMap] = useState(null);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const confirmModalHandler = () => {
-    isConfirmModalOpen ? setIsConfirmModalOpen(false) : setIsConfirmModalOpen(true)
-  };
 
+  // const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  // const confirmModalHandler = () => {
+  //   isConfirmModalOpen ? setIsConfirmModalOpen(false) : setIsConfirmModalOpen(true)
+  // };
+
+  const [createModalPosition, setCreateModalPosition] = useState('createDown');
+  const createModalHandler = () => {
+  createModalPosition === 'createDown'
+    ? setCreateModalPosition('createUp')
+    : setCreateModalPosition('createDown');
+};
+
+  //! 마커를 위에 표시 될 customOverlay 내용
   var content = document.createElement('div');
   content.className = 'wrapping';
   content.innerHTML = 'Do Run!';
@@ -45,10 +55,8 @@ const Map = () => {
           image: markerImage
         }); 
         marker.setMap(createdMap);
-
-        //! 마커를 위에 표시 될 customOverlay 내용
-        // var content = '<div class="wrapping" onclick="openModal">' + 'Do Run!' + '</div>';
-
+        
+        //! 마커 위에 있는 customOverlay
         const customOverlay = new kakao.maps.CustomOverlay({
           clickable: true,
           content: content,
@@ -76,12 +84,10 @@ const Map = () => {
         });
 
         //! 커스텀 오버레이 클릭 이벤트: 커스텀 오버레이를 클릭하면 모달로 연결
-        content.addEventListener('click', confirmModalHandler)
+        //content.addEventListener('click', createModalHandler)
+
+        content.addEventListener('click', () => { setCreateModalPosition('createUp')})
       });
-
-
-
-
 
     };
   };
@@ -94,7 +100,10 @@ const Map = () => {
   return (
     <>
       <div id="Mymap" style={{ width: '100vw', height: '100vh' }}>
-      {isConfirmModalOpen && <ConfirmModal confirmModalHandler={confirmModalHandler} />}
+      {/* {isConfirmModalOpen && <ConfirmModal confirmModalHandler={confirmModalHandler} />} */}
+        <div className={createModalPosition}>
+        <CreateModal createModalHandler={createModalHandler} />
+        </div>
       </div>
     </>
   );

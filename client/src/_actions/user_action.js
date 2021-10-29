@@ -30,7 +30,7 @@ export function registerUser(dataToSubmit) {
 
 export function auth() {
   const request = axios
-    .get('http://localhost:3001/user')
+    .get('http://localhost:3001/user/34')
     .then((response) => response.data);
 
   return {

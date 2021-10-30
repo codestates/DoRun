@@ -21,9 +21,9 @@ const Map = () => {
 };
 
   //! 마커를 위에 표시 될 customOverlay 내용
-  var content = document.createElement('div');
-  content.className = 'wrapping';
-  content.innerHTML = 'Do Run!';
+  var customOverlayContent = document.createElement('div');
+  customOverlayContent.className = 'wrapping';
+  customOverlayContent.innerHTML = 'Do Run!';
 
 
   const createMap = () => {
@@ -49,7 +49,7 @@ const Map = () => {
         var normalImageSrc = "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png";
         var imageSize = new kakao.maps.Size(35, 35);
         var markerImage = new kakao.maps.MarkerImage(normalImageSrc, imageSize);
-
+        
         const marker = new kakao.maps.Marker({ 
           position: createdMap.getCenter(),
           image: markerImage
@@ -59,7 +59,7 @@ const Map = () => {
         //! 마커 위에 있는 customOverlay
         const customOverlay = new kakao.maps.CustomOverlay({
           clickable: true,
-          content: content,
+          content: customOverlayContent,
         });
 
         //! 마커 클릭 이벤트 : 마커를 클릭하면  오픈
@@ -84,9 +84,9 @@ const Map = () => {
         });
 
         //! 커스텀 오버레이 클릭 이벤트: 커스텀 오버레이를 클릭하면 모달로 연결
-        //content.addEventListener('click', createModalHandler)
+        //customOverlayContent.addEventListener('click', createModalHandler)
 
-        content.addEventListener('click', () => { setCreateModalPosition('createUp')})
+        customOverlayContent.addEventListener('click', () => { setCreateModalPosition('createUp')})
       });
 
     };

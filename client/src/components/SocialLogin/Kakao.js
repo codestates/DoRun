@@ -32,8 +32,8 @@ const SocialLoginKakao = () => {
   
 
   return (
-    <div className='kakaoBtnWrapper'>
-       <div className='kakaoBtn' onClick={handleSocialLoginWithKakao}> </div>
+    <div className='kakaoBtnWrapper' onClick={handleSocialLoginWithKakao}>
+       <div className='kakaoBtn'> </div>
        <span className='loginWithKakao'> LOGIN WITH KAKAO </span>
     </div>
   );

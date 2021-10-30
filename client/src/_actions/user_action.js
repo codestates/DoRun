@@ -5,6 +5,7 @@ import {
   AUTH_USER,
   KAKAO_USER,
   GOOGLE_USER,
+  LOGOUT_USER
 } from './types';
 
 export function loginUser(dataToSubmit) {
@@ -55,10 +56,24 @@ export async function googleUser(dataToSubmit) {
 
 export async function kakaoUser(dataToSubmit) {
   const request = await axios.post('http://localhost:3001/oauth/kakao', { authorizationCode : dataToSubmit })
-  .then((response) => {console.log('제말이 들리시나요ㅠㅠ', response.data.data), response.data.data})
+  .then((response) => {console.log('제말이 들리시나요ㅠㅠ', response.data), response.data})
 
   return {
     type: KAKAO_USER,
     payload: request,
   };
+}
+
+
+export async function logout(dataTosubmit) {
+  let request = '';
+  if (user.oauth === 'kakao') {
+    request = '';
+  }
+  else if (user.oauth === 'google') {
+    request = '';
+  }
+  else {
+    request = '';
+  }
 }

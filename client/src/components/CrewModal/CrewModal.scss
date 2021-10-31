@@ -70,6 +70,8 @@
     }
 
     .right_options {
+      width: 245px;
+      font-size: 0.9rem;
       height: 40px;
       display: flex;
       justify-content: center;
@@ -77,22 +79,22 @@
       gap: 1vw;
 
       .right_option {
-        width: 75px;
+        width: 4rem;
         height: 30px;
-        padding: 5px 10px 6px;
+        padding: 16px 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
         color: #c2c2c2;
         font-weight: bold;
-        border: 1px solid #3bc9db;
-        border-radius: 10px;
+        border: 2px solid #3bc9db;
+        border-radius: 30px;
       }
       .focused {
-        width: 75px;
+        width: 4rem;
         height: 30px;
-        padding: 5px 10px 6px;
+        padding: 16px 10px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -100,8 +102,8 @@
         background-color: #3bc9db;
         color: #ffffff;
         font-weight: bold;
-        border: 1px solid #3bc9db;
-        border-radius: 10px;
+        border: px solid #3bc9db;
+        border-radius: 30px;
       }
     }
 
@@ -111,6 +113,7 @@
       align-items: center;
       justify-content: center;
       margin-top: 10px;
+      padding: 0 10px 0 10px;
       color: #6e6e6e;
       font-weight: normal;
     }
@@ -120,10 +123,10 @@
 .crewModalFooter {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
 
   .toDoRun {
-    padding: 5px 10px 6px;
     display: flex;
     justify-content: center;
     margin: 0px;
@@ -133,11 +136,10 @@
     font-weight: bold;
     background-color: #3bc9db;
     border: 1px solid #3bc9db;
-    border-radius: 10px;
+    border-radius: 3rem;
   }
 
   .toChat {
-    padding: 5px 10px 6px;
     display: flex;
     justify-content: center;
     margin: 0px;
@@ -147,7 +149,7 @@
     font-weight: bold;
     background-color: #ffd70e;
     border: 1px solid #ffd70e;
-    border-radius: 10px;
+    border-radius: 3rem;
   }
 }
 @media screen and (max-width: 768px) {

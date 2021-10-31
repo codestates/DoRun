@@ -1,23 +1,4 @@
-.wrapping{
-  width: 80px;
-  height: 30px;
-  margin-bottom: 120px;
-  padding-top: 3px;
-  text-align: center;
-  color: rgb(43, 199, 219);
-  font-weight: bolder;
-  font-style: italic;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 3px 4px 5px 1px gray;
-}
-
-.wrapping:hover{
-  color: white;
-  background-color: rgb(43, 199, 219);
-}
-
-.createUp {
+.up {
   position: fixed;
   left: 20%;
   top: 50%;
@@ -27,10 +8,10 @@
   box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
   border-radius: 10px;
   background-color: #f8f9fa;
-  z-index: 9000;
+  z-index: 9999;
 }
 
-.createDown {
+.down {
   position: fixed;
   left: 20%;
   top: 150%;
@@ -39,7 +20,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .createUp {
+  .up {
     position: fixed;
     left: 30%;
     top: 50%;
@@ -51,7 +32,7 @@
     background-color: #f8f9fa;
   }
 
-  .createDown {
+  .down {
     position: fixed;
     left: 30%;
     top: 150%;
@@ -61,7 +42,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .createUp {
+  .up {
     position: fixed;
     left: 50%;
     top: 72%;
@@ -72,7 +53,7 @@
     border-radius: 10px;
     background-color: #f8f9fa;
   }
-  .createDown {
+  .down {
     position: fixed;
     left: 50%;
     top: 150%;

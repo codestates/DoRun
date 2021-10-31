@@ -127,6 +127,7 @@ export default CrewModal;
 //   box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
 //   border-radius: 10px;
 //   background-color: #f8f9fa;
+//   z-index: 9000;
 // }
 
 // .down {

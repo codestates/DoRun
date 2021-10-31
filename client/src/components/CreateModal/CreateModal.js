@@ -1,135 +1,250 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ConfirmModal from '../ConfirmModal/ConfirmModal';
-import './CrewModal.scss';
+import SuccessModal from '../SuccessModal/SuccessModal';
+import './CreateModal.scss';
 
-const CrewModal = ({ crewModalHandler }) => {
-  const [isFocused, setIsFocused] = useState('right_option');
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const confirmModalHandler = () => {
-    isConfirmModalOpen
-      ? setIsConfirmModalOpen(false)
-      : setIsConfirmModalOpen(true);
+const CreateModal = ({ createModalHandler }) => {
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const SuccessModalHandler = () => {
+    isSuccessModalOpen
+      ? setIsSuccessModalOpen(false)
+      : setIsSuccessModalOpen(true);
   };
 
   return (
-    <div className="crewModalContainer">
-      <div className="crewModal">
-        <div className="crewModalHeader">
-          <div className="crewModalExit" onClick={crewModalHandler}>
+    <div className="createModalContainer">
+      <div className="createModal">
+        <div className="createModalHeader">
+          <div className="createModalExit" onClick={createModalHandler}>
             x
           </div>
-          <div className="crewTitle">여의도 10km 함께 뛰어요 :) </div>
         </div>
 
-        <br />
-
-        <div className="crewModalBody">
+        <div className="createModalBody">
           <div className="bodyTop">
-            <img className="leaderImg" src="defaultImg.png" alt="" />
+            <div className="createTitle">DoRun 크루 생성하기</div>
+            <br />
           </div>
-          <div className="bodyMid">
-            <div className="mid_option">
-              <div className="left_title">출발지</div>
-              <div className="right_text">여의도 한강공원</div>
+          <div className="cbodyMid">
+            <div className="mid_options">
+              <div className="left_title">제목</div>
+              <input className="right_input" type="text" />
             </div>
-            <div className="mid_option">
-              <div className="left_title">크루 리더</div>
-              <div className="right_text">영등포구청역 베타 테스터</div>
+            <div className="mid_options">
+              <div className="left_title">장소</div>
+              <input className="right_input" type="text" />
             </div>
-            <div className="mid_option">
+            <div className="mid_options">
               <div className="left_title">DoRun 시간</div>
-              <div className="right_text">19:30 ~ 21:00</div>
+              <label className="right_time">
+                <input className="time" type="time" name="time" />
+                ~
+                <input className="time" type="time" name="time" />
+              </label>
             </div>
-            <div className="mid_option">
+            <div className="mid_options">
               <div className="left_title">모집인원</div>
-              <div className="right_options">
-                <div className="right_option focused">~5명</div>
-                <div className="right_option">~10명</div>
-                <div className="right_option">~15명</div>
+              <div className="right_radios">
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="personnel"
+                    value="~5명"
+                  />
+                  ~5명
+                </label>
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="personnel"
+                    value="~10명"
+                  />
+                  ~10명
+                </label>
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="personnel"
+                    value="~15명"
+                  />
+                  ~15명
+                </label>
               </div>
             </div>
-            <div className="mid_option">
+            <div className="mid_options">
               <div className="left_title">난이도</div>
-              <div className="right_options">
-                <div className="right_option">쉬움</div>
-                <div className="right_option focused">보통</div>
-                <div className="right_option">어려움</div>
+              <div className="right_radios">
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="level"
+                    value="easy"
+                  />
+                  쉬움
+                </label>
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="level"
+                    value="normal"
+                  />
+                  보통
+                </label>
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="level"
+                    value="hard"
+                  />
+                  어려움
+                </label>
               </div>
             </div>
-            <div className="mid_option">
+            <div className="mid_options">
               <div className="left_title">거리</div>
-              <div className="right_options">
-                <div className="right_option">~5km</div>
-                <div className="right_option focused">~10km</div>
-                <div className="right_option">15km~</div>
+              <div className="right_radios">
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="distance"
+                    value="~5km"
+                  />
+                  ~5km
+                </label>
+
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="distance"
+                    value="~10km"
+                  />
+                  ~10km
+                </label>
+                <label className="right_radio">
+                  <input
+                    className="radios"
+                    type="radio"
+                    name="distance"
+                    value="15km~"
+                  />
+                  15km~
+                </label>
               </div>
             </div>
-            <div className="mid_option">
+            <div className="mid_options">
               <div className="left_details">세부사항</div>
-              <div className="right_details">
-                한강 바람 맞으면서 @@ 방향으로 함께 뛸 Do Run 메이트 모집합니다!
-                저녁에 추울 수 있으니 바람막이 필수로 지참하고 와주시면
-                감사하겠습니다 :)
-              </div>
+              <textarea className="right_textarea" />
             </div>
           </div>
-        </div>
 
-        <br />
-
-        <div className="crewModalFooter">
-          <button className="toDoRun" onClick={confirmModalHandler}>
-            Do Run!!
-          </button>
-          <button className="toChat" onClick={confirmModalHandler}>
-            Do Chat!!
-          </button>
-          {isConfirmModalOpen && (
-            <ConfirmModal confirmModalHandler={confirmModalHandler} />
-          )}
+          <br />
+          <div className="createModalFooter">
+            <button className="toCreate" onClick={SuccessModalHandler}>
+              Create !!
+            </button>
+            {isSuccessModalOpen && (
+              <SuccessModal SuccessModalHandler={SuccessModalHandler} />
+            )}
+          </div>
+          <br />
         </div>
-        <br />
       </div>
     </div>
   );
 };
 
-export default CrewModal;
+export default CreateModal;
 
 // ! controller
-// const [crewModalPosition, setCrewModalPosition] = useState('down');
-// const crewModalHandler = () => {
-//   crewModalPosition === 'down'
-//     ? setCrewModalPosition('up')
-//     : setCrewModalPosition('down');
+// const [createModalPosition, setCreateModalPosition] = useState('createDown');
+// const createModalHandler = () => {
+//   createModalPosition === 'createDown'
+//     ? setCreateModalPosition('createUp')
+//     : setCreateModalPosition('createDown');
 // };
 
 // ! return
 // <button
 // onClick={() => {
-//   setCrewModalPosition('up');
+//   setCreateModalPosition('createUp');
 // }}
 // >
-// crewModal
+// createModal
 // </button>
 
-// <div className={crewModalPosition}>
-//   <CrewModal crewModalHandler={crewModalHandler} />
+// <div className={createModalPosition}>
+//   <CreateModal createModalHandler={createModalHandler} />
 // </div>;
 
 // ! CSS
-// .up {
+// .createUp {
 //   position: fixed;
-//   left: 20vw;
+//   left: 20%;
 //   top: 50%;
 //   transform: translate(-50%, -50%);
 //   transition: all 0.5s;
+//   padding: 10px;
+//   box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+//   border-radius: 10px;
+//   background-color: #f8f9fa;
+//   z-index: 9000;
 // }
-// .down {
+
+// .createDown {
 //   position: fixed;
-//   left: 20vw;
+//   left: 20%;
 //   top: 150%;
 //   transform: translate(-50%, -50%);
 //   transition: all 0.5s;
+// }
+
+// @media screen and (max-width: 1023px) {
+//   .createUp {
+//     position: fixed;
+//     left: 30%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+//     transition: all 0.5s;
+//     padding: 10px;
+//     box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+//     border-radius: 10px;
+//     background-color: #f8f9fa;
+//   }
+
+//   .createDown {
+//     position: fixed;
+//     left: 30%;
+//     top: 150%;
+//     transform: translate(-50%, -50%);
+//     transition: all 0.5s;
+//   }
+// }
+
+// @media screen and (max-width: 768px) {
+//   .createUp {
+//     position: fixed;
+//     left: 50%;
+//     top: 72%;
+//     transform: translate(-50%, -50%);
+//     transition: all 0.5s;
+//     padding: 10px;
+//     box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
+//     border-radius: 10px;
+//     background-color: #f8f9fa;
+//   }
+//   .createDown {
+//     position: fixed;
+//     left: 50%;
+//     top: 150%;
+//     transform: translate(-50%, -50%);
+//     transition: all 0.5s;
+//   }
 // }

@@ -4,20 +4,19 @@ import { useDispatch } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
 import { googleUser } from '../../_actions/user_action';
+const {REACT_APP_GOOGLE_CLIENT_ID} = process.env
 
 const SocialLoginGoogle = () => {
 
-  const clientID = '517912812246-617k8sv5u7noe8ij90d9jtnfb683esq1.apps.googleusercontent.com'
   const history = useHistory();
   const dispatch = useDispatch();
 
   // 구글 연동 성공 시 실행되는 함수
   const responseSucess = async (response) => {
 
-    const { email, imageUrl, name, isauth } = response.profileObj;
-
     const handleLogin = async (e) => {
       dispatch(googleUser(response.profileObj))
+      history.push('/map')
     }
 
     handleLogin();
@@ -33,7 +32,7 @@ const SocialLoginGoogle = () => {
   return (
     <div>
       <GoogleLogin
-        clientId={clientID}
+        clientId={REACT_APP_GOOGLE_CLIENT_ID}
         buttonText={'Login with Google'}
         responseType={"id_token"}
         onSuccess={responseSucess}

@@ -6,7 +6,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import MapPage from './pages/MapPage/MapPage';
 import MyPage from './pages/MyPage/MyPage';
 import ChattingPage from './pages/ChattingPage/ChattingPage';
-import Auth from './hoc/auth';
+// import Auth from './hoc/auth';
 import Test from './pages/test';
 import Nav from './components/Header/Nav';
 

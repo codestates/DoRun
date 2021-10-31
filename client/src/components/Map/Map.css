@@ -1,4 +1,15 @@
 
+#Mymap {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+}
+
+/* ::-webkit-scrollbar { 
+  display: none;} */
+
+
 .wrapping{
   /* background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%); */
   background-image: linear-gradient(to right, #FF512F 0%, #f89e20  51%, #FF512F  100%);

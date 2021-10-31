@@ -43,10 +43,10 @@ export function auth() {
 export async function googleUser(dataToSubmit) {
 
   const { email, imageUrl, name, isauth } = dataToSubmit;
-  const request = await axios.post('http://localhost:3001/oauth/google', 
-  { email, imageUrl, name, isauth }, 
-  { headers: { 'Content-Type': 'application/json' } })
-  .then((res) => {console.log('구글 로그인 자료입니다.', res.data.data), res.data.data});
+  const request = await axios.post('http://localhost:3001/oauth/google',
+    { email, imageUrl, name, isauth },
+    { headers: { 'Content-Type': 'application/json' } })
+    .then((res) => { console.log('구글 로그인 자료입니다.', res.data), res.data });
 
   return {
     type: GOOGLE_USER,
@@ -55,8 +55,8 @@ export async function googleUser(dataToSubmit) {
 }
 
 export async function kakaoUser(dataToSubmit) {
-  const request = await axios.post('http://localhost:3001/oauth/kakao', { authorizationCode : dataToSubmit })
-  .then((response) => {console.log('제말이 들리시나요ㅠㅠ', response.data), response.data})
+  const request = await axios.post('http://localhost:3001/oauth/kakao', { authorizationCode: dataToSubmit })
+    .then((response) => { console.log('제말이 들리시나요ㅠㅠ', response.data), response.data })
 
   return {
     type: KAKAO_USER,
@@ -66,14 +66,5 @@ export async function kakaoUser(dataToSubmit) {
 
 
 export async function logout(dataTosubmit) {
-  let request = '';
-  if (user.oauth === 'kakao') {
-    request = '';
-  }
-  else if (user.oauth === 'google') {
-    request = '';
-  }
-  else {
-    request = '';
-  }
+  const request = await axios.post('http://localhost:3001/user/logout', {})
 }

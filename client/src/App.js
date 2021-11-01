@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -11,6 +11,13 @@ import Test from './pages/test';
 import Nav from './components/Header/Nav';
 
 const App = () => {
+  const accessToken = sessionStorage.getItem('accessToken');
+  const userId = sessionStorage.getItem('userId');
+  useEffect(() => {
+    console.log(accessToken);
+    console.log(userId);
+  }, [accessToken, userId]);
+
   return (
     <>
       <Nav />

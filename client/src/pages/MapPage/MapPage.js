@@ -5,7 +5,6 @@ import { kakaoUser } from '../../_actions/user_action';
 import axios from 'axios';
 
 const MapPage = () => {
-  
   return (
     <>
       <Map />

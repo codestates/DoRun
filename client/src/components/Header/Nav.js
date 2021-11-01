@@ -9,7 +9,7 @@ const Nav = () => {
 
   return (
     <>
-      <div>
+      <header>
         <div
           className={click ? 'main-container' : ''}
           onClick={() => Close()}
@@ -69,7 +69,7 @@ const Nav = () => {
             </div>
           </div>
         </nav>
-      </div>
+      </header>
     </>
   );
 };

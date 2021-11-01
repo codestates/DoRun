@@ -1,11 +1,18 @@
 /*global kakao*/
 import React, { useEffect, useState } from 'react';
 import { markerdata } from './markerData';
-
+import './KakaoMap.scss';
+import CrewModal from '../CrewModal/CrewModal';
 const { kakao } = window;
 
 const KakaoMap = () => {
-  const [is_modal, setModal] = useState(false);
+  const [crewModalPosition, setCrewModalPosition] = useState('down');
+
+  const crewModalHandler = () => {
+    crewModalPosition === 'down'
+      ? setCrewModalPosition('up')
+      : setCrewModalPosition('down');
+  };
 
   useEffect(() => {
     createMap();
@@ -14,8 +21,8 @@ const KakaoMap = () => {
   const createMap = () => {
     let container = document.getElementById('myMap');
     let options = {
-      center: new kakao.maps.LatLng(37.53852169180882, 126.90221133835973),
-      level: 6,
+      center: new kakao.maps.LatLng(37.52805120266989, 126.98002145551034),
+      level: 7,
     };
     const map = new kakao.maps.Map(container, options);
 
@@ -30,14 +37,21 @@ const KakaoMap = () => {
         title: el.title,
       });
       kakao.maps.event.addListener(marker, 'click', function () {
-        alert('마커를 클릭했습니다!');
+        setCrewModalPosition('up');
       });
     });
   };
 
   return (
     <>
-      <div id="myMap" style={{ width: '100vw', height: '100vh' }}></div>
+      <div
+        id="myMap"
+        className="myMap"
+        style={{ width: '100vw', height: '100vh' }}
+      ></div>
+      <div className={crewModalPosition}>
+        <CrewModal crewModalHandler={crewModalHandler} />
+      </div>
     </>
   );
 };

@@ -14,7 +14,6 @@ const RegisterPage = (props) => {
   password.current = watch('password');
 
   const onSubmit = async (data) => {
-    
     console.log('data', data);
 
     const { email, nickname, password } = getValues();
@@ -40,7 +39,7 @@ const RegisterPage = (props) => {
       <div className="registerWrapper">
         <h1 className="registerTitle">Sign Up</h1>
         <form className="registerFrm" onSubmit={handleSubmit(onSubmit)}>
-          <label>이메일</label>
+          <label className="labelTitle">이메일</label>
           <input
             name="email"
             type="email"
@@ -56,7 +55,7 @@ const RegisterPage = (props) => {
             <p>이메일 형식이 잘못 되었습니다.</p>
           )}
 
-          <label>사용자 이름</label>
+          <label className="labelTitle">사용자 이름</label>
           <input
             name="nickname"
             ref={register({
@@ -71,7 +70,7 @@ const RegisterPage = (props) => {
             <p> 이름은 최대 6글자까지 입력 가능합니다.</p>
           )}
 
-          <label>비밀번호</label>
+          <label className="labelTitle">비밀번호</label>
           <input
             name="password"
             type="password"
@@ -87,7 +86,7 @@ const RegisterPage = (props) => {
             <p> 영문과 숫자를 혼용하여 8자 이상 16자 이하 입력해주세요</p>
           )}
 
-          <label>비밀번호 확인</label>
+          <label className="labelTitle">비밀번호 확인</label>
           <input
             type="password"
             name="password_confirm"

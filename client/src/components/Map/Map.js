@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import CreateModal from '../CreateModal/CreateModal';
 import './Map.css';
-const { REACT_APP_KAKAO_MAP } = process.env
+const { REACT_APP_KAKAO_MAP } = process.env;
 
 const Map = () => {
   const [map, setMap] = useState(null);
@@ -43,10 +43,6 @@ const Map = () => {
         };
         const createdMap = new kakao.maps.Map(container, options);
         setMap(createdMap);
-<<<<<<< HEAD
-=======
-
->>>>>>> 46e7721c4d6813d6b00b4ab708315bbe362273c0
 
         //! 지도 중앙에 마커를 기본 세팅.
         var normalImageSrc =
@@ -56,11 +52,7 @@ const Map = () => {
 
         const marker = new kakao.maps.Marker({
           position: createdMap.getCenter(),
-<<<<<<< HEAD
           image: markerImage,
-=======
-          image: markerImage
->>>>>>> 46e7721c4d6813d6b00b4ab708315bbe362273c0
         });
         marker.setMap(createdMap);
 
@@ -72,21 +64,13 @@ const Map = () => {
 
         //! 마커 클릭 이벤트 : 마커를 클릭하면  오픈
         marker.addListener('click', function () {
-<<<<<<< HEAD
           customOverlay.setMap(createdMap);
           customOverlay.getVisible(true);
           customOverlay.setPosition(marker.getPosition());
-=======
-          customOverlay.setMap(createdMap)
-          customOverlay.getVisible(true)
-          customOverlay.setPosition(marker.getPosition())
-
->>>>>>> 46e7721c4d6813d6b00b4ab708315bbe362273c0
         });
 
         //! 기본 세팅 이외의 부분을 클릭(터치)하면 그곳으로 마커 이동 + 좌표 반환
         marker.setMap(createdMap);
-<<<<<<< HEAD
         kakao.maps.event.addListener(
           createdMap,
           'click',
@@ -99,49 +83,24 @@ const Map = () => {
             if (overlayPosition !== customOverlay) {
               customOverlay.setMap(null);
             }
-=======
-        kakao.maps.event.addListener(createdMap, 'click', function (mouseEvent) {
-          const latlng = mouseEvent.latLng;
-          marker.setPosition(latlng);
-          let overlayPosition = customOverlay.getPosition();
-          let markerPosition = marker.getPosition();
-          overlayPosition = markerPosition;
-          if (overlayPosition !== customOverlay) {
-            customOverlay.setMap(null);
->>>>>>> 46e7721c4d6813d6b00b4ab708315bbe362273c0
           }
         );
 
         //! 커스텀 오버레이 클릭 이벤트: 커스텀 오버레이를 클릭하면 모달로 연결
-<<<<<<< HEAD
-        //content.addEventListener('click', createModalHandler)
-
-        content.addEventListener('click', () => {
+        customOverlayContent.addEventListener('click', () => {
           setCreateModalPosition('createUp');
         });
-=======
-        customOverlayContent.addEventListener('click', () => { setCreateModalPosition('createUp') })
->>>>>>> 46e7721c4d6813d6b00b4ab708315bbe362273c0
       });
     };
   };
 
   useEffect(() => {
     createMap();
-<<<<<<< HEAD
-=======
-
->>>>>>> 46e7721c4d6813d6b00b4ab708315bbe362273c0
   }, []);
 
   return (
     <>
-<<<<<<< HEAD
-      <div id="Mymap" style={{ width: '100vw', height: '100vh' }}>
-        {/* {isConfirmModalOpen && <ConfirmModal confirmModalHandler={confirmModalHandler} />} */}
-=======
       <div id="Mymap">
->>>>>>> 46e7721c4d6813d6b00b4ab708315bbe362273c0
         <div className={createModalPosition}>
           <CreateModal createModalHandler={createModalHandler} />
         </div>

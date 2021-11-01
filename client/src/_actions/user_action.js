@@ -4,35 +4,26 @@ import {
   AUTH_USER,
   KAKAO_USER,
   GOOGLE_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
 } from './types';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
-
-//* 세션 스토리지 정보 저장을 위한 함수
-function setUserInfo(dataName, data) {
-  sessionStorage.setItem(dataName, data)
-}
-
-
 function loginUser(dataToSubmit) {
   const request = axios
     .post('http://localhost:3001/user/login', dataToSubmit)
-    .then(response => {
-      const { id } = response.data.data;
-      const { accessToken } = response.data;
-      setUserInfo('id', id);
-      setUserInfo('accessToken', accessToken);
-      return { id, accessToken };
+    .then((response) => {
+      sessionStorage.setItem('accessToken', response.data.accessToken);
+      sessionStorage.setItem('userId', response.data.data.id);
+      sessionStorage.setItem('userCrewId', response.data.data.crewId);
+      return response.data;
     })
-    .catch(e => console.log(e))
+    .catch((e) => console.log(e));
   return {
     type: LOGIN_USER,
     payload: request,
   };
 }
-
 
 function registerUser(dataToSubmit) {
   const request = axios
@@ -46,9 +37,7 @@ function registerUser(dataToSubmit) {
 }
 
 function auth() {
-  const request = axios
-    .get('/users/auth')
-    .then((response) => response.data);
+  const request = axios.get('/users/auth').then((response) => response.data);
 
   return {
     type: AUTH_USER,
@@ -57,19 +46,17 @@ function auth() {
 }
 
 async function googleUser(dataToSubmit) {
-
   const { email, imageUrl, name } = dataToSubmit;
 
-  const request = await axios.post('http://localhost:3001/oauth/google',
-    { email, imageUrl, name })
+  const request = await axios
+    .post('http://localhost:3001/oauth/google', { email, imageUrl, name })
     .then((response) => {
-      const { id } = response.data.data;
-      const { accessToken } = response.data;
-      setUserInfo('id', id);
-      setUserInfo('accessToken', accessToken);
-      return { id, accessToken };
+      sessionStorage.setItem('accessToken', response.data.accessToken);
+      sessionStorage.setItem('userId', response.data.data.id);
+      sessionStorage.setItem('userCrewId', response.data.data.crewId);
+      return response.data;
     })
-    .catch(e => console.log(e));
+    .catch((e) => console.log(e));
   return {
     type: GOOGLE_USER,
     payload: request,
@@ -77,15 +64,17 @@ async function googleUser(dataToSubmit) {
 }
 
 async function kakaoUser(dataToSubmit) {
-  const request = await axios.post('http://localhost:3001/oauth/kakao', { authorizationCode: dataToSubmit })
-    .then((response) => {
-      const { id } = response.data.data;
-      const { accessToken } = response.data;
-      setUserInfo('id', id);
-      setUserInfo('accessToken', accessToken);
-      return { id, accessToken };
+  const request = await axios
+    .post('http://localhost:3001/oauth/kakao', {
+      authorizationCode: dataToSubmit,
     })
-    .catch(e => console.log(e));
+    .then((response) => {
+      sessionStorage.setItem('accessToken', response.data.accessToken);
+      sessionStorage.setItem('userId', response.data.data.id);
+      sessionStorage.setItem('userCrewId', response.data.data.crewId);
+      return response.data;
+    })
+    .catch((e) => console.log(e));
 
   return {
     type: KAKAO_USER,
@@ -93,25 +82,22 @@ async function kakaoUser(dataToSubmit) {
   };
 }
 
-
 async function logoutUser(dataToSubmit) {
-
-
-  await axios.post('http://localhost:3001/user/logout', { userId: dataToSubmit })
+  const request = await axios
+    .post('http://localhost:3001/user/logout', dataToSubmit)
     .then((response) => {
-      sessionStorage.removeItem('id');
+      sessionStorage.removeItem('userId');
+      sessionStorage.removeItem('userCrewId');
       sessionStorage.removeItem('accessToken');
 
-      return response.data.message;
+      return response.data;
     })
-    .catch(e => console.log(e))
-
-
+    .catch((e) => console.log(e));
 
   return {
     type: LOGOUT_USER,
-    payload: { id: '', accessToken: '' },
+    payload: request,
   };
 }
 
-export { loginUser, registerUser, googleUser, kakaoUser, logoutUser, auth }
+export { loginUser, registerUser, googleUser, kakaoUser, logoutUser, auth };

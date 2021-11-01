@@ -6,25 +6,29 @@ import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../_actions/user_action';
 
 function Logout() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector((state) => state.user);
+  const userId = sessionStorage.getItem('userId');
 
-    const dispatch = useDispatch();
-    const history = useHistory();
-    const user = useSelector(state => state.user)
-    const userId = sessionStorage.getItem('id')
+  const handleLogout = () => {
+    console.log(userId);
+    dispatch(logoutUser(userId))
+      .then((res) => {
+        console.log(res);
+        history.push('/');
+      })
+      .catch((e) => e);
+  };
 
-    const handleLogout = () => {
-        dispatch(logoutUser(userId))
-            .then((res) => history.push('/'))
-            .catch(e => e)
-
-
-    }
-
-    return (
-        <>
-            <div className="logoutBtn" onClick={handleLogout}> Logout </div>
-        </>
-    )
+  return (
+    <>
+      <div className="logoutBtn" onClick={handleLogout}>
+        {' '}
+        Logout{' '}
+      </div>
+    </>
+  );
 }
 
 export default Logout;

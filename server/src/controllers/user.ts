@@ -78,6 +78,7 @@ const logout = async (req: Request, res: Response) => {
     //const isauth = false;
     //await User.update(userInfo.id, { isauth });
     res.clearCookie("refreshToken");
+    return res.status(200).send({ message: "success" });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }

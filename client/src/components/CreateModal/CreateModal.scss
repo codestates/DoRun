@@ -1,3 +1,6 @@
+// .createModal {
+// }
+
 .createModalHeader {
   display: flex;
   flex-direction: column;
@@ -18,7 +21,7 @@
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
-    // margin: 0px 20px;
+    margin: 0px 20px;
     color: #3bc9db;
     font-size: 1.25rem;
     font-weight: bold;
@@ -62,9 +65,7 @@
       border: 1px solid #dee2e6;
       border-radius: 4px;
     }
-
-    .right_date,
-    .right_time {
+    .right_date {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,21 +76,45 @@
       font-weight: bold;
       border: 1px solid #dee2e6;
       border-radius: 4px;
+      .date {
+        font-size: 16px;
+        width: 245px;
+        height: 32px;
+        border: none;
+        background-color: #eeeeee;
+      }
+      input[type='date']::-webkit-calendar-picker-indicator {
+        filter: invert(100%) brightness(50%);
+        margin-left: -55px;
+        margin-right: 55px;
+        margin-top: 3px;
+      }
+      input[type='date']::-webkit-datetime-edit-fields-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .right_time {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 245px;
+      height: 35px;
+      margin: 0px;
+      color: #999999;
+      background-color: #eeeeee;
+      font-weight: bold;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
       gap: 3px;
       .time {
-        font-size: 15px;
-        margin: 0.4rem;
+        font-size: 16px;
         width: 110px;
         height: 32px;
         border: none;
         background-color: #eeeeee;
       }
-      .date {
-        border: none;
-        background: #eeeeee;
-        width: 245px;
-        padding: 0.4rem;
-        font-size: 15px;
       input[type='time']::-webkit-calendar-picker-indicator {
         filter: invert(100%) brightness(50%);
         margin-left: 0px;
@@ -101,75 +126,46 @@
         justify-content: center;
       }
     }
-
-    // *************** 라디오 버튼 **************** //
-    $color1: #f4f4f4;
-    $color2: #22b8cf;
-
     .right_radios {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       width: 245px;
-    }
-
-    .radio {
-      font-size: 14px;
-      display: flex;
-      margin: 0.5rem;
-      align-items: center;
       .right_radio {
-        cursor: pointer;
-      }
-      input[type='radio'] {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        + .right_radio {
-          &:before {
-            content: '';
-            background: $color1;
-            border-radius: 100%;
-            border: 1px solid darken($color1, 25%);
-            display: inline-block;
-            margin-right: 0.5rem;
-            width: 1em;
-            height: 1em;
-            position: relative;
-            // margin-top: 0.2rem;
-            padding: 1px;
-            vertical-align: top;
-            cursor: pointer;
-            text-align: center;
-            transition: all 250ms ease;
-          }
+        width: 80px;
+        height: 30px;
+        margin: 0px;
+        color: #999999;
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        font-size: 16px;
+        .radios {
+          margin: 2px 4px 0px;
         }
-        &:checked {
-          + .right_radio {
-            &:before {
-              background-color: $color2;
-              box-shadow: inset 0 0 0 4px $color1;
-            }
-          }
+        input[type='radio'] {
+          -webkit-appearance: none;
+          width: 16px;
+          height: 16px;
+          border: 1px solid darkgray;
+          border-radius: 50%;
+          outline: none;
+          background: #eeeeee;
         }
-        &:focus {
-          + .right_radio {
-            &:before {
-              outline: none;
-              border-color: $color2;
-            }
-          }
+        input[type='radio']:before {
+          content: '';
+          display: block;
+          width: 60%;
+          height: 60%;
+          margin: 20% auto;
+          border-radius: 50%;
         }
-        + .right_radio {
-          &:empty {
-            &:before {
-              margin-right: 0;
-            }
-          }
+        input[type='radio']:checked:before {
+          background: #3bc9db;
         }
       }
     }
-
     .right_textarea {
       margin-top: 10px;
       width: 245px;
@@ -200,7 +196,7 @@
     margin: 0px;
     cursor: pointer;
     color: #ffffff;
-    width: 19rem;
+    width: 15rem;
     font-size: 16px;
     font-weight: bold;
     background-color: #3bc9db;

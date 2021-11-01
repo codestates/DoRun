@@ -1,10 +1,74 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
+import axios from 'axios';
 import './CrewModal.scss';
 
-const CrewModal = ({ crewModalHandler }) => {
-  const [isFocused, setIsFocused] = useState('right_option');
+const CrewModal = ({ crewModalHandler, crewId }) => {
+  const userId = Number(sessionStorage.getItem('userId'));
+  let userCrewId = Number(sessionStorage.getItem('userCrewId'));
+  const [errMsg, setErrMsg] = useState('');
+  const [crewData, setCrewData] = useState({
+    title: '',
+    date: '',
+    departure: '',
+    time: '',
+    participant: [],
+    personnel: '',
+    level: '',
+    distance: '',
+    desc: '',
+  });
+
+  // 클릭한 위치가 바뀔때 마다 모달 정보 수정
+  // useEffect(async () => {
+  //   await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
+  //     console.log(res.data);
+  //     setCrewData({
+  //       ...res.data.data,
+  //       participant: res.data.CrewInUser,
+  //     });
+  //   });
+  // }, [crewId]);
+  useEffect(() => {
+    axios.get(`http://localhost:3001/crew/2`).then((res) => {
+      console.log(res.data);
+      setCrewData({
+        ...res.data.data,
+        participant: res.data.CrewInUser,
+      });
+    });
+  }, []);
+
+  // 크루가입이 가능한지 확인
+  const joinCheck = () => {
+    if (
+      crewData.participant.length === Number(crewData.personnel.slice(1, 2))
+    ) {
+      console.log(crewData);
+      setErrMsg(<div className="crewErrMsg">⚠ 크루인원이 가득 찼습니다!!</div>);
+    } else {
+      setErrMsg(null);
+      if (!userCrewId) {
+        // 크루 가입 요청
+        // axios.post(`http://localhost:3001/crew/${userId}/${crewId}`).then((res) => {
+        //   console.log(res);
+        //   userCrewId = sessionStorage.setItem('userCrewId', crewId);
+        //   confirmModalHandler();
+        // });
+        axios.post(`http://localhost:3001/crew/3/2`).then((res) => {
+          console.log(res);
+          userCrewId = sessionStorage.setItem('userCrewId', 2);
+          confirmModalHandler();
+        });
+      } else {
+        setErrMsg(
+          <div className="crewErrMsg">⚠ 이미 가입한 크루가 존재합니다!!</div>
+        );
+      }
+    }
+  };
+
+  // 결과 확인 모달
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const confirmModalHandler = () => {
     isConfirmModalOpen
@@ -14,6 +78,7 @@ const CrewModal = ({ crewModalHandler }) => {
 
   return (
     <div className="crewModalContainer">
+      {console.log(crewData)}
       <div className="crewModal">
         <div className="crewModalHeader">
           <div className="crewModalExit" onClick={crewModalHandler}>
@@ -23,66 +88,101 @@ const CrewModal = ({ crewModalHandler }) => {
 
         <div className="crewModalBody">
           <div className="bodyTop">
-            <div className="crewTitle">여의도 10km 함께 뛰어요 :) </div>
+            <div className="crewTitle">{crewData.title}</div>
             <br />
-            <img className="leaderImg" src="defaultImg.png" alt="" />
+            {/* <img className="leaderImg" src={crewData.leaderImg} alt="" /> */}
           </div>
           <div className="bodyMid">
+            {/* <div className="mid_option">
+              <div className="left_title">크루 리더</div>
+              <div className="right_text">{crewData.leader}</div>
+            </div> */}
             <div className="mid_option">
               <div className="left_title">출발지</div>
-              <div className="right_text">여의도 한강공원</div>
+              <div className="right_text">{crewData.departure}</div>
             </div>
             <div className="mid_option">
-              <div className="left_title">크루 리더</div>
-              <div className="right_text">영등포구청역 베타 테스터</div>
+              <div className="left_title">날짜</div>
+              <div className="right_text">{crewData.date}</div>
             </div>
             <div className="mid_option">
-              <div className="left_title">DoRun 시간</div>
-              <div className="right_text">19:30 ~ 21:00</div>
+              <div className="left_title">시간</div>
+              <div className="right_text">{crewData.time}</div>
             </div>
             <div className="mid_option">
               <div className="left_title">모집인원</div>
               <div className="right_options">
-                <div className="right_option focused">~5명</div>
-                <div className="right_option">~10명</div>
-                <div className="right_option">~15명</div>
+                <div className="right_text">
+                  {crewData.participant.length}
+                  명&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+                  {crewData.personnel.slice(1)}
+                </div>
               </div>
             </div>
             <div className="mid_option">
               <div className="left_title">난이도</div>
               <div className="right_options">
-                <div className="right_option">쉬움</div>
-                <div className="right_option focused">보통</div>
-                <div className="right_option">어려움</div>
+                {crewData.level === '쉬움' ? (
+                  <>
+                    <div className="right_option focused">쉬움</div>
+                    <div className="right_option">보통</div>
+                    <div className="right_option">어려움</div>
+                  </>
+                ) : crewData.level === '보통' ? (
+                  <>
+                    <div className="right_option">쉬움</div>
+                    <div className="right_option focused">보통</div>
+                    <div className="right_option">어려움</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="right_option">쉬움</div>
+                    <div className="right_option">보통</div>
+                    <div className="right_option focused">어려움</div>
+                  </>
+                )}
               </div>
             </div>
             <div className="mid_option">
               <div className="left_title">거리</div>
               <div className="right_options">
-                <div className="right_option">~5km</div>
-                <div className="right_option focused">~10km</div>
-                <div className="right_option">15km~</div>
+                {crewData.distance === '~5km' ? (
+                  <>
+                    <div className="right_option focused">~5km</div>
+                    <div className="right_option">~10km</div>
+                    <div className="right_option">15km~</div>
+                  </>
+                ) : crewData.distance === '~10km' ? (
+                  <>
+                    <div className="right_option">~5km</div>
+                    <div className="right_option focused">~10km</div>
+                    <div className="right_option">15km~</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="right_option">~5km</div>
+                    <div className="right_option">~10km</div>
+                    <div className="right_option focused">15km~</div>
+                  </>
+                )}
               </div>
             </div>
             <div className="mid_option">
               <div className="left_details">세부사항</div>
-              <div className="right_details">
-                한강 바람 맞으면서 @@ 방향으로 함께 뛸 Do Run 메이트 모집합니다!
-                저녁에 추울 수 있으니 바람막이 필수로 지참하고 와주시면
-                감사하겠습니다 :)
-              </div>
+              <div className="right_details">{crewData.desc}</div>
             </div>
             <br />
 
             <div className="crewModalFooter">
-              <button className="toDoRun" onClick={confirmModalHandler}>
+              {errMsg}
+              <button className="toDoRun" onClick={joinCheck}>
                 Do Run!!
               </button>
-              <button className="toChat" onClick={confirmModalHandler}>
-                Do Chat!!
-              </button>
               {isConfirmModalOpen && (
-                <ConfirmModal confirmModalHandler={confirmModalHandler} />
+                <ConfirmModal
+                  confirmModalHandler={confirmModalHandler}
+                  userId={userId}
+                />
               )}
             </div>
             <br />

@@ -6,7 +6,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import MapPage from './pages/MapPage/MapPage';
 import MyPage from './pages/MyPage/MyPage';
 import ChattingPage from './pages/ChattingPage/ChattingPage';
-import Auth from './hoc/auth';
+// import Auth from './hoc/auth';
 import Test from './pages/test';
 import Nav from './components/Header/Nav';
 
@@ -24,12 +24,12 @@ const App = () => {
     <>
       <Nav />
       <Switch>
-        <Route exact path="/" component={Auth(LandingPage, null)} />
-        <Route path="/login" component={Auth(LoginPage, false)} />
-        <Route path="/register" component={Auth(RegisterPage, false)} />
-        <Route path="/map" component={Auth(MapPage, null)} />
-        <Route path="/mypage" component={Auth(MyPage, true)} />
-        <Route path="/chatting" component={Auth(ChattingPage, true)} />
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/map" component={MapPage} />
+        <Route path="/mypage" component={MyPage} />
+        <Route path="/chatting" component={ChattingPage} />
         <Route path="/test" component={Test} />
       </Switch>
     </>

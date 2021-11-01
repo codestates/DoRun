@@ -4,9 +4,10 @@ import {
   AUTH_USER,
   KAKAO_USER,
   GOOGLE_USER,
+  LOGOUT_USER,
 } from '../_actions/types';
 
-export default function (state = {}, action) {
+export default function user(state = {}, action) {
   switch (action.type) {
     case LOGIN_USER:
       return { ...state, loginUser: action.payload };
@@ -17,11 +18,15 @@ export default function (state = {}, action) {
     case AUTH_USER:
       return { ...state, userData: action.payload };
       break;
-    case KAKAO_USER:
-      return { ...state, userData: action.payload };
-      break;
     case GOOGLE_USER:
-      return { ...state, userData: action.payload };
+      return { ...state, loginSuccess: action.payload };
+      break;
+    case KAKAO_USER:
+      return { ...state, loginSuccess: action.payload };
+      break;
+    case LOGOUT_USER:
+      return { ...state, loginSuccess: action.payload };
+      break;
     default:
       return state;
   }

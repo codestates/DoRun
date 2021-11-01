@@ -1,8 +1,7 @@
 import { Router } from "express";
 import * as UserController from "../controllers/user";
-const userRoter = Router();
-//export { SignUp, SignOut, Login, logout, Edit };
 import { authCheck } from "../middleware/AuthCheck";
+const userRoter = Router();
 
 userRoter.post("/signup", UserController.SignUp);
 userRoter.delete("/signout", UserController.SignOut);

@@ -17,20 +17,29 @@ export class Crew extends BaseEntity {
   @Column({ type: "varchar" })
   title: string;
 
-  @Column({ type: "int" })
-  desc: number;
+  @Column({ type: "varchar" })
+  desc: string;
 
   @Column({ type: "varchar" })
-  recruit: number;
+  personnel: string;
 
   @Column({ type: "varchar" })
-  level: number;
+  level: string;
 
   @Column({ type: "varchar" })
-  time: number;
+  time: string;
 
   @Column({ type: "varchar" })
-  location: number;
+  date: string;
+
+  @Column({ type: "varchar" })
+  location: string;
+
+  @Column({ type: "varchar" })
+  departure: string;
+
+  @Column({ type: "varchar" })
+  distance: string;
 
   @CreateDateColumn()
   createdAt: Date;

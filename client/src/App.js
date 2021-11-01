@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -11,6 +11,9 @@ import Test from './pages/test';
 import Nav from './components/Header/Nav';
 
 const App = () => {
+  useEffect(() => {
+    console.log('세션 스토리지 확인', sessionStorage.getItem('id'), sessionStorage.getItem('accessToken'))
+  }, [])
   return (
     <>
       <Nav />

@@ -1,0 +1,9 @@
+.logoutBtn{
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    border: 4px dotted olive;
+    &:hover {
+        background-color: orange;
+    }
+}

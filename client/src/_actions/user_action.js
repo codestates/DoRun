@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   LOGIN_USER,
   REGISTER_USER,
@@ -7,18 +6,35 @@ import {
   GOOGLE_USER,
   LOGOUT_USER
 } from './types';
+import axios from 'axios';
+axios.defaults.withCredentials = true;
 
-export function loginUser(dataToSubmit) {
+
+//* 세션 스토리지 정보 저장을 위한 함수
+function setUserInfo(dataName, data) {
+  sessionStorage.setItem(dataName, data)
+}
+
+
+function loginUser(dataToSubmit) {
   const request = axios
     .post('http://localhost:3001/user/login', dataToSubmit)
-    .then((response) => response.data);
+    .then(response => {
+      const { id } = response.data.data;
+      const { accessToken } = response.data;
+      setUserInfo('id', id);
+      setUserInfo('accessToken', accessToken);
+      return { id, accessToken };
+    })
+    .catch(e => console.log(e))
   return {
     type: LOGIN_USER,
     payload: request,
   };
 }
 
-export function registerUser(dataToSubmit) {
+
+function registerUser(dataToSubmit) {
   const request = axios
     .post('http://localhost:3001/user/signup', dataToSubmit)
     .then((response) => response.data);
@@ -29,7 +45,7 @@ export function registerUser(dataToSubmit) {
   };
 }
 
-export function auth() {
+function auth() {
   const request = axios
     .get('/users/auth')
     .then((response) => response.data);
@@ -40,23 +56,36 @@ export function auth() {
   };
 }
 
-export async function googleUser(dataToSubmit) {
+async function googleUser(dataToSubmit) {
 
-  const { email, imageUrl, name, isauth } = dataToSubmit;
+  const { email, imageUrl, name } = dataToSubmit;
+
   const request = await axios.post('http://localhost:3001/oauth/google',
-    { email, imageUrl, name, isauth },
-    { headers: { 'Content-Type': 'application/json' } })
-    .then((res) => { console.log('구글 로그인 자료입니다.', res.data), res.data });
-
+    { email, imageUrl, name })
+    .then((response) => {
+      const { id } = response.data.data;
+      const { accessToken } = response.data;
+      setUserInfo('id', id);
+      setUserInfo('accessToken', accessToken);
+      return { id, accessToken };
+    })
+    .catch(e => console.log(e));
   return {
     type: GOOGLE_USER,
     payload: request,
   };
 }
 
-export async function kakaoUser(dataToSubmit) {
+async function kakaoUser(dataToSubmit) {
   const request = await axios.post('http://localhost:3001/oauth/kakao', { authorizationCode: dataToSubmit })
-    .then((response) => { console.log('제말이 들리시나요ㅠㅠ', response.data), response.data })
+    .then((response) => {
+      const { id } = response.data.data;
+      const { accessToken } = response.data;
+      setUserInfo('id', id);
+      setUserInfo('accessToken', accessToken);
+      return { id, accessToken };
+    })
+    .catch(e => console.log(e));
 
   return {
     type: KAKAO_USER,
@@ -65,6 +94,24 @@ export async function kakaoUser(dataToSubmit) {
 }
 
 
-export async function logout(dataTosubmit) {
-  const request = await axios.post('http://localhost:3001/user/logout', {})
+async function logoutUser(dataToSubmit) {
+
+
+  await axios.post('http://localhost:3001/user/logout', { userId: dataToSubmit })
+    .then((response) => {
+      sessionStorage.removeItem('id');
+      sessionStorage.removeItem('accessToken');
+
+      return response.data.message;
+    })
+    .catch(e => console.log(e))
+
+
+
+  return {
+    type: LOGOUT_USER,
+    payload: { id: '', accessToken: '' },
+  };
 }
+
+export { loginUser, registerUser, googleUser, kakaoUser, logoutUser, auth }

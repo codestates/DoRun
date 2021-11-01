@@ -9,11 +9,15 @@
   transition: all 1.25s ease;
 }
 
-.navbar {
-  height: 5rem;
-  display: flex;
+header {
   position: sticky;
   top: 0;
+  background: #f8f9fa;
+}
+
+.navbar {
+  height: 5vw;
+  display: flex;
   z-index: 20;
   padding: 0.5rem calc((100vw - 1000px) / 2);
 }

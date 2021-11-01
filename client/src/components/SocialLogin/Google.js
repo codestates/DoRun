@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
 import { googleUser } from '../../_actions/user_action';
-const {REACT_APP_GOOGLE_CLIENT_ID} = process.env
+const { REACT_APP_GOOGLE_CLIENT_ID } = process.env
 
 const SocialLoginGoogle = () => {
 
@@ -16,7 +16,7 @@ const SocialLoginGoogle = () => {
 
     const handleLogin = async (e) => {
       dispatch(googleUser(response.profileObj))
-      history.push('/map')
+      history.push('/map');
     }
 
     handleLogin();
@@ -25,8 +25,10 @@ const SocialLoginGoogle = () => {
   // 구글 연동 실패 시 실행되는 함수
   const responseFail = (e) => {
     console.log(e)
+    history.push('/');
 
   }
+
 
 
   return (
@@ -39,7 +41,7 @@ const SocialLoginGoogle = () => {
         onFailure={responseFail}
         cookiePolicy={'single_host_origin'}
         className='google'
-        style={{width:"200px"}}
+        style={{ width: "200px" }}
       />
     </div>
   )

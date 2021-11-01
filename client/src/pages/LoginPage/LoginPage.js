@@ -32,9 +32,7 @@ const LoginPage = (props) => {
     };
     dispatch(loginUser(body))
       .then((res) => {
-        if (res.payload.message === 'success') {
-          props.history.push('/');
-        }
+        props.history.push('/map');
       })
       .catch((error) => {
         setMismatched(true);

@@ -1,21 +1,38 @@
-.wrapping{
-  width: 80px;
-  height: 30px;
-  margin-bottom: 120px;
-  padding-top: 3px;
-  text-align: center;
-  color: rgb(43, 199, 219);
-  font-weight: bolder;
-  font-style: italic;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 3px 4px 5px 1px gray;
+
+#Mymap {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
 }
 
-.wrapping:hover{
-  color: white;
-  background-color: rgb(43, 199, 219);
+/* ::-webkit-scrollbar { 
+  display: none;} */
+
+
+.wrapping{
+  /* background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%); */
+  background-image: linear-gradient(to right, #FF512F 0%, #f89e20  51%, #FF512F  100%);
+  margin: -75px 0px;
+  padding: 5px 15px;
+  text-align: center;
+  font-style: italic;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px lightgray;
+  border-radius: 10px;
+  display: block;
 }
+
+ .wrapping:hover {
+   background-position: right center;
+   color: #fff;
+   text-decoration: none;
+ }
+
 
 .createUp {
   position: fixed;

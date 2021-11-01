@@ -33,7 +33,9 @@ const LoginPage = (props) => {
     dispatch(loginUser(body))
       .then((res) => {
         if (res.payload.message === 'success') {
+          console.log(res.payload.data);
           sessionStorage.setItem('userId', res.payload.data.id);
+          sessionStorage.setItem('userCrewId', res.payload.data.crewId);
           sessionStorage.setItem('accessToken', res.payload.accessToken);
           // 로그아웃 -> sessionStorage.removeItem('accessToken');
           props.history.push('/');

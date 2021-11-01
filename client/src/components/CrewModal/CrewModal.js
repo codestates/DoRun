@@ -4,44 +4,71 @@ import axios from 'axios';
 import './CrewModal.scss';
 
 const CrewModal = ({ crewModalHandler, crewId }) => {
+  const userId = Number(sessionStorage.getItem('userId'));
+  let userCrewId = Number(sessionStorage.getItem('userCrewId'));
   const [errMsg, setErrMsg] = useState('');
   const [crewData, setCrewData] = useState({
-    title: '여의도 10km 함께 뛰어요 :)',
-    date: '2021-11-01',
-    departure: '여의도 한강공원',
-    time: '19:30 ~ 21:00',
-    participant: [1, 2, 3, 4, 5],
-    personnel: '~5명',
-    level: '어려움',
-    distance: '~5km',
-    desc: '한강 바람 맞으면서 @@ 방향으로 함께 뛸 Do Run 메이트 모집합니다! 저녁에 추울 수 있으니 바람막이 필수로 지참하고 와주시면 감사하겠습니다 :)',
+    title: '',
+    date: '',
+    departure: '',
+    time: '',
+    participant: [],
+    personnel: '',
+    level: '',
+    distance: '',
+    desc: '',
   });
 
   // 클릭한 위치가 바뀔때 마다 모달 정보 수정
-  // useEffect(() => {
-  //   axios.get('http://localhost:3000/crew', crewId).then((res) => {
+  // useEffect(async () => {
+  //   await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
+  //     console.log(res.data);
   //     setCrewData({
-  //       ...res.data,
+  //       ...res.data.data,
+  //       participant: res.data.CrewInUser,
   //     });
-  //     if (crewData.participant.length === crewData.personnel.slice(1, 2)) {
-  //       setBtnActive('disabled');
-  //     }
   //   });
   // }, [crewId]);
+  useEffect(() => {
+    axios.get(`http://localhost:3001/crew/2`).then((res) => {
+      console.log(res.data);
+      setCrewData({
+        ...res.data.data,
+        participant: res.data.CrewInUser,
+      });
+    });
+  }, []);
 
-  // 크루 가입 확인
+  // 크루가입이 가능한지 확인
   const joinCheck = () => {
     if (
       crewData.participant.length === Number(crewData.personnel.slice(1, 2))
     ) {
+      console.log(crewData);
       setErrMsg(<div className="crewErrMsg">⚠ 크루인원이 가득 찼습니다!!</div>);
     } else {
       setErrMsg(null);
-      confirmModalHandler();
+      if (!userCrewId) {
+        // 크루 가입 요청
+        // axios.post(`http://localhost:3001/crew/${userId}/${crewId}`).then((res) => {
+        //   console.log(res);
+        //   userCrewId = sessionStorage.setItem('userCrewId', crewId);
+        //   confirmModalHandler();
+        // });
+        axios.post(`http://localhost:3001/crew/3/2`).then((res) => {
+          console.log(res);
+          userCrewId = sessionStorage.setItem('userCrewId', 2);
+          confirmModalHandler();
+        });
+      } else {
+        setErrMsg(
+          <div className="crewErrMsg">⚠ 이미 가입한 크루가 존재합니다!!</div>
+        );
+      }
     }
   };
 
-  // 로그인 페이지 이동 모달
+  // 결과 확인 모달
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const confirmModalHandler = () => {
     isConfirmModalOpen
@@ -51,6 +78,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
 
   return (
     <div className="crewModalContainer">
+      {console.log(crewData)}
       <div className="crewModal">
         <div className="crewModalHeader">
           <div className="crewModalExit" onClick={crewModalHandler}>
@@ -151,7 +179,10 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
                 Do Run!!
               </button>
               {isConfirmModalOpen && (
-                <ConfirmModal confirmModalHandler={confirmModalHandler} />
+                <ConfirmModal
+                  confirmModalHandler={confirmModalHandler}
+                  userId={userId}
+                />
               )}
             </div>
             <br />

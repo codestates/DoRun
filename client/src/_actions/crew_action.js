@@ -3,7 +3,7 @@ import { CREATE_CREW } from './types';
 
 export function createCrew(dataToSubmit) {
   const request = axios
-    .post('http://localhost:3001/crew/create', dataToSubmit)
+    .post('http://localhost:3001/crew', dataToSubmit)
     .then((response) => response.data);
   return {
     type: CREATE_CREW,

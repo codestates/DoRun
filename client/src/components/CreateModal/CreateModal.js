@@ -18,7 +18,7 @@ const CreateModal = ({ createModalHandler, location }) => {
     level: '',
     distance: '',
     desc: '',
-    location: location,
+    location: '1,1',
   });
   const [isEnough, setIsEnough] = useState(false);
 
@@ -37,7 +37,7 @@ const CreateModal = ({ createModalHandler, location }) => {
       !createData.personnel ||
       !createData.level ||
       !createData.distance ||
-      !createData.detail
+      !createData.desc
     ) {
       setIsEnough(true);
     } else {
@@ -45,6 +45,7 @@ const CreateModal = ({ createModalHandler, location }) => {
       dispatch(createCrew(body))
         .then((res) => {
           if (res.payload.message === 'success') {
+            console.log(res.payload);
             SuccessModalHandler();
           }
         })

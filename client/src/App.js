@@ -13,10 +13,12 @@ import Nav from './components/Header/Nav';
 const App = () => {
   const accessToken = sessionStorage.getItem('accessToken');
   const userId = sessionStorage.getItem('userId');
+  const userCrewId = sessionStorage.getItem('userCrewId');
   useEffect(() => {
-    console.log(accessToken);
-    console.log(userId);
-  }, [accessToken, userId]);
+    console.log('accessToken: ' + accessToken);
+    console.log('userId: ' + userId);
+    console.log('userCrewId: ' + userCrewId);
+  }, [accessToken, userId, userCrewId]);
 
   return (
     <>

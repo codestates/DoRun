@@ -8,8 +8,7 @@ import './ConfirmModal.scss';
 // };
 // {isConfirmModalOpen && <ConfirmModal confirmModalHandler={confirmModalHandler} />}
 
-const ConfirmModal = ({ confirmModalHandler }) => {
-  const userId = sessionStorage.getItem('userId');
+const ConfirmModal = ({ confirmModalHandler, userId }) => {
   return (
     <div className="modalContainer">
       {userId ? (

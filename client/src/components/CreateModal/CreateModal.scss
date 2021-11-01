@@ -65,6 +65,36 @@
       border: 1px solid #dee2e6;
       border-radius: 4px;
     }
+    .right_date {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 245px;
+      height: 35px;
+      margin: 0px;
+      background-color: #eeeeee;
+      font-weight: bold;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      .date {
+        font-size: 16px;
+        width: 245px;
+        height: 32px;
+        border: none;
+        background-color: #eeeeee;
+      }
+      input[type='date']::-webkit-calendar-picker-indicator {
+        filter: invert(100%) brightness(50%);
+        margin-left: -55px;
+        margin-right: 55px;
+        margin-top: 3px;
+      }
+      input[type='date']::-webkit-datetime-edit-fields-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
     .right_time {
       display: flex;
       align-items: center;
@@ -72,7 +102,6 @@
       width: 245px;
       height: 35px;
       margin: 0px;
-      color: #000000;
       background-color: #eeeeee;
       font-weight: bold;
       border: 1px solid #dee2e6;
@@ -84,6 +113,16 @@
         height: 32px;
         border: none;
         background-color: #eeeeee;
+      }
+      input[type='time']::-webkit-calendar-picker-indicator {
+        filter: invert(100%) brightness(50%);
+        margin-left: 0px;
+        margin-top: 3px;
+      }
+      input[type='time']::-webkit-datetime-edit-fields-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
     .right_radios {
@@ -136,6 +175,12 @@
       border-radius: 4px;
     }
   }
+}
+
+.crewErrMsg {
+  color: #ff7545;
+  font-weight: 500;
+  text-align: center;
 }
 
 .createModalFooter {

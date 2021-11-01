@@ -15,7 +15,7 @@ function Logout() {
     const handleLogout = () => {
         dispatch(logoutUser(userId))
             .then((res) => history.push('/'))
-            .catch(e => e)
+            .catch(e => console.log(e))
 
 
     }

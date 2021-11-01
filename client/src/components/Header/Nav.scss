@@ -13,12 +13,13 @@ header {
   position: sticky;
   top: 0;
   background: #f8f9fa;
+  z-index: 9999;
 }
 
 .navbar {
-  height: 5vw;
+  height: 5rem;
   display: flex;
-  z-index: 20;
+  // z-index: 20;
   padding: 0.5rem calc((100vw - 1000px) / 2);
 }
 

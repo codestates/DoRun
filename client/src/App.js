@@ -11,9 +11,10 @@ import Test from './pages/test';
 import Nav from './components/Header/Nav';
 
 const App = () => {
-  useEffect(() => {
-    console.log('세션 스토리지 확인', sessionStorage.getItem('id'), sessionStorage.getItem('accessToken'))
-  }, [])
+  // useEffect(() => {
+  //   console.log('세션 스토리지 확인', sessionStorage.getItem('id'), sessionStorage.getItem('accessToken'))
+  // }, [])
+
   return (
     <>
       <Nav />

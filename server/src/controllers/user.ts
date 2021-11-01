@@ -56,8 +56,8 @@ const Login = async (req: Request, res: Response) => {
     if (!userInfo || password !== userInfo.password) {
       return res.status(400).send(); //400은 message를 줄수없음
     }
-    const isauth = true;
-    await User.update(userInfo.id, { isauth });
+    //const isauth = true;
+    //await User.update(userInfo.id, { isauth });
 
     const { accessToken, refreshToken } = await TokensCreate(userInfo);
     res.cookie("refreshToken", refreshToken, {
@@ -86,7 +86,7 @@ const Edit = async (req: Request, res: Response) => {
   try {
     let userInfo = await User.findOne({ id: req.body.userId });
     if (!userInfo) {
-      return res.status(500).send({ message: "invalid userId" });
+      return res.status(400).send({ message: "invalid userId" });
     }
 
     userInfo.nickname = req.body.nickname || userInfo.nickname;

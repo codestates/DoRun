@@ -13,13 +13,12 @@ header {
   position: sticky;
   top: 0;
   background: #f8f9fa;
-  z-index: 9999;
+  z-index: 8999;
 }
 
 .navbar {
   height: 5rem;
   display: flex;
-  // z-index: 20;
   padding: 0.5rem calc((100vw - 1000px) / 2);
 }
 
@@ -85,6 +84,9 @@ header {
 }
 
 @media screen and (max-width: 768px) {
+  header {
+    z-index: 9001;
+  }
   .nav-menu {
     display: flex;
     flex-direction: column;

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createCrew } from '../../_actions/crew_action';
+import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import SuccessModal from '../SuccessModal/SuccessModal';
 import './CreateModal.scss';
 
 const CreateModal = ({ createModalHandler, location }) => {
+  const userId = Number(sessionStorage.getItem('userId'));
   const today = new Date().toISOString().slice(0, 10);
   const dispatch = useDispatch();
   const [createData, setCreateData] = useState({
@@ -42,19 +43,28 @@ const CreateModal = ({ createModalHandler, location }) => {
       setIsEnough(true);
     } else {
       setIsEnough(false);
-      dispatch(createCrew(body))
-        .then((res) => {
-          if (res.payload.message === 'success') {
-            console.log(res.payload);
-            SuccessModalHandler();
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      if (userId) {
+        dispatch(createCrew(body))
+          .then((res) => {
+            if (res.payload.message === 'success') {
+              console.log(res.payload);
+              SuccessModalHandler();
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        confirmModalHandler();
+      }
     }
+  };
 
-    console.log(body);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const confirmModalHandler = () => {
+    isConfirmModalOpen
+      ? setIsConfirmModalOpen(false)
+      : setIsConfirmModalOpen(true);
   };
 
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -121,28 +131,26 @@ const CreateModal = ({ createModalHandler, location }) => {
             <div className="mid_options">
               <div className="left_title">시간</div>
               <label className="right_time">
-                <div value="time">
-                  <input
-                    className="time"
-                    type="time"
-                    name="startTime"
-                    onChange={(e) => {
-                      setCreateData({
-                        ...createData,
-                        startTime: e.target.value,
-                      });
-                    }}
-                  />
-                  &nbsp;~&nbsp;
-                  <input
-                    className="time"
-                    type="time"
-                    name="endTime"
-                    onChange={(e) => {
-                      setCreateData({ ...createData, endTime: e.target.value });
-                    }}
-                  />
-                </div>
+                <input
+                  className="time"
+                  type="time"
+                  name="startTime"
+                  onChange={(e) => {
+                    setCreateData({
+                      ...createData,
+                      startTime: e.target.value,
+                    });
+                  }}
+                />
+                &nbsp;~&nbsp;
+                <input
+                  className="time"
+                  type="time"
+                  name="endTime"
+                  onChange={(e) => {
+                    setCreateData({ ...createData, endTime: e.target.value });
+                  }}
+                />
               </label>
             </div>
             <div className="mid_options">
@@ -275,6 +283,12 @@ const CreateModal = ({ createModalHandler, location }) => {
             <button className="toCreate" onClick={onSubmitHandler}>
               Create !!
             </button>
+            {isConfirmModalOpen && (
+              <ConfirmModal
+                confirmModalHandler={confirmModalHandler}
+                userId={userId}
+              />
+            )}
             {isSuccessModalOpen && (
               <SuccessModal SuccessModalHandler={SuccessModalHandler} />
             )}

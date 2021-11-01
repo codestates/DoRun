@@ -33,11 +33,6 @@ const LoginPage = (props) => {
     dispatch(loginUser(body))
       .then((res) => {
         if (res.payload.message === 'success') {
-          console.log(res.payload.data);
-          sessionStorage.setItem('userId', res.payload.data.id);
-          sessionStorage.setItem('userCrewId', res.payload.data.crewId);
-          sessionStorage.setItem('accessToken', res.payload.accessToken);
-          // 로그아웃 -> sessionStorage.removeItem('accessToken');
           props.history.push('/');
         }
       })
@@ -57,7 +52,7 @@ const LoginPage = (props) => {
           </div>
 
           <form className="loginFrm" onSubmit={onSubmitHandler}>
-            <label>이메일</label>
+            <label className="labelTitle">이메일</label>
             <div className="inputArea">
               <input
                 className="input"
@@ -66,7 +61,7 @@ const LoginPage = (props) => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <label>비밀번호</label>
+            <label className="labelTitle">비밀번호</label>
             <div className="inputArea">
               <input
                 className="input"

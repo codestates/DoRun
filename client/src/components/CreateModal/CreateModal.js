@@ -102,8 +102,7 @@ const CreateModal = ({ createModalHandler, location }) => {
             <div className="mid_options">
               <div className="left_title">날짜</div>
               <label className="right_date">
-                <div value="date">
-                  <input
+                <input
                     className="date"
                     type="date"
                     name="date"
@@ -115,7 +114,6 @@ const CreateModal = ({ createModalHandler, location }) => {
                       });
                     }}
                   />
-                </div>
               </label>
             </div>
             <div className="mid_options">
@@ -145,6 +143,7 @@ const CreateModal = ({ createModalHandler, location }) => {
                 </div>
               </label>
             </div>
+
             <div className="mid_options">
               <div className="left_title">모집인원</div>
               <div
@@ -153,33 +152,25 @@ const CreateModal = ({ createModalHandler, location }) => {
                   setCreateData({ ...createData, personnel: e.target.value });
                 }}
               >
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="personnel"
-                    value="~5명"
-                  />
-                  ~5명
-                </label>
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="personnel"
-                    value="~10명"
-                  />
-                  ~10명
-                </label>
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="personnel"
-                    value="~15명"
-                  />
-                  ~15명
-                </label>
+                <div class="radio radio_1">
+                  <input id="radio-1" name="headcount" type="radio" />
+                  <label for="radio-1" className="right_radio">
+                    ~ 5명
+                  </label>
+                </div>
+
+                <div class="radio radio_1">
+                  <input id="radio-2" name="headcount" type="radio" />
+                  <label for="radio-2" className="right_radio">
+                    ~10명
+                  </label>
+                </div>
+                <div class="radio radio_1">
+                  <input id="radio-3" name="headcount" type="radio" />
+                  <label for="radio-3" className="right_radio">
+                    ~15명
+                  </label>
+                </div>
               </div>
             </div>
             <div className="mid_options">
@@ -190,33 +181,25 @@ const CreateModal = ({ createModalHandler, location }) => {
                   setCreateData({ ...createData, level: e.target.value });
                 }}
               >
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="level"
-                    value="쉬움"
-                  />
-                  쉬움
-                </label>
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="level"
-                    value="보통"
-                  />
-                  보통
-                </label>
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="level"
-                    value="어려움"
-                  />
-                  어려움
-                </label>
+                <div class="radio radio_2">
+                  <input id="radio-4" name="level" type="radio" />
+                  <label for="radio-4" className="right_radio">
+                    쉬움
+                  </label>
+                </div>
+
+                <div class="radio radio_2">
+                  <input id="radio-5" name="level" type="radio" />
+                  <label for="radio-5" className="right_radio">
+                    보통
+                  </label>
+                </div>
+                <div class="radio radio_2">
+                  <input id="radio-6" name="level" type="radio" />
+                  <label for="radio-6" className="right_radio">
+                    어려움
+                  </label>
+                </div>
               </div>
             </div>
             <div className="mid_options">
@@ -227,36 +210,28 @@ const CreateModal = ({ createModalHandler, location }) => {
                   setCreateData({ ...createData, distance: e.target.value });
                 }}
               >
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="distance"
-                    value="~5km"
-                  />
-                  ~5km
-                </label>
+                <div class="radio radio_3">
+                  <input id="radio-7" name="distance" type="radio" />
+                  <label for="radio-7" className="right_radio">
+                    ~5km
+                  </label>
+                </div>
 
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="distance"
-                    value="~10km"
-                  />
-                  ~10km
-                </label>
-                <label className="right_radio">
-                  <input
-                    className="radios"
-                    type="radio"
-                    name="distance"
-                    value="15km~"
-                  />
-                  15km~
-                </label>
+                <div class="radio radio_3">
+                  <input id="radio-8" name="distance" type="radio" />
+                  <label for="radio-8" className="right_radio">
+                    ~10km
+                  </label>
+                </div>
+                <div class="radio radio_3">
+                  <input id="radio-9" name="distance" type="radio" />
+                  <label for="radio-9" className="right_radio">
+                    15km
+                  </label>
+                </div>
               </div>
             </div>
+
             <div className="mid_options">
               <div className="left_details">세부사항</div>
               <textarea

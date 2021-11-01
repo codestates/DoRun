@@ -78,7 +78,7 @@
   text-align: center;
 }
 
-label {
+.labelTitle {
   line-height: 2;
   text-align: left;
   display: block;
@@ -89,7 +89,6 @@ label {
   background-color: #ffffff;
 }
 
-button[type='submit'],
 input[type='submit'] {
   width: 100%;
   background: #3bc9db;
@@ -104,12 +103,10 @@ input[type='submit'] {
   border-radius: 100px;
 }
 
-button[type='submit']:hover,
 input[type='submit']:hover {
   background: #15aabf;
 }
 
-button[type='submit']:active,
 input[type='button']:active,
 input[type='submit']:active {
   transition: 0.3s all;
@@ -126,7 +123,6 @@ input[type='button']:hover {
   transition: 0.3s all;
 }
 
-button[type='submit'],
 input[type='button'],
 input[type='submit'] {
   -webkit-appearance: none;
@@ -141,10 +137,6 @@ button[type='button'] {
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 100px;
-}
-
-hr {
-  margin-top: 30px;
 }
 
 button {

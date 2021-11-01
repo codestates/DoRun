@@ -9,7 +9,6 @@ function Logout() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = useSelector(state => state.user)
     const userId = sessionStorage.getItem('id')
 
     const handleLogout = () => {

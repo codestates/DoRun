@@ -1,6 +1,5 @@
 import React from 'react';
 import './Logout.scss';
-import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../_actions/user_action';
@@ -8,7 +7,6 @@ import { logoutUser } from '../../_actions/user_action';
 function Logout() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((state) => state.user);
   const userId = sessionStorage.getItem('userId');
 
   const handleLogout = () => {

@@ -27,6 +27,7 @@ const CreateModal = ({ createModalHandler, location }) => {
     let body = {
       ...createData,
       time: `${createData.startTime} ~ ${createData.endTime}`,
+      userId: userId //? 추가
     };
 
     if (
@@ -44,12 +45,12 @@ const CreateModal = ({ createModalHandler, location }) => {
     } else {
       setIsEnough(false);
       if (userId) {
-        dispatch(createCrew(body))
+        dispatch(createCrew(body)) //! body에 userId를 함께 server로 전송
           .then((res) => {
             if (res.payload.message === 'success') {
               console.log(res.payload);
               console.log('사용자가 갖게 된 crewId 입니다.', res.payload.data.id);
-              sessionStorage.setItem('userCrewId', res.payload.data.id);
+              sessionStorage.setItem('userCrewId', res.payload.data.id); //? 추가
               SuccessModalHandler();
             }
           })

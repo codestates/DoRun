@@ -57,10 +57,10 @@ const Map = () => {
         if ((sessionStorage.getItem('userId') !== 'null') &&
           (sessionStorage.getItem('userCrewId') === 'null')) {
           //! red마커 생성
-          var normalImageSrc =
+          var createMarkerImgSrc =
             'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png';
           var imageSize = new kakao.maps.Size(35, 35);
-          var markerImage = new kakao.maps.MarkerImage(normalImageSrc, imageSize);
+          var markerImage = new kakao.maps.MarkerImage(createMarkerImgSrc, imageSize);
 
           const marker = new kakao.maps.Marker({
             // position: createdMap.getCenter(),
@@ -103,22 +103,16 @@ const Map = () => {
           });
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
         //! 기존에 생성 돼 있는 크루를 렌더
+        var crewMarkerImgSrc = 'https://cdn4.iconfinder.com/data/icons/social-media-2070/140/_location-128.png';
+        var imgSize = new kakao.maps.Size(35, 35);
+        var crewMarkerImg = new kakao.maps.MarkerImage(crewMarkerImgSrc, imgSize);
+
+
         markerdata.forEach((el) => {
           // 마커를 생성
           let marker = new kakao.maps.Marker({
+            image: crewMarkerImg,
             // 마커가 표시 될 지도
             map: createdMap,
             // 마커가 표시 될 위치

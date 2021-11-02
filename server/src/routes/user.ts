@@ -7,7 +7,9 @@ userRoter.post("/signup", UserController.SignUp);
 userRoter.delete("/signout", UserController.SignOut);
 userRoter.post("/login", UserController.Login);
 userRoter.post("/logout", UserController.logout);
-userRoter.patch("/", authCheck, UserController.Edit);
-userRoter.get("/:userId", authCheck, UserController.userInfo);
+//userRoter.patch("/", authCheck, UserController.Edit);
+userRoter.patch("/", UserController.Edit);
+//userRoter.get("/:userId", authCheck, UserController.userInfo);
+userRoter.get("/:userId", UserController.userInfo);
 
 export default userRoter;

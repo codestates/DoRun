@@ -51,21 +51,21 @@ const Map = () => {
         };
         const createdMap = new kakao.maps.Map(container, options);
         setMap(createdMap);
+        // ----------------------------------------------------------------------- basic setting
 
-
-
-        if (sessionStorage.getItem('userCrewId') !== null) {
-          //! 지도 중앙에 빨간색 마커를 기본 세팅 (create Crew에 사용)
+        //! userID가 있고, Crew에 속해있지 않은 사람에게 crewCreate 마커 생성
+        if ((sessionStorage.getItem('userId') !== 'null') &&
+          (sessionStorage.getItem('userCrewId') === 'null')) {
+          //! red마커 생성
           var normalImageSrc =
             'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png';
           var imageSize = new kakao.maps.Size(35, 35);
           var markerImage = new kakao.maps.MarkerImage(normalImageSrc, imageSize);
 
           const marker = new kakao.maps.Marker({
-            position: createdMap.getCenter(),
+            // position: createdMap.getCenter(),
             image: markerImage,
           });
-          marker.setMap(createdMap);
 
           //! 마커 위에 있는 customOverlay (= Do Run 버튼)
           const customOverlay = new kakao.maps.CustomOverlay({
@@ -79,9 +79,9 @@ const Map = () => {
             customOverlay.getVisible(true);
             customOverlay.setPosition(marker.getPosition());
           });
+          marker.setMap(createdMap);
 
           //! 기본 세팅 이외의 부분을 클릭(터치)하면 그곳으로 마커 이동 + 해당 좌표 반환 + 기존의 customOverlay 닫힘
-          marker.setMap(createdMap);
           kakao.maps.event.addListener(
             createdMap,
             'click',
@@ -105,6 +105,17 @@ const Map = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+        //! 기존에 생성 돼 있는 크루를 렌더
         markerdata.forEach((el) => {
           // 마커를 생성
           let marker = new kakao.maps.Marker({

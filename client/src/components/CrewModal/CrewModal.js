@@ -30,7 +30,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
   //   });
   // }, [crewId]);
   useEffect(() => {
-    axios.get(`http://localhost:3001/crew/2`).then((res) => {
+    axios.get(`http://localhost:3001/crew/3`).then((res) => {
       console.log(res.data);
       setCrewData({
         ...res.data.data,
@@ -55,7 +55,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         //   userCrewId = sessionStorage.setItem('userCrewId', crewId);
         //   confirmModalHandler();
         // });
-        axios.post(`http://localhost:3001/crew/3/2`).then((res) => {
+        axios.post(`http://localhost:3001/crew/2/3`).then((res) => {
           console.log(res);
           userCrewId = sessionStorage.setItem('userCrewId', 2);
           confirmModalHandler();

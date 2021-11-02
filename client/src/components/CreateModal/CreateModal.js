@@ -48,6 +48,8 @@ const CreateModal = ({ createModalHandler, location }) => {
           .then((res) => {
             if (res.payload.message === 'success') {
               console.log(res.payload);
+              console.log('사용자가 갖게 된 crewId 입니다.', res.payload.data.id);
+              sessionStorage.setItem('userCrewId', res.payload.data.id);
               SuccessModalHandler();
             }
           })

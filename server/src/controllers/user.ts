@@ -98,10 +98,15 @@ const Edit = async (req: Request, res: Response) => {
     }
 
     userInfo.nickname = req.body.nickname || userInfo.nickname;
-    userInfo.password = (await bcrypt.hash(req.body.password, 10)) || userInfo.password;
+    userInfo.password = userInfo.password;
     userInfo.email = req.body.email || userInfo.email;
-    userInfo.image = req.body.image || userInfo.image;
-    console.log(userInfo);
+
+    if (req.file) userInfo.image = req.file["location"];
+
+    if (req.body.password) {
+      const hashingPassword = await bcrypt.hash(req.body.password, 10);
+      userInfo.password = hashingPassword;
+    }
 
     const updateUser = await User.save(userInfo);
     if (req.body.token) {

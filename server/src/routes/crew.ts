@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { deflate } from "zlib";
 import * as CrewController from "../controllers/crew";
 import { authCheck } from "../middleware/AuthCheck";
+
 const crewRoter = Router();
 
 //crewRoter.post("/", authCheck, CrewController.CreateCrew);

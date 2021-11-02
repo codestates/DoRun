@@ -85,7 +85,6 @@ const logout = async (req: Request, res: Response) => {
     //const isauth = false;
     //await User.update(userInfo.id, { isauth });
     res.clearCookie("refreshToken");
-    return res.status(200).send({ message: "success" });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
@@ -98,10 +97,15 @@ const Edit = async (req: Request, res: Response) => {
     }
 
     userInfo.nickname = req.body.nickname || userInfo.nickname;
-    userInfo.password = (await bcrypt.hash(req.body.password, 10)) || userInfo.password;
+    userInfo.password = userInfo.password;
     userInfo.email = req.body.email || userInfo.email;
-    userInfo.image = req.body.image || userInfo.image;
-    console.log(userInfo);
+
+    if (req.file) userInfo.image = req.file["location"];
+
+    if (req.body.password) {
+      const hashingPassword = await bcrypt.hash(req.body.password, 10);
+      userInfo.password = hashingPassword;
+    }
 
     const updateUser = await User.save(userInfo);
     if (req.body.token) {

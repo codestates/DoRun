@@ -1,16 +1,16 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
 import Logout from '../../components/Logout/Logout';
+import Footer from '../../components/Footer/Footer';
 
+const MyPage = ({ match }) => {
+  return (
+    <>
+      <Logout />
 
-const MyPage = () => {
-
-
-
-  return <div>
-    <div>MyPage</div>
-    <div> <Logout /></div>
-
-  </div>;
+      <Footer />
+    </>
+  );
 };
 
 export default MyPage;

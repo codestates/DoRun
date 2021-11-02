@@ -4,7 +4,8 @@ import { Request, Response } from "express";
 
 const CreateCrew = async (req: Request, res: Response) => {
   try {
-    const { title, desc, personnel, level, location, departure, time, date, distance } = req.body;
+    const { title, desc, personnel, level, location, departure, time, date, distance, userId } =
+      req.body;
     let crewInfo = Crew.create({
       title,
       desc,
@@ -20,6 +21,10 @@ const CreateCrew = async (req: Request, res: Response) => {
     if (!crewInfo) return res.status(400).send();
 
     crewInfo = await Crew.save(crewInfo);
+    // 크루 생성했을때 생성한 유저가 크루 가입
+    const userInfo = await User.findOne({ id: userId });
+    userInfo.crewId = crewInfo.id;
+    await User.save(userInfo);
 
     if (req.body.token) {
       const accessToken = req.body.token;

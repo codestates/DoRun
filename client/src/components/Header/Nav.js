@@ -17,7 +17,7 @@ const Nav = () => {
         <nav className="navbar" onClick={(e) => e.stopPropagation()}>
           <div className="nav-container">
             <a className="nav-logo" href="/">
-              <img src="DoRun.png" alt="logo" width="120px" />
+              <img src="/DoRun.png" alt="logo" width="120px" />
             </a>
 
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>

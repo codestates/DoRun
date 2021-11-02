@@ -52,52 +52,57 @@ const Map = () => {
         const createdMap = new kakao.maps.Map(container, options);
         setMap(createdMap);
 
-        //! 지도 중앙에 마커를 기본 세팅 (create Crew에 사용)
-        var normalImageSrc =
-          'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png';
-        var imageSize = new kakao.maps.Size(35, 35);
-        var markerImage = new kakao.maps.MarkerImage(normalImageSrc, imageSize);
 
-        const marker = new kakao.maps.Marker({
-          position: createdMap.getCenter(),
-          image: markerImage,
-        });
-        marker.setMap(createdMap);
 
-        //! 마커 위에 있는 customOverlay (= Do Run 버튼)
-        const customOverlay = new kakao.maps.CustomOverlay({
-          clickable: true,
-          content: customOverlayContent,
-        });
+        if (sessionStorage.getItem('userCrewId') !== null) {
+          //! 지도 중앙에 빨간색 마커를 기본 세팅 (create Crew에 사용)
+          var normalImageSrc =
+            'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png';
+          var imageSize = new kakao.maps.Size(35, 35);
+          var markerImage = new kakao.maps.MarkerImage(normalImageSrc, imageSize);
 
-        //! 마커 클릭 이벤트 : 마커를 클릭하면 customOverlay 오픈
-        marker.addListener('click', function () {
-          customOverlay.setMap(createdMap);
-          customOverlay.getVisible(true);
-          customOverlay.setPosition(marker.getPosition());
-        });
+          const marker = new kakao.maps.Marker({
+            position: createdMap.getCenter(),
+            image: markerImage,
+          });
+          marker.setMap(createdMap);
 
-        //! 기본 세팅 이외의 부분을 클릭(터치)하면 그곳으로 마커 이동 + 해당 좌표 반환 + 기존의 customOverlay 닫힘
-        marker.setMap(createdMap);
-        kakao.maps.event.addListener(
-          createdMap,
-          'click',
-          function (mouseEvent) {
-            const latlng = mouseEvent.latLng;
-            marker.setPosition(latlng);
-            let overlayPosition = customOverlay.getPosition();
-            let markerPosition = marker.getPosition();
-            overlayPosition = markerPosition;
-            if (overlayPosition !== customOverlay) {
-              customOverlay.setMap(null);
+          //! 마커 위에 있는 customOverlay (= Do Run 버튼)
+          const customOverlay = new kakao.maps.CustomOverlay({
+            clickable: true,
+            content: customOverlayContent,
+          });
+
+          //! 마커 클릭 이벤트 : 마커를 클릭하면 customOverlay 오픈
+          marker.addListener('click', function () {
+            customOverlay.setMap(createdMap);
+            customOverlay.getVisible(true);
+            customOverlay.setPosition(marker.getPosition());
+          });
+
+          //! 기본 세팅 이외의 부분을 클릭(터치)하면 그곳으로 마커 이동 + 해당 좌표 반환 + 기존의 customOverlay 닫힘
+          marker.setMap(createdMap);
+          kakao.maps.event.addListener(
+            createdMap,
+            'click',
+            function (mouseEvent) {
+              const latlng = mouseEvent.latLng;
+              marker.setPosition(latlng);
+              let overlayPosition = customOverlay.getPosition();
+              let markerPosition = marker.getPosition();
+              overlayPosition = markerPosition;
+              if (overlayPosition !== customOverlay) {
+                customOverlay.setMap(null);
+              }
             }
-          }
-        );
+          );
 
-        //! 커스텀 오버레이 클릭 이벤트: 커스텀 오버레이를 클릭하면 모달로 연결
-        customOverlayContent.addEventListener('click', () => {
-          setCreateModalPosition('createUp');
-        });
+          //! 커스텀 오버레이 클릭 이벤트: 커스텀 오버레이를 클릭하면 모달로 연결
+          customOverlayContent.addEventListener('click', () => {
+            setCreateModalPosition('createUp');
+          });
+        }
+
 
 
         markerdata.forEach((el) => {

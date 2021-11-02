@@ -89,7 +89,6 @@ async function logoutUser(dataToSubmit) {
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('userCrewId');
       sessionStorage.removeItem('accessToken');
-
       return response.data;
     })
     .catch((e) => console.log(e));

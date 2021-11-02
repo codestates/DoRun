@@ -10,11 +10,6 @@ const { REACT_APP_KAKAO_MAP } = process.env;
 const Map = () => {
   const [map, setMap] = useState(null);
 
-  // const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  // const confirmModalHandler = () => {
-  //   isConfirmModalOpen ? setIsConfirmModalOpen(false) : setIsConfirmModalOpen(true)
-  // };
-
   const [crewModalPosition, setCrewModalPosition] = useState('down');
 
   const crewModalHandler = () => {
@@ -120,20 +115,7 @@ const Map = () => {
           });
         })
 
-
-
-
-
-
-
       });
-
-
-
-      
-
-
-
 
     };
   };
@@ -149,13 +131,11 @@ const Map = () => {
           <CreateModal createModalHandler={createModalHandler} />
         </div>
         <div className={crewModalPosition}>
-        <CrewModal crewModalHandler={crewModalHandler} />
-      </div>
+          <CrewModal crewModalHandler={crewModalHandler} />
+        </div>
       </div>
     </>
   );
 };
 
 export default Map;
-
-// style={{ width: '100vw', height: '100vh' }}

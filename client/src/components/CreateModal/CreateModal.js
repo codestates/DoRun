@@ -27,6 +27,7 @@ const CreateModal = ({ createModalHandler, location }) => {
     let body = {
       ...createData,
       time: `${createData.startTime} ~ ${createData.endTime}`,
+      userId: userId,
     };
 
     if (
@@ -48,6 +49,7 @@ const CreateModal = ({ createModalHandler, location }) => {
           .then((res) => {
             if (res.payload.message === 'success') {
               console.log(res.payload);
+              sessionStorage.setItem('userCrewId', res.payload.data.id);
               SuccessModalHandler();
             }
           })

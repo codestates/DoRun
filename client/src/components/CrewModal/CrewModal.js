@@ -44,7 +44,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
     if (
       crewData.participant.length === Number(crewData.personnel.slice(1, 2))
     ) {
-      console.log(crewData);
+      // console.log(crewData);
       setErrMsg(<div className="crewErrMsg">⚠ 크루인원이 가득 찼습니다!!</div>);
     } else {
       setErrMsg(null);
@@ -56,7 +56,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         //   confirmModalHandler();
         // });
         axios.post(`http://localhost:3001/crew/6/31`).then((res) => {
-          console.log(res);
+          // console.log(res);
           sessionStorage.setItem('userCrewId', 31);
           confirmModalHandler();
         });
@@ -78,7 +78,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
 
   return (
     <div className="crewModalContainer">
-      {console.log(crewData)}
+      {/* {console.log(crewData)} */}
       <div className="crewModal">
         <div className="crewModalHeader">
           <div className="crewModalExit" onClick={crewModalHandler}>

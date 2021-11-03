@@ -8,9 +8,16 @@ import CrewModal from '../CrewModal/CrewModal';
 const { REACT_APP_KAKAO_MAP } = process.env;
 
 const Map = () => {
-  const [map, setMap] = useState(null);
 
+  useEffect(() => {
+    createMap();
+  }, []);
+
+
+  const [createMarkerposition, setCreateMarkerposition] = useState({});
+  const [map, setMap] = useState(null);
   const [crewModalPosition, setCrewModalPosition] = useState('down');
+  const [createModalPosition, setCreateModalPosition] = useState('createDown');
 
   const crewModalHandler = () => {
     crewModalPosition === 'down'
@@ -18,16 +25,13 @@ const Map = () => {
       : setCrewModalPosition('down');
   };
 
-
-
-  const [createModalPosition, setCreateModalPosition] = useState('createDown');
   const createModalHandler = () => {
     createModalPosition === 'createDown'
       ? setCreateModalPosition('createUp')
       : setCreateModalPosition('createDown');
   };
 
-  //! 마커를 위에 표시 될 customOverlay 내용
+  //! 마커 위에 표시 될 customOverlay 내용
   var customOverlayContent = document.createElement('div');
   customOverlayContent.className = 'wrapping';
   customOverlayContent.innerHTML = 'Do Run!';
@@ -48,6 +52,8 @@ const Map = () => {
           center: new kakao.maps.LatLng(37.506502, 127.053617),
           level: 7,
           mapTypeId: kakao.maps.MapTypeId.ROADMAP,
+          draggable: true,
+          disableDoubleClickZoom: false,
         };
         const createdMap = new kakao.maps.Map(container, options);
         setMap(createdMap);
@@ -63,7 +69,6 @@ const Map = () => {
           var markerImage = new kakao.maps.MarkerImage(createMarkerImgSrc, imageSize);
 
           const marker = new kakao.maps.Marker({
-            // position: createdMap.getCenter(),
             image: markerImage,
           });
 
@@ -81,7 +86,7 @@ const Map = () => {
           });
           marker.setMap(createdMap);
 
-          //! 기본 세팅 이외의 부분을 클릭(터치)하면 그곳으로 마커 이동 + 해당 좌표 반환 + 기존의 customOverlay 닫힘
+          //! createMarker 이외의 지도 클릭시: 해당 좌표(위치)반환 + 열려 있던 customOverlay 닫힘
           kakao.maps.event.addListener(
             createdMap,
             'click',
@@ -91,11 +96,20 @@ const Map = () => {
               let overlayPosition = customOverlay.getPosition();
               let markerPosition = marker.getPosition();
               overlayPosition = markerPosition;
+
               if (overlayPosition !== customOverlay) {
                 customOverlay.setMap(null);
               }
+              if (marker.getPosition()) {
+                console.log('지도에서의 crew 생성 마커 좌표입니다', markerPosition)
+                setCreateMarkerposition({ La: marker.getPosition().La, Ma: marker.getPosition().Ma })
+              }
             }
           );
+
+
+
+
 
           //! 커스텀 오버레이 클릭 이벤트: 커스텀 오버레이를 클릭하면 모달로 연결
           customOverlayContent.addEventListener('click', () => {
@@ -130,15 +144,12 @@ const Map = () => {
     };
   };
 
-  useEffect(() => {
-    createMap();
-  }, []);
 
   return (
     <>
       <div id="Mymap">
         <div className={createModalPosition}>
-          <CreateModal createModalHandler={createModalHandler} />
+          <CreateModal createModalHandler={createModalHandler} location={createMarkerposition} />
         </div>
         <div className={crewModalPosition}>
           <CrewModal crewModalHandler={crewModalHandler} />

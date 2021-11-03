@@ -1,10 +1,9 @@
 import React from 'react';
-import Footer from '../../../components/Footer/Footer';
+import './MyDoRun.scss';
 const MyDoRun = () => {
   return (
     <>
-      <div>MyDoRun</div>
-      <Footer />
+      <div className="MyDoRun">My DoRun 서비스 준비 중</div>
     </>
   );
 };

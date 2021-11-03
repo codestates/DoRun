@@ -1,10 +1,9 @@
 import React from 'react';
-import Footer from '../../../components/Footer/Footer';
+import './MyMedal.scss';
 const MyMedal = () => {
   return (
     <>
-      <div>MyMedal</div>
-      <Footer />
+      <div className="MyMedal">My Medal 서비스 준비 중</div>
     </>
   );
 };

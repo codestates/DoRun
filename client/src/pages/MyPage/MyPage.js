@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Logout from '../../components/Logout/Logout';
 import Footer from '../../components/Footer/Footer';
 import MyAccount from './MyAccount/MyAccount';
+import MyDoRun from './MyDoRun/MyDoRun';
+import MyHistory from './MyHistory/MyHistory';
+import MyMedal from './MyMedal/MyMedal';
+import { OutsideClick } from '../../components/DropDown/OutsideClick';
+import DropDown from '../../components/DropDown/DropDown';
 import axios from 'axios';
 import './MyPage.scss';
 
@@ -24,6 +29,10 @@ const MyPage = () => {
     image: '',
   });
 
+  const dropdownRef = useRef(null);
+  const [isActive, setIsActive] = OutsideClick(dropdownRef, false);
+  const dropDownHandler = () => setIsActive(!isActive);
+
   useEffect(() => {
     axios.get(`http://localhost:3001/user/${userId}`).then((res) => {
       setUserInfo({
@@ -42,6 +51,13 @@ const MyPage = () => {
             src={userInfo.image}
             alt="Profile Img"
           />
+          <img
+            className="header_etc"
+            src="/etc.png"
+            alt="etc"
+            onClick={dropDownHandler}
+          />
+          <DropDown isActive={isActive} dropdownRef={dropdownRef} />
           <br />
           <div className="header_content">{userInfo.nickname}의 마이페이지</div>
         </div>
@@ -75,7 +91,9 @@ const MyPage = () => {
                 </div>
                 <div className="card_right">
                   <h2 className="card_title">My Account</h2>
-                  <div className="card_content">개인정보 수정 및 회원탈퇴</div>
+                  <div className="card_content">
+                    개인정보 수정 및 비밀번호 변경
+                  </div>
                 </div>
               </div>
               {content.account && (
@@ -127,12 +145,12 @@ const MyPage = () => {
                 </div>
                 <div className="card_right">
                   <h2 className="card_title">My DoRun</h2>
-                  <div className="card_content">크루정보 확인 및 채팅</div>
+                  <div className="card_content">크루정보 확인 및 크루채팅</div>
                 </div>
               </div>
               {content.dorun && (
                 <>
-                  <div>My DoRun</div>
+                  <MyDoRun />
                   <div
                     className="content_opened"
                     onClick={() => {
@@ -192,7 +210,7 @@ const MyPage = () => {
               </div>
               {content.history && (
                 <>
-                  <div>My History</div>
+                  <MyHistory />
                   <div
                     className="content_opened"
                     onClick={() => {
@@ -244,7 +262,7 @@ const MyPage = () => {
               </div>
               {content.medal && (
                 <>
-                  <div>My Medal</div>
+                  <MyMedal />
                   <div
                     className="content_opened"
                     onClick={() => {
@@ -271,7 +289,7 @@ const MyPage = () => {
           </div>
           {/*┗-------------------------------------------- 아랫줄 카드 --------------------------------------------┛*/}
         </div>
-        <button>회원탈퇴</button>
+
         <Logout />
       </div>
       <Footer />

@@ -1,13 +1,17 @@
 .MyPage {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   .MyPage_header {
+    max-width: 768px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30px;
+    margin: 30px 0px;
+    position: relative;
 
     .header_profile {
       width: 100px;
@@ -15,6 +19,14 @@
       border-radius: 50%;
       object-fit: cover;
     }
+    .header_etc {
+      width: 25px;
+      height: 20px;
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+    }
+
     .header_content {
       font-size: 20px;
     }
@@ -41,7 +53,7 @@
         gap: 1vw;
         width: 400px;
         height: 162px;
-        transition: all 0.3s;
+        transition: all 0.5s;
 
         .card_wrapper {
           display: flex;
@@ -124,23 +136,23 @@
       }
       /*┗----------- 열린 카드 -----------┛*/
     }
-  }
-  .content_opened {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    cursor: pointer;
-    min-height: 20px;
-    &:hover .content_close {
-      width: 30px;
-      height: 30px;
-      transition: all 0.3s;
-    }
-    .content_close {
-      width: 20px;
-      height: 20px;
-      transition: all 0.3s;
+    .content_opened {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      cursor: pointer;
+      min-height: 20px;
+      &:hover .content_close {
+        width: 30px;
+        height: 30px;
+        transition: all 0.3s;
+      }
+      .content_close {
+        width: 20px;
+        height: 20px;
+        transition: all 0.3s;
+      }
     }
   }
 }

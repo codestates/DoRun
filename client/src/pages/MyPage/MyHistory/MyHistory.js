@@ -1,10 +1,9 @@
 import React from 'react';
-import Footer from '../../../components/Footer/Footer';
+import './MyHistory.scss';
 const MyHistory = () => {
   return (
     <>
-      <div>MyHistory</div>
-      <Footer />
+      <div className="MyHistory">My History 서비스 준비 중</div>
     </>
   );
 };

@@ -1,0 +1,38 @@
+$--dark-color-a: #15aabf;
+$--dark-color-b: #22b8cf;
+$--light-color: #c5f6fa;
+$--light-gray: #f6f6f6;
+$--success-color: #5cb85c;
+$--error-color: #d9534f;
+
+.chatSidebar {
+  grid-area: chatSidebar;
+  background: $--dark-color-b;
+  color: #fff;
+  padding: 20px 20px 60px;
+  overflow-y: scroll;
+  > h2 {
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  > h3 {
+    margin-bottom: 15px;
+  }
+
+  > ul li {
+    // display: inline-block;
+    padding: 10px 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chatSidebar {
+    padding: 20px 20px 0px;
+    .crewUsers {
+      display: none;
+    }
+  }
+}

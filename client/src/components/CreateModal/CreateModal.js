@@ -29,8 +29,11 @@ const CreateModal = ({ createModalHandler, location }) => {
       ...createData,
       time: `${createData.startTime} ~ ${createData.endTime}`,
       userId: userId,
+<<<<<<< HEAD
       locationMa: location.Ma,
       locationLa: location.La
+=======
+>>>>>>> b7fb39ba2522e1bb7ffffb6e83ef93e6d0f9642c
     };
 
     if (
@@ -51,6 +54,10 @@ const CreateModal = ({ createModalHandler, location }) => {
         dispatch(createCrew(body))
           .then((res) => {
             if (res.payload.message === 'success') {
+<<<<<<< HEAD
+=======
+              console.log(res.payload);
+>>>>>>> b7fb39ba2522e1bb7ffffb6e83ef93e6d0f9642c
               sessionStorage.setItem('userCrewId', res.payload.data.id);
               SuccessModalHandler();
             }

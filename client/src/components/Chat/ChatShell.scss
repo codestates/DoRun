@@ -1,0 +1,50 @@
+$chat-shell-background: lighten(#eee, 65%);
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.chatWrapper {
+  margin: 20px auto;
+  grid-template-columns: 1fr 3fr;
+  max-width: 1000px;
+  height: 100%;
+  overflow: hidden;
+  background: $chat-shell-background;
+  border-radius: 30px;
+}
+
+.chatMain {
+  display: grid;
+  grid: 'chatSidebar chatMessageList' 1fr / 275px 1fr;
+  max-width: 1000px;
+  max-height: 450px;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .chatWrapper {
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+  }
+  .chatHeader {
+    display: none;
+  }
+  .chatMain {
+    display: block;
+    max-height: 600px;
+  }
+  .chatSidebar {
+    padding: 20px 20px 0px;
+    .crewUsers {
+      display: none;
+    }
+  }
+
+  #chatMessageList {
+    max-height: 450px;
+  }
+}

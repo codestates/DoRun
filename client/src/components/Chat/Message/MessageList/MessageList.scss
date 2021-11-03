@@ -1,0 +1,29 @@
+#chatMessageList {
+  grid-area: chatMessageList;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0 20px;
+  overflow-y: scroll;
+  margin-top: 20px;
+}
+
+.chatStartLine {
+  display: flex;
+  flex-basis: 100%;
+  margin: 8px 0px 15px 0px;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+
+  &::before,
+  &::after {
+    content: '';
+    flex-grow: 1;
+    background: #ccc;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 16px;
+  }
+}

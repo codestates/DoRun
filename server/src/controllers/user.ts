@@ -1,13 +1,16 @@
-import { User } from "../entity/User";
 import { Request, Response } from "express";
+import { User } from "../entity/User";
 import { TokensCreate } from "../utils/token";
+import * as bcrypt from "bcrypt";
 
 const SignUp = async (req: Request, res: Response) => {
   try {
-    const { nickname, password, email } = req.body;
+    const { nickname, email } = req.body;
+
+    const password = await bcrypt.hash(req.body.password, 10);
 
     const userEmailCheck = await User.findOne({ email });
-
+    console.log(password);
     if (userEmailCheck) {
       return res.status(401).send({ message: `${email} already exists` });
     }
@@ -53,9 +56,13 @@ const Login = async (req: Request, res: Response) => {
 
     const userInfo = await User.findOne({ email });
 
-    if (!userInfo || password !== userInfo.password) {
+    //if (!userInfo || password !== userInfo.password) {
+    console.log(userInfo.password);
+    const hash = await bcrypt.compare(password, userInfo.password);
+    if (!userInfo || !hash) {
       return res.status(400).send(); //400은 message를 줄수없음
     }
+
     //const isauth = true;
     //await User.update(userInfo.id, { isauth });
 
@@ -91,10 +98,15 @@ const Edit = async (req: Request, res: Response) => {
     }
 
     userInfo.nickname = req.body.nickname || userInfo.nickname;
-    userInfo.password = req.body.password || userInfo.password;
+    userInfo.password = userInfo.password;
     userInfo.email = req.body.email || userInfo.email;
-    userInfo.image = req.body.image || userInfo.image;
-    console.log(userInfo);
+
+    if (req.file) userInfo.image = req.file["location"];
+
+    if (req.body.password) {
+      const hashingPassword = await bcrypt.hash(req.body.password, 10);
+      userInfo.password = hashingPassword;
+    }
 
     const updateUser = await User.save(userInfo);
     if (req.body.token) {

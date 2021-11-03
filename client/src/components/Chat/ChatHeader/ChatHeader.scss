@@ -1,0 +1,38 @@
+$--dark-color-a: #15aabf;
+$--dark-color-b: #22b8cf;
+$--yellow-color-b: #ffd43b;
+$--light-color: #c5f6fa;
+$--light-gray: #f6f6f6;
+$--success-color: #5cb85c;
+$--error-color: #d9534f;
+
+.chatContainer {
+  max-width: 1000px;
+  background: #fff;
+  height: 100%;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.chatHeader {
+  background: $--dark-color-a;
+  color: #fff;
+  padding: 20px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > a {
+    cursor: pointer;
+    padding: 5px 0px;
+    font-size: x-large;
+    color: $--light-color;
+    border: none;
+    &:hover {
+      transition: all 0.3s linear 0s;
+      color: $--yellow-color-b;
+    }
+  }
+}

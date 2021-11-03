@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Nav.scss';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
   const [click, setClick] = useState(false);
@@ -17,7 +19,7 @@ const Nav = () => {
         <nav className="navbar" onClick={(e) => e.stopPropagation()}>
           <div className="nav-container">
             <a className="nav-logo" href="/">
-              <img src="DoRun.png" alt="logo" width="120px" />
+              <img src="/DoRun.png" alt="logo" width="120px" />
             </a>
 
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
@@ -65,7 +67,11 @@ const Nav = () => {
               </li>
             </ul>
             <div className="nav-icon" onClick={handleClick}>
-              <i className={click ? 'fa fa-times' : 'fa fa-bars'} />
+              {click ? (
+                <FontAwesomeIcon icon={faTimes} />
+              ) : (
+                <FontAwesomeIcon icon={faBars} />
+              )}
             </div>
           </div>
         </nav>

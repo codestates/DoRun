@@ -3,16 +3,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 3rem;
-  margin-bottom: 4rem;
+  margin-top: 1rem;
 
   .MyAccount_wrapper {
-    width: 390px;
+    width: 360px;
     margin: 0 auto;
-    border: 1px solid #dee2e6;
-    border-radius: 2rem;
+    border-top: 1px solid #dee2e6;
     background-color: #ffffff;
-    padding: 5rem 0rem;
+    padding-top: 1rem;
 
     .wrapper_top {
       font-weight: 700;
@@ -21,7 +19,6 @@
       color: #555;
       background-color: #ffffff;
       text-align: center;
-      padding-bottom: 10px;
     }
 
     .wrapper_mid {
@@ -33,13 +30,47 @@
 
       .mid_profileArea {
         display: flex;
-        align-items: center;
         justify-content: center;
-        .mid_profile {
+        align-items: center;
+
+        .hoverArea {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100px;
           height: 100px;
-          border-radius: 50%;
-          object-fit: cover;
+          opacity: 1;
+          cursor: pointer;
+          &:hover .mid_profile {
+            opacity: 0.5;
+          }
+          &:hover .hoveredArea {
+            opacity: 1;
+          }
+
+          .mid_profile {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.2s;
+          }
+          .hoveredArea {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.2s;
+            .hoverIcon {
+              width: 30px;
+              height: 30px;
+            }
+          }
         }
       }
 
@@ -67,23 +98,27 @@
     }
 
     .wrapper_bot {
-      .mid_editBtnArea {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .accountErrMsg {
+        color: #ff7545;
+        font-size: 11px;
+        text-align: center;
+      }
+      .mid_editBtn {
         display: flex;
-        flex-direction: row-reverse;
-        .mid_editBtn {
-          display: flex;
-          justify-content: center;
-          margin: 10px;
-          padding: 0px;
-          cursor: pointer;
-          color: #ffffff;
-          width: 50px;
-          font-size: 14px;
-          font-weight: bold;
-          background-color: #3bc9db;
-          border: 1px solid #3bc9db;
-          border-radius: 3rem;
-        }
+        justify-content: center;
+        margin: 10px;
+        cursor: pointer;
+        color: #ffffff;
+        width: 15rem;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #3bc9db;
+        border: 1px solid #3bc9db;
+        border-radius: 3rem;
       }
     }
   }

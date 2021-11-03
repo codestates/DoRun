@@ -32,38 +32,115 @@
       justify-content: center;
       gap: 3vw;
 
+      /*┏----------- 닫힌 카드 -----------┓*/
       .body_card {
         display: flex;
         border: 1px solid #dee2e6;
         border-radius: 1rem;
         background-color: #ffffff;
-        padding: 20px;
         gap: 1vw;
         width: 400px;
-        transition: 0.5s;
+        height: 162px;
+        transition: all 0.3s;
 
-        .card_left {
+        .card_wrapper {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 10px;
-
-          .card_img {
-            width: 100px;
-            height: 100px;
-          }
-        }
-
-        .card_right {
-          .card_title {
-            font-weight: normal;
+          margin: 20px;
+          width: 358px;
+          height: 120px;
+          gap: 1vw;
+          cursor: pointer;
+          &:hover {
+            margin: 18px;
+            width: 362px;
+            height: 124px;
+            transition: all 0.3s;
           }
 
-          .card_content {
-            color: #5f6368;
+          .card_left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+
+            .card_img {
+              padding: 10px 0px;
+              width: 100px;
+              height: 100px;
+            }
+          }
+
+          .card_right {
+            .card_title {
+              font-weight: normal;
+            }
+
+            .card_content {
+              color: #5f6368;
+            }
           }
         }
       }
+      /*┗----------- 닫힌 카드 -----------┛*/
+
+      /*┏----------- 열린 카드 -----------┓*/
+      .body_card_focused {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #dee2e6;
+        border-radius: 1rem;
+        background-color: #ffffff;
+        padding: 20px;
+        width: 400px;
+        height: 750px;
+        transition: all 0.5s;
+
+        .card_wrapper {
+          display: flex;
+          gap: 1vw;
+          .card_left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+
+            .card_img {
+              padding: 10px 0px;
+              width: 100px;
+              height: 100px;
+            }
+          }
+
+          .card_right {
+            .card_title {
+              font-weight: normal;
+            }
+
+            .card_content {
+              color: #5f6368;
+            }
+          }
+        }
+      }
+      /*┗----------- 열린 카드 -----------┛*/
+    }
+  }
+  .content_opened {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+    min-height: 20px;
+    &:hover .content_close {
+      width: 30px;
+      height: 30px;
+      transition: all 0.3s;
+    }
+    .content_close {
+      width: 20px;
+      height: 20px;
+      transition: all 0.3s;
     }
   }
 }

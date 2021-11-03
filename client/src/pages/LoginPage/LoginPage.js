@@ -69,9 +69,9 @@ const LoginPage = (props) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button className="showBtn" onClick={isVisible}>
+              <div className="showBtn" onClick={isVisible}>
                 show
-              </button>
+              </div>
             </div>
             <div className="findPassword">Forgot your password?</div>
             <input type="submit" name="login" style={{ marginTop: '100px' }} />

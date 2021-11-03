@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Logout from '../../components/Logout/Logout';
 import Footer from '../../components/Footer/Footer';
+import MyAccount from './MyAccount/MyAccount';
 import axios from 'axios';
 import './MyPage.scss';
 
 const MyPage = () => {
+  const [focused, setFocused] = useState({
+    account: '',
+    dorun: '',
+    history: '',
+    medal: '',
+  });
+  const [content, setContent] = useState({
+    account: false,
+    dorun: false,
+    history: false,
+    medal: false,
+  });
   const userId = sessionStorage.getItem('userId');
   const [userInfo, setUserInfo] = useState({
     nickname: '',
-    profileImg: '',
+    image: '',
   });
 
   useEffect(() => {
     axios.get(`http://localhost:3001/user/${userId}`).then((res) => {
       setUserInfo({
         ...res.data.data,
-        profileImg: res.data.profileImg || '/defaultImg.png',
+        image: res.data.data.image || '/defaultImg.png',
       });
     });
   }, []);
@@ -27,7 +39,7 @@ const MyPage = () => {
         <div className="MyPage_header">
           <img
             className="header_profile"
-            src={userInfo.profileImg}
+            src={userInfo.image}
             alt="Profile Img"
           />
           <br />
@@ -35,15 +47,30 @@ const MyPage = () => {
         </div>
 
         <div className="MyPage_body">
+          {/*┏-------------------------------------------- 윗줄 카드 --------------------------------------------┓*/}
           <div className="body_cards">
-            <Link to="/mypage/account">
-              <div className="body_card">
+            {/*┏---------------------- My Account ----------------------┓*/}
+            <div className={`body_card${focused.account}`}>
+              <div
+                className="card_wrapper"
+                onClick={() => {
+                  setFocused({
+                    ...focused,
+                    account: '_focused',
+                  }),
+                    setTimeout(() => {
+                      setContent({
+                        ...content,
+                        account: true,
+                      });
+                    }, 500);
+                }}
+              >
                 <div className="card_left">
                   <img
                     className="card_img"
                     src="/MyAccount.png"
                     alt="Card Img"
-                    style={{ padding: '10px 0px' }}
                   />
                 </div>
                 <div className="card_right">
@@ -51,10 +78,50 @@ const MyPage = () => {
                   <div className="card_content">개인정보 수정 및 회원탈퇴</div>
                 </div>
               </div>
-            </Link>
+              {content.account && (
+                <>
+                  <MyAccount />
+                  <div
+                    className="content_opened"
+                    onClick={() => {
+                      setFocused({
+                        ...focused,
+                        account: '',
+                      }),
+                        setContent({
+                          ...content,
+                          account: false,
+                        });
+                    }}
+                  >
+                    <img
+                      className="content_close"
+                      src="/close.png"
+                      alt="close"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+            {/*┗---------------------- My Account ----------------------┛*/}
 
-            <Link to="/mypage/dorun">
-              <div className="body_card">
+            {/*┏---------------------- My DoRun ----------------------┓*/}
+            <div className={`body_card${focused.dorun}`}>
+              <div
+                className="card_wrapper"
+                onClick={() => {
+                  setFocused({
+                    ...focused,
+                    dorun: '_focused',
+                  }),
+                    setTimeout(() => {
+                      setContent({
+                        ...content,
+                        dorun: true,
+                      });
+                    }, 500);
+                }}
+              >
                 <div className="card_left">
                   <img className="card_img" src="/MyDoRun.png" alt="Card Img" />
                 </div>
@@ -63,12 +130,54 @@ const MyPage = () => {
                   <div className="card_content">크루정보 확인 및 채팅</div>
                 </div>
               </div>
-            </Link>
+              {content.dorun && (
+                <>
+                  <div>My DoRun</div>
+                  <div
+                    className="content_opened"
+                    onClick={() => {
+                      setFocused({
+                        ...focused,
+                        dorun: '',
+                      }),
+                        setContent({
+                          ...content,
+                          dorun: false,
+                        });
+                    }}
+                  >
+                    <img
+                      className="content_close"
+                      src="/close.png"
+                      alt="close"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+            {/*┗---------------------- My DoRun ----------------------┛*/}
           </div>
+          {/*┗-------------------------------------------- 윗줄 카트 --------------------------------------------┛*/}
 
+          {/*┏-------------------------------------------- 아랫줄 카드 --------------------------------------------┓*/}
           <div className="body_cards">
-            <Link to="/mypage/history">
-              <div className="body_card">
+            {/*┏---------------------- My History ----------------------┓*/}
+            <div className={`body_card${focused.history}`}>
+              <div
+                className="card_wrapper"
+                onClick={() => {
+                  setFocused({
+                    ...focused,
+                    history: '_focused',
+                  }),
+                    setTimeout(() => {
+                      setContent({
+                        ...content,
+                        history: true,
+                      });
+                    }, 500);
+                }}
+              >
                 <div className="card_left">
                   <img
                     className="card_img"
@@ -81,10 +190,50 @@ const MyPage = () => {
                   <div className="card_content">DoRun 기록 확인</div>
                 </div>
               </div>
-            </Link>
+              {content.history && (
+                <>
+                  <div>My History</div>
+                  <div
+                    className="content_opened"
+                    onClick={() => {
+                      setFocused({
+                        ...focused,
+                        history: '',
+                      }),
+                        setContent({
+                          ...content,
+                          history: false,
+                        });
+                    }}
+                  >
+                    <img
+                      className="content_close"
+                      src="/close.png"
+                      alt="close"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+            {/*┗---------------------- My History ----------------------┛*/}
 
-            <Link to="/mypage/medal">
-              <div className="body_card">
+            {/*┏---------------------- My Medal ----------------------┓*/}
+            <div className={`body_card${focused.medal}`}>
+              <div
+                className="card_wrapper"
+                onClick={() => {
+                  setFocused({
+                    ...focused,
+                    medal: '_focused',
+                  }),
+                    setTimeout(() => {
+                      setContent({
+                        ...content,
+                        medal: true,
+                      });
+                    }, 500);
+                }}
+              >
                 <div className="card_left">
                   <img className="card_img" src="/MyMedal.png" alt="Card Img" />
                 </div>
@@ -93,12 +242,38 @@ const MyPage = () => {
                   <div className="card_content">획득한 메달 확인</div>
                 </div>
               </div>
-            </Link>
+              {content.medal && (
+                <>
+                  <div>My Medal</div>
+                  <div
+                    className="content_opened"
+                    onClick={() => {
+                      setFocused({
+                        ...focused,
+                        medal: '',
+                      }),
+                        setContent({
+                          ...content,
+                          medal: false,
+                        });
+                    }}
+                  >
+                    <img
+                      className="content_close"
+                      src="/close.png"
+                      alt="close"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+            {/*┗---------------------- My Medal ----------------------┛*/}
           </div>
+          {/*┗-------------------------------------------- 아랫줄 카드 --------------------------------------------┛*/}
         </div>
         <button>회원탈퇴</button>
+        <Logout />
       </div>
-      {/* <Logout /> */}
       <Footer />
     </>
   );

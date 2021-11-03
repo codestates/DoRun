@@ -5,6 +5,7 @@ import {
   KAKAO_USER,
   GOOGLE_USER,
   LOGOUT_USER,
+  SIGNOUT_USER
 } from '../_actions/types';
 
 export default function user(state = {}, action) {
@@ -26,6 +27,9 @@ export default function user(state = {}, action) {
       break;
     case LOGOUT_USER:
       return { ...state, loginSuccess: action.payload };
+      break;
+    case SIGNOUT_USER:
+      return {};
       break;
     default:
       return state;

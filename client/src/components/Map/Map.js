@@ -96,13 +96,15 @@ const Map = () => {
 
           console.log('생성마커 모달 값', createModalPosition)
 
-          //! createMarker 이외의 지도 클릭시: 해당 좌표(위치)반환 + 열려 있던 customOverlay 닫힘
+          //! createMarker 이외의 지도 클릭시: 해당 좌표(위치)반환 
+          //! 열려 있던 customOverlay, crewCreate 모달 닫힘
+
           kakao.maps.event.addListener(
             createdMap,
             'click',
             function (mouseEvent) {
+              console.log('생성마커 모달 값 in 지도 이벤트', createModalPosition)
               var latlng = mouseEvent.latLng;
-              marker.setPosition(latlng);
               marker.setPosition(latlng);
               let overlayPosition = customOverlay.getPosition();
               let markerPosition = marker.getPosition();
@@ -113,18 +115,13 @@ const Map = () => {
                 setCreateModalPosition('createDown');
               }
               if (marker.getPosition()) {
-                console.log('지도에서의 crew 생성 마커 좌표입니다', markerPosition)
                 setCreateMarkerposition({ Ma: markerPosition.Ma, La: markerPosition.La })
+
               }
 
             }
           );
         }
-
-
-
-
-
 
         //! 기존에 생성 돼 있는 크루를 렌더
         var crewMarkerImgSrc = 'https://cdn4.iconfinder.com/data/icons/social-media-2070/140/_location-128.png';
@@ -138,10 +135,6 @@ const Map = () => {
             .then((res) => {
 
               let crewData = res.data.data;
-              // console.log('데이터 형 확인', crewData)
-              // console.log('지도 컴포넌트입니다.',)
-              // console.log('지도 컴포넌트입니다.',)
-
 
               crewData.forEach((el) => {
 
@@ -165,7 +158,7 @@ const Map = () => {
 
             })
             .catch(e => {
-              // console.log('생성된 크루정보 요청에 대한 에러입니다.', e)
+              console.log('생성된 크루정보 요청에 대한 에러입니다.', e)
             })
         }
 

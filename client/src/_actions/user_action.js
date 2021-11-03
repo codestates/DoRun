@@ -5,6 +5,7 @@ import {
   KAKAO_USER,
   GOOGLE_USER,
   LOGOUT_USER,
+  SIGNOUT_USER
 } from './types';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
@@ -99,4 +100,19 @@ async function logoutUser(dataToSubmit) {
   };
 }
 
-export { loginUser, registerUser, googleUser, kakaoUser, logoutUser, auth };
+async function signoutUser(dataToSubmit) {
+  const request = await axios.delete('http://localhost:3001/user/signout', dataToSubmit)
+    .then((response) => {
+      sessionStorage.removeItem('userId');
+      sessionStorage.removeItem('userCrewId');
+      sessionStorage.removeItem('accessToken');
+    })
+    .catch((e) => console.log(e))
+
+  return {
+    type: LOGOUT_USER,
+    payload: request,
+  };
+}
+
+export { loginUser, registerUser, googleUser, kakaoUser, logoutUser, signoutUser, auth };

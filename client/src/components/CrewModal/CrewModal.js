@@ -19,7 +19,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
     desc: '',
   });
 
-  // 클릭한 위치가 바뀔때 마다 모달 정보 수정
+  //  클릭한 위치가 바뀔때 마다 모달 정보 수정
   // useEffect(async () => {
   //   await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
   //     console.log(res.data);
@@ -78,7 +78,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
 
   return (
     <div className="crewModalContainer">
-      {/* {console.log(crewData)} */}
+      {console.log(crewData)}
       <div className="crewModal">
         <div className="crewModalHeader">
           <div className="crewModalExit" onClick={crewModalHandler}>

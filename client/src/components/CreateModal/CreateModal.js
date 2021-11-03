@@ -21,7 +21,7 @@ const CreateModal = ({ createModalHandler, location }) => {
     distance: '',
     desc: '',
   });
-  console.log(createData)
+  // console.log(createData)
   const [isEnough, setIsEnough] = useState(false);
 
   const onSubmitHandler = () => {
@@ -29,7 +29,8 @@ const CreateModal = ({ createModalHandler, location }) => {
       ...createData,
       time: `${createData.startTime} ~ ${createData.endTime}`,
       userId: userId,
-      location: location
+      locationMa: location.Ma,
+      locationLa: location.La
     };
 
     if (

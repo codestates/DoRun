@@ -9,6 +9,7 @@ import { OutsideClick } from '../../components/DropDown/OutsideClick';
 import DropDown from '../../components/DropDown/DropDown';
 import axios from 'axios';
 import './MyPage.scss';
+import Signout from '../../components/Signout/Signout';
 
 const MyPage = () => {
   const [focused, setFocused] = useState({
@@ -290,6 +291,7 @@ const MyPage = () => {
           {/*┗-------------------------------------------- 아랫줄 카드 --------------------------------------------┛*/}
         </div>
 
+        <Signout />
         <Logout />
       </div>
       <Footer />

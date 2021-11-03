@@ -6,6 +6,7 @@ import SuccessModal from '../SuccessModal/SuccessModal';
 import './CreateModal.scss';
 
 const CreateModal = ({ createModalHandler, location }) => {
+  console.log('create Modal페이지입니다', location)
   const userId = Number(sessionStorage.getItem('userId'));
   const today = new Date().toISOString().slice(0, 10);
   const dispatch = useDispatch();
@@ -19,8 +20,8 @@ const CreateModal = ({ createModalHandler, location }) => {
     level: '',
     distance: '',
     desc: '',
-    location: '1,1',
   });
+  // console.log(createData)
   const [isEnough, setIsEnough] = useState(false);
 
   const onSubmitHandler = () => {
@@ -28,6 +29,8 @@ const CreateModal = ({ createModalHandler, location }) => {
       ...createData,
       time: `${createData.startTime} ~ ${createData.endTime}`,
       userId: userId,
+      locationMa: location.Ma,
+      locationLa: location.La
     };
 
     if (
@@ -48,7 +51,6 @@ const CreateModal = ({ createModalHandler, location }) => {
         dispatch(createCrew(body))
           .then((res) => {
             if (res.payload.message === 'success') {
-              console.log(res.payload);
               sessionStorage.setItem('userCrewId', res.payload.data.id);
               SuccessModalHandler();
             }

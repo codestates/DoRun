@@ -5,3 +5,5 @@ export const GOOGLE_USER = 'google_user';
 export const KAKAO_USER = 'kakao_user';
 export const CREATE_CREW = 'create_crew';
 export const LOGOUT_USER = 'logout_user';
+export const SIGNOUT_USER = 'signout_user';
+

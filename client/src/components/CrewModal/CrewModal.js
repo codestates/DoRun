@@ -19,7 +19,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
     desc: '',
   });
 
-  // 클릭한 위치가 바뀔때 마다 모달 정보 수정
+  //  클릭한 위치가 바뀔때 마다 모달 정보 수정
   // useEffect(async () => {
   //   await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
   //     console.log(res.data);
@@ -30,7 +30,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
   //   });
   // }, [crewId]);
   useEffect(() => {
-    axios.get(`http://localhost:3001/crew/2`).then((res) => {
+    axios.get(`http://localhost:3001/crew/31`).then((res) => {
       console.log(res.data);
       setCrewData({
         ...res.data.data,
@@ -44,7 +44,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
     if (
       crewData.participant.length === Number(crewData.personnel.slice(1, 2))
     ) {
-      console.log(crewData);
+      // console.log(crewData);
       setErrMsg(<div className="crewErrMsg">⚠ 크루인원이 가득 찼습니다!!</div>);
     } else {
       setErrMsg(null);
@@ -55,9 +55,9 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         //   userCrewId = sessionStorage.setItem('userCrewId', crewId);
         //   confirmModalHandler();
         // });
-        axios.post(`http://localhost:3001/crew/3/2`).then((res) => {
-          console.log(res);
-          userCrewId = sessionStorage.setItem('userCrewId', 2);
+        axios.post(`http://localhost:3001/crew/6/31`).then((res) => {
+          // console.log(res);
+          sessionStorage.setItem('userCrewId', 31);
           confirmModalHandler();
         });
       } else {

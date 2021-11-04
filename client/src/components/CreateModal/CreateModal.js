@@ -50,8 +50,8 @@ const CreateModal = ({ createModalHandler, location }) => {
       if (userId) {
         dispatch(createCrew(body))
           .then((res) => {
-            if (res.payload.message === 'success') {
-              sessionStorage.setItem('userCrewId', res.payload.data.id);
+            if (res.payload.data.datamessage === 'success') {
+              sessionStorage.setItem('userCrewId', res.payload.data.data.id);
               SuccessModalHandler();
             }
           })

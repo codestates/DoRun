@@ -133,7 +133,7 @@ const Map = () => {
             .then((res) => {
 
               let crewData = res.data.data;
-              // console.log(crewData)
+              console.log('지도 렌더 시에 렌더 되는 내용들입니다', res)
 
               crewData.forEach((el) => {
 
@@ -147,8 +147,6 @@ const Map = () => {
                   map: createdMap,
                   // 마커가 표시 될 위치
                   position: new kakao.maps.LatLng(Ma, La),
-                  // 마커에 hover시 나타날 title
-                  title: el.title,
                 });
 
                 kakao.maps.event.addListener(marker, 'click', function () {

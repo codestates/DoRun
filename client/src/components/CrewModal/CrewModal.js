@@ -19,7 +19,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
     desc: '',
   });
 
-  //  클릭한 위치가 바뀔때 마다 모달 정보 수정
+  //!클릭한 위치가 바뀔때 마다 모달 정보 수정
   // useEffect(async () => {
   //   await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
   //     console.log(res.data);
@@ -29,6 +29,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
   //     });
   //   });
   // }, [crewId]);
+
   useEffect(() => {
     axios.get(`http://localhost:3001/crew/31`).then((res) => {
       console.log(res.data);

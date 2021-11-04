@@ -50,7 +50,8 @@ const CreateModal = ({ createModalHandler, location }) => {
       if (userId) {
         dispatch(createCrew(body))
           .then((res) => {
-            if (res.payload.data.datamessage === 'success') {
+            if (res.payload.data.message === 'success') {
+              // console.log('유저가 갖게 될 크루 아이디입니다', res.payload.data.data.id)
               sessionStorage.setItem('userCrewId', res.payload.data.data.id);
               SuccessModalHandler();
             }

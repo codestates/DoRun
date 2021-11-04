@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './DropDown.scss';
-<<<<<<< HEAD
-
-=======
 import Withdrawal from '../Withdrawal/Withdrawal';
->>>>>>> f4d975fba6916e3a2a809d30ed12c866fa7dba03
 // import { OutsideClick } from './OutsideClick';
 
 // const dropdownRef = useRef(null);

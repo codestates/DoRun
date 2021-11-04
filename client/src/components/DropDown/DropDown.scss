@@ -32,17 +32,18 @@
 }
 .menu.clicked {
   transition: all 0.5s;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 450px;
 
   .tab_clicked {
     display: flex;
     flex-direction: column;
-
     padding: 20px;
+
     .tab_header {
       width: 100%;
       font-size: 24px;
+      font-weight: bold;
       padding-bottom: 10px;
       border-bottom: 1px solid #dee2e6;
     }

@@ -134,7 +134,7 @@ const MyAccount = () => {
             <div className="mid_title">현재 비밀번호</div>
             <input
               className="mid_content"
-              type="text"
+              type="password"
               value={userInfo.password}
               onChange={(e) => {
                 setUserInfo({ ...userInfo, password: e.target.value });

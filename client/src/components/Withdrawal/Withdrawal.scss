@@ -1,19 +1,51 @@
 .clicked_body {
   margin: 10px 0px;
+  padding: 0px 20px;
+  .withdrawal_notice {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+
+    .notice_title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .notice_content {
+      font-size: 15px;
+      margin-top: 2px;
+    }
+  }
 }
 .clicked_footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  .withdrawal_btn {
+  .withdrawal_btn.active {
+    margin: 0px;
     padding: 5px 10px 6px;
     display: flex;
     justify-content: center;
     cursor: pointer;
-    color: #cf222e;
+    color: #ffffff;
     font-weight: bold;
-    border: 1px solid #cf222e;
+    border: 1px solid #436f75;
+    background-color: #436f75;
+    border-radius: 10px;
+  }
+
+  .withdrawal_btn.inactive {
+    margin: 0px;
+    padding: 5px 10px 6px;
+    display: flex;
+    justify-content: center;
+    color: #436f75;
+    font-weight: bold;
+    border: 1px solid #436f75;
+    background-color: #ffffff;
     border-radius: 10px;
   }
 }

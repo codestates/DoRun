@@ -21,10 +21,9 @@ function Logout() {
 
   return (
     <>
-      <div className="logoutBtn" onClick={handleLogout}>
-        {' '}
-        Logout{' '}
-      </div>
+      <button className="logoutBtn" onClick={handleLogout}>
+        Logout
+      </button>
     </>
   );
 }

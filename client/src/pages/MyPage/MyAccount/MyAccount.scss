@@ -1,0 +1,125 @@
+.MyAccount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+
+  .MyAccount_wrapper {
+    width: 360px;
+    margin: 0 auto;
+    border-top: 1px solid #dee2e6;
+    background-color: #ffffff;
+    padding-top: 1rem;
+
+    .wrapper_top {
+      font-weight: 700;
+      margin-bottom: 3rem;
+      font-size: 3rem;
+      color: #555;
+      background-color: #ffffff;
+      text-align: center;
+    }
+
+    .wrapper_mid {
+      background-color: #ffffff;
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+
+      .mid_profileArea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .hoverArea {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100px;
+          height: 100px;
+          opacity: 1;
+          cursor: pointer;
+          &:hover .mid_profile {
+            opacity: 0.5;
+          }
+          &:hover .hoveredArea {
+            opacity: 1;
+          }
+
+          .mid_profile {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.2s;
+          }
+          .hoveredArea {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.2s;
+            .hoverIcon {
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+      }
+
+      .mid_title {
+        line-height: 2;
+        text-align: left;
+        display: block;
+        margin-top: 10px;
+        color: #868e96;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: #ffffff;
+      }
+      .mid_content {
+        display: flex;
+        box-sizing: border-box;
+        padding: 10px 15px;
+        width: 100%;
+        height: 42px;
+        border-radius: 4px;
+        border: 1px solid #dee2e6;
+        font-size: 14px;
+        background-color: #eeeeee;
+      }
+    }
+
+    .wrapper_bot {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .accountErrMsg {
+        color: #ff7545;
+        font-size: 11px;
+        text-align: center;
+      }
+      .mid_editBtn {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+        cursor: pointer;
+        color: #ffffff;
+        width: 15rem;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #3bc9db;
+        border: 1px solid #3bc9db;
+        border-radius: 3rem;
+      }
+    }
+  }
+}

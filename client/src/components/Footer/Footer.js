@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer__wrap">
         <div className="footer__logo">
-          <img src="DoRun.png" alt="" width="200px" height="50px" />
+          <img src="/DoRun.png" alt="" width="200px" height="50px" />
         </div>
 
         <div className="footer__wrap__contents">

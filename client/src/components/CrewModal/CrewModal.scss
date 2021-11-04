@@ -1,11 +1,13 @@
 .crewModalHeader {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
 
   .crewModalExit {
     display: flex;
-    flex-direction: row-reverse;
-    margin: 10px 20px;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
   }
 }

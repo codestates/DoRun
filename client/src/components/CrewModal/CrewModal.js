@@ -52,7 +52,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         // 크루 가입 요청
         // axios.post(`http://localhost:3001/crew/${userId}/${crewId}`).then((res) => {
         //   console.log(res);
-        //   userCrewId = sessionStorage.setItem('userCrewId', crewId);
+        //   sessionStorage.setItem('userCrewId', crewId);
         //   confirmModalHandler();
         // });
         axios.post(`http://localhost:3001/crew/6/31`).then((res) => {

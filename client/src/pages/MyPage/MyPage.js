@@ -9,7 +9,6 @@ import { OutsideClick } from '../../components/DropDown/OutsideClick';
 import DropDown from '../../components/DropDown/DropDown';
 import axios from 'axios';
 import './MyPage.scss';
-import Signout from '../../components/Signout/Signout';
 
 const MyPage = () => {
   const [focused, setFocused] = useState({
@@ -38,7 +37,7 @@ const MyPage = () => {
     axios.get(`http://localhost:3001/user/${userId}`).then((res) => {
       setUserInfo({
         ...res.data.data,
-        image: res.data.data.image || '/defaultImg.png',
+        image: res.data.data.image,
       });
     });
   }, []);
@@ -49,7 +48,7 @@ const MyPage = () => {
         <div className="MyPage_header">
           <img
             className="header_profile"
-            src={userInfo.image}
+            src={userInfo.image || '/defaultImg.png'}
             alt="Profile Img"
           />
           <img
@@ -58,7 +57,11 @@ const MyPage = () => {
             alt="etc"
             onClick={dropDownHandler}
           />
-          <DropDown isActive={isActive} dropdownRef={dropdownRef} />
+          <DropDown
+            userInfo={userInfo}
+            isActive={isActive}
+            dropdownRef={dropdownRef}
+          />
           <br />
           <div className="header_content">{userInfo.nickname}의 마이페이지</div>
         </div>
@@ -291,7 +294,6 @@ const MyPage = () => {
           {/*┗-------------------------------------------- 아랫줄 카드 --------------------------------------------┛*/}
         </div>
 
-        <Signout />
         <Logout />
       </div>
       <Footer />

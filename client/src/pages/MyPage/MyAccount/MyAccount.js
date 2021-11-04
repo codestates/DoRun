@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ChangedModal from '../../../components/ChangedModal/ChangedModal';
 import './MyAccount.scss';
-const MyAccount_t = () => {
+const MyAccount = () => {
   const [userInfo, setUserInfo] = useState({
     nickname: '',
     image: '',
@@ -10,9 +10,9 @@ const MyAccount_t = () => {
     newPass1: '',
     newPass2: '',
   });
+  const [preview, setPreview] = useState('');
 
   // 이미지 미리보기
-  const formData = new FormData();
   const changeImage = (e) => {
     let reader = new FileReader();
 
@@ -28,7 +28,7 @@ const MyAccount_t = () => {
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     }
-    formData.append('image', e.target.files[0]);
+    setPreview(e.target.files[0]);
   };
 
   // 유효성 검사 및 서버 전송
@@ -36,27 +36,29 @@ const MyAccount_t = () => {
     const reg = /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
     if (reg.test(userInfo.newPass1) || userInfo.newPass1 === '') {
       if (userInfo.newPass1 === userInfo.newPass2) {
-        // formData.append('password', userInfo.password);
-        // formData.append('nickname', userInfo.nickname);
-        // formData.append('newPassword', userInfo.newPass2);
-        // axios
-        //   .patch('http://localhost:3001/user', formData, {
-        //     headers: {
-        //       'content-type': 'multipart/form-data',
-        //     },
-        //   })
-        //   .then((res) => {
-        //     if (res.data.message) {
-        //       setErrMsg('');
-        //       ChangedModalHandler();
-        //       console.log('수정 완료');
-        //     }
-        //   })
-        //   .catch((error) => {
-        //     setErrMsg('⚠ 현재 비밀번호를 정확히 입력해주세요!!');
-        //   });
-        setErrMsg('');
-        ChangedModalHandler();
+        const formData = new FormData();
+        formData.set('userId', userId);
+        formData.set('nickname', userInfo.nickname);
+        formData.set('image', preview);
+        formData.set('password', userInfo.password);
+        formData.set('newPassword', userInfo.newPass2);
+        axios
+          .patch('http://localhost:3001/user', formData, {
+            headers: {
+              'content-type': 'multipart/form-data',
+            },
+          })
+          .then((res) => {
+            if (res.data.message) {
+              setErrMsg('');
+              ChangedModalHandler();
+              for (const keyValue of formData) console.log(keyValue);
+            }
+          })
+          .catch((error) => {
+            setErrMsg('⚠ 현재 비밀번호를 정확히 입력해주세요!!');
+            for (const keyValue of formData) console.log(keyValue);
+          });
       } else {
         setErrMsg('⚠ 새로운 비밀번호가 서로 일치하지 않습니다!!');
       }
@@ -77,12 +79,12 @@ const MyAccount_t = () => {
   };
 
   // 유저 정보 로드
+  const userId = sessionStorage.getItem('userId');
   useEffect(async () => {
-    const userId = sessionStorage.getItem('userId');
     await axios.get(`http://localhost:3001/user/${userId}`).then((res) => {
       setUserInfo({
         ...res.data.data,
-        image: res.data.data.image || '/defaultImg.png',
+        image: res.data.data.image,
         password: '',
         newPass1: '',
         newPass2: '',
@@ -110,7 +112,7 @@ const MyAccount_t = () => {
                 />
                 <img
                   className="mid_profile"
-                  src={userInfo.image}
+                  src={userInfo.image || '/defaultImg.png'}
                   alt="Mid Img"
                 />
                 <div className="hoveredArea">
@@ -169,4 +171,4 @@ const MyAccount_t = () => {
   );
 };
 
-export default MyAccount_t;
+export default MyAccount;

@@ -1,0 +1,19 @@
+.clicked_body {
+  margin: 10px 0px;
+}
+.clicked_footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .withdrawal_btn {
+    padding: 5px 10px 6px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    color: #cf222e;
+    font-weight: bold;
+    border: 1px solid #cf222e;
+    border-radius: 10px;
+  }
+}

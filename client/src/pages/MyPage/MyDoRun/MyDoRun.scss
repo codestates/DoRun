@@ -1,5 +1,119 @@
-.MyDoRun {
-  margin-top: 200px;
+.myDoRunForm {
+  height: 540px;
+  padding: 10px 10px 0px 10px;
   font-weight: bold;
+  border: 1px solid red;
+}
+
+.myDoRunInfo{
+  margin: 1px auto;
+  // background-color: peru;
+}
+
+.myDoRunList{
+  display: flex;
+  width: auto;
+  height: 40px;
+  margin: 10px auto;
+  padding: 3px;
+  text-align: right;
+  border: 1px solid black;
+  
+  &:nth-child(1) { //* 크루 타이틀
+    height: 43px;
+    margin-bottom: 30px;
+    border: 1px solid rgb(172, 50, 34);
+  }
+
+  &:last-child{ //* 크루 세부 사항
+    height: 120px;
+    margin-bottom: 20px;
+    border: 1px solid black
+  }
+}
+
+.listCategory {
+  flex-direction: column;
+  width: 75px;
+  padding: 1px;
+  font-weight: 600;
+  font-size: 18px;
+  background: skyblue;
+}
+
+.title{
+  margin: auto;
+  border: 1px solid red;
+  font-size: 25px;
+}
+
+
+.goOutMyDorun{
+  display: flex;
+  border: 1px solid palegreen
+}
+
+.crewSigout{
+  flex-direction: column;
+  flex: 0 1 1;
+  width: 150px;
+  height: 40px;
+  padding: 5px 10px 6px;
+  margin: auto;
+  margin-right: 10px;
+  display: flex;
   text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: rgb(64, 219, 240);
+  border-radius: 10px;
+}
+
+.crewChat {
+  flex-direction: column;
+  flex: 0 1 1;
+  width: 150px;
+  height: 40px;
+  padding: 5px 10px 6px;
+  margin: auto;
+  margin-left: 5px;
+  display: flex;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #ffe457;
+  border-radius: 10px;
+}
+
+
+
+.dapatture{
+  background-color: lightblue;
+  margin: auto;
+}
+
+.time{
+  background-color: lightblue;
+  margin: auto;
+}
+
+.personnel{
+  background-color: lightblue;
+  margin: auto;
+}
+.level{
+  background-color: lightblue;
+  margin: auto;
+}
+.distance{
+  background-color: lightblue;
+  margin: auto;  
+}
+.Desc{
+  width: 250px;
+  margin-left: 3px;
+  text-align: left;
+  background-color: lightblue;
 }

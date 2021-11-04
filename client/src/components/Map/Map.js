@@ -1,9 +1,7 @@
 /*global kakao*/
 import React, { useState, useEffect } from 'react';
-import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import CreateModal from '../CreateModal/CreateModal';
 import './Map.css';
-import { markerdata } from './markerData';
 import CrewModal from '../CrewModal/CrewModal';
 import axios from 'axios';
 const { REACT_APP_KAKAO_MAP } = process.env;
@@ -135,11 +133,13 @@ const Map = () => {
             .then((res) => {
 
               let crewData = res.data.data;
+              // console.log(crewData)
 
               crewData.forEach((el) => {
 
-                let Ma = el.location.Ma;
-                let La = el.loaction.La
+                // console.log('크루 데이터 속', el)
+                let Ma = el.locationMa
+                let La = el.locationLa
                 // 마커를 생성
                 let marker = new kakao.maps.Marker({
                   image: crewMarkerImg,

@@ -31,7 +31,7 @@ const ConfirmModal = ({ confirmModalHandler, userId }) => {
             >
               다른 크루 둘러보기
             </div>
-            <Link to="/chatting">
+            <Link to="/chat">
               <div className="toDoChat">Do Chat!!</div>
             </Link>
           </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './DropDown.scss';
-import WithdrawalModal from '../../components/WithdrawalModal/WithdrawalModal';
 
 // import { OutsideClick } from './OutsideClick';
 
@@ -17,9 +16,8 @@ const DropDown = ({ dropdownRef, isActive }) => {
     <div className="DropDown">
       <nav
         ref={dropdownRef}
-        className={`menu ${isActive ? 'active' : 'inactive'} ${
-          clicked ? 'clicked' : 'unclicked'
-        }`}
+        className={`menu ${isActive ? 'active' : 'inactive'} ${clicked ? 'clicked' : 'unclicked'
+          }`}
       >
         <div
           onClick={() => {

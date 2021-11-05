@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './DropDown.scss';
-import Withdrawal from '../Withdrawal/Withdrawal';
 // import { OutsideClick } from './OutsideClick';
 
 // const dropdownRef = useRef(null);

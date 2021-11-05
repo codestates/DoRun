@@ -13,8 +13,49 @@
     background-color: #ffffff;
     padding-top: 1rem;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .MyHistory_top {
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+
+      .MyHistory_title {
+        padding: 5px;
+        width: 70%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+
+    .MyHistory_mid {
+      padding: 1px;
+      height: 468px;
+
+      .MyHistory_content {
+        padding: 5px;
+        display: flex;
+        flex: 1 2 0;
+        justify-content: right;
+        width: 100%;
+        height: 47px;
+        border-bottom: 1px solid #5f6368;
+
+        .MyHistory_date {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40%;
+        }
+
+        .MyHistory_DoRunTitle {
+          width: 100%;
+          padding: 6px 0px;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
   }
 }

@@ -12,49 +12,36 @@
     border-top: 1px solid #dee2e6;
     background-color: #ffffff;
     padding-top: 1rem;
-
-    .MyMedal_top {
-      padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    //132.5
+    .MyMedal_medalArea {
       display: flex;
-      justify-content: center;
-
-      .MyMedal_title {
-        padding: 5px;
-        width: 70%;
-        text-align: center;
-        font-size: 18px;
-        font-weight: bold;
-      }
-    }
-
-    .MyMedal_mid {
-      padding: 1px;
-      height: 468px;
-
-      .MyMedal_content {
-        padding: 5px;
+      align-items: center;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+      gap: 3vw;
+      .medal_imgArea {
         display: flex;
-        flex: 1 2 0;
+        align-items: center;
+        justify-content: center;
+        width: 108.25px;
+        height: 108.25px;
+
+        .medal_img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+
+      .medal_info {
+        display: flex;
+        align-items: center;
         justify-content: right;
-        width: 100%;
-        height: 47px;
-        border-bottom: 1px solid #5f6368;
-
-        .MyMedal_date {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 40%;
-        }
-
-        .MyMedal_DoRunTitle {
-          width: 100%;
-          padding: 6px 0px;
-          display: block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
+        height: 100%;
       }
     }
   }

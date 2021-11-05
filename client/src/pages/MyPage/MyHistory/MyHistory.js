@@ -24,6 +24,10 @@ const MyHistory = () => {
               <span className="MyHistory_date">{crews[1].createdAt}</span>
               <span className="MyHistory_DoRunTitle">{crews[1].title}</span>
             </div>
+            <div className="MyHistory_content">
+              <span className="MyHistory_date">createdAt</span>
+              <span className="MyHistory_DoRunTitle">title</span>
+            </div>
           </div>
         </div>
       </div>

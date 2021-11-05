@@ -25,9 +25,11 @@
   justify-content: center;
 
   .withdrawal_btn.active {
-    margin: 0px;
+    width: 100px;
+    height: 37px;
     padding: 5px 10px 6px;
     display: flex;
+    align-items: center;
     justify-content: center;
     cursor: pointer;
     color: #ffffff;
@@ -38,9 +40,11 @@
   }
 
   .withdrawal_btn.inactive {
-    margin: 0px;
+    width: 100px;
+    height: 37px;
     padding: 5px 10px 6px;
     display: flex;
+    align-items: center;
     justify-content: center;
     color: #436f75;
     font-weight: bold;

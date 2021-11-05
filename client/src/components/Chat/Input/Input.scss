@@ -6,34 +6,31 @@ $--light-color: #c5f6fa;
 $--light-gray: #f6f6f6;
 $--success-color: #5cb85c;
 $--error-color: #d9534f;
+$--text-color: #333;
 
 .chatFormContainer {
   padding: 20px 30px;
   background-color: $--dark-color-a;
   .chatFrm {
     display: flex;
-
     > input[type='text'] {
-      font-size: 16px;
+      font-size: 1rem;
       padding: 5px;
-      padding-left: 1rem;
+      padding-left: 1.4rem;
       height: 40px;
-      flex: 1 1;
+      flex: 1;
       background: $--light-gray;
       border: none;
       border-radius: 30px 0 0 30px;
+      color: $--text-color;
     }
   }
 }
-
 .chatBtn {
-  margin-top: 0;
-  margin-bottom: 0;
   text-transform: none;
   border-radius: 0 30px 30px 0;
   cursor: pointer;
-  padding-left: 15px;
-  // padding: 5px 15px;
+  padding: 5px 15px;
   background: $--light-color;
   color: $--dark-color-a;
   border: none;

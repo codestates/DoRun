@@ -1,5 +1,6 @@
 import { User } from "../entity/User";
 import { Crew } from "../entity/Crew";
+import { Chat } from "../entity/Chat";
 import { Request, Response } from "express";
 
 const CreateCrew = async (req: Request, res: Response) => {
@@ -25,6 +26,11 @@ const CreateCrew = async (req: Request, res: Response) => {
     const userInfo = await User.findOne({ id: userId });
     userInfo.crewId = crewInfo.id;
     await User.save(userInfo);
+
+    const chatInfo = Chat.create({
+      crewId: crewInfo.id,
+    });
+    Chat.save(chatInfo);
 
     if (req.body.token) {
       const accessToken = req.body.token;

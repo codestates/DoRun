@@ -55,11 +55,12 @@
 }
 .findPassword {
   background-color: #ffffff;
-  margin-top: 10px;
+  margin: 10px 0px 0px 210px;
   text-align: right;
   font-size: 12px;
   font-weight: bold;
   color: #777;
+  cursor: pointer;
 }
 .isRegisted {
   background-color: #ffffff;
@@ -128,27 +129,27 @@ input[type='submit'] {
   -webkit-appearance: none;
 }
 
-button[type='button'] {
-  display: block;
-  appearance: none;
-  background: #333;
-  color: white;
-  border: none;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 100px;
-}
+// button[type='button'] {
+//   display: block;
+//   appearance: none;
+//   background: #333;
+//   color: white;
+//   border: none;
+//   text-transform: uppercase;
+//   padding: 10px 20px;
+//   border-radius: 100px;
+// }
 
-button {
-  display: block;
-  appearance: none;
-  margin-top: 40px;
-  border: 1px solid #333;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 4px;
-}
+// button {
+//   display: block;
+//   appearance: none;
+//   margin-top: 40px;
+//   border: 1px solid #333;
+//   margin-bottom: 20px;
+//   text-transform: uppercase;
+//   padding: 10px 20px;
+//   border-radius: 4px;
+// }
 
 @media screen and (max-width: 768px) {
   .loginBlock {

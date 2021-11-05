@@ -24,6 +24,9 @@ export class Chat extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
+  @Column({ type: "int", nullable: true })
+  crewId: number;
+
   @OneToOne(() => Crew)
   @JoinColumn()
   crew: Crew;

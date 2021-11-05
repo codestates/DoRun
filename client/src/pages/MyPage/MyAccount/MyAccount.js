@@ -161,7 +161,7 @@ const MyAccount = () => {
           <div className="wrapper_bot">
             <div className="accountErrMsg">{errMsg && errMsg}</div>
             <button className="mid_editBtn" onClick={editHandler}>
-              수정
+              수 정
             </button>
             {isChangedModalOpen && <ChangedModal />}
           </div>

@@ -1,5 +1,48 @@
 .MyMedal {
-  margin-top: 200px;
-  font-weight: bold;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+
+  .MyMedal_wrapper {
+    width: 360px;
+    height: 530px;
+    margin: 0 auto;
+    border-top: 1px solid #dee2e6;
+    background-color: #ffffff;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    //132.5
+    .MyMedal_medalArea {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+      gap: 3vw;
+      .medal_imgArea {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 108.25px;
+        height: 108.25px;
+
+        .medal_img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+
+      .medal_info {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        height: 100%;
+      }
+    }
+  }
 }

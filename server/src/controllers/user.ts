@@ -44,8 +44,8 @@ const SignOut = async (req: Request, res: Response) => {
   try {
     const userInfo = await User.findOne(req.body.userId);
     await User.remove(userInfo);
-    res.status(200).send({ message: "success" });
     res.clearCookie("refreshToken");
+    return res.status(200).send({ message: "success" });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }

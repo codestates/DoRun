@@ -16,6 +16,13 @@ import { User } from "./entity/User";
 // import path = require("path");
 
 const app = express();
+//const port: any = process.env.SERVER_PORT;
+//const port: any = 3000;
+
+// server.listen(port, () => {
+//   console.log("Server listening at port %d", port);
+// });
+// //////
 
 createConnection(config)
   .then(() => {
@@ -30,8 +37,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: true,
+    origin: "*",
     credentials: true,
+    //origin: true,
+
     methods: ["GET", "POST", "PATCH", "DELETE"],
   })
 );
@@ -58,6 +67,20 @@ app.get("/", (req: express.Request, res: express.Response) => {
   res.send("Hello");
 });
 
+// const server = require("http").createServer(app);
+// const io = require("socket.io")(server);
+
+// server.listen(process.env.SERVER_PORT, () => {
+//   console.log(`listen Port = ${process.env.SERVER_PORT}`);
+// });
+
+const server = require("./soket");
 app.listen(process.env.SERVER_PORT, () => {
   console.log(`listen Port = ${process.env.SERVER_PORT}`);
 });
+
+server.listen(4000, () => {
+  console.log(`Chating Port = 4000`);
+});
+
+export default app;

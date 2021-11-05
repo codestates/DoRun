@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './DropDown.scss';
-
 // import { OutsideClick } from './OutsideClick';
 
 // const dropdownRef = useRef(null);
@@ -20,13 +19,21 @@ const DropDown = ({ dropdownRef, isActive }) => {
           clicked ? 'clicked' : 'unclicked'
         }`}
       >
-        <div
-          onClick={() => {
-            setClicked(true);
-          }}
-        >
-          회원탈퇴
-        </div>
+        {clicked ? (
+          <div className="tab_clicked">
+            <div className="tab_header">DoRun 회원탈퇴</div>
+            <Withdrawal />
+          </div>
+        ) : (
+          <div
+            className="tab"
+            onClick={() => {
+              setClicked(true);
+            }}
+          >
+            회원탈퇴
+          </div>
+        )}
       </nav>
     </div>
   );

@@ -4,8 +4,19 @@ import { Request, Response } from "express";
 
 const CreateCrew = async (req: Request, res: Response) => {
   try {
-    const { title, desc, personnel, level, location, departure, time, date, distance, userId } =
-      req.body;
+    const {
+      title,
+      desc,
+      personnel,
+      level,
+      locationMa,
+      locationLa,
+      departure,
+      time,
+      date,
+      distance,
+      userId,
+    } = req.body;
     let crewInfo = Crew.create({
       title,
       desc,
@@ -13,7 +24,8 @@ const CreateCrew = async (req: Request, res: Response) => {
       level,
       time,
       date,
-      location,
+      locationMa,
+      locationLa,
       departure,
       distance,
     });
@@ -21,7 +33,7 @@ const CreateCrew = async (req: Request, res: Response) => {
     if (!crewInfo) return res.status(400).send();
 
     crewInfo = await Crew.save(crewInfo);
-    // 크루 생성했을때 생성한 유저가 크루 가입
+    //크루 생성했을때 생성한 유저가 크루 가입
     const userInfo = await User.findOne({ id: userId });
     userInfo.crewId = crewInfo.id;
     await User.save(userInfo);
@@ -50,7 +62,9 @@ const EditCrew = async (req: Request, res: Response) => {
     crewInfo.level = req.body.level || crewInfo.level;
     crewInfo.time = req.body.time || crewInfo.time;
     crewInfo.date = req.body.date || crewInfo.date;
-    crewInfo.location = req.body.location || crewInfo.location;
+    //crewInfo.location = req.body.location || crewInfo.location;
+    crewInfo.locationLa = req.body.locationLa || crewInfo.locationLa;
+    crewInfo.locationMa = req.body.locationMa || crewInfo.locationMa;
     crewInfo.departure = req.body.departure || crewInfo.departure;
     crewInfo.distance = req.body.distance || crewInfo.distance;
 
@@ -113,11 +127,11 @@ const DeleteCrew = async (req: Request, res: Response) => {
 };
 const FindAllCrew = async (req: Request, res: Response) => {
   try {
-    const crewInfo = await Crew.find({ select: ["id", "location"] });
+    const crewInfo = await Crew.find({ select: ["id", "locationLa", "locationMa"] });
 
     return res.status(200).send({ data: crewInfo, message: "success" });
   } catch (err) {
-    return res.status(500).send({ message: "Internal Server Error", err: err });
+    return res.status(500).send({ message: "InternaD Server Error", err: err });
   }
 };
 

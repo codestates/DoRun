@@ -73,7 +73,7 @@ const LoginPage = (props) => {
                 show
               </div>
             </div>
-            <div className="findPassword">Forgot your password?</div>
+            <span className="findPassword">Forgot your password?</span>
             <input type="submit" name="login" style={{ marginTop: '100px' }} />
 
             <div className="isRegisted">

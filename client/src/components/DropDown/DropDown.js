@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './DropDown.scss';
-import WithdrawalModal from '../../components/WithdrawalModal/WithdrawalModal';
 
 // import { OutsideClick } from './OutsideClick';
 

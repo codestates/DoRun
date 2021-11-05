@@ -1,0 +1,32 @@
+$main: rgb(59, 201, 219);
+
+.crewSignoutModal {
+    width: 400px;
+    height: 250px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    color: $main;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px 1px lightgray;
+    z-index: 9999;
+}
+
+.crewSignoutModalNotice{
+    margin: 80px auto 50px auto;
+    font-size: 20px;
+    // border: 1px solid rebeccapurple;
+}
+
+.crewSignoutModalBtn{
+    width: 230px;
+    height: 30px;
+    margin: 10px auto;
+    padding: 2px;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    background-color: #436F75;
+}

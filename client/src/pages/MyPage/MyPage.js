@@ -45,13 +45,14 @@ const MyPage = () => {
 
   //! 여기 밑으로 myDorun 카드
   const [dorunInfo, setDorunInfo] = useState({
-    title: '임시 제목',
-    departure: '임시 출발지',
-    time: '임시 시간',
-    perssonel: '임시 인원',
-    level: '임시 난이도',
-    distance: '임시 거리',
-    desc: '임시 상세설명',
+    title: '가입한 크루가 없습니다',
+    date: '',
+    departure: '',
+    time: '',
+    personnel: '',
+    level: '',
+    distance: '',
+    desc: '',
   })
 
   const userCrewId = sessionStorage.getItem('userCrewId')
@@ -62,12 +63,14 @@ const MyPage = () => {
     await axios.get(`http://localhost:3001/crew/${userCrewId}`)
       .then((res) => {
         console.log(res);
-        const { title, departure, time, perssonel, level, distance, desc } = res.data.data;
+        const { title, date, departure, time, personnel, level, distance, desc } = res.data.data;
+        const crewParticipant = res.data.CrewInUser
         setDorunInfo({
           title,
+          date,
           departure,
           time,
-          perssonel,
+          personnel: `${crewParticipant.length}/${personnel.slice(1)}`,
           level,
           distance,
           desc,

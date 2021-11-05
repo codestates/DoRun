@@ -66,6 +66,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
   };
 
   // 결과 확인 모달
+
   const confirmModalHandler = () => {
     isConfirmModalOpen
       ? setIsConfirmModalOpen(false)

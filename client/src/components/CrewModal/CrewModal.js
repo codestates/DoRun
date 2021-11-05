@@ -4,7 +4,9 @@ import axios from 'axios';
 import './CrewModal.scss';
 
 const CrewModal = ({ crewModalHandler, crewId }) => {
+  // console.log('크루 모달의 아이디입니다,',  crewId)
   const userId = Number(sessionStorage.getItem('userId'));
+  console.log('유저님 몇 번이신가요', userId)
   let userCrewId = Number(sessionStorage.getItem('userCrewId'));
   const [errMsg, setErrMsg] = useState('');
   const [crewData, setCrewData] = useState({
@@ -18,27 +20,22 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
     distance: '',
     desc: '',
   });
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+
+
+
 
   //!클릭한 위치가 바뀔때 마다 모달 정보 수정
-  // useEffect(async () => {
-  //   await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
-  //     console.log(res.data);
-  //     setCrewData({
-  //       ...res.data.data,
-  //       participant: res.data.CrewInUser,
-  //     });
-  //   });
-  // }, [crewId]);
-
-  useEffect(() => {
-    axios.get(`http://localhost:3001/crew/31`).then((res) => {
-      console.log(res.data);
+  useEffect(async () => {
+    await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
+      console.log('크루 모달의 응답 정보', res.data);
       setCrewData({
         ...res.data.data,
         participant: res.data.CrewInUser,
       });
     });
-  }, []);
+  }, [crewId]);
+
 
   // 크루가입이 가능한지 확인
   const joinCheck = () => {
@@ -49,16 +46,15 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
       setErrMsg(<div className="crewErrMsg">⚠ 크루인원이 가득 찼습니다!!</div>);
     } else {
       setErrMsg(null);
-      if (!userCrewId) {
+      if (!userId) {
+        setIsConfirmModalOpen(true)
+      }
+      else if (!userCrewId) {
         // 크루 가입 요청
-        // axios.post(`http://localhost:3001/crew/${userId}/${crewId}`).then((res) => {
-        //   console.log(res);
-        //   sessionStorage.setItem('userCrewId', crewId);
-        //   confirmModalHandler();
-        // });
-        axios.post(`http://localhost:3001/crew/6/31`).then((res) => {
-          // console.log(res);
-          sessionStorage.setItem('userCrewId', 31);
+        console.log('지금 유저의 아이디', userId)
+        axios.post(`http://localhost:3001/crew/${userId}/${crewId}`).then((res) => {
+          console.log(res);
+          sessionStorage.setItem('userCrewId', crewId);
           confirmModalHandler();
         });
       } else {
@@ -70,7 +66,6 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
   };
 
   // 결과 확인 모달
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const confirmModalHandler = () => {
     isConfirmModalOpen
       ? setIsConfirmModalOpen(false)
@@ -79,7 +74,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
 
   return (
     <div className="crewModalContainer">
-      {console.log(crewData)}
+      {/* {console.log(crewData)} */}
       <div className="crewModal">
         <div className="crewModalHeader">
           <div className="crewModalExit" onClick={crewModalHandler}>

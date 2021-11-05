@@ -1,18 +1,25 @@
 import './MyDoRun.scss';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
-const MyDoRun = () => {
+const MyDoRun = ({ dorunInfo }) => {
 
-  const [dorunInfo, setDorunInfo] = useState({
-    title: '임시 제목',
-    time: '임시 시간',
-    perssonel: '임시 인원',
-    level: '임시 난이도',
-    distance: '임시 거리',
-    desc: '임시 상세설명',
-  })
+  const currentUserId = sessionStorage.getItem('userId');
+
+  const crewSignout = async () => {
+    axios.delete(`http://localhost:3001/crew/${currentUserId}`)
+      .then((res) => {
+        // console.log('크루 탈퇴 요청에 대한 응답입니다', res)
+        if (res.data.message === 'success') {
+          sessionStorage.setItem('userCrewId', 'null')
+          location.reload()
+        }
+      })
+      .catch(e => console.log(e))
+  }
+
 
 
 
@@ -22,12 +29,12 @@ const MyDoRun = () => {
         <div className="myDoRunInfo">
           <div className="myDoRunList">
             <div className='title'>
-              참여중인 크루 이름
+              {dorunInfo.title}
             </div>
           </div>
           <div className="myDoRunList">
             <div className="listCategory"> 출발지 </div>
-            <div className="dapatture"> {dorunInfo.title} </div>
+            <div className="dapatture"> {dorunInfo.departure} </div>
           </div>
           <div className="myDoRunList">
             <div className="listCategory"> 시간 </div>
@@ -50,14 +57,18 @@ const MyDoRun = () => {
             <div className="Desc"> {dorunInfo.desc} </div>
           </div>
         </div>
-        <div className="goOutMyDorun">
-          <div className="crewSigout">
-            크루 나가기
+        {sessionStorage.getItem('userCrewId') === null ?
+          ''
+          :
+          <div className="goOutMyDorun">
+            <div className="crewSigout" onClick={crewSignout}>
+              크루 나가기
+            </div>
+            <Link to="/chat">
+              <div className="crewChat">Do Chat!!</div>
+            </Link>
           </div>
-          <Link to="/chat">
-            <div className="crewChat">Do Chat!!</div>
-          </Link>
-        </div>
+        }
       </div>
     </>
   );

@@ -97,3 +97,7 @@
     transition: all 0.5s;
   }
 }
+
+.hide {
+  display: hidden;
+}

@@ -6,7 +6,7 @@ import SuccessModal from '../SuccessModal/SuccessModal';
 import './CreateModal.scss';
 
 const CreateModal = ({ createModalHandler, location }) => {
-  console.log('create Modal페이지입니다', location)
+  // console.log('create Modal페이지입니다', location)
   const userId = Number(sessionStorage.getItem('userId'));
   const today = new Date().toISOString().slice(0, 10);
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@ const crewRoter = Router();
 crewRoter.post("/", CrewController.CreateCrew);
 crewRoter.patch("/:crewId", CrewController.EditCrew);
 crewRoter.get("/:crewId", CrewController.InfoCrew);
-crewRoter.delete("/:userId", CrewController.CreateCrew);
+crewRoter.delete("/:userId", CrewController.DeleteCrew);
 crewRoter.get("/", CrewController.FindAllCrew);
 crewRoter.post("/:userId/:crewId", CrewController.JoinCrew);
 

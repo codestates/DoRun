@@ -111,10 +111,10 @@ const InfoCrew = async (req: Request, res: Response) => {
 };
 const DeleteCrew = async (req: Request, res: Response) => {
   try {
-    const { userId }: any = req.params;
+    const userId = Number(req.params.userId);
 
     let userInfo = await User.findOne({ id: userId });
-    if (!userInfo) return res.status(400).send();
+    if (!userInfo || userInfo.crewId === null) return res.status(400).send();
     const crewId = userInfo.crewId;
     userInfo.crewId = null;
 
@@ -122,7 +122,7 @@ const DeleteCrew = async (req: Request, res: Response) => {
 
     const CrewInUser = await User.find({ crewId });
 
-    if (!CrewInUser) {
+    if (CrewInUser.length === 0) {
       const crewInfo = await Crew.findOne({ id: crewId });
       await Crew.remove(crewInfo);
     }

@@ -8,6 +8,7 @@ import {
   OneToMany,
 } from "typeorm";
 import { User } from "./User";
+import { Chat } from "./Chat";
 
 @Entity()
 export class Crew extends BaseEntity {
@@ -55,4 +56,7 @@ export class Crew extends BaseEntity {
 
   @OneToMany((type) => User, (user) => user.crew)
   users: User[];
+
+  @OneToMany((type) => Chat, (chat) => chat.crew)
+  chat: Chat[];
 }

@@ -24,10 +24,8 @@ export class Chat extends BaseEntity {
 
   @CreateDateColumn()
   createdAt: Date;
-
   @UpdateDateColumn()
   updatedAt: Date;
-
   @Column({ type: "int", nullable: true })
   crewId: number;
 

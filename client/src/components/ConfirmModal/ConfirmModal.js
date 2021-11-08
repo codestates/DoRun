@@ -6,7 +6,7 @@ import './ConfirmModal.scss';
 // const confirmModalHandler = () => {
 //   isConfirmModalOpen ? setIsConfirmModalOpen(false) : setIsConfirmModalOpen(true);
 // };
-// {isConfirmModalOpen && <ConfirmModal confirmModalHandler={confirmModalHandler} />}
+// { isConfirmModalOpen && <ConfirmModal confirmModalHandler={confirmModalHandler} /> }
 
 const ConfirmModal = ({ confirmModalHandler, userId }) => {
   return (

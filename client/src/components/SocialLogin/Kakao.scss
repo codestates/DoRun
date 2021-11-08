@@ -5,9 +5,10 @@ $flex: 1 1 auto;
 
 .kakaoBtnWrapper{
   display: flex;
-  width: 200px;
+  width: 180px;
   height: 45px;
-  margin-left: 75px;
+  margin-top: 20px;
+  margin-left: 85px;
   background-color: #FEE500;
   border-radius: 4px;
   box-shadow: 0px 1px 0px 0.5px lightgray;
@@ -22,27 +23,27 @@ $flex: 1 1 auto;
   flex-direction: column;
   flex: $flex;
   position: relative;
-  width:8px;
+  width: 9px;
   height: 16px;
   margin: 15px 5px 1px 10px;
   border-radius: 50%;
   background-color: $symbolColor;
+  &:after {
+    flex-direction: column;
+    flex: $flex;
+    position: absolute;
+    height: 10px;
+    top: 7px;
+    left: 6px;
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 11px solid $symbolColor;
+    transform: rotate(120deg);
+    content:"";
+  }
 }
 
-.kakaoBtn:after {
-  flex-direction: column;
-  flex: $flex;
-  position: absolute;
-  height: 8px;
-  top: 7px;
-  left: 8px;
-  border-top: 0px solid transparent;
-  border-left: 0px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 11px solid $symbolColor;
-  transform: rotate(105deg);
-  content:"";
-}
 
 .loginWithKakao{
   flex: 3 1 auto;
@@ -50,7 +51,7 @@ $flex: 1 1 auto;
   height: 20px;
   margin: auto 10px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 450;
   letter-spacing: 0.5px;
   color: $symbolColor;

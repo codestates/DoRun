@@ -18,16 +18,13 @@ createConnection(config)
   .catch((error) => {
     console.log(error);
   });
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    // origin: "*",
     credentials: true,
     origin: true,
-
     methods: ["GET", "POST", "PATCH", "DELETE"],
   })
 );

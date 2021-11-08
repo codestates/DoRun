@@ -106,6 +106,7 @@ async function signoutUser(dataToSubmit) {
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('userCrewId');
       sessionStorage.removeItem('accessToken');
+      console.log(response)
     })
     .catch((e) => console.log(e))
 

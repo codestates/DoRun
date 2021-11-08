@@ -7,7 +7,6 @@ import {
   UpdateDateColumn,
   OneToOne,
   JoinColumn,
-  ManyToOne,
 } from "typeorm";
 import { Crew } from "./Crew";
 
@@ -16,11 +15,8 @@ export class Chat extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "int" })
   id: number;
 
-  @Column({ type: "varchar", nullable: true })
-  message: string;
-
-  @Column({ type: "varchar", nullable: true })
-  nickname: string;
+  @Column({ type: "simple-array", nullable: true })
+  message: string[];
 
   @CreateDateColumn()
   createdAt: Date;
@@ -31,9 +27,7 @@ export class Chat extends BaseEntity {
   @Column({ type: "int", nullable: true })
   crewId: number;
 
-  // @OneToOne(() => Crew)
-  // @JoinColumn()
-  // crew: Crew;
-  @ManyToOne((type) => Crew, (crew) => crew.chat)
+  @OneToOne(() => Crew)
+  @JoinColumn()
   crew: Crew;
 }

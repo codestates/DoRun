@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './LoginPage.scss';
+import styled from 'styled-components';
+import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
-import { withRouter } from 'react-router-dom';
 import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import Footer from '../../components/Footer/Footer';
@@ -41,6 +41,14 @@ const LoginPage = (props) => {
       });
   };
 
+  // 구글 로그인을 버튼
+  // const Container = styled.div`
+  // width: 190px;
+  // height: 50px;
+  // margin-top: 30px;
+  // margin-left: 80px;
+  // padding: 3px;
+  // `
   return (
     <>
       <div className="loginBlock">
@@ -75,15 +83,17 @@ const LoginPage = (props) => {
             </div>
             <span className="findPassword">Forgot your password?</span>
             <input type="submit" name="login" style={{ marginTop: '100px' }} />
-
             <div className="isRegisted">
               <span>아직 회원이 아니신가요?</span>
               <Link className="toRegister" to="/register">
                 회원가입 하기
               </Link>
-              <SocialLoginGoogle />
-              <SocialLoginKakao />
             </div>
+            <div className='socialGoogle'>
+              <SocialLoginGoogle />
+            </div>
+            <SocialLoginKakao />
+
           </form>
         </div>
       </div>

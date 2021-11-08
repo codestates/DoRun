@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { User } from "../entity/User";
 import { TokensCreate } from "../utils/token";
 import * as bcrypt from "bcrypt";
-import userRoter from "../routes/user";
 
 const SignUp = async (req: Request, res: Response) => {
   try {
@@ -94,7 +93,6 @@ const logout = async (req: Request, res: Response) => {
 const Edit = async (req: Request, res: Response) => {
   try {
     let userInfo = await User.findOne({ id: req.body.userId });
-
     const hash = await bcrypt.compare(req.body.password, userInfo.password);
     if (!userInfo || !hash) {
       return res.status(400).send(); //400은 message를 줄수없음

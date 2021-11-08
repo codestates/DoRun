@@ -1,9 +1,9 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
-import axios from 'axios';
 import { googleUser } from '../../_actions/user_action';
+
 const { REACT_APP_GOOGLE_CLIENT_ID } = process.env
 
 const SocialLoginGoogle = () => {
@@ -31,6 +31,7 @@ const SocialLoginGoogle = () => {
 
 
 
+
   return (
     <div>
       <GoogleLogin
@@ -41,7 +42,6 @@ const SocialLoginGoogle = () => {
         onFailure={responseFail}
         cookiePolicy={'single_host_origin'}
         className='google'
-        style={{ width: "200px" }}
       />
     </div>
   )

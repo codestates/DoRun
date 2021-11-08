@@ -6,7 +6,7 @@ import SuccessModal from '../SuccessModal/SuccessModal';
 import './CreateModal.scss';
 
 const CreateModal = ({ createModalHandler, location }) => {
-  console.log('create Modal페이지입니다', location)
+  // console.log('create Modal페이지입니다', location)
   const userId = Number(sessionStorage.getItem('userId'));
   const today = new Date().toISOString().slice(0, 10);
   const dispatch = useDispatch();
@@ -50,8 +50,9 @@ const CreateModal = ({ createModalHandler, location }) => {
       if (userId) {
         dispatch(createCrew(body))
           .then((res) => {
-            if (res.payload.message === 'success') {
-              sessionStorage.setItem('userCrewId', res.payload.data.id);
+            if (res.payload.data.message === 'success') {
+              // console.log('유저가 갖게 될 크루 아이디입니다', res.payload.data.data.id)
+              sessionStorage.setItem('userCrewId', res.payload.data.data.id);
               SuccessModalHandler();
             }
           })

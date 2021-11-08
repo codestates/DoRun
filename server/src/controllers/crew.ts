@@ -128,6 +128,7 @@ const DeleteCrew = async (req: Request, res: Response) => {
       const crewInfo = await Crew.findOne({ id: crewId });
       await Crew.remove(crewInfo);
     }
+
     return res.status(200).send({ message: "success" });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });

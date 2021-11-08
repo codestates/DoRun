@@ -33,9 +33,6 @@ export class Crew extends BaseEntity {
   @Column({ type: "varchar" })
   date: string;
 
-  // @Column({ type: "varchar" })
-  // location: string;
-
   @Column({ type: "double precision", nullable: true })
   locationMa: number;
 

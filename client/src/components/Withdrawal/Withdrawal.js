@@ -13,10 +13,11 @@ const Withdrawal = () => {
     setIsActive(!isActive);
   };
 
+
   const clicked = () => {
     dispatch(signoutUser(sessionStorage.getItem('userId')))
       .then((res) => {
-        // console.log('탈퇴에 대한 응답입니다.', res);
+        console.log('탈퇴에 대한 응답입니다.', res);
         WithdrawalModalHandler();
       })
       .catch((e) => {

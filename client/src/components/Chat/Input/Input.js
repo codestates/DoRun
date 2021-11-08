@@ -5,26 +5,15 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faSmile } from '@fortawesome/free-regular-svg-icons';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
+import io from 'socket.io-client';
 
-const isMessageEmpty = (textMessage) => {
-  return adjustTextMessage(textMessage).length === 0;
-};
+const socket = io.connect('http://localhost:4000');
 
-const adjustTextMessage = (textMessage) => {
-  return textMessage.trim();
-};
-
-const handleFormSubmit = (e) => {
-  e.preventDefault();
-  if (!isMessageEmpty(textMessage)) {
-    // onMessageSubmitted(textMessage);
-    setTextMessage('');
-  }
-};
-
-const Input = () => {
-  const [textMessage, setTextMessage] = useState('');
-  const disableBtn = isMessageEmpty(textMessage);
+const Input = ({ nickname }) => {
+  const [textMessage, setTextMessage] = useState({
+    name: nickname,
+    message: '',
+  });
 
   // emoji
   const [showEmojis, setShowEmojis] = useState(false);
@@ -35,6 +24,15 @@ const Input = () => {
     sym.forEach((el) => codesArray.push('0x' + el));
     let emoji = String.fromCodePoint(...codesArray);
     setTextMessage(textMessage + emoji);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    socket.emit('sendMessage', {
+      name: textMessage.nickname,
+      message: textMessage.message,
+    });
+    setTextMessage({ name: textMessage.nickname, message: '' });
   };
 
   return (
@@ -53,8 +51,13 @@ const Input = () => {
           }}
         />
         <input
-          value={textMessage}
-          onChange={(e) => setTextMessage(e.target.value)}
+          value={textMessage.message}
+          onChange={(e) =>
+            setTextMessage({
+              name: textMessage.nickname,
+              message: e.target.value,
+            })
+          }
           className="chatMsg"
           id="chatMsg"
           type="text"
@@ -74,7 +77,7 @@ const Input = () => {
             />
           </div>
         )}
-        <button className="chatBtn" name="chatBtn" disabled={disableBtn}>
+        <button className="chatBtn" name="chatBtn">
           <FontAwesomeIcon icon={faPaperPlane} style={{ fontSize: '1.3rem' }} />
         </button>
       </form>

@@ -11,7 +11,7 @@ import {
 const SideBar = () => {
   return (
     <>
-      <div class="chatSidebar">
+      <div className="chatSidebar">
         <h3 className="crewInfo crewName">
           <FontAwesomeIcon icon={faComments} /> Crew Name
         </h3>

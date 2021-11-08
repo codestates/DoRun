@@ -108,7 +108,7 @@ const MyDoRun = ({ dorunInfo }) => {
               <CrewSignoutBack crewSignoutOpen={crewSignoutOpen} />
             </div>
             <Link to="/chat">
-              <div className="crewChat">Do Chat!!</div>
+              <div className="crewChat">Do Chat !!</div>
             </Link>
           </div>
         }

@@ -132,7 +132,7 @@ const Map = () => {
 
         //! 지도 위에 기존 크루의 정보를 띄우는 함수
         async function callCrewData() {
-          await axios.get('http://localhost:3001/crew')
+          await axios.get('http://localhost:3001/crew/')
             .then((res) => {
 
               //! 단순히 지도에 렌더만 담당(forEach)

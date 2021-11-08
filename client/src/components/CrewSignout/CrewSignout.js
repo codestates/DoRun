@@ -7,7 +7,7 @@ function CrewSignout({ crewSignoutOpen, setCrewSignoutOpen }) {
 
     const currentUserId = sessionStorage.getItem('userId');
     const currentCrewId = sessionStorage.getItem('userCrewId');
-    console.log(currentCrewId)
+    console.log(typeof currentCrewId)
 
     const closeCrewSignout = () => {
         if (crewSignoutOpen === true) {
@@ -18,7 +18,7 @@ function CrewSignout({ crewSignoutOpen, setCrewSignoutOpen }) {
     const crewSignoutHandler = () => {
         axios.delete(`http://localhost:3001/crew/${currentUserId}`)
             .then((res) => {
-                // console.log('크루 탈퇴 요청에 대한 응답입니다', res)
+                console.log('크루 탈퇴 요청에 대한 응답입니다', res)
                 if (res.data.message === 'success') {
                     sessionStorage.setItem('userCrewId', 'null')
                     location.reload()

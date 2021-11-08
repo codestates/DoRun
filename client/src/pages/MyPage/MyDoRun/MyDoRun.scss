@@ -5,12 +5,10 @@ $main: rgb(59, 201, 219);
   height: 540px;
   padding: 10px 10px 0px 10px;
   font-weight: bold;
-  // border: 1px solid red;
 }
 
 .myDoRunInfo{
   margin: 1px auto;
-  // background-color: peru;
 }
 
 .myDoRunList{
@@ -20,18 +18,19 @@ $main: rgb(59, 201, 219);
   margin: 10px auto;
   padding: 3px;
   text-align: right;
-  // border: 1px solid black;
   
   &:nth-child(1) { //* 크루 타이틀
     height: 43px;
     margin-top: 0px !important;
     margin-bottom: 20px;
+    overflow: auto; 
+    &::-webkit-scrollbar { 
+      display: none;}
   }
 
   &:last-child{ //* 크루 세부 사항
     height: 120px;
     margin-bottom: 13px;
-    // border: 1px solid black
   }
 }
 
@@ -42,23 +41,28 @@ $main: rgb(59, 201, 219);
   font-weight: 600;
   font-size: 18px;
   color: #436F75;
-  // background: skyblue;
 }
 
 .title{
   margin: auto;
   font-size: 25px;
   color: $main;
-  // border: 1px solid red;
+}
+
+
+.departure{
+  width: 250px;
+  height: 40px;
+  margin: auto;
+  padding: 2px;
+  color: $main;
+  text-align: center;
+  overflow: auto;
+  &::-webkit-scrollbar { 
+    display: none;}
 }
 
 .date{
-  margin: auto;
-  color: $main;
-  text-align: left;
-}
-
-.departure{
   margin: auto;
   color: $main;
   text-align: left;
@@ -88,7 +92,6 @@ $main: rgb(59, 201, 219);
   border: 2px solid $main;
   text-align: center;
   border-radius: 12px;
-  // background-color: cadetblue;
   &.picked {
     color: white;
     background-color: $main;
@@ -105,9 +108,10 @@ $main: rgb(59, 201, 219);
 .Desc{
   width: 250px;
   margin-left: 3px;
-  padding: 2px;
+  padding: 3px;
   text-align: left;
-  color: gray;
+  font-weight: 450;
+  color: rgb(167, 167, 167);
   overflow: auto;
   &::-webkit-scrollbar { 
     display: none;}
@@ -116,7 +120,6 @@ $main: rgb(59, 201, 219);
 
 .goOutMyDorun{
   display: flex;
-  // border: 1px solid palegreen
 }
 
 .crewSigout{
@@ -124,7 +127,7 @@ $main: rgb(59, 201, 219);
   flex: 0 1 1;
   width: 150px;
   height: 40px;
-  padding: 5px 10px 6px;
+  padding: 8px;
   margin: auto;
   margin-right: 10px;
   display: flex;
@@ -132,8 +135,8 @@ $main: rgb(59, 201, 219);
   cursor: pointer;
   color: #ffffff;
   font-weight: bold;
-  background-color: rgb(64, 219, 240);
-  border-radius: 10px;
+  background-color: $main;
+  border-radius: 20px;
 }
 
 .crewChat {
@@ -141,14 +144,13 @@ $main: rgb(59, 201, 219);
   flex: 0 1 1;
   width: 150px;
   height: 40px;
-  padding: 5px 10px 6px;
   margin: auto;
   margin-left: 5px;
-  display: flex;
+  padding: 8px;
   text-align: center;
   cursor: pointer;
   color: #ffffff;
   font-weight: bold;
   background-color: #ffe457;
-  border-radius: 10px;
+  border-radius: 20px;
 }

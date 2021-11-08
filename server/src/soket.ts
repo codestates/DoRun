@@ -26,8 +26,8 @@ function socketInit(server) {
         io.to(crewId).emit("recvMessage", { nickname, message: `${nickname}님이 입장하셨습니다.` });
       });
 
-      socket.on("leaveRoom", async (room) => {
-        io.leave(room);
+      socket.on("leaveRoom", async (crewId) => {
+        io.leave(crewId);
       });
 
       socket.on("sendMessage", async (crewId, { nickname, message }) => {

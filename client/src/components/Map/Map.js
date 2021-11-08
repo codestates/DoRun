@@ -1,11 +1,10 @@
 /*global kakao*/
 import React, { useState, useEffect } from 'react';
-import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import CreateModal from '../CreateModal/CreateModal';
-import './Map.css';
-import { markerdata } from './markerData';
+import './Map.scss';
 import CrewModal from '../CrewModal/CrewModal';
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 const { REACT_APP_KAKAO_MAP } = process.env;
 
 const Map = () => {
@@ -17,6 +16,7 @@ const Map = () => {
 
 
   const [map, setMap] = useState(null);
+  const [crewIdInfo, setCrewIdInfo] = useState(0);
   const [crewModalPosition, setCrewModalPosition] = useState('down');
   const [createModalPosition, setCreateModalPosition] = useState('createDown');
   const [createMarkerposition, setCreateMarkerposition] = useState({}); //* 서버로 create crew의 좌표값을 보내주는 state
@@ -32,6 +32,7 @@ const Map = () => {
       ? setCreateModalPosition('createUp')
       : setCreateModalPosition('createDown');
   };
+
 
   //! 마커 위에 표시 될 customOverlay 내용
   var customOverlayContent = document.createElement('div');
@@ -51,8 +52,8 @@ const Map = () => {
       kakao.maps.load(() => {
         let container = document.getElementById('Mymap');
         let options = {
-          center: new kakao.maps.LatLng(37.506502, 127.053617),
-          level: 7,
+          center: new kakao.maps.LatLng(33.50391403087505, 126.52537011980166),
+          level: 6,
           mapTypeId: kakao.maps.MapTypeId.ROADMAP,
           draggable: true,
           disableDoubleClickZoom: false,
@@ -71,7 +72,7 @@ const Map = () => {
           var imageSize = new kakao.maps.Size(35, 35);
           var markerImage = new kakao.maps.MarkerImage(createMarkerImgSrc, imageSize);
 
-          const marker = new kakao.maps.Marker({
+          const createMarker = new kakao.maps.Marker({
             image: markerImage,
           });
 
@@ -82,19 +83,19 @@ const Map = () => {
           });
 
           //! 마커 클릭 이벤트 : 마커를 클릭하면 customOverlay 오픈
-          marker.addListener('click', function () {
+          createMarker.addListener('click', function () {
             customOverlay.setMap(createdMap);
             customOverlay.getVisible(true);
-            customOverlay.setPosition(marker.getPosition());
+            customOverlay.setPosition(createMarker.getPosition());
           });
-          marker.setMap(createdMap);
+          createMarker.setMap(createdMap);
 
           //! 커스텀 오버레이 클릭 이벤트: 커스텀 오버레이를 클릭하면 모달로 연결
           customOverlayContent.addEventListener('click', () => {
             setCreateModalPosition('createUp');
           });
 
-          console.log('생성마커 모달 값', createModalPosition)
+          // console.log('생성마커 모달 값', createModalPosition)
 
           //! createMarker 이외의 지도 클릭시: 해당 좌표(위치)반환 
           //! 열려 있던 customOverlay, crewCreate 모달 닫힘
@@ -105,17 +106,17 @@ const Map = () => {
             function (mouseEvent) {
               console.log('생성마커 모달 값 in 지도 이벤트', createModalPosition)
               var latlng = mouseEvent.latLng;
-              marker.setPosition(latlng);
+              createMarker.setPosition(latlng);
               let overlayPosition = customOverlay.getPosition();
-              let markerPosition = marker.getPosition();
-              overlayPosition = markerPosition;
+              let createMarkerPosition = createMarker.getPosition();
+              overlayPosition = createMarkerPosition;
 
               if (overlayPosition !== customOverlay) {
                 customOverlay.setMap(null);
                 setCreateModalPosition('createDown');
               }
-              if (marker.getPosition()) {
-                setCreateMarkerposition({ Ma: markerPosition.Ma, La: markerPosition.La })
+              if (createMarker.getPosition()) {
+                setCreateMarkerposition({ Ma: createMarkerPosition.Ma, La: createMarkerPosition.La })
 
               }
 
@@ -131,29 +132,39 @@ const Map = () => {
 
         //! 지도 위에 기존 크루의 정보를 띄우는 함수
         async function callCrewData() {
-          await axios.get('http://localhost:3001/crew')
+          await axios.get('http://localhost:3001/crew/')
             .then((res) => {
 
+              //! 단순히 지도에 렌더만 담당(forEach)
               let crewData = res.data.data;
-
+              console.log()
+              console.log('지도 렌더 시에 렌더 되는 내용들입니다', res)
               crewData.forEach((el) => {
-
-                let Ma = el.location.Ma;
-                let La = el.loaction.La
+                // console.log('크루 데이터 속', el)
+                let Ma = el.locationMa
+                let La = el.locationLa
                 // 마커를 생성
-                let marker = new kakao.maps.Marker({
+                let joinMarker = new kakao.maps.Marker({
                   image: crewMarkerImg,
                   // 마커가 표시 될 지도
                   map: createdMap,
                   // 마커가 표시 될 위치
                   position: new kakao.maps.LatLng(Ma, La),
                   // 마커에 hover시 나타날 title
-                  title: el.title,
+                  // 여기서는 crewId를 할당
+                  title: el.id,
                 });
 
-                kakao.maps.event.addListener(marker, 'click', function () {
+                joinMarker.addListener('click', function () {
                   setCrewModalPosition('up');
-                });
+                  // console.log('정보 좀 줘', joinMarker.getPosition())
+                  // console.log('크루 아이디로 정보를 주세요', joinMarker.Gb)
+                  const joinMarkerId = joinMarker.Gb;
+                  console.log('마커의 데이터', joinMarkerId)
+                  // setCrewIdInfo('왜 안 될까')
+                  setCrewIdInfo(joinMarkerId);
+                })
+
               })
 
             })
@@ -163,7 +174,6 @@ const Map = () => {
         }
 
         callCrewData();
-
       });
 
     };
@@ -177,7 +187,7 @@ const Map = () => {
           <CreateModal createModalHandler={createModalHandler} location={createMarkerposition} />
         </div>
         <div className={crewModalPosition}>
-          <CrewModal crewModalHandler={crewModalHandler} />
+          <CrewModal crewModalHandler={crewModalHandler} crewId={crewIdInfo} />
         </div>
       </div>
     </>

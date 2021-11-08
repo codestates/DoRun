@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { User } from "../entity/User";
 import { TokensCreate } from "../utils/token";
 import * as bcrypt from "bcrypt";
-import userRoter from "../routes/user";
 
 const SignUp = async (req: Request, res: Response) => {
   try {
@@ -94,18 +93,18 @@ const logout = async (req: Request, res: Response) => {
 const Edit = async (req: Request, res: Response) => {
   try {
     let userInfo = await User.findOne({ id: req.body.userId });
-
-    const hash = await bcrypt.compare(req.body.password, userInfo.password);
-    if (!userInfo || !hash) {
-      return res.status(400).send(); //400은 message를 줄수없음
+    if (!userInfo) {
+      return res.status(400).send({ message: "invalid userId" });
     }
 
     userInfo.nickname = req.body.nickname || userInfo.nickname;
-    if (!!req.file) {
-      userInfo.image = req.file["location"] || userInfo.image;
-    }
-    if (req.body.newPassword) {
-      const hashingPassword = await bcrypt.hash(req.body.newPassword, 10);
+    userInfo.password = userInfo.password;
+    userInfo.email = req.body.email || userInfo.email;
+
+    if (req.file) userInfo.image = req.file["location"];
+
+    if (req.body.password) {
+      const hashingPassword = await bcrypt.hash(req.body.password, 10);
       userInfo.password = hashingPassword;
     }
 

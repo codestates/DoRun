@@ -1,5 +1,156 @@
-.MyDoRun {
-  margin-top: 200px;
+$main: rgb(59, 201, 219);
+
+
+.myDoRunForm {
+  height: 540px;
+  padding: 10px 10px 0px 10px;
   font-weight: bold;
+}
+
+.myDoRunInfo{
+  margin: 1px auto;
+}
+
+.myDoRunList{
+  display: flex;
+  width: auto;
+  height: 40px;
+  margin: 10px auto;
+  padding: 3px;
+  text-align: right;
+  
+  &:nth-child(1) { //* 크루 타이틀
+    height: 43px;
+    margin-top: 0px !important;
+    margin-bottom: 20px;
+    overflow: auto; 
+    &::-webkit-scrollbar { 
+      display: none;}
+  }
+
+  &:last-child{ //* 크루 세부 사항
+    height: 120px;
+    margin-bottom: 13px;
+  }
+}
+
+.listCategory {
+  flex-direction: column;
+  width: 75px;
+  padding: 1px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #436F75;
+}
+
+.title{
+  margin: auto;
+  font-size: 25px;
+  color: $main;
+}
+
+
+.departure{
+  width: 250px;
+  height: 40px;
+  margin: auto;
+  padding: 2px;
+  color: $main;
   text-align: center;
+  overflow: auto;
+  &::-webkit-scrollbar { 
+    display: none;}
+}
+
+.date{
+  margin: auto;
+  color: $main;
+  text-align: left;
+}
+
+.time{
+  margin: auto;
+  color: $main;
+}
+
+.personnel{
+  margin: auto;
+  color: $main;
+}
+
+.level{
+  display: flex;
+  margin: auto;
+  color: $main;
+}
+
+.crewLevel{
+  flex-direction: column;
+  width: 63px;
+  height: 30px;
+  margin: 2px 5px 5px 5px;
+  border: 2px solid $main;
+  text-align: center;
+  border-radius: 12px;
+  &.picked {
+    color: white;
+    background-color: $main;
+  }
+}
+
+
+.distance{
+  display: flex;
+  margin: auto;  
+  color: $main;
+
+}
+.Desc{
+  width: 250px;
+  margin-left: 3px;
+  padding: 3px;
+  text-align: left;
+  font-weight: 450;
+  color: rgb(167, 167, 167);
+  overflow: auto;
+  &::-webkit-scrollbar { 
+    display: none;}
+}
+
+
+.goOutMyDorun{
+  display: flex;
+}
+
+.crewSigout{
+  flex-direction: column;
+  flex: 0 1 1;
+  width: 150px;
+  height: 40px;
+  padding: 8px;
+  margin: auto;
+  margin-right: 10px;
+  display: flex;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: $main;
+  border-radius: 20px;
+}
+
+.crewChat {
+  flex-direction: column;
+  flex: 0 1 1;
+  width: 150px;
+  height: 40px;
+  margin: auto;
+  margin-left: 5px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #ffe457;
+  border-radius: 20px;
 }

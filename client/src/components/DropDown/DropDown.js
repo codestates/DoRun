@@ -16,9 +16,8 @@ const DropDown = ({ dropdownRef, isActive }) => {
     <div className="DropDown">
       <nav
         ref={dropdownRef}
-        className={`menu ${isActive ? 'active' : 'inactive'} ${
-          clicked ? 'clicked' : 'unclicked'
-        }`}
+        className={`menu ${isActive ? 'active' : 'inactive'} ${clicked ? 'clicked' : 'unclicked'
+          }`}
       >
         {clicked ? (
           <div className="tab_clicked">

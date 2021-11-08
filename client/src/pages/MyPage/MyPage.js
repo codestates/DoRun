@@ -42,6 +42,45 @@ const MyPage = () => {
     });
   }, []);
 
+
+  //! 여기 밑으로 myDorun 카드
+  const [dorunInfo, setDorunInfo] = useState({
+    title: '가입한 크루가 없습니다',
+    date: '',
+    departure: '',
+    time: '',
+    personnel: '',
+    level: '',
+    distance: '',
+    desc: '',
+  })
+
+  const userCrewId = sessionStorage.getItem('userCrewId')
+  // console.log('현재 유저의 userCrewId', userCrewId)
+
+  const checkMyDoRun = async () => {
+
+    await axios.get(`http://localhost:3001/crew/${userCrewId}`)
+      .then((res) => {
+        console.log(res);
+        const { title, date, departure, time, personnel, level, distance, desc } = res.data.data;
+        const crewParticipant = res.data.CrewInUser
+        setDorunInfo({
+          title,
+          date,
+          departure,
+          time,
+          personnel: `${crewParticipant.length}/${personnel.slice(1)}`,
+          level,
+          distance,
+          desc,
+        })
+      })
+      .catch(e => console.log(e));
+  }
+
+
+
   return (
     <>
       <div className="MyPage">
@@ -141,7 +180,8 @@ const MyPage = () => {
                         ...content,
                         dorun: true,
                       });
-                    }, 500);
+                    }, 500),
+                    checkMyDoRun();
                 }}
               >
                 <div className="card_left">
@@ -154,7 +194,7 @@ const MyPage = () => {
               </div>
               {content.dorun && (
                 <>
-                  <MyDoRun />
+                  <MyDoRun dorunInfo={dorunInfo} />
                   <div
                     className="content_opened"
                     onClick={() => {

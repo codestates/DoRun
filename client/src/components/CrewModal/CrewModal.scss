@@ -16,6 +16,8 @@
   text-align: center;
   padding: 10px;
 
+  width: 400px; //! 고친부분
+
   .crewTitle {
     display: flex;
     justify-content: center;
@@ -67,6 +69,15 @@
       align-items: center;
       justify-content: center;
       color: #6e6e6e;
+
+      //! 아래로 고친부분
+      &:nth-child(2) {
+        align-items: normal;
+        padding: 8px;
+      }
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;}
     }
 
     .right_options {
@@ -114,6 +125,13 @@
       padding: 0 10px 0 10px;
       color: #6e6e6e;
       font-weight: normal;
+
+      //! 아래로 고친부분
+      height: 150px;
+      align-items: normal;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;}
     }
   }
 }
@@ -133,9 +151,11 @@
     display: flex;
     justify-content: center;
     margin: 0px;
+    padding: 5px;
     cursor: pointer;
     color: #ffffff;
-    width: 15rem;
+    width: 10rem;
+    height: 2.5rem;
     font-size: 16px;
     font-weight: bold;
     background-color: #3bc9db;

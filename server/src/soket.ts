@@ -41,7 +41,7 @@ function socketInit(server) {
         //io.emit("recvMessage", { name, message });
       });
 
-      socket.on("getAllMessages", async (crewId, { nickname }) => {
+      socket.on("getAllMessages", async ({ nickname }) => {
         //DB에서 요청 받은 방에대한 모든 메세지 조회후 응답
         const StartChatId = await Chat.findOne({
           select: ["id"],
@@ -64,11 +64,4 @@ function socketInit(server) {
     console.log(err);
   }
 }
-
-// 유저마다 채팅 테이블을 만드는건 데이터 중복이 있을수있고 동일한 방에 10명이 있다면 메세지 하나를 보낼때마다 10개의 테이블을 수정해야함...
-
-// chat 테이블에 메시지컬럼을 배열이 아닌 형식으로 저장을하고 크루아이디로 그방에 채팅인것을 확인하고 유저가 크루에 입장했을때
-//유저테이블에 메세지 id 컬럼을 만든후 그 컬럼에 메세지 id를 저장하는 방식으로 진행해서 하면 어떨까? 이렇게 하면 메세지 중복성도 해결할수있고
-// 메세지를 여러번 수정안해도됨
-
 export { socketInit };

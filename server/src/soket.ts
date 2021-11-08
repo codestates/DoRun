@@ -41,7 +41,7 @@ function socketInit(server) {
         //io.emit("recvMessage", { name, message });
       });
 
-      socket.on("getAllMessages", async (crewId, { nickname }) => {
+      socket.on("getAllMessages", async ({ nickname }) => {
         //DB에서 요청 받은 방에대한 모든 메세지 조회후 응답
         const StartChatId = await Chat.findOne({
           select: ["id"],

@@ -108,6 +108,9 @@ $main: rgb(59, 201, 219);
   padding: 2px;
   text-align: left;
   color: gray;
+  overflow: auto;
+  &::-webkit-scrollbar { 
+    display: none;}
 }
 
 

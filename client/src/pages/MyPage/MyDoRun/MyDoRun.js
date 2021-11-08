@@ -12,22 +12,13 @@ const MyDoRun = ({ dorunInfo }) => {
   const currentCrewId = sessionStorage.getItem('userCrewId');
 
 
-
-  const crewSignoutHandler = () => {
-    axios.delete(`http://localhost:3001/crew/${currentUserId}`)
-      .then((res) => {
-        // console.log('크루 탈퇴 요청에 대한 응답입니다', res)
-        if (res.data.message === 'success') {
-          sessionStorage.setItem('userCrewId', 'null')
-          location.reload()
-        }
-      })
-      .catch(e => console.log(e))
-  }
-
-
   const crewSignoutModalHandler = () => {
-    setCrewSignoutOpen(true)
+    if (crewSignoutOpen === true) {
+      setCrewSignoutOpen(false)
+    }
+    if (crewSignoutOpen === false) {
+      setCrewSignoutOpen(true)
+    }
   }
 
   return (
@@ -113,7 +104,7 @@ const MyDoRun = ({ dorunInfo }) => {
           :
           <div className="goOutMyDorun">
             <div className="crewSigout" onClick={crewSignoutModalHandler}>
-              <CrewSignout crewSignoutOpen={crewSignoutOpen} />
+              <CrewSignout crewSignoutOpen={crewSignoutOpen} setCrewSignoutOpen={setCrewSignoutOpen} />
               <CrewSignoutBack crewSignoutOpen={crewSignoutOpen} />
             </div>
             <Link to="/chat">

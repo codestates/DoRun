@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './CrewSignout.scss';
-import CrewSignoutBack from './CrewSignoutBack';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
-function CrewSignout({ crewSignoutOpen }) {
+function CrewSignout({ crewSignoutOpen, setCrewSignoutOpen }) {
 
     const currentUserId = sessionStorage.getItem('userId');
     const currentCrewId = sessionStorage.getItem('userCrewId');
     console.log(currentCrewId)
 
+    const closeCrewSignout = () => {
+        if (crewSignoutOpen === true) {
+            setCrewSignoutOpen(false)
+        }
 
-
+    }
     const crewSignoutHandler = () => {
         axios.delete(`http://localhost:3001/crew/${currentUserId}`)
             .then((res) => {
@@ -29,8 +32,9 @@ function CrewSignout({ crewSignoutOpen }) {
             크루 나가기
             {crewSignoutOpen ?
                 (<div className="crewSignoutModal">
-                    <div className="crewSignoutModalNotice"> 참여한 크루를 나가시겠습니까? </div>
-                    <div className="crewSignoutModalBtn" onClick={crewSignoutHandler}> 네, 현재 크루에서 나가겠습니다 </div>
+                    <div className="closeCrewSignoutModal" onClick={closeCrewSignout}> &times; </div>
+                    <div className="crewSignoutModalNotice"> 참여한 크루에서 나가시겠습니까? </div>
+                    <div className="crewSignoutModalBtn" onClick={crewSignoutHandler}> 네, 현재 크루를 나가겠습니다 </div>
                 </div>) : ''}
         </div>
     )

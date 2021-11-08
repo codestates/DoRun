@@ -1,7 +1,7 @@
 /*global kakao*/
 import React, { useState, useEffect } from 'react';
 import CreateModal from '../CreateModal/CreateModal';
-import './Map.css';
+import './Map.scss';
 import CrewModal from '../CrewModal/CrewModal';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
@@ -132,7 +132,7 @@ const Map = () => {
 
         //! 지도 위에 기존 크루의 정보를 띄우는 함수
         async function callCrewData() {
-          await axios.get('http://localhost:3001/crew/')
+          await axios.get('http://localhost:3001/crew')
             .then((res) => {
 
               //! 단순히 지도에 렌더만 담당(forEach)

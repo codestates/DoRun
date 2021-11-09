@@ -6,7 +6,7 @@ import { faSmile } from '@fortawesome/free-regular-svg-icons';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
 
-const Input = ({ setMessage, sendMessage, message }) => {
+const Input = ({ socket, message, setMessage, userCrewId, nickname }) => {
   const [showEmojis, setShowEmojis] = useState(false);
 
   const addEmoji = (e) => {
@@ -17,9 +17,22 @@ const Input = ({ setMessage, sendMessage, message }) => {
     setMessage(message + emoji);
   };
 
+  const sendMessage = (e) => {
+    e.preventDefault();
+    socket.emit('sendMessage', userCrewId, message.nickname, message.message);
+    setMessage({ nickname, message: '' });
+  };
+
+  const onTextChange = (e) => {
+    setMessage({
+      ...message,
+      message: e.target.value,
+    });
+  };
+
   return (
     <div className="chatFormContainer">
-      <form id="chatFrm" className="chatFrm">
+      <form id="chatFrm" className="chatFrm" onSubmit={sendMessage}>
         <FontAwesomeIcon
           onClick={() => setShowEmojis(!showEmojis)}
           icon={faSmile}
@@ -35,7 +48,7 @@ const Input = ({ setMessage, sendMessage, message }) => {
         <input
           value={message.message}
           onChange={(e) => {
-            setMessage({ nickname: message.nickname, message: e.target.value });
+            onTextChange(e);
           }}
           onKeyPress={(e) => (e.key === 'Enter' ? sendMessage(e) : null)}
           className="chatMsg"
@@ -57,11 +70,7 @@ const Input = ({ setMessage, sendMessage, message }) => {
             />
           </div>
         )}
-        <button
-          className="chatBtn"
-          name="chatBtn"
-          onClick={(e) => sendMessage(e)}
-        >
+        <button className="chatBtn" name="chatBtn">
           <FontAwesomeIcon icon={faPaperPlane} style={{ fontSize: '1.3rem' }} />
         </button>
       </form>

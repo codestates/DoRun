@@ -5,37 +5,32 @@ import Input from './Input/Input';
 import MessageList from './Message/MessageList/MessageList';
 import SideBar from './SideBar/SideBar';
 import io from 'socket.io-client';
-const ENDPOINT = 'http://localhost:3001';
-let socket;
 
 const Chat = () => {
-  const userCrewId = sessionStorage.getItem('userCrewId');
-  const nickname = 'user';
+  const ENDPOINT = 'http://localhost:3001';
+  const socket = io(ENDPOINT);
+  const userCrewId = Number(sessionStorage.getItem('userCrewId'));
+  const nickname = sessionStorage.getItem('userNickname');
 
   const [message, setMessage] = useState({
     nickname: nickname,
     message: '',
   });
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    { nickname: 'testNick', message: 'testMsg', createdAt: 'testAt' },
+    { nickname: 'q', message: 'qMsg', createdAt: 'qAt' },
+  ]);
 
   useEffect(() => {
-    socket = io(ENDPOINT);
-
-    socket.emit('joinRoom', { userCrewId, nickname });
-  }, [ENDPOINT]);
+    socket.emit('joinRoom', userCrewId, nickname);
+  }, []);
 
   useEffect(() => {
-    socket.on('getAllMessages', message.nickname);
-    setMessages([...messages, message]);
-  });
-
-  const sendMessage = (e) => {
-    e.preventDefault();
-    if (message) {
-      socket.emit('sendMessage', message);
-      setMessage({ nickname, message: '' });
-    }
-  };
+    socket.on('recvMessage', ({ nickname, message }) => {
+      console.log(nickname, message);
+      setMessages([...messages, { nickname, message }]);
+    });
+  }, []);
 
   return (
     <div id="chatContainer" className="chatWrapper">
@@ -45,9 +40,11 @@ const Chat = () => {
         <MessageList messages={messages} nickname={nickname} />
       </div>
       <Input
+        socket={socket}
         message={message}
         setMessage={setMessage}
-        sendMessage={sendMessage}
+        userCrewId={userCrewId}
+        nickname={nickname}
       />
     </div>
   );

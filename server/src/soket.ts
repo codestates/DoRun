@@ -23,14 +23,21 @@ function socketInit(server) {
           crewId,
           userId,
         });
-        Chat.save(ChatDB);
+        const { createdAt } = await Chat.save(ChatDB);
         socket.join(crewId);
-        io.to(crewId).emit("recvMessage", { message: `${userId}번 유저가 입장하셨습니다.` });
+        io.to(crewId).emit(
+          "recvMessage",
+          "server",
+          "server",
+          `${userId}번 유저가 입장하셨습니다.`,
+          createdAt
+        );
       });
 
       socket.on("leaveRoom", async (crewId) => {
         io.leave(crewId);
       });
+
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
         const ChatDB = Chat.create({
           nickname,

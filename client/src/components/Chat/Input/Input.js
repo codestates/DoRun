@@ -6,7 +6,7 @@ import { faSmile } from '@fortawesome/free-regular-svg-icons';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
 
-const Input = ({ socket, message, setMessage, userCrewId, nickname }) => {
+const Input = ({ socket, userId, userCrewId, nickname }) => {
   const [showEmojis, setShowEmojis] = useState(false);
 
   const addEmoji = (e) => {
@@ -14,20 +14,18 @@ const Input = ({ socket, message, setMessage, userCrewId, nickname }) => {
     let codesArray = [];
     sym.forEach((el) => codesArray.push('0x' + el));
     let emoji = String.fromCodePoint(...codesArray);
-    setMessage(message + emoji);
+    setCurMsg(curMsg + emoji);
   };
 
+  const [curMsg, setCurMsg] = useState('');
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit('sendMessage', userCrewId, message.nickname, message.message);
-    setMessage({ nickname, message: '' });
+    socket.emit('sendMessage', userId, userCrewId, nickname, curMsg);
+    setCurMsg('');
   };
 
   const onTextChange = (e) => {
-    setMessage({
-      ...message,
-      message: e.target.value,
-    });
+    setCurMsg(e.target.value);
   };
 
   return (
@@ -46,7 +44,7 @@ const Input = ({ socket, message, setMessage, userCrewId, nickname }) => {
           }}
         />
         <input
-          value={message.message}
+          value={curMsg}
           onChange={(e) => {
             onTextChange(e);
           }}

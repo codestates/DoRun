@@ -10,39 +10,48 @@ const Chat = () => {
   const ENDPOINT = 'http://localhost:3001';
   const socket = io(ENDPOINT);
   const userCrewId = Number(sessionStorage.getItem('userCrewId'));
+  const userId = Number(sessionStorage.getItem('userId'));
   const nickname = sessionStorage.getItem('userNickname');
-
-  const [message, setMessage] = useState({
-    nickname: nickname,
+  const [socketMsg, setSocketMsg] = useState({
+    userId: '',
+    nickname: '',
     message: '',
+    createdAt: '',
   });
-  const [messages, setMessages] = useState([
-    { nickname: 'testNick', message: 'testMsg', createdAt: 'testAt' },
-    { nickname: 'q', message: 'qMsg', createdAt: 'qAt' },
-  ]);
+
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    socket.emit('joinRoom', userCrewId, nickname);
+    socket.emit('joinRoom', userCrewId, userId);
   }, []);
 
   useEffect(() => {
-    socket.on('recvMessage', ({ nickname, message }) => {
-      console.log(nickname, message);
-      setMessages([...messages, { nickname, message }]);
+    socket.on('recvMessage', (userId, nickname, message, chatCreatedAt) => {
+      console.log(userId, nickname, message, chatCreatedAt);
+      setSocketMsg({
+        userId: userId,
+        nickname: nickname,
+        message: message,
+        createdAt: chatCreatedAt,
+      });
     });
   }, []);
+
+  useEffect(() => {
+    setMessages([...messages, socketMsg]);
+    console.log(messages);
+  }, [socketMsg]);
 
   return (
     <div id="chatContainer" className="chatWrapper">
       <ChatHeader />
       <div className="chatMain">
         <SideBar />
-        <MessageList messages={messages} nickname={nickname} />
+        <MessageList messages={messages} userId={userId} />
       </div>
       <Input
         socket={socket}
-        message={message}
-        setMessage={setMessage}
+        userId={userId}
         userCrewId={userCrewId}
         nickname={nickname}
       />

@@ -36,6 +36,7 @@ app.get("/", (req: express.Request, res: express.Response) => {
 });
 
 const server = http.createServer(app);
+//import { Server } from "socket.io";
 
 server.listen(process.env.SERVER_PORT, () => {
   console.log(`listen Port = ${process.env.SERVER_PORT}`);

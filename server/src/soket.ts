@@ -15,45 +15,48 @@ function socketInit(server) {
         console.log(`disconnect ${socket.id}`);
       });
 
-      socket.on("joinRoom", async (crewId, nickname) => {
+      //crewId, userId
+      socket.on("joinRoom", async (crewId, userId) => {
+        // db에 최초 접속시에만 메세지확인해서 없으면 저장 있으면 저장 노노
         const ChatDB = Chat.create({
-          nickname,
-          message: `${nickname}님이 입장하셨습니다.`,
+          message: `${userId}번 유저가 입장하셨습니다.`,
           crewId,
+          userId,
         });
         Chat.save(ChatDB);
         socket.join(crewId);
-        io.to(crewId).emit("recvMessage", { nickname, message: `${nickname}님이 입장하셨습니다.` });
+        io.to(crewId).emit("recvMessage", { message: `${userId}번 유저가 입장하셨습니다.` });
       });
 
       socket.on("leaveRoom", async (crewId) => {
         io.leave(crewId);
       });
-
-      socket.on("sendMessage", async (crewId, { nickname, message }) => {
+      socket.on("sendMessage", async (userId, crewId, nickname, message) => {
         const ChatDB = Chat.create({
           nickname,
           message,
           crewId,
+          userId,
         });
-        Chat.save(ChatDB);
-        io.to(crewId).emit("recvMessage", { nickname, message });
+        const { createdAt } = await Chat.save(ChatDB);
+        io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         //io.emit("recvMessage", { name, message });
       });
 
-      socket.on("getAllMessages", async ({ nickname }) => {
+      socket.on("getAllMessages", async (userId) => {
         //DB에서 요청 받은 방에대한 모든 메세지 조회후 응답
         const StartChatId = await Chat.findOne({
           select: ["id"],
           where: {
-            message: `${nickname}님이 입장하셨습니다.`,
+            //message: `${nickname}님이 입장하셨습니다.`,
+            userId,
           },
         });
         const filteredChat = await Chat.find({
           select: ["nickname", "message", "createdAt"],
           skip: StartChatId.id,
         });
-        socket.emit("getAllMessages", { filteredChat });
+        socket.emit("getAllMessages", filteredChat);
       });
 
       socket.on("error", async (err) => {

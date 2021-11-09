@@ -14,11 +14,13 @@ const App = () => {
   const accessToken = sessionStorage.getItem('accessToken');
   const userId = sessionStorage.getItem('userId');
   const userCrewId = sessionStorage.getItem('userCrewId');
+  const userNickname = sessionStorage.getItem('userNickname');
   useEffect(() => {
     console.log('accessToken: ' + accessToken);
     console.log('userId: ' + userId);
     console.log('userCrewId: ' + userCrewId);
-  }, [accessToken, userId, userCrewId]);
+    console.log('userNickname: ' + userNickname);
+  }, []);
 
   return (
     <>

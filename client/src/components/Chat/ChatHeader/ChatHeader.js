@@ -11,7 +11,7 @@ const ChatHeader = () => {
         <h1 className="chatTitle">
           <FontAwesomeIcon icon={faRunning} /> DoRun
         </h1>
-        <a href="/" class="exit">
+        <a href="/" className="exit">
           <FontAwesomeIcon icon={faSignInAlt} />
         </a>
       </div>

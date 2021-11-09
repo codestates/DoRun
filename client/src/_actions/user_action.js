@@ -5,7 +5,7 @@ import {
   KAKAO_USER,
   GOOGLE_USER,
   LOGOUT_USER,
-  SIGNOUT_USER
+  SIGNOUT_USER,
 } from './types';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
@@ -17,6 +17,7 @@ function loginUser(dataToSubmit) {
       sessionStorage.setItem('accessToken', response.data.accessToken);
       sessionStorage.setItem('userId', response.data.data.id);
       sessionStorage.setItem('userCrewId', response.data.data.crewId);
+      sessionStorage.setItem('userNickname', response.data.data.nickname);
       return response.data;
     })
     .catch((e) => console.log(e));
@@ -101,14 +102,15 @@ async function logoutUser(dataToSubmit) {
 }
 
 async function signoutUser(dataToSubmit) {
-  const request = await axios.delete('http://localhost:3001/user/signout', dataToSubmit)
+  const request = await axios
+    .delete('http://localhost:3001/user/signout', dataToSubmit)
     .then((response) => {
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('userCrewId');
       sessionStorage.removeItem('accessToken');
-      console.log(response)
+      console.log(response);
     })
-    .catch((e) => console.log(e))
+    .catch((e) => console.log(e));
 
   return {
     type: LOGOUT_USER,
@@ -116,4 +118,12 @@ async function signoutUser(dataToSubmit) {
   };
 }
 
-export { loginUser, registerUser, googleUser, kakaoUser, logoutUser, signoutUser, auth };
+export {
+  loginUser,
+  registerUser,
+  googleUser,
+  kakaoUser,
+  logoutUser,
+  signoutUser,
+  auth,
+};

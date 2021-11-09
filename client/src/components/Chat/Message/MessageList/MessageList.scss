@@ -16,6 +16,25 @@
   $--success-color: #5cb85c;
   $--error-color: #d9534f;
 
+  .message-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+
+    .message-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .message-time {
+        font-size: 0.1rem;
+        color: $--message-time-color;
+      }
+    }
+  }
+
   .message-row {
     display: grid;
     grid-template-columns: 70%;

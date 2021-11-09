@@ -10,6 +10,7 @@ const Chat = () => {
   const ENDPOINT = 'http://localhost:3001';
   const socket = io(ENDPOINT);
   const userCrewId = Number(sessionStorage.getItem('userCrewId'));
+  const userId = Number(sessionStorage.getItem('userId'));
   const nickname = sessionStorage.getItem('userNickname');
 
   const [message, setMessage] = useState({
@@ -26,11 +27,11 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
-    socket.on('recvMessage', ({ nickname, message }) => {
-      console.log(nickname, message);
+    socket.on('recvMessage', ({ nickname, message }, chatCreatedAt) => {
+      console.log(nickname, message, chatCreatedAt);
       setMessages([...messages, { nickname, message }]);
     });
-  }, []);
+  }, [messages]);
 
   return (
     <div id="chatContainer" className="chatWrapper">

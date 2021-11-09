@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ChatHeader from './ChatHeader/ChatHeader';
 import './ChatShell.scss';
 import Input from './Input/Input';
-import MessageList from './Message/MessageList/MessageList';
+import MessageList from './MessageList/MessageList';
 import SideBar from './SideBar/SideBar';
 import io from 'socket.io-client';
 
@@ -46,7 +46,7 @@ const Chat = () => {
     <div id="chatContainer" className="chatWrapper">
       <ChatHeader />
       <div className="chatMain">
-        <SideBar />
+        <SideBar userCrewId={userCrewId} />
         <MessageList messages={messages} userId={userId} />
       </div>
       <Input

@@ -24,10 +24,15 @@ export class Chat extends BaseEntity {
 
   @CreateDateColumn()
   createdAt: Date;
+
   @UpdateDateColumn()
   updatedAt: Date;
+
   @Column({ type: "int", nullable: true })
   crewId: number;
+
+  @Column({ type: "int", nullable: true })
+  userId: number;
 
   // @OneToOne(() => Crew)
   // @JoinColumn()

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import './MessageList.scss';
 
 const MessageList = ({ messages, userId }) => {
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+  useEffect(scrollToBottom, [messages]);
+
   const renderChat = () => {
     let messageList = [];
     messages.map((el, index) => {
@@ -44,7 +50,12 @@ const MessageList = ({ messages, userId }) => {
     return messageList;
   };
 
-  return <div id="chatMessageList">{renderChat()}</div>;
+  return (
+    <div id="chatMessageList">
+      {renderChat()}
+      <div ref={messagesEndRef} />
+    </div>
+  );
 };
 
 export default MessageList;

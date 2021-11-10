@@ -1,19 +1,35 @@
 .medalWrapper{
+    display: flex;
     margin: 20rem auto;
     border: 1px solid blue;
 
 }
+
+.growingTextWrapper{
+    
+}
+
 .growing{
+    flex-direction: column;
     width: 30%;
     height: 50%;
     border: 1px solid red;
 }
 
 .medals{
-    display: flex;
+    width: 50%;
+    height: 50%;
+    margin-top: 10vw;
+    margin-left: 20vw;
+
+    border: 1px solid red;
 }
 
-.medal1{
-    flex-direction: column;
+.medal{ 
+    width: 7vw;
+    height: 7vw;
+    margin-left: 2vw;
+    margin-top: 15vw;
+    // border: 1px solid green;
 }
 

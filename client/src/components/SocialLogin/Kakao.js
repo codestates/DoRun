@@ -7,7 +7,7 @@ const { REACT_APP_KAKAO_SOCIAL_LOGIN } = process.env;
 axios.defaults.withCredentials = true;
 
 const SocialLoginKakao = () => {
-  const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=http://localhost:3000/login`;
+  const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=http://localhost:3000`;
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.user);
@@ -22,7 +22,7 @@ const SocialLoginKakao = () => {
 
   if (code) {
     dispatch(kakaoUser(code));
-    history.push('/map');
+    document.location.href('/');
   }
 
   return (

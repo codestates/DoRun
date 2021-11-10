@@ -6,9 +6,10 @@ import MessageList from './MessageList/MessageList';
 import SideBar from './SideBar/SideBar';
 import io from 'socket.io-client';
 
+const ENDPOINT = 'http://localhost:3001/';
+const socket = io(ENDPOINT);
+
 const Chat = () => {
-  const ENDPOINT = 'http://localhost:3001';
-  const socket = io(ENDPOINT);
   const userCrewId = Number(sessionStorage.getItem('userCrewId'));
   const userId = Number(sessionStorage.getItem('userId'));
   const nickname = sessionStorage.getItem('userNickname');
@@ -17,29 +18,38 @@ const Chat = () => {
     nickname: '',
     message: '',
     createdAt: '',
+    serverMsg: '',
   });
 
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    socket.emit('joinRoom', userCrewId, userId);
-  }, []);
-
-  useEffect(() => {
-    socket.on('recvMessage', (userId, nickname, message, chatCreatedAt) => {
-      console.log(userId, nickname, message, chatCreatedAt);
-      setSocketMsg({
-        userId: userId,
-        nickname: nickname,
-        message: message,
-        createdAt: chatCreatedAt,
-      });
+    socket.emit('joinRoom', userCrewId, userId, nickname);
+    socket.emit('getAllMessages', userId);
+    socket.on('getAllMessages', (data) => {
+      console.log(data);
+      setMessages([...data]);
     });
   }, []);
 
   useEffect(() => {
+    socket.on(
+      'recvMessage',
+      (userId, nickname, message, chatCreatedAt, serverMsg) => {
+        // console.log(userId, nickname, message, chatCreatedAt);
+        setSocketMsg({
+          userId: userId,
+          nickname: nickname,
+          message: message,
+          createdAt: chatCreatedAt,
+          serverMsg: serverMsg,
+        });
+      }
+    );
+  }, []);
+
+  useEffect(() => {
     setMessages([...messages, socketMsg]);
-    console.log(messages);
   }, [socketMsg]);
 
   return (

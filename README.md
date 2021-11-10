@@ -40,7 +40,7 @@
   
   
   
-# DoRun's 
+# DoRun's Developer
 **Name** | **Position** | **Github**
 :-------:|:-------------:|:----------:
 김민경   |   Front-End   | [`95mg`](https://github.com/95mg)

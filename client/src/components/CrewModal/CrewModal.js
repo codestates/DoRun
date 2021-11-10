@@ -40,7 +40,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
   // 크루가입이 가능한지 확인
   const joinCheck = () => {
     if (
-      crewData.participant.length === Number(crewData.personnel.slice(1, 2))
+      crewData.participant.length === Number(crewData.personnel.slice(1, 3))
     ) {
       // console.log(crewData);
       setErrMsg(<div className="crewErrMsg">⚠ 크루인원이 가득 찼습니다!!</div>);

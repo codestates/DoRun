@@ -26,7 +26,6 @@ function Mate() {
             scrollTrigger: {
                 trigger: "FAQ.current",
                 start: 300,
-                markers: true,
             }
         })
 

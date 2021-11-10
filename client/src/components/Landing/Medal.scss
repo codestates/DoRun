@@ -3,8 +3,17 @@
     border: 1px solid blue;
 
 }
-.medal{
+.growing{
     width: 30%;
     height: 50%;
     border: 1px solid red;
 }
+
+.medals{
+    display: flex;
+}
+
+.medal1{
+    flex-direction: column;
+}
+

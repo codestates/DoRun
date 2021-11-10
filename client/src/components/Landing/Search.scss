@@ -1,11 +1,22 @@
 .searchWrapper{
+    display: flex;
     margin: 20rem auto;
-    border: 1px solid blue;
+    // border: 1px solid blue;
+}
+
+.searchGIF{
+    flex-direction: column;
+    width: 40%;
+    height: 50%;
+    border-radius: 12px;
+    // border: 1px solid red;
 }
 
 .search{
+    flex-direction: column;
     width: 30%;
     height: 50%;
-    margin-left: 50%;
+    margin-top: 10vh;
+    margin-left: 10vw;
     border: 1px solid red;
 }

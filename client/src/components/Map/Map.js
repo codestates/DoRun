@@ -52,8 +52,8 @@ const Map = () => {
       kakao.maps.load(() => {
         let container = document.getElementById('Mymap');
         let options = {
-          center: new kakao.maps.LatLng(33.50391403087505, 126.52537011980166),
-          level: 6,
+          center: new kakao.maps.LatLng(37.5345058104516, 126.91720663052034),
+          level: 7,
           mapTypeId: kakao.maps.MapTypeId.ROADMAP,
           draggable: true,
           disableDoubleClickZoom: false,

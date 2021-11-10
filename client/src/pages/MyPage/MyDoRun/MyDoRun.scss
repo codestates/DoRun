@@ -1,34 +1,37 @@
 $main: rgb(59, 201, 219);
 
-
 .myDoRunForm {
   height: 540px;
   padding: 10px 10px 0px 10px;
   font-weight: bold;
 }
 
-.myDoRunInfo{
+.myDoRunInfo {
   margin: 1px auto;
 }
 
-.myDoRunList{
+.myDoRunList {
   display: flex;
   width: auto;
   height: 40px;
   margin: 10px auto;
   padding: 3px;
   text-align: right;
-  
-  &:nth-child(1) { //* 크루 타이틀
+  align-items: center;
+
+  &:nth-child(1) {
+    //* 크루 타이틀
     height: 43px;
     margin-top: 0px !important;
     margin-bottom: 20px;
-    overflow: auto; 
-    &::-webkit-scrollbar { 
-      display: none;}
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
-  &:last-child{ //* 크루 세부 사항
+  &:last-child {
+    //* 크루 세부 사항
     height: 120px;
     margin-bottom: 13px;
   }
@@ -40,17 +43,16 @@ $main: rgb(59, 201, 219);
   padding: 1px;
   font-weight: 600;
   font-size: 18px;
-  color: #436F75;
+  color: #436f75;
 }
 
-.title{
+.title {
   margin: auto;
   font-size: 25px;
   color: $main;
 }
 
-
-.departure{
+.departure {
   width: 250px;
   height: 40px;
   margin: auto;
@@ -58,54 +60,55 @@ $main: rgb(59, 201, 219);
   color: $main;
   text-align: center;
   overflow: auto;
-  &::-webkit-scrollbar { 
-    display: none;}
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-.date{
+.date {
   margin: auto;
   color: $main;
   text-align: left;
 }
 
-.time{
+.time {
   margin: auto;
   color: $main;
 }
 
-.personnel{
+.personnel {
   margin: auto;
   color: $main;
 }
 
-.level{
+.level {
   display: flex;
   margin: auto;
   color: $main;
 }
 
-.crewLevel{
+.crewLevel {
   flex-direction: column;
   width: 63px;
-  height: 30px;
+  // height: 35px;
+  padding: 5px 5px;
   margin: 2px 5px 5px 5px;
   border: 2px solid $main;
   text-align: center;
-  border-radius: 12px;
+  align-items: center;
+  border-radius: 30px;
   &.picked {
     color: white;
     background-color: $main;
   }
 }
 
-
-.distance{
+.distance {
   display: flex;
-  margin: auto;  
+  margin: auto;
   color: $main;
-
 }
-.Desc{
+.Desc {
   width: 250px;
   margin-left: 3px;
   padding: 3px;
@@ -113,24 +116,24 @@ $main: rgb(59, 201, 219);
   font-weight: 450;
   color: rgb(167, 167, 167);
   overflow: auto;
-  &::-webkit-scrollbar { 
-    display: none;}
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-
-.goOutMyDorun{
+.goOutMyDorun {
   display: flex;
 }
 
-.crewSigout{
+.crewSigout {
   flex-direction: column;
   flex: 0 1 1;
   width: 150px;
-  height: 40px;
-  padding: 8px;
+  padding: 10px 15px;
   margin: auto;
   margin-right: 10px;
   display: flex;
+  align-items: center;
   text-align: center;
   cursor: pointer;
   color: #ffffff;
@@ -143,10 +146,9 @@ $main: rgb(59, 201, 219);
   flex-direction: column;
   flex: 0 1 1;
   width: 150px;
-  height: 40px;
   margin: auto;
   margin-left: 5px;
-  padding: 8px;
+  padding: 10px 15px;
   text-align: center;
   cursor: pointer;
   color: #ffffff;

@@ -34,14 +34,13 @@ const MyPage = () => {
   const dropDownHandler = () => setIsActive(!isActive);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/user/${userId}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_SERVER}/user/${userId}`).then((res) => {
       setUserInfo({
         ...res.data.data,
         image: res.data.data.image,
       });
     });
   }, []);
-
 
   //! 여기 밑으로 myDorun 카드
   const [dorunInfo, setDorunInfo] = useState({
@@ -53,18 +52,27 @@ const MyPage = () => {
     level: '',
     distance: '',
     desc: '',
-  })
+  });
 
-  const userCrewId = sessionStorage.getItem('userCrewId')
+  const userCrewId = sessionStorage.getItem('userCrewId');
   // console.log('현재 유저의 userCrewId', userCrewId)
 
   const checkMyDoRun = async () => {
-
-    await axios.get(`http://localhost:3001/crew/${userCrewId}`)
+    await axios
+      .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
       .then((res) => {
         console.log(res);
-        const { title, date, departure, time, personnel, level, distance, desc } = res.data.data;
-        const crewParticipant = res.data.CrewInUser
+        const {
+          title,
+          date,
+          departure,
+          time,
+          personnel,
+          level,
+          distance,
+          desc,
+        } = res.data.data;
+        const crewParticipant = res.data.CrewInUser;
         setDorunInfo({
           title,
           date,
@@ -74,12 +82,10 @@ const MyPage = () => {
           level,
           distance,
           desc,
-        })
+        });
       })
-      .catch(e => console.log(e));
-  }
-
-
+      .catch((e) => console.log(e));
+  };
 
   return (
     <>
@@ -333,8 +339,6 @@ const MyPage = () => {
           </div>
           {/*┗-------------------------------------------- 아랫줄 카드 --------------------------------------------┛*/}
         </div>
-
-        <Logout />
       </div>
       <Footer />
     </>

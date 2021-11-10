@@ -24,13 +24,15 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
 
   //!클릭한 위치가 바뀔때 마다 모달 정보 수정
   useEffect(async () => {
-    await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
-      console.log('크루 모달의 응답 정보', res.data);
-      setCrewData({
-        ...res.data.data,
-        participant: res.data.CrewInUser,
+    await axios
+      .get(`${process.env.REACT_APP_SERVER}/crew/${crewId}`)
+      .then((res) => {
+        console.log('크루 모달의 응답 정보', res.data);
+        setCrewData({
+          ...res.data.data,
+          participant: res.data.CrewInUser,
+        });
       });
-    });
   }, [crewId]);
 
   // 크루가입이 가능한지 확인
@@ -48,7 +50,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         // 크루 가입 요청
         console.log('지금 유저의 아이디', userId);
         axios
-          .post(`http://localhost:3001/crew/${userId}/${crewId}`)
+          .post(`${process.env.REACT_APP_SERVER}/crew/${userId}/${crewId}`)
           .then((res) => {
             console.log(res);
             sessionStorage.setItem('userCrewId', crewId);

@@ -1,7 +1,13 @@
-.logoutBtn {
-  text-align: center;
-  border: 4px dotted olive;
-  &:hover {
-    background-color: orange;
+.logoutWrapper {
+  line-height: 40px;
+  margin: 0 1rem 0 1rem;
+  .logoutBtn {
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    &:hover {
+      color: #3bc9db;
+    }
   }
 }

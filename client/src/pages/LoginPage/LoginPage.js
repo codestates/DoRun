@@ -1,15 +1,15 @@
 import './LoginPage.scss';
-import styled from 'styled-components';
 import React, { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
 import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import Footer from '../../components/Footer/Footer';
 
-const LoginPage = (props) => {
+const LoginPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visibility, setVisibility] = useState('password');
@@ -33,7 +33,7 @@ const LoginPage = (props) => {
     dispatch(loginUser(body))
       .then((res) => {
         if (res.payload.message === 'success') {
-          props.history.push('/');
+          document.location.href = '/';
         }
       })
       .catch((error) => {

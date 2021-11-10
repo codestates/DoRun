@@ -22,7 +22,7 @@ const SocialLoginKakao = () => {
 
   if (code) {
     dispatch(kakaoUser(code));
-    document.location.href('/');
+    document.location.href = '/';
   }
 
   return (

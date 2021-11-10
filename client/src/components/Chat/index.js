@@ -6,8 +6,7 @@ import MessageList from './MessageList/MessageList';
 import SideBar from './SideBar/SideBar';
 import io from 'socket.io-client';
 
-const ENDPOINT = 'http://localhost:3001';
-const socket = io(ENDPOINT);
+const socket = io(`${process.env.REACT_APP_SERVER}`);
 
 const Chat = () => {
   const userCrewId = Number(sessionStorage.getItem('userCrewId'));

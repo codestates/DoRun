@@ -6,9 +6,10 @@ import MessageList from './MessageList/MessageList';
 import SideBar from './SideBar/SideBar';
 import io from 'socket.io-client';
 
+const ENDPOINT = 'http://localhost:3001';
+const socket = io(ENDPOINT);
+
 const Chat = () => {
-  const ENDPOINT = 'http://localhost:3001';
-  const socket = io(ENDPOINT);
   const userCrewId = Number(sessionStorage.getItem('userCrewId'));
   const userId = Number(sessionStorage.getItem('userId'));
   const nickname = sessionStorage.getItem('userNickname');
@@ -23,11 +24,15 @@ const Chat = () => {
 
   useEffect(() => {
     socket.emit('joinRoom', userCrewId, userId);
+    socket.emit('getAllMessages', userId);
+    socket.on('getAllMessages', (data) => {
+      setMessages([...data]);
+    });
   }, []);
 
   useEffect(() => {
     socket.on('recvMessage', (userId, nickname, message, chatCreatedAt) => {
-      console.log(userId, nickname, message, chatCreatedAt);
+      // console.log(userId, nickname, message, chatCreatedAt);
       setSocketMsg({
         userId: userId,
         nickname: nickname,
@@ -38,8 +43,9 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
-    setMessages([...messages, socketMsg]);
-    console.log(messages);
+    if (socketMsg.message) {
+      setMessages([...messages, socketMsg]);
+    }
   }, [socketMsg]);
 
   return (

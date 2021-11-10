@@ -28,6 +28,11 @@ $--error-color: #d9534f;
   }
 }
 
+#users {
+  min-height: 220px;
+  // overflow-y: scroll;
+}
+
 @media screen and (max-width: 768px) {
   .chatSidebar {
     padding: 20px 20px 0px;

@@ -1,3 +1,13 @@
+$--message-time-color: #ccc;
+$--message-user-color: #999;
+$--message-text-color: #222;
+$--dark-color-a: #15aabf;
+$--dark-color-b: #22b8cf;
+$--light-color: #c5f6fa;
+$--light-gray: #f6f6f6;
+$--success-color: #5cb85c;
+$--error-color: #d9534f;
+
 #chatMessageList {
   grid-area: chatMessageList;
   display: flex;
@@ -5,16 +15,6 @@
   padding: 0 20px;
   overflow-y: scroll;
   margin-top: 20px;
-
-  $--message-time-color: #ccc;
-  $--message-user-color: #999;
-  $--message-text-color: #222;
-  $--dark-color-a: #15aabf;
-  $--dark-color-b: #22b8cf;
-  $--light-color: #c5f6fa;
-  $--light-gray: #f6f6f6;
-  $--success-color: #5cb85c;
-  $--error-color: #d9534f;
 
   .message-center {
     display: flex;
@@ -114,4 +114,18 @@
       }
     }
   }
+}
+
+#chatMessageList::-webkit-scrollbar {
+  width: 10px;
+}
+#chatMessageList::-webkit-scrollbar-thumb {
+  background-color: $--dark-color-a;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+#chatMessageList::-webkit-scrollbar-track {
+  border-radius: 10px;
+  // box-shadow: inset 0px 0px 5px white;
 }

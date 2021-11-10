@@ -60,7 +60,7 @@ function socketInit(server) {
           },
         });
         const filteredChat = await Chat.find({
-          select: ["nickname", "message", "createdAt"],
+          select: ["userId", "nickname", "message", "createdAt"],
           skip: StartChatId.id,
         });
         socket.emit("getAllMessages", filteredChat);

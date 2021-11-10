@@ -56,6 +56,7 @@ async function googleUser(dataToSubmit) {
       sessionStorage.setItem('accessToken', response.data.accessToken);
       sessionStorage.setItem('userId', response.data.data.id);
       sessionStorage.setItem('userCrewId', response.data.data.crewId);
+      sessionStorage.setItem('userNickname', response.data.data.nickname);
       return response.data;
     })
     .catch((e) => console.log(e));
@@ -74,6 +75,7 @@ async function kakaoUser(dataToSubmit) {
       sessionStorage.setItem('accessToken', response.data.accessToken);
       sessionStorage.setItem('userId', response.data.data.id);
       sessionStorage.setItem('userCrewId', response.data.data.crewId);
+      sessionStorage.setItem('userNickname', response.data.data.nickname);
       return response.data;
     })
     .catch((e) => console.log(e));
@@ -91,6 +93,7 @@ async function logoutUser(dataToSubmit) {
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('userCrewId');
       sessionStorage.removeItem('accessToken');
+      sessionStorage.removeItem('userNickname');
       return response.data;
     })
     .catch((e) => console.log(e));
@@ -108,6 +111,7 @@ async function signoutUser(dataToSubmit) {
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('userCrewId');
       sessionStorage.removeItem('accessToken');
+      sessionStorage.removeItem('userNickname');
       console.log(response);
     })
     .catch((e) => console.log(e));

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import './MessageList.scss';
 
 const MessageList = ({ messages, userId }) => {
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+  useEffect(scrollToBottom, [messages]);
+
   const renderChat = () => {
+    console.log(messages);
     let messageList = [];
     messages.map((el, index) => {
       if (el.userId) {
@@ -30,7 +37,7 @@ const MessageList = ({ messages, userId }) => {
             messageList.push(
               <div className="message-row other-message" key={index}>
                 <div className="message-content">
-                  <img src="/defaultImg.png" alt="Daryl Duckmanton" />
+                  <img src="/defaultImg.png" alt="profileImg" />
                   <div className="message-username">{el.nickname}</div>
                   <div className="message-text">{el.message}</div>
                   <div className="message-time">{el.createdAt}</div>
@@ -44,7 +51,12 @@ const MessageList = ({ messages, userId }) => {
     return messageList;
   };
 
-  return <div id="chatMessageList">{renderChat()}</div>;
+  return (
+    <div id="chatMessageList">
+      {renderChat()}
+      <div ref={messagesEndRef} />
+    </div>
+  );
 };
 
 export default MessageList;

@@ -32,7 +32,7 @@ const Chat = () => {
 
   useEffect(() => {
     socket.on('recvMessage', (userId, nickname, message, chatCreatedAt) => {
-      // console.log(userId, nickname, message, chatCreatedAt);
+      console.log(userId, nickname, message, chatCreatedAt);
       setSocketMsg({
         userId: userId,
         nickname: nickname,

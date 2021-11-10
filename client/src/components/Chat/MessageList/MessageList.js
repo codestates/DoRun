@@ -14,7 +14,7 @@ const MessageList = ({ messages, userId }) => {
     let messageList = [];
     messages.map((el, index) => {
       if (el.userId) {
-        if (el.userId === 'server') {
+        if (el.serverMsg === true) {
           messageList.push(
             <div className="message-center server-message" key={index}>
               <div className="message-content">

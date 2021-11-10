@@ -49,6 +49,8 @@ const SignOut = async (req: Request, res: Response) => {
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
+
+  //유저 탈퇴할때 크루멤버가 0이면 삭제
 };
 const Login = async (req: Request, res: Response) => {
   try {

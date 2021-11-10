@@ -6,7 +6,7 @@ import './CrewModal.scss';
 const CrewModal = ({ crewModalHandler, crewId }) => {
   // console.log('크루 모달의 아이디입니다,',  crewId)
   const userId = Number(sessionStorage.getItem('userId'));
-  console.log('유저님 몇 번이신가요', userId)
+  console.log('유저님 몇 번이신가요', userId);
   let userCrewId = Number(sessionStorage.getItem('userCrewId'));
   const [errMsg, setErrMsg] = useState('');
   const [crewData, setCrewData] = useState({
@@ -22,9 +22,6 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
   });
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
-
-
-
   //!클릭한 위치가 바뀔때 마다 모달 정보 수정
   useEffect(async () => {
     await axios.get(`http://localhost:3001/crew/${crewId}`).then((res) => {
@@ -36,7 +33,6 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
     });
   }, [crewId]);
 
-
   // 크루가입이 가능한지 확인
   const joinCheck = () => {
     if (
@@ -47,16 +43,17 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
     } else {
       setErrMsg(null);
       if (!userId) {
-        setIsConfirmModalOpen(true)
-      }
-      else if (!userCrewId) {
+        setIsConfirmModalOpen(true);
+      } else if (!userCrewId) {
         // 크루 가입 요청
-        console.log('지금 유저의 아이디', userId)
-        axios.post(`http://localhost:3001/crew/${userId}/${crewId}`).then((res) => {
-          console.log(res);
-          sessionStorage.setItem('userCrewId', crewId);
-          confirmModalHandler();
-        });
+        console.log('지금 유저의 아이디', userId);
+        axios
+          .post(`http://localhost:3001/crew/${userId}/${crewId}`)
+          .then((res) => {
+            console.log(res);
+            sessionStorage.setItem('userCrewId', crewId);
+            confirmModalHandler();
+          });
       } else {
         setErrMsg(
           <div className="crewErrMsg">⚠ 이미 가입한 크루가 존재합니다!!</div>
@@ -86,7 +83,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         <div className="crewModalBody">
           <div className="bodyTop">
             <div className="crewTitle">{crewData.title}</div>
-            <br />
+            <hr />
             {/* <img className="leaderImg" src={crewData.leaderImg} alt="" /> */}
           </div>
           <div className="bodyMid">

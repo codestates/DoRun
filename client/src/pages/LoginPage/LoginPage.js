@@ -89,13 +89,9 @@ const LoginPage = (props) => {
                 회원가입 하기
               </Link>
             </div>
-<<<<<<< HEAD
-            <div className="socialGoogle">{<SocialLoginGoogle />}</div>
-=======
             <div className="socialGoogle">
               <SocialLoginGoogle />
             </div>
->>>>>>> e63429b0df0782c2876b10443191b7b4d67015b8
             <SocialLoginKakao />
           </form>
         </div>

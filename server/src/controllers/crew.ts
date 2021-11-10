@@ -57,7 +57,7 @@ const CreateCrew = async (req: Request, res: Response) => {
 
 const EditCrew = async (req: Request, res: Response) => {
   try {
-    const { crewId }: any = req.params;
+    const crewId = Number(req.params.crewId);
     if (!crewId) return res.status(400).send();
 
     let crewInfo = await Crew.findOne({ id: crewId });
@@ -88,7 +88,7 @@ const EditCrew = async (req: Request, res: Response) => {
 };
 const InfoCrew = async (req: Request, res: Response) => {
   try {
-    const { crewId }: any = req.params;
+    const crewId = Number(req.params.crewId);
 
     const crewInfo = await Crew.findOne({ id: crewId });
     const CrewInUser = await User.find({

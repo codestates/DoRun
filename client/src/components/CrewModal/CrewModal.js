@@ -85,7 +85,7 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         <div className="crewModalBody">
           <div className="bodyTop">
             <div className="crewTitle">{crewData.title}</div>
-            <br />
+            <hr />
             {/* <img className="leaderImg" src={crewData.leaderImg} alt="" /> */}
           </div>
           <div className="bodyMid">

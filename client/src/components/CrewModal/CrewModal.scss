@@ -19,14 +19,18 @@
   width: 400px; //! 고친부분
 
   .crewTitle {
+    max-width: 200px;
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
-    margin: 0px 20px;
+    margin: 0 auto;
     color: #3bc9db;
     font-size: 1.25rem;
     font-weight: bold;
-    border-bottom: 1px solid #3bc9db;
+  }
+  hr {
+    margin-top: 5px;
+    border-top: 1px solid #3bc9db;
   }
 
   .leaderImg {
@@ -77,7 +81,8 @@
       }
       overflow-y: auto;
       &::-webkit-scrollbar {
-        display: none;}
+        display: none;
+      }
     }
 
     .right_options {
@@ -131,7 +136,8 @@
       align-items: normal;
       overflow-y: auto;
       &::-webkit-scrollbar {
-        display: none;}
+        display: none;
+      }
     }
   }
 }
@@ -150,6 +156,7 @@
   .toDoRun {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 0px;
     padding: 5px;
     cursor: pointer;

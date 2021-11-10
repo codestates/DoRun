@@ -28,6 +28,20 @@ $--error-color: #d9534f;
   }
 }
 
+.chatSidebar::-webkit-scrollbar {
+  width: 7px;
+}
+.chatSidebar::-webkit-scrollbar-thumb {
+  background-color: $--dark-color-b;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.chatSidebar::-webkit-scrollbar-track {
+  border-radius: 10px;
+  // box-shadow: inset 0px 0px 5px white;
+}
+
 #users {
   min-height: 220px;
   // overflow-y: scroll;

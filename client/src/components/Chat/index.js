@@ -18,33 +18,39 @@ const Chat = () => {
     nickname: '',
     message: '',
     createdAt: '',
+    serverMsg: '',
   });
 
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    socket.emit('joinRoom', userCrewId, userId);
+    socket.emit('joinRoom', userCrewId, userId, nickname);
     socket.emit('getAllMessages', userId);
-    socket.on('getAllmessages', (data) => {
+    socket.on('getAllMessages', (data) => {
       setMessages([...data]);
-    });
-  }, [ENDPOINT]);
-
-  useEffect(() => {
-    socket.on('recvMessage', (userId, nickname, message, chatCreatedAt) => {
-      // console.log(userId, nickname, message, chatCreatedAt);
-      setSocketMsg({
-        userId: userId,
-        nickname: nickname,
-        message: message,
-        createdAt: chatCreatedAt,
-      });
     });
   }, []);
 
   useEffect(() => {
-    setMessages([...messages, socketMsg]);
-    console.log(messages);
+    socket.on(
+      'recvMessage',
+      (userId, nickname, message, chatCreatedAt, serverMsg) => {
+        // console.log(userId, nickname, message, chatCreatedAt);
+        setSocketMsg({
+          userId: userId,
+          nickname: nickname,
+          message: message,
+          createdAt: chatCreatedAt,
+          serverMsg: serverMsg,
+        });
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    if (socketMsg.message) {
+      setMessages([...messages, socketMsg]);
+    }
   }, [socketMsg]);
 
   return (

@@ -76,7 +76,8 @@
       }
       overflow-y: auto;
       &::-webkit-scrollbar {
-        display: none;}
+        display: none;
+      }
     }
 
     .right_options {
@@ -130,7 +131,8 @@
       align-items: normal;
       overflow-y: auto;
       &::-webkit-scrollbar {
-        display: none;}
+        display: none;
+      }
     }
   }
 }
@@ -149,6 +151,7 @@
   .toDoRun {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 0px;
     padding: 5px;
     cursor: pointer;

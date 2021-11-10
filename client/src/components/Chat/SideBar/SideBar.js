@@ -20,7 +20,7 @@ const SideBar = ({ userCrewId }) => {
       crewMembers.push(
         <li className="userOne" key={index}>
           <FontAwesomeIcon icon={faCheck} style={{ marginRight: '10px' }} />
-          {el.id}
+          {el.nickname}
         </li>
       );
     });
@@ -29,6 +29,7 @@ const SideBar = ({ userCrewId }) => {
 
   useEffect(() => {
     axios.get(`http://localhost:3001/crew/${userCrewId}`).then((res) => {
+      console.log(res.data);
       setCrewData({
         title: res.data.data.title,
         member: [...res.data.CrewInUser],

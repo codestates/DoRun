@@ -22,6 +22,9 @@ export class Chat extends BaseEntity {
   @Column({ type: "varchar", nullable: true })
   nickname: string;
 
+  @Column({ type: "boolean", nullable: true, default: false })
+  serverMsg: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 

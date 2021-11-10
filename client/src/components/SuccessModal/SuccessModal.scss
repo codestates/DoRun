@@ -44,7 +44,7 @@
   gap: 20px;
 }
 .toLogin {
-  padding: 5px 10px 6px;
+  padding: 8px 10px;
   display: flex;
   justify-content: center;
   cursor: pointer;
@@ -52,20 +52,20 @@
   font-weight: bold;
   background-color: #3bc9db;
   border: 1px solid #3bc9db;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .toExit {
-  padding: 5px 10px 6px;
+  padding: 8px 10px;
   display: flex;
   justify-content: center;
   cursor: pointer;
   color: #3bc9db;
   font-weight: bold;
   border: 1px solid #3bc9db;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .toDoChat {
-  padding: 5px 10px 6px;
+  padding: 8px 10px;
   display: flex;
   justify-content: center;
   cursor: pointer;
@@ -73,5 +73,5 @@
   font-weight: bold;
   background-color: #ffe457;
   border: 1px solid #ffe457;
-  border-radius: 10px;
+  border-radius: 20px;
 }

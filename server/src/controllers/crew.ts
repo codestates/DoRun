@@ -88,11 +88,11 @@ const EditCrew = async (req: Request, res: Response) => {
 };
 const InfoCrew = async (req: Request, res: Response) => {
   try {
-    const { crewId }: any = req.params;
+    const crewId = Number(req.params.crewId);
 
     const crewInfo = await Crew.findOne({ id: crewId });
     const CrewInUser = await User.find({
-      select: ["id"],
+      select: ["id", "nickname"],
       where: {
         crewId: crewId,
       },

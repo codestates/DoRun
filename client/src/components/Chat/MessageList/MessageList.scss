@@ -20,7 +20,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    // flex-basis: 100%;
+    margin: 8px 0px 15px 0px;
+    color: $--message-user-color;
+    font-size: 0.8rem;
+    &::before,
+    &::after {
+      content: '';
+      flex-grow: 1;
+      background: #ccc;
+      height: 1px;
+      font-size: 0px;
+      line-height: 0px;
+      margin: 0px 16px;
+    }
 
     .message-content {
       display: flex;
@@ -37,7 +50,7 @@
 
   .message-row {
     display: grid;
-    grid-template-columns: 70%;
+    grid-template-columns: 80%;
     margin-bottom: 20px;
 
     > .message-content {
@@ -85,9 +98,10 @@
     }
 
     &.other-message {
-      justify-items: start;
+      justify-content: start;
 
       > .message-content {
+        justify-items: start;
         grid-template-columns: 48px 1fr;
         grid-column-gap: 15px;
 
@@ -99,26 +113,5 @@
         }
       }
     }
-  }
-}
-
-.chatStartLine {
-  display: flex;
-  flex-basis: 100%;
-  margin: 8px 0px 15px 0px;
-  align-items: center;
-  text-align: center;
-  font-size: 14px;
-  color: #999;
-
-  &::before,
-  &::after {
-    content: '';
-    flex-grow: 1;
-    background: #ccc;
-    height: 1px;
-    font-size: 0px;
-    line-height: 0px;
-    margin: 0px 16px;
   }
 }

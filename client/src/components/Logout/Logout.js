@@ -14,17 +14,17 @@ function Logout() {
     dispatch(logoutUser(userId))
       .then((res) => {
         console.log(res);
-        history.push('/');
+        document.location.href = '/';
       })
       .catch((e) => e);
   };
 
   return (
-    <>
-      <button className="logoutBtn" onClick={handleLogout}>
+    <div className="logoutWrapper">
+      <div className="logoutBtn" onClick={handleLogout}>
         Logout
-      </button>
-    </>
+      </div>
+    </div>
   );
 }
 

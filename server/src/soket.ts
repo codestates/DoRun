@@ -84,11 +84,15 @@ function socketInit(server) {
             userId,
           },
         });
-        const filteredChat = await getRepository(Chat).find({
-          //select: ["id", "nickname", "message", "createdAt"],
-          id: MoreThanOrEqual(StartChatId.id),
-          crewId: StartChatId.crewId,
-        });
+        if (!!StartChatId) {
+          const filteredChat = await getRepository(Chat).find({
+            //select: ["id", "nickname", "message", "createdAt"],
+            id: MoreThanOrEqual(StartChatId.id),
+            crewId: StartChatId.crewId,
+          });
+          socket.emit("getAllMessages", filteredChat);
+        }
+
         // const filteredChat = await Chat.find({
         //   select:
         //   skip: StartChatId.id,
@@ -96,7 +100,6 @@ function socketInit(server) {
         //     crewId: StartChatId.crewId,
         //   },
         // });
-        socket.emit("getAllMessages", filteredChat);
       });
 
       socket.on("error", async (err) => {

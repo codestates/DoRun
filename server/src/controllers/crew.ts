@@ -92,7 +92,7 @@ const InfoCrew = async (req: Request, res: Response) => {
 
     const crewInfo = await Crew.findOne({ id: crewId });
     const CrewInUser = await User.find({
-      select: ["id"],
+      select: ["id", "nickname"],
       where: {
         crewId: crewId,
       },

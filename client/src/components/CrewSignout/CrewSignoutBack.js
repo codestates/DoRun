@@ -1,15 +1,10 @@
-import React from 'react'
+import React from 'react';
 import './CrewSignoutBack.scss';
 
 function CrewSignoutBack({ crewSignoutOpen }) {
-    return (
-        <>
-            {crewSignoutOpen ?
-                (<div className="crewSignoutModalBack">
-                </div>) : ''}
-        </>
-
-    )
+  return (
+    <>{crewSignoutOpen ? <div className="crewSignoutModalBack"></div> : ''}</>
+  );
 }
 
-export default CrewSignoutBack
+export default CrewSignoutBack;

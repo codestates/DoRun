@@ -43,7 +43,7 @@ const MyAccount = () => {
         formData.set('password', userInfo.password);
         formData.set('newPassword', userInfo.newPass2);
         axios
-          .patch('http://localhost:3001/user', formData, {
+          .patch(`${process.env.REACT_APP_SERVER}/user`, formData, {
             headers: {
               'content-type': 'multipart/form-data',
             },
@@ -81,15 +81,17 @@ const MyAccount = () => {
   // 유저 정보 로드
   const userId = sessionStorage.getItem('userId');
   useEffect(async () => {
-    await axios.get(`http://localhost:3001/user/${userId}`).then((res) => {
-      setUserInfo({
-        ...res.data.data,
-        image: res.data.data.image,
-        password: '',
-        newPass1: '',
-        newPass2: '',
+    await axios
+      .get(`${process.env.REACT_APP_SERVER}/user/${userId}`)
+      .then((res) => {
+        setUserInfo({
+          ...res.data.data,
+          image: res.data.data.image,
+          password: '',
+          newPass1: '',
+          newPass2: '',
+        });
       });
-    });
   }, []);
 
   return (

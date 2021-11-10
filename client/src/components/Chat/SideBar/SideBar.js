@@ -28,13 +28,15 @@ const SideBar = ({ userCrewId }) => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/crew/${userCrewId}`).then((res) => {
-      console.log(res.data);
-      setCrewData({
-        title: res.data.data.title,
-        member: [...res.data.CrewInUser],
+    axios
+      .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
+      .then((res) => {
+        console.log(res.data);
+        setCrewData({
+          title: res.data.data.title,
+          member: [...res.data.CrewInUser],
+        });
       });
-    });
   }, []);
 
   return (

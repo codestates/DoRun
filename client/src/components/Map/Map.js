@@ -8,12 +8,9 @@ axios.defaults.withCredentials = true;
 const { REACT_APP_KAKAO_MAP } = process.env;
 
 const Map = () => {
-
   useEffect(() => {
     createMap();
-
   }, []);
-
 
   const [map, setMap] = useState(null);
   const [crewIdInfo, setCrewIdInfo] = useState(0);
@@ -33,7 +30,6 @@ const Map = () => {
       : setCreateModalPosition('createDown');
   };
 
-
   //! 마커 위에 표시 될 customOverlay 내용
   var customOverlayContent = document.createElement('div');
   customOverlayContent.className = 'wrapping';
@@ -46,8 +42,6 @@ const Map = () => {
     document.head.appendChild(script);
 
     script.onload = () => {
-
-
       const { kakao } = window;
       kakao.maps.load(() => {
         let container = document.getElementById('Mymap');
@@ -63,14 +57,18 @@ const Map = () => {
         // ----------------------------------------------------------------------- basic setting
 
         //! userID가 있고, Crew에 속해있지 않은 사람에게 crewCreate 마커 생성
-        if ((sessionStorage.getItem('userId') !== 'null') &&
-          (sessionStorage.getItem('userCrewId') === 'null')) {
-
+        if (
+          sessionStorage.getItem('userId') !== 'null' &&
+          sessionStorage.getItem('userCrewId') === 'null'
+        ) {
           //! 크루 생성 마커 이미지
           var createMarkerImgSrc =
             'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png';
           var imageSize = new kakao.maps.Size(35, 35);
-          var markerImage = new kakao.maps.MarkerImage(createMarkerImgSrc, imageSize);
+          var markerImage = new kakao.maps.MarkerImage(
+            createMarkerImgSrc,
+            imageSize
+          );
 
           const createMarker = new kakao.maps.Marker({
             image: markerImage,
@@ -97,14 +95,17 @@ const Map = () => {
 
           // console.log('생성마커 모달 값', createModalPosition)
 
-          //! createMarker 이외의 지도 클릭시: 해당 좌표(위치)반환 
+          //! createMarker 이외의 지도 클릭시: 해당 좌표(위치)반환
           //! 열려 있던 customOverlay, crewCreate 모달 닫힘
 
           kakao.maps.event.addListener(
             createdMap,
             'click',
             function (mouseEvent) {
-              console.log('생성마커 모달 값 in 지도 이벤트', createModalPosition)
+              console.log(
+                '생성마커 모달 값 in 지도 이벤트',
+                createModalPosition
+              );
               var latlng = mouseEvent.latLng;
               createMarker.setPosition(latlng);
               let overlayPosition = customOverlay.getPosition();
@@ -116,33 +117,37 @@ const Map = () => {
                 setCreateModalPosition('createDown');
               }
               if (createMarker.getPosition()) {
-                setCreateMarkerposition({ Ma: createMarkerPosition.Ma, La: createMarkerPosition.La })
-
+                setCreateMarkerposition({
+                  Ma: createMarkerPosition.Ma,
+                  La: createMarkerPosition.La,
+                });
               }
-
             }
           );
         }
 
         //! 기존에 생성 돼 있는 크루를 렌더
-        var crewMarkerImgSrc = 'https://cdn4.iconfinder.com/data/icons/social-media-2070/140/_location-128.png';
+        var crewMarkerImgSrc =
+          'https://cdn4.iconfinder.com/data/icons/social-media-2070/140/_location-128.png';
         var imgSize = new kakao.maps.Size(35, 35);
-        var crewMarkerImg = new kakao.maps.MarkerImage(crewMarkerImgSrc, imgSize);
-
+        var crewMarkerImg = new kakao.maps.MarkerImage(
+          crewMarkerImgSrc,
+          imgSize
+        );
 
         //! 지도 위에 기존 크루의 정보를 띄우는 함수
         async function callCrewData() {
-          await axios.get('http://localhost:3001/crew/')
+          await axios
+            .get(`${process.env.REACT_APP_SERVER}/crew/`)
             .then((res) => {
-
               //! 단순히 지도에 렌더만 담당(forEach)
               let crewData = res.data.data;
-              console.log()
-              console.log('지도 렌더 시에 렌더 되는 내용들입니다', res)
+              console.log();
+              console.log('지도 렌더 시에 렌더 되는 내용들입니다', res);
               crewData.forEach((el) => {
                 // console.log('크루 데이터 속', el)
-                let Ma = el.locationMa
-                let La = el.locationLa
+                let Ma = el.locationMa;
+                let La = el.locationLa;
                 // 마커를 생성
                 let joinMarker = new kakao.maps.Marker({
                   image: crewMarkerImg,
@@ -160,31 +165,30 @@ const Map = () => {
                   // console.log('정보 좀 줘', joinMarker.getPosition())
                   // console.log('크루 아이디로 정보를 주세요', joinMarker.Gb)
                   const joinMarkerId = joinMarker.Gb;
-                  console.log('마커의 데이터', joinMarkerId)
+                  console.log('마커의 데이터', joinMarkerId);
                   // setCrewIdInfo('왜 안 될까')
                   setCrewIdInfo(joinMarkerId);
-                })
-
-              })
-
+                });
+              });
             })
-            .catch(e => {
-              console.log('생성된 크루정보 요청에 대한 에러입니다.', e)
-            })
+            .catch((e) => {
+              console.log('생성된 크루정보 요청에 대한 에러입니다.', e);
+            });
         }
 
         callCrewData();
       });
-
     };
   };
-
 
   return (
     <>
       <div id="Mymap">
         <div className={createModalPosition}>
-          <CreateModal createModalHandler={createModalHandler} location={createMarkerposition} />
+          <CreateModal
+            createModalHandler={createModalHandler}
+            location={createMarkerposition}
+          />
         </div>
         <div className={crewModalPosition}>
           <CrewModal crewModalHandler={crewModalHandler} crewId={crewIdInfo} />

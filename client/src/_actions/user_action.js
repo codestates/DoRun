@@ -12,7 +12,7 @@ axios.defaults.withCredentials = true;
 
 function loginUser(dataToSubmit) {
   const request = axios
-    .post('http://localhost:3001/user/login', dataToSubmit)
+    .post(`${process.env.REACT_APP_SERVER}/user/login`, dataToSubmit)
     .then((response) => {
       sessionStorage.setItem('accessToken', response.data.accessToken);
       sessionStorage.setItem('userId', response.data.data.id);
@@ -29,7 +29,7 @@ function loginUser(dataToSubmit) {
 
 function registerUser(dataToSubmit) {
   const request = axios
-    .post('http://localhost:3001/user/signup', dataToSubmit)
+    .post(`${process.env.REACT_APP_SERVER}/user/signup`, dataToSubmit)
     .then((response) => response.data);
 
   return {
@@ -51,7 +51,11 @@ async function googleUser(dataToSubmit) {
   const { email, imageUrl, name } = dataToSubmit;
 
   const request = await axios
-    .post('http://localhost:3001/oauth/google', { email, imageUrl, name })
+    .post(`${process.env.REACT_APP_SERVER}/oauth/google`, {
+      email,
+      imageUrl,
+      name,
+    })
     .then((response) => {
       sessionStorage.setItem('accessToken', response.data.accessToken);
       sessionStorage.setItem('userId', response.data.data.id);
@@ -68,7 +72,7 @@ async function googleUser(dataToSubmit) {
 
 async function kakaoUser(dataToSubmit) {
   const request = await axios
-    .post('http://localhost:3001/oauth/kakao', {
+    .post(`${process.env.REACT_APP_SERVER}/oauth/kakao`, {
       authorizationCode: dataToSubmit,
     })
     .then((response) => {
@@ -88,7 +92,7 @@ async function kakaoUser(dataToSubmit) {
 
 async function logoutUser(dataToSubmit) {
   const request = await axios
-    .post('http://localhost:3001/user/logout', dataToSubmit)
+    .post(`${process.env.REACT_APP_SERVER}/user/logout`, dataToSubmit)
     .then((response) => {
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('userCrewId');
@@ -106,7 +110,7 @@ async function logoutUser(dataToSubmit) {
 
 async function signoutUser(dataToSubmit) {
   const request = await axios
-    .delete('http://localhost:3001/user/signout', dataToSubmit)
+    .delete(`${process.env.REACT_APP_SERVER}/user/signout`, dataToSubmit)
     .then((response) => {
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('userCrewId');

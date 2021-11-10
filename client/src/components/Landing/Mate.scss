@@ -1,0 +1,46 @@
+.mateWrapper{
+    position: relative;
+    margin: 20rem auto;
+    background-image: url("../Landing/LandingSVG/blob.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mateBack{
+    z-index: 1;
+}
+
+.mateLine {
+    font-size: 2.5vh;
+    font-weight: 500;
+    line-height: 160%;
+    text-align: center;
+    z-index: 9999;
+}
+
+.matePicture{
+    display: flex;
+    margin-top: 12vh;
+    margin-bottom: 10vh;
+    z-index: 9999;
+}
+
+
+.FAQ{
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 40vw;
+    height: 35vh;
+    // margin-left: 20vmin;
+    transform: rotate(90deg);
+    // border: 1px solid green;
+}
+
+.mate{
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 40vw;
+    height: 35vh;
+    // border: 1px solid red;
+}
+

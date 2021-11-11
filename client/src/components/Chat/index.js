@@ -26,7 +26,6 @@ const Chat = () => {
     socket.emit('joinRoom', userCrewId, userId, nickname);
     socket.emit('getAllMessages', userId, userCrewId);
     socket.on('getAllMessages', (data) => {
-      console.log(data);
       setMessages([...data]);
     });
   }, []);

@@ -8,11 +8,11 @@ import router from "./routes";
 import "dotenv/config";
 import { socketInit } from "./soket";
 /////
-// const cluster = require("cluster");
-// const { setupMaster } = require("@socket.io/sticky");
-// const { setupPrimary } = require("@socket.io/cluster-adapter");
-// const recluster = require("recluster");
-// const path = require("path");
+const cluster = require("cluster");
+const { setupMaster } = require("@socket.io/sticky");
+const { setupPrimary } = require("@socket.io/cluster-adapter");
+const recluster = require("recluster");
+const path = require("path");
 //////
 const app = express();
 const http = require("http");
@@ -63,13 +63,13 @@ const server = http.createServer(app);
 //import { Server } from "socket.io";
 
 /////////////
-// setupMaster(server, {
-//   loadBalancingMethod: "least-connection",
-// });
-// setupPrimary();
-// cluster.setupMaster({
-//   serialization: "advanced",
-// });
+setupMaster(server, {
+  loadBalancingMethod: "least-connection",
+});
+setupPrimary();
+cluster.setupMaster({
+  serialization: "advanced",
+});
 /////////////
 
 server.listen(process.env.SERVER_PORT, () => {
@@ -93,8 +93,8 @@ server.listen(process.env.SERVER_PORT, () => {
   `);
 });
 
-// const balancer = recluster(path.join(__dirname, "worker.js"));
+const balancer = recluster(path.join(__dirname, "socket.ts"));
 
-// balancer.run();
+balancer.run();
 
 socketInit(server);

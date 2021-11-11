@@ -24,5 +24,5 @@ export REDIS_PASSWORD=$(aws ssm get-parameters --region ap-northeast-2 --names R
 
 
 # authbind --deep pm2 start processes.config.js
-authbind --deep pm2 start processes.config.js
+authbind --deep pm2 start processes.config.js --name "API" -o ./api.log
 # authbind --deep pm2 start dist/src/index.js

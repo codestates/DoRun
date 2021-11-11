@@ -6,9 +6,9 @@
 
 .growingTextWrapper{
     height: 10vw;
-    // border: 1px solid purple;
     text-align: center;
     justify-content: center;
+    // border: 1px solid purple;
 }
 
 .growingLine{
@@ -47,8 +47,6 @@
     margin-left: 1vw;
     &:last-child {
         height: 7.2vw;
-        // margin-top: 11.8vw;
-        // background-color: black;
     }
     // border: 1px solid green;
 }

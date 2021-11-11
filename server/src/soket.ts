@@ -10,17 +10,17 @@ function socketInit(server) {
     },
     transports: ["websocket"],
   });
-  // const { createClient } = require("redis");
-  // const redisAdapter = require("@socket.io/redis-adapter");
-  // const pubClient = createClient({
-  //   host: process.env.REDIS_HOST,
-  //   port: process.env.REDIS_PORT,
-  //   password: process.env.REDIS_PASSWORD,
-  // });
-  // const subClient = pubClient.duplicate();
+  const { createClient } = require("redis");
+  const redisAdapter = require("@socket.io/redis-adapter");
+  const pubClient = createClient({
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    password: process.env.REDIS_PASSWORD,
+  });
+  const subClient = pubClient.duplicate();
 
-  // io.adapter(redisAdapter(pubClient, subClient));
-  const processPID = require("process"); //PID test
+  io.adapter(redisAdapter(pubClient, subClient));
+  //const processPID = require("process"); //PID test
 
   try {
     io.on("connect", (socket) => {

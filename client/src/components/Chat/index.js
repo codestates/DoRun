@@ -6,7 +6,9 @@ import MessageList from './MessageList/MessageList';
 import SideBar from './SideBar/SideBar';
 import io from 'socket.io-client';
 
-const socket = io(`${process.env.REACT_APP_SERVER}`);
+const socket = io(`${process.env.REACT_APP_SERVER}`, {
+  transports: ['websocket'],
+});
 
 const Chat = () => {
   const userCrewId = Number(sessionStorage.getItem('userCrewId'));

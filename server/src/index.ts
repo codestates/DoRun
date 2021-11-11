@@ -7,7 +7,13 @@ import config from "../ormconfig";
 import router from "./routes";
 import "dotenv/config";
 import { socketInit } from "./soket";
-
+/////
+// const cluster = require("cluster");
+// const { setupMaster } = require("@socket.io/sticky");
+// const { setupPrimary } = require("@socket.io/cluster-adapter");
+// const recluster = require("recluster");
+// const path = require("path");
+//////
 const app = express();
 const http = require("http");
 
@@ -32,14 +38,48 @@ app.use(
 app.use("/", router);
 
 app.get("/", (req: express.Request, res: express.Response) => {
-  res.send("Hello");
+  res.send(
+    ` ${process.env.SERVER_PORT}
+    ${process.env.DATABASE_USER}
+    ${process.env.DATABASE_PASSWORD}
+    ${process.env.DATABASE_PORT}
+    ${process.env.DATABASE_HOST}
+    ${process.env.DATABASE_NAME}
+    ${process.env.NODE_ENV}
+    ${process.env.KAKAO_CLIENT_ID}
+    ${process.env.SERVER_PORT}
+    ${process.env.ACCESS_SECRET}
+    ${process.env.REFRESH_SECRET}
+    ${process.env.S3_ACCESS_KEY}
+    ${process.env.S3_SECRET_KEY}
+    ${process.env.S3_REGION}
+    ${process.env.REDIS_HOST}
+    ${process.env.REDIS_PORT}
+    ${process.env.REDIS_PASSWORD}`
+  );
 });
 
 const server = http.createServer(app);
 //import { Server } from "socket.io";
 
+/////////////
+// setupMaster(server, {
+//   loadBalancingMethod: "least-connection",
+// });
+// setupPrimary();
+// cluster.setupMaster({
+//   serialization: "advanced",
+// });
+/////////////
+
 server.listen(process.env.SERVER_PORT, () => {
-  console.log(`listen Port = ${process.env.SERVER_PORT}`);
+  console.log(`listen Port = ${process.env.SERVER_PORT}
+ 
+  `);
 });
+
+// const balancer = recluster(path.join(__dirname, "index.ts"));
+
+// balancer.run();
 
 socketInit(server);

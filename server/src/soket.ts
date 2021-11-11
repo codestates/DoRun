@@ -1,17 +1,48 @@
 import { Chat } from "./entity/Chat";
 import { User } from "./entity/User";
 import { getRepository, MoreThanOrEqual } from "typeorm";
+import { createAdapter } from "@socket.io/redis-adapter";
+import { RedisClient } from "redis";
 
-function socketInit(server) {
+async function socketInit(server) {
   const io = require("socket.io")(server, {
     cors: {
       origin: "*",
       credentials: true,
     },
+    transports: ["websocket"],
   });
 
+  /////////
+  // const { setupWorker } = require("@socket.io/sticky");
+  // const { createAdapter } = require("@socket.io/cluster-adapter");
+  // io.adapter(createAdapter());
+  // setupWorker(io);
+  //////////////////////////////
+  // const redis = require("socket.io-redis");
+  // io.adapter(
+  //   redis({
+  //     host: process.env.REDIS_HOST,
+  //     port: parseInt(process.env.REDIS_PORT),
+  //     password: process.env.REDIS_PASSWORD,
+  //   })
+  // );
+
+  /////////
+  // const pubClient = new RedisClient({
+  //   host: process.env.REDIS_HOST,
+  //   port: parseInt(process.env.REDIS_PORT),
+  //   password: process.env.REDIS_PASSWORD,
+  // });
+  // const subClient = pubClient.duplicate();
+
+  // io.adapter(createAdapter(pubClient, subClient));
+  //const processPID = require("process"); //PID test
+
+  const chatIo = io.of("/");
+
   try {
-    io.on("connect", (socket) => {
+    chatIo.on("connect", (socket) => {
       console.log(`connect ${socket.id}`);
 
       socket.on("disconnect", () => {
@@ -73,6 +104,7 @@ function socketInit(server) {
           userId,
         });
         const { createdAt } = await Chat.save(ChatDB);
+        //message = message + processPID.pid;
         io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         //io.emit("recvMessage", { name, message });
       });

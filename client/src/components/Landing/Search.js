@@ -12,6 +12,7 @@ function Search() {
     const searchMate = useRef(null);
     const searchText = useRef(null);
 
+
     useEffect(() => {
         gsap.to(searchGIF.current, {
             y: '20%',
@@ -43,6 +44,8 @@ function Search() {
                 start: 1650,
             }
         });
+
+
     });
 
     return (

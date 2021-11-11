@@ -27,48 +27,48 @@ function Medal() {
             opacity: 1,
             scrollTrigger: {
                 trigger: "growing.current",
-                start: 4300,
-                // markers: true,
+                start: 3800,
+                markers: true,
             }
         });
         gsap.to(medalFirst.current, {
             y: '-410%',
-            duration: 1.5,
+            duration: 5.5,
             ease: "back",
             opacity: 1,
             scrollTrigger: {
                 trigger: "medalFirst.current",
-                start: 4350,
+                start: 3950,
             }
         });
         gsap.to(medalSecond.current, {
             y: '-410%',
-            duration: 2,
+            duration: 6,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
                 trigger: "medalSecond.current",
-                start: 4350,
+                start: 3950,
             }
         });
         gsap.to(medalThird.current, {
             y: '-410%',
-            duration: 3,
+            duration: 6.5,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
                 trigger: "medalThird.current",
-                start: 4350,
+                start: 3950,
             }
         });
         gsap.to(winnerTrophy.current, {
             y: '-410%',
-            duration: 3.5,
+            duration: 7,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
                 trigger: "winnerTrophy.current",
-                start: 4350,
+                start: 3950,
             }
         });
 

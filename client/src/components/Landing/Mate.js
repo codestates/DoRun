@@ -1,22 +1,25 @@
 import React, { useRef, useEffect } from 'react';
 import './Mate.scss';
-import { gsap } from "gsap";
 import friends from './LandingSVG/friends.svg'
 import readingGlasses from './LandingSVG/readingGlasses.svg'
-import blob from './LandingSVG/blob.svg'
+import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// gsap.registerPlugin(ScrollTrigger, CSSPlugin);
 
-
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 function Mate() {
+
+
 
     const back = useRef(null);
     const line = useRef(null);
     const mate = useRef(null);
     const FAQ = useRef(null);
 
+
     useEffect(() => {
+
+        gsap.config({ nullTargetWarn: false, });
 
         gsap.to(back.current, {
             y: '10%',
@@ -61,6 +64,7 @@ function Mate() {
             }
         });
     });
+
 
     return (
         <>

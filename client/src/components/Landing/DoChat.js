@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './DoChat.scss';
+import doChat from './LandingSVG/doChat.gif'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -13,35 +14,35 @@ function DoChat() {
     useEffect(() => {
         gsap.to(dotsLeft.current, {
             y: '-170%',
-            duration: 3,
+            duration: 10,
             ease: 'elastic',
             opacity: 1,
             scrollTrigger: {
                 trigger: "dotsLeft.current",
-                start: 3000,
-                markers: true,
+                start: 3250,
+                // markers: true,
             }
         });
 
         gsap.to(dotsRight.current, {
             y: '-170%',
-            duration: 3,
+            duration: 10,
             ease: 'elastic',
             opacity: 1,
             scrollTrigger: {
                 trigger: "dotsRight.current",
-                start: 3000,
+                start: 3200,
             }
         });
 
         gsap.to(chatText.current, {
             y: '140%',
-            duration: 4,
+            duration: 7,
             ease: 'elastic',
             opacity: 1,
             scrollTrigger: {
                 trigger: "chatText.current",
-                start: 3000,
+                start: 3200,
             }
         });
 
@@ -52,7 +53,7 @@ function DoChat() {
     return (
         <div className="doChatWrapper">
             <div className='doChat'>
-                <div className='doChatGIF'> 채팅 gif가 들어갈 자리입니다 </div>
+                <img className='doChatGIF' src={doChat} />
                 <div className="doChatBubbles">
                     <div className="doChatBubbleLeft" >
                         <div className="doChatBubbleLeftDots" ref={dotsLeft}>...</div>
@@ -66,7 +67,7 @@ function DoChat() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

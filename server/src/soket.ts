@@ -22,7 +22,9 @@ function socketInit(server) {
       socket.on("joinRoom", async (crewId, userId, nickname) => {
         // db에 최초 접속시에만 메세지확인해서 없으면 저장 있으면 저장 노노
         //클라에서 userId로 비교하는게 아니고 message로 비교
-        const StartChatId = await Chat.findOne({ userId });
+        const StartChatId = await Chat.findOne({
+          where: { userId, crewId },
+        });
         socket.join(crewId);
         if (!StartChatId) {
           const ChatDB = Chat.create({
@@ -75,13 +77,15 @@ function socketInit(server) {
         //io.emit("recvMessage", { name, message });
       });
 
-      socket.on("getAllMessages", async (userId) => {
+      socket.on("getAllMessages", async (userId, crewId) => {
+        /// crewId 추가 where에도추가
         //DB에서 요청 받은 방에대한 모든 메세지 조회후 응답
         const StartChatId = await Chat.findOne({
           select: ["id", "crewId"],
           where: {
             //message: `${nickname}님이 입장하셨습니다.`,
             userId,
+            crewId,
           },
         });
         if (!!StartChatId) {

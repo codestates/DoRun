@@ -24,7 +24,7 @@ const Chat = () => {
 
   useEffect(() => {
     socket.emit('joinRoom', userCrewId, userId, nickname);
-    socket.emit('getAllMessages', userId);
+    socket.emit('getAllMessages', userId, userCrewId);
     socket.on('getAllMessages', (data) => {
       setMessages([...data]);
     });

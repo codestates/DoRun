@@ -1,6 +1,8 @@
 import { Chat } from "./entity/Chat";
 import { User } from "./entity/User";
 import { getRepository, MoreThanOrEqual } from "typeorm";
+import { createAdapter } from "@socket.io/redis-adapter";
+import { RedisClient } from "redis";
 
 function socketInit(server) {
   const io = require("socket.io")(server, {
@@ -10,17 +12,16 @@ function socketInit(server) {
     },
     transports: ["websocket"],
   });
-  // const { createClient } = require("redis");
-  // const redisAdapter = require("@socket.io/redis-adapter");
-  // const pubClient = createClient({
-  //   host: process.env.REDIS_HOST,
-  //   port: process.env.REDIS_PORT,
-  //   password: process.env.REDIS_PASSWORD,
-  // });
-  // const subClient = pubClient.duplicate();
 
-  // io.adapter(redisAdapter(pubClient, subClient));
-  const processPID = require("process"); //PID test
+  const pubClient = new RedisClient({
+    host: process.env.REDIS_HOST,
+    port: parseInt(process.env.REDIS_PORT),
+    password: process.env.REDIS_PASSWORD,
+  });
+  const subClient = pubClient.duplicate();
+
+  io.adapter(createAdapter(pubClient, subClient));
+  //const processPID = require("process"); //PID test
 
   try {
     io.on("connect", (socket) => {

@@ -29,14 +29,14 @@ async function socketInit(server) {
   // );
 
   /////////
-  const pubClient = new RedisClient({
-    host: process.env.REDIS_HOST,
-    port: parseInt(process.env.REDIS_PORT),
-    password: process.env.REDIS_PASSWORD,
-  });
-  const subClient = pubClient.duplicate();
+  // const pubClient = new RedisClient({
+  //   host: process.env.REDIS_HOST,
+  //   port: parseInt(process.env.REDIS_PORT),
+  //   password: process.env.REDIS_PASSWORD,
+  // });
+  // const subClient = pubClient.duplicate();
 
-  io.adapter(createAdapter(pubClient, subClient));
+  // io.adapter(createAdapter(pubClient, subClient));
   //const processPID = require("process"); //PID test
 
   const chatIo = io.of("/");

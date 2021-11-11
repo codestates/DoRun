@@ -13,6 +13,21 @@ function socketInit(server) {
     transports: ["websocket"],
   });
 
+  /////////
+  // const { setupWorker } = require("@socket.io/sticky");
+  // const { createAdapter } = require("@socket.io/cluster-adapter");
+  // io.adapter(createAdapter());
+  // setupWorker(io);
+  const redis = require("socket.io-redis");
+  io.adapter(
+    redis({
+      host: "localhost",
+      port: 6379,
+      password: 123123,
+    })
+  );
+
+  /////////
   // const pubClient = new RedisClient({
   //   host: process.env.REDIS_HOST,
   //   port: parseInt(process.env.REDIS_PORT),

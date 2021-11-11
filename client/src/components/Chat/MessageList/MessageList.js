@@ -10,7 +10,6 @@ const MessageList = ({ messages, userId }) => {
   useEffect(scrollToBottom, [messages]);
 
   const renderChat = () => {
-    console.log(messages);
     let messageList = [];
     messages.map((el, index) => {
       if (el.userId) {

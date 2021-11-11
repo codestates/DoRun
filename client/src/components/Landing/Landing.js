@@ -2,7 +2,7 @@ import React from 'react';
 import Walk from './Walk'
 import Mate from './Mate';
 import Search from './Search';
-import Join from './Join';
+import Create from './Create';
 import DoChat from './DoChat';
 import Medal from './Medal';
 
@@ -17,7 +17,7 @@ const Landing = () => {
         <Walk />
         <Mate />
         <Search />
-        <Join />
+        <Create />
         <DoChat />
         <Medal />
       </div>

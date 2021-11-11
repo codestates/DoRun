@@ -4,6 +4,7 @@
     background-image: url("../Landing/LandingSVG/blob.svg");
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 50vw;
 }
 
 .mateBack{
@@ -11,7 +12,7 @@
 }
 
 .mateLine {
-    font-size: 2.5vh;
+    font-size: 2.5vw;
     font-weight: 500;
     line-height: 160%;
     text-align: center;
@@ -20,7 +21,7 @@
 
 .matePicture{
     display: flex;
-    margin-top: 12vh;
+    margin-top: 12vw;
     margin-bottom: 10vh;
     z-index: 9999;
 }
@@ -30,17 +31,21 @@
     flex-direction: column;
     flex: 1 1 auto;
     width: 40vw;
-    height: 35vh;
-    // margin-left: 20vmin;
+    height: 35vw;
+    margin-top: 5vw;
     transform: rotate(90deg);
-    // border: 1px solid green;
 }
 
 .mate{
     flex-direction: column;
     flex: 1 1 auto;
     width: 40vw;
-    height: 35vh;
-    // border: 1px solid red;
+    height: 45vw;
 }
 
+
+@media screen and (max-width: 768px) {
+    .mateWrapper {
+      min-width: 320px;
+    }
+  }

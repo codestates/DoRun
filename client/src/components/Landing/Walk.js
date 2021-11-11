@@ -38,7 +38,7 @@ function Walk() {
                     <div className='line' > 혼자 뛰기 심심할 때, </div>
                     <div className='line' > '오늘만 함께 할' </div>
                     <div className='line' > Do Run 메이트를 만들어보세요! </div>
-                    <div className='btn'> Do Run!! </div>
+                    <div className='walkBtn'> Do Run!! </div>
 
                 </div>
             </div>

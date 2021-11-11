@@ -1,35 +1,61 @@
 .medalWrapper{
-    display: flex;
     margin: 20rem auto;
-    border: 1px solid blue;
+    // border: 1px solid rgb(175, 175, 179);
 
 }
 
 .growingTextWrapper{
-    
+    height: 10vw;
+    // border: 1px solid purple;
+    text-align: center;
+    justify-content: center;
 }
+
+.growingLine{
+    font-size: 2vw;
+    font-weight: 600;
+    // border: 1px solid gray;
+}
+
+.growingPicWrapper{
+    display: flex;
+}
+
 
 .growing{
     flex-direction: column;
     width: 30%;
     height: 50%;
-    border: 1px solid red;
+    margin-top: 3vw;
+    // border: 1px solid red;
 }
 
 .medals{
+    display: flex;
     width: 50%;
     height: 50%;
     margin-top: 10vw;
     margin-left: 20vw;
+    // border: 1px solid red;
 
-    border: 1px solid red;
 }
 
 .medal{ 
     width: 7vw;
     height: 7vw;
-    margin-left: 2vw;
-    margin-top: 15vw;
+    margin-top: 35vw;
+    margin-left: 1vw;
+    &:last-child {
+        height: 8vw;
+        margin-top: 38.5vw;
+        // background-color: black;
+    }
     // border: 1px solid green;
 }
 
+
+@media screen and (max-width: 768px) {
+    .medalWrapper {
+      min-width: 320px;
+    }
+  }

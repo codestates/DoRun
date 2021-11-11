@@ -1,22 +1,60 @@
 .searchWrapper{
-    display: flex;
-    margin: 20rem auto;
+    margin: 40rem auto auto auto;
     // border: 1px solid blue;
+}
+
+.searchGIFWrapper{
+    // display: flex;
+    margin-top: -10vw;
 }
 
 .searchGIF{
     flex-direction: column;
-    width: 40%;
-    height: 50%;
+    width: 60vw;
+    height: 35vw;
+    margin-left: 20%;
     border-radius: 12px;
     // border: 1px solid red;
 }
 
+.searchContentWrapper{
+    display: flex;
+}
+
+
+
+
 .search{
     flex-direction: column;
-    width: 30%;
-    height: 50%;
-    margin-top: 10vh;
-    margin-left: 10vw;
-    border: 1px solid red;
+    width: 30vw;
+    height: 50vw;
+    margin-top: -20vw;
+    margin-left: 25vw;
+    z-index: 999;
+    // border: 1px solid red;
 }
+
+
+
+.searchContentText{
+    width: 50vw;
+    height: 20vh;
+    margin-top: 3vw;
+    margin-left: 5vw;
+    flex-direction: column;
+    z-index: 9999;
+    // border: 1px solid red;
+}
+
+.searchContentLine {
+    font-size: 2.5vw;
+    font-weight: 500;
+    line-height: 4.5vw;
+    // border: 1px solid gray;
+}
+
+@media screen and (max-width: 768px) {
+    .searchWrapper {
+      min-width: 320px;
+    }
+  }

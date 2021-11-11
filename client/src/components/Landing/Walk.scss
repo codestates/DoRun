@@ -1,7 +1,7 @@
 .walkWrapper{
     display: flex;
     margin: 20rem auto; 
-    border: 1px solid blue;
+    // border: 1px solid blue;
 }
 
 .walk {
@@ -9,7 +9,7 @@
     flex: 1 1 auto;
     width: 30vw;
     height: 50vh;
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 .walkInfo{
@@ -21,18 +21,18 @@
     margin-top: 30vh;
     font-size: 2rem;
     font-weight: 500;
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 .line {
-    font-size: 1.5vw;
-    line-height: 160%;
+    font-size: 2vw;
+    line-height: 3vw;
     &:nth-child(1) {
-        margin-top: 5vh;
+        margin-top: 3vh;
     }
 }
 
-.btn{
+.walkBtn{
     width: 8rem;
     height: 2.5rem;
     margin-top: 1rem;

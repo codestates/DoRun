@@ -40,7 +40,7 @@ function Mate() {
             }
         });
         gsap.to(FAQ.current, {
-            x: '20%',
+            x: '35%',
             duration: 4,
             ease: 'back',
             opacity: 1,
@@ -51,7 +51,7 @@ function Mate() {
         });
 
         gsap.to(mate.current, {
-            x: '-20%',
+            x: '-35%',
             duration: 4,
             ease: 'back',
             opacity: 1,

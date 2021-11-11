@@ -17,7 +17,7 @@ const ChangedModal = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser(userId));
-    history.push('/');
+    document.location.href = '/';
   };
   return (
     <div className="modalContainer">

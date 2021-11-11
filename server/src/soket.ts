@@ -20,6 +20,7 @@ function socketInit(server) {
   const subClient = pubClient.duplicate();
 
   io.adapter(redisAdapter(pubClient, subClient));
+  const processPID = require("process"); //PID test
 
   try {
     io.on("connect", (socket) => {
@@ -39,7 +40,7 @@ function socketInit(server) {
         socket.join(crewId);
         if (!StartChatId) {
           const ChatDB = Chat.create({
-            message: `${nickname}님이 입장하셨습니다.`,
+            message: `${nickname}님이 입장하셨습니다.${processPID.pid}`,
             crewId,
             userId,
             serverMsg: true,
@@ -77,6 +78,7 @@ function socketInit(server) {
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
+        console.log(processPID.pid);
         const ChatDB = Chat.create({
           nickname,
           message,

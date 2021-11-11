@@ -32,16 +32,13 @@ function CrewSignout({ crewSignoutOpen, setCrewSignoutOpen }) {
       {crewSignoutOpen ? (
         <div className="crewSignoutModal">
           <div className="closeCrewSignoutModal" onClick={closeCrewSignout}>
-            {' '}
-            &times;{' '}
+            &times;
           </div>
           <div className="crewSignoutModalNotice">
-            {' '}
-            참여한 크루에서 나가시겠습니까?{' '}
+            참여한 크루에서 나가시겠습니까?
           </div>
           <div className="crewSignoutModalBtn" onClick={crewSignoutHandler}>
-            {' '}
-            네, 현재 크루를 나가겠습니다{' '}
+            네, 현재 크루를 나가겠습니다
           </div>
         </div>
       ) : (

@@ -10,17 +10,17 @@ function socketInit(server) {
     },
     transports: ["websocket"],
   });
-  const { createClient } = require("redis");
-  const redisAdapter = require("@socket.io/redis-adapter");
-  const pubClient = createClient({
-    host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT,
-    password: process.env.REDIS_PASSWORD,
-  });
-  const subClient = pubClient.duplicate();
+  // const { createClient } = require("redis");
+  // const redisAdapter = require("@socket.io/redis-adapter");
+  // const pubClient = createClient({
+  //   host: process.env.REDIS_HOST,
+  //   port: process.env.REDIS_PORT,
+  //   password: process.env.REDIS_PASSWORD,
+  // });
+  // const subClient = pubClient.duplicate();
 
-  io.adapter(redisAdapter(pubClient, subClient));
-  const processPID = require("process"); //PID test
+  // io.adapter(redisAdapter(pubClient, subClient));
+  // const processPID = require("process"); //PID test
 
   try {
     io.on("connect", (socket) => {
@@ -40,7 +40,7 @@ function socketInit(server) {
         socket.join(crewId);
         if (!StartChatId) {
           const ChatDB = Chat.create({
-            message: `${nickname}님이 입장하셨습니다.${processPID.pid}`,
+            message: `${nickname}님이 입장하셨습니다.`,
             crewId,
             userId,
             serverMsg: true,
@@ -78,7 +78,6 @@ function socketInit(server) {
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
-        console.log(processPID.pid);
         const ChatDB = Chat.create({
           nickname,
           message,

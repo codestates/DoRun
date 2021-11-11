@@ -26,6 +26,7 @@ const Chat = () => {
     socket.emit('joinRoom', userCrewId, userId, nickname);
     socket.emit('getAllMessages', userId, userCrewId);
     socket.on('getAllMessages', (data) => {
+      console.log(data);
       setMessages([...data]);
     });
   }, []);
@@ -34,15 +35,11 @@ const Chat = () => {
     socket.on(
       'recvMessage',
       (userId, nickname, message, chatCreatedAt, serverMsg) => {
-        const date = new Date(chatCreatedAt);
-        const curDate = `${
-          date.getMonth() + 1
-        }-${date.getDate()} \u00a0 ${date.getHours()}:${date.getMinutes()}`;
         setSocketMsg({
           userId: userId,
           nickname: nickname,
           message: message,
-          createdAt: curDate,
+          createdAt: chatCreatedAt,
           serverMsg: serverMsg,
         });
       }

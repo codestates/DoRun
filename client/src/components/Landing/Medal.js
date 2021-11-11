@@ -11,8 +11,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 function Medal() {
-
-
     const growing = useRef(null);
     const medalFirst = useRef(null);
     const medalSecond = useRef(null);
@@ -20,55 +18,57 @@ function Medal() {
     const winnerTrophy = useRef(null);
 
     useEffect(() => {
+
+
         gsap.to(growing.current, {
             x: '60%',
-            duration: 5,
+            duration: 3,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "growing.current",
-                start: 3700,
+                scrub: 3,
+                start: '65% top',
                 // markers: true,
             }
         });
         gsap.to(medalFirst.current, {
-            y: '-410%',
-            duration: 5.5,
-            ease: "back",
+            y: '-80%',
+            duration: 24,
+            ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "medalFirst.current",
-                start: 3750,
+                scrub: 1,
+                start: '68% top',
             }
         });
         gsap.to(medalSecond.current, {
-            y: '-410%',
-            duration: 6,
+            y: '-80%',
+            duration: 48,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "medalSecond.current",
-                start: 3750,
+                scrub: 1,
+                start: '70% top',
             }
         });
         gsap.to(medalThird.current, {
-            y: '-410%',
-            duration: 6.5,
+            y: '-80%',
+            duration: 72,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "medalThird.current",
-                start: 3800,
+                scrub: 1,
+                start: '72% top',
             }
         });
         gsap.to(winnerTrophy.current, {
-            y: '-410%',
-            duration: 7,
+            y: '-80%',
+            duration: 96,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "winnerTrophy.current",
-                start: 3800,
+                scrub: 1,
+                start: '74% top',
             }
         });
 

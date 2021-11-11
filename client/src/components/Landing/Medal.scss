@@ -1,5 +1,5 @@
 .medalWrapper{
-    margin: 20rem auto 10rem auto;
+    margin: 20rem auto;
     // border: 1px solid rgb(175, 175, 179);
 
 }
@@ -43,11 +43,11 @@
 .medal{ 
     width: 7vw;
     height: 7vw;
-    margin-top: 35vw;
+    margin-top: 9vw;
     margin-left: 1vw;
     &:last-child {
-        height: 8vw;
-        margin-top: 38.5vw;
+        height: 7.2vw;
+        // margin-top: 11.8vw;
         // background-color: black;
     }
     // border: 1px solid green;

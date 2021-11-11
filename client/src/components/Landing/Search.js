@@ -15,33 +15,33 @@ function Search() {
 
     useEffect(() => {
         gsap.to(searchGIF.current, {
-            y: '20%',
+            y: '70%',
             duration: 2,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "searchGIF.current",
-                start: 1600,
+                scrub: 1,
+                start: '10 top',
+                // markers: true,
             }
         });
         gsap.to(searchMate.current, {
             x: '-30%',
-            duration: 3,
+            duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "searchMate.current",
-                start: 1650,
+                scrub: 1,
+                // markers: true,
             }
         });
         gsap.to(searchText.current, {
             x: '20%',
-            duration: 3,
+            duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "searchText.current",
-                start: 1650,
+                scrub: 1,
             }
         });
 

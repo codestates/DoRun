@@ -15,17 +15,24 @@ function Walk() {
 
         gsap.to(run.current, {
             x: '20%',
-            duration: 4,
+            duration: 1,
             ease: 'back',
             opacity: 1,
+            scrollTrigger: {
+                scrub: 1,
+            }
 
         });
 
         gsap.to(line.current, {
-            y: '-150',
-            duration: 2,
+            y: '-100%',
+            duration: 1,
             ease: 'back',
             opacity: 1,
+            scrollTrigger: {
+                scrub: 1,
+                // markers: true,
+            }
         });
 
     });

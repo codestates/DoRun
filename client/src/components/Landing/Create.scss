@@ -1,5 +1,5 @@
 .joinWrapper{
-    margin: 10rem auto;
+    margin: 15rem auto;
     // border: 1px solid blue;
 }
 
@@ -13,9 +13,9 @@
   flex-direction: column;
   width: 40vw;
   height: 40vw;
-  margin: 1vw;
-  margin-top: 40vw;
+  margin-top: 7vw;
   margin-left: 7vw;
+  margin-bottom: 50vw;
   border-radius: 8px;
   z-index: 999;
   // border: 1px solid green;
@@ -25,6 +25,7 @@
   flex-direction: column;
   width: 50vw;
   height: 30vw;
+  margin-top: 35vw;
   text-align: center;
   justify-content: center;
   background-image: url('./LandingSVG/blob2.png');

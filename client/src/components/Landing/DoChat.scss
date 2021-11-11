@@ -12,6 +12,7 @@
   width: 45vw;
   height: 30vw;
   margin: 2vw 30%;
+  z-index: 999;
   // border: 1px solid orange;
 }
 
@@ -29,8 +30,8 @@
   margin-top: -20vw;
   text-align: center;
   justify-content: center;
+  z-index: 1;
   // border: 1px solid olive;
-  z-index: 999;
 }
 
 .doChatBubblesLine{
@@ -44,7 +45,7 @@
   width: 15vw;
   height: 15vw;
   flex-direction: column;
-  margin-left: 2vw;
+  margin-left: 5vw;
   margin-right: 10vw;
   background-image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
   background-position: center;
@@ -56,7 +57,7 @@
 .doChatBubbleLeftDots{
   text-align: center;
   justify-content: center;
-  margin: 70% 35%;
+  margin: 50% 35%;
   font-size: 3vw;
   font-weight: 900;
   letter-spacing: 1vw;
@@ -67,7 +68,7 @@
 .doChatBubbleRightDots{
   text-align: center;
   justify-content: center;
-  margin: 70% 35%;
+  margin: 50% 35%;
   font-size: 3vw;
   font-weight: 900;
   letter-spacing: 1vw;

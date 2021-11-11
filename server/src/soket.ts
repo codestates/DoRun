@@ -14,18 +14,19 @@ function socketInit(server) {
   });
 
   /////////
-  // const { setupWorker } = require("@socket.io/sticky");
-  // const { createAdapter } = require("@socket.io/cluster-adapter");
-  // io.adapter(createAdapter());
-  // setupWorker(io);
-  const redis = require("socket.io-redis");
-  io.adapter(
-    redis({
-      host: process.env.REDIS_HOST,
-      port: parseInt(process.env.REDIS_PORT),
-      password: process.env.REDIS_PASSWORD,
-    })
-  );
+  const { setupWorker } = require("@socket.io/sticky");
+  const { createAdapter } = require("@socket.io/cluster-adapter");
+  io.adapter(createAdapter());
+  setupWorker(io);
+  //////////////////////////////
+  // const redis = require("socket.io-redis");
+  // io.adapter(
+  //   redis({
+  //     host: process.env.REDIS_HOST,
+  //     port: parseInt(process.env.REDIS_PORT),
+  //     password: process.env.REDIS_PASSWORD,
+  //   })
+  // );
 
   /////////
   // const pubClient = new RedisClient({

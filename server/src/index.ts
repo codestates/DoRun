@@ -32,7 +32,27 @@ app.use(
 app.use("/", router);
 
 app.get("/", (req: express.Request, res: express.Response) => {
-  res.send("Hello");
+  res.send(
+    `${
+      (process.env.SERVER_PORT,
+      process.env.DATABASE_USER,
+      process.env.DATABASE_PASSWORD,
+      process.env.DATABASE_PORT,
+      process.env.DATABASE_HOST,
+      process.env.DATABASE_NAME,
+      process.env.NODE_ENV,
+      process.env.KAKAO_CLIENT_ID,
+      process.env.SERVER_PORT,
+      process.env.ACCESS_SECRET,
+      process.env.REFRESH_SECRET,
+      process.env.S3_ACCESS_KEY,
+      process.env.S3_SECRET_KEY,
+      process.env.S3_REGION,
+      process.env.REDIS_HOST,
+      process.env.REDIS_PORT,
+      process.env.REDIS_PASSWORD)
+    }`
+  );
 });
 
 const server = http.createServer(app);

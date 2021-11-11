@@ -10,7 +10,6 @@ const MessageList = ({ messages, userId }) => {
   useEffect(scrollToBottom, [messages]);
 
   const renderChat = () => {
-    console.log(messages);
     let messageList = [];
     messages.map((el, index) => {
       if (el.userId) {
@@ -19,7 +18,7 @@ const MessageList = ({ messages, userId }) => {
             <div className="message-center server-message" key={index}>
               <div className="message-content">
                 <div className="message-text">{el.message}</div>
-                <div className="message-time">{el.createdAt}</div>
+                {/* <div className="message-time">{el.createdAt}</div> */}
               </div>
             </div>
           );

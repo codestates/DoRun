@@ -34,18 +34,20 @@ const Chat = () => {
     socket.on(
       'recvMessage',
       (userId, nickname, message, chatCreatedAt, serverMsg) => {
-        // console.log(userId, nickname, message, chatCreatedAt);
+        const date = new Date(chatCreatedAt);
+        const curDate = `${
+          date.getMonth() + 1
+        }-${date.getDate()} \u00a0 ${date.getHours()}:${date.getMinutes()}`;
         setSocketMsg({
           userId: userId,
           nickname: nickname,
           message: message,
-          createdAt: chatCreatedAt,
+          createdAt: curDate,
           serverMsg: serverMsg,
         });
       }
     );
   }, []);
-
   useEffect(() => {
     if (socketMsg.message) {
       setMessages([...messages, socketMsg]);
@@ -56,7 +58,7 @@ const Chat = () => {
     <div id="chatContainer" className="chatWrapper">
       <ChatHeader />
       <div className="chatMain">
-        <SideBar userCrewId={userCrewId} />
+        <SideBar userCrewId={userCrewId} socketMsg={socketMsg} />
         <MessageList messages={messages} userId={userId} />
       </div>
       <Input

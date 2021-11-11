@@ -8,7 +8,7 @@ import {
   faCheck,
 } from '@fortawesome/free-solid-svg-icons';
 
-const SideBar = ({ userCrewId }) => {
+const SideBar = ({ userCrewId, socketMsg }) => {
   const [crewData, setCrewData] = useState({
     title: '',
     member: [],
@@ -31,13 +31,12 @@ const SideBar = ({ userCrewId }) => {
     axios
       .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
       .then((res) => {
-        console.log(res.data);
         setCrewData({
           title: res.data.data.title,
           member: [...res.data.CrewInUser],
         });
       });
-  }, []);
+  }, [socketMsg]);
 
   return (
     <>

@@ -21,9 +21,9 @@ function socketInit(server) {
   const redis = require("socket.io-redis");
   io.adapter(
     redis({
-      host: "localhost",
-      port: 6379,
-      password: 123123,
+      host: process.env.REDIS_HOST,
+      port: parseInt(process.env.REDIS_PORT),
+      password: process.env.REDIS_PASSWORD,
     })
   );
 

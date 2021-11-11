@@ -18,7 +18,7 @@ const MessageList = ({ messages, userId }) => {
             <div className="message-center server-message" key={index}>
               <div className="message-content">
                 <div className="message-text">{el.message}</div>
-                <div className="message-time">{el.createdAt}</div>
+                {/* <div className="message-time">{el.createdAt}</div> */}
               </div>
             </div>
           );

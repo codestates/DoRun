@@ -8,7 +8,18 @@ function socketInit(server) {
       origin: "*",
       credentials: true,
     },
+    transports: ["websocket"],
   });
+  const { createClient } = require("redis");
+  const redisAdapter = require("@socket.io/redis-adapter");
+  const pubClient = createClient({
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    password: process.env.REDIS_PASSWORD,
+  });
+  const subClient = pubClient.duplicate();
+
+  io.adapter(redisAdapter(pubClient, subClient));
 
   try {
     io.on("connect", (socket) => {

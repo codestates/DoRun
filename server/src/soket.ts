@@ -1,8 +1,6 @@
 import { Chat } from "./entity/Chat";
 import { User } from "./entity/User";
 import { getRepository, MoreThanOrEqual } from "typeorm";
-import { createAdapter } from "@socket.io/redis-adapter";
-import { RedisClient } from "redis";
 
 async function socketInit(server) {
   const io = require("socket.io")(server, {

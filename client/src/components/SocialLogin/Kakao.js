@@ -2,11 +2,15 @@ import axios from 'axios';
 import './Kakao.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { kakaoUser } from '../../_actions/user_action';
-const { REACT_APP_KAKAO_SOCIAL_LOGIN } = process.env;
+const { REACT_APP_KAKAO_SOCIAL_LOGIN, REACT_APP_KAKAO_REDIRECT_URL } = process.env;
 axios.defaults.withCredentials = true;
 
 const SocialLoginKakao = () => {
-  const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=${REACT_APP_KAKAO_REDIRECT_URL}`;
+
+  const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=http://localhost:3000/login`;
+
+  //! 배포 때 아래로 바꿔주기
+  // const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=${REACT_APP_KAKAO_REDIRECT_URL}`;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 

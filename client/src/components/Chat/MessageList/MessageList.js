@@ -10,16 +10,20 @@ const MessageList = ({ messages, userId }) => {
   useEffect(scrollToBottom, [messages]);
 
   const renderChat = () => {
-    console.log(messages);
     let messageList = [];
     messages.map((el, index) => {
+      const date = new Date(el.createdAt);
+      const fixedDate = `${
+        date.getMonth() + 1
+      }-${date.getDate()} \u00a0 ${date.getHours()}:${date.getMinutes()}`;
+
       if (el.userId) {
         if (el.serverMsg === true) {
           messageList.push(
             <div className="message-center server-message" key={index}>
               <div className="message-content">
                 <div className="message-text">{el.message}</div>
-                <div className="message-time">{el.createdAt}</div>
+                <div className="message-time">{fixedDate}</div>
               </div>
             </div>
           );
@@ -29,7 +33,7 @@ const MessageList = ({ messages, userId }) => {
               <div className="message-row you-message" key={index}>
                 <div className="message-content">
                   <div className="message-text">{el.message}</div>
-                  <div className="message-time">{el.createdAt}</div>
+                  <div className="message-time">{fixedDate}</div>
                 </div>
               </div>
             );
@@ -40,7 +44,7 @@ const MessageList = ({ messages, userId }) => {
                   <img src="/defaultImg.png" alt="profileImg" />
                   <div className="message-username">{el.nickname}</div>
                   <div className="message-text">{el.message}</div>
-                  <div className="message-time">{el.createdAt}</div>
+                  <div className="message-time">{fixedDate}</div>
                 </div>
               </div>
             );

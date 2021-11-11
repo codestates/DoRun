@@ -1,0 +1,50 @@
+.joinWrapper{
+    margin: 10rem auto;
+    // border: 1px solid blue;
+}
+
+.join{
+    display: flex;
+    // border: 1px solid red;
+}
+
+
+.joinGIF{
+  flex-direction: column;
+  width: 40vw;
+  height: 40vw;
+  margin: 1vw;
+  margin-top: 40vw;
+  margin-left: 7vw;
+  border-radius: 8px;
+  z-index: 999;
+  // border: 1px solid green;
+}
+
+.joinContenText{
+  flex-direction: column;
+  width: 50vw;
+  height: 30vw;
+  text-align: center;
+  justify-content: center;
+  background-image: url('./LandingSVG/blob2.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50vw;
+  // border: 1px solid orange;
+}
+
+.joinContenLine{
+  font-size: 2vw;
+  font-weight: 500;
+  &:nth-child(1) {
+    margin-top: 10vw;
+  }
+  // border: 1px solid gray;
+}
+
+@media screen and (max-width: 768px) {
+    .joinWrapper {
+      min-width: 320px;
+    }
+  }

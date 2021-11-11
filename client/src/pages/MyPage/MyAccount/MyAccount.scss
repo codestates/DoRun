@@ -57,6 +57,7 @@
             object-fit: cover;
             opacity: 1;
             transition: opacity 0.2s;
+            z-index: 9998;
           }
           .hoveredArea {
             display: flex;

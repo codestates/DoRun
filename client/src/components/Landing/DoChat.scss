@@ -1,0 +1,97 @@
+.doChatWrapper{
+    margin: 20rem auto;
+    // border: 1px solid blue;
+}
+
+.doChat{
+    height: 60vw;
+    // border: 1px solid red;
+}
+
+.doChatGIF{
+  width: 45vw;
+  height: 30vw;
+  margin: 2vw 30%;
+  // border: 1px solid orange;
+}
+
+.doChatBubbles{
+  display: flex;
+  width: 90vw;
+  height: 20vw;
+  margin: auto;
+  // border: 1px solid black
+}
+
+.doChatBubblesText{
+  width: 35vw;
+  height: 15vw;
+  margin-top: -20vw;
+  text-align: center;
+  justify-content: center;
+  // border: 1px solid olive;
+  z-index: 9999;
+}
+
+.doChatBubblesLine{
+  font-size: 2vw;
+  font-weight: 600;
+  &:nth-child(1) {
+    margin-top: 3vw;
+  }
+}
+.doChatBubbleLeft {
+  width: 15vw;
+  height: 15vw;
+  flex-direction: column;
+  margin-left: 2vw;
+  margin-right: 10vw;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 15vw;
+  // border: 1px solid pink;
+}
+
+.doChatBubbleLeftDots{
+  text-align: center;
+  justify-content: center;
+  margin: 70% 35%;
+  font-size: 3vw;
+  font-weight: 900;
+  letter-spacing: 1vw;
+  color: white;
+  z-index: 9999;
+}
+
+.doChatBubbleRightDots{
+  text-align: center;
+  justify-content: center;
+  margin: 70% 35%;
+  font-size: 3vw;
+  font-weight: 900;
+  letter-spacing: 1vw;
+  color: white;
+  z-index: 9999;
+}
+
+
+.doChatBubbleRight{
+  width: 15vw;
+  height: 15vw;
+  flex-direction: column;
+  margin-left: 10vw;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 15vw;
+  transform: scaleX(-1);
+  // border: 1px solid pink;
+}
+
+
+@media screen and (max-width: 768px) {
+    .doChatWrapper {
+      min-width: 320px;
+    }
+  }

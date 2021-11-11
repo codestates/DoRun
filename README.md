@@ -1,6 +1,6 @@
 # DoRun
 
-홈 이미지
+<img src="https://user-images.githubusercontent.com/64679541/141209201-5b508722-48b0-4131-9aea-62532ef57036.png" width="100%" />
 
 > 혼자 뛰기 심심할 때, 함께 달릴 DoRun 메이트를 만들어보세요  
 > 언제 어디서든 함께 뛰어줄 DoRun 메이트를 만날 수 있습니다!!  

@@ -80,7 +80,7 @@ async function kakaoUser(dataToSubmit) {
       sessionStorage.setItem('userId', response.data.data.id);
       sessionStorage.setItem('userCrewId', response.data.data.crewId);
       sessionStorage.setItem('userNickname', response.data.data.nickname);
-      return response.data;
+      return response.data.data;
     })
     .catch((e) => console.log(e));
 

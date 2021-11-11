@@ -13,36 +13,36 @@ function DoChat() {
 
     useEffect(() => {
         gsap.to(dotsLeft.current, {
-            y: '-170%',
-            duration: 10,
+            y: '-100%',
+            duration: 3,
             ease: 'elastic',
             opacity: 1,
             scrollTrigger: {
-                trigger: "dotsLeft.current",
-                start: 3250,
-                // markers: true,
+                scrub: 1,
+                start: '60% top',
             }
         });
 
         gsap.to(dotsRight.current, {
-            y: '-170%',
-            duration: 10,
+            y: '-100%',
+            duration: 3,
             ease: 'elastic',
             opacity: 1,
             scrollTrigger: {
-                trigger: "dotsRight.current",
-                start: 3200,
+                scrub: 1,
+                start: '60% top',
             }
         });
 
         gsap.to(chatText.current, {
-            y: '140%',
-            duration: 7,
+            y: '120%',
+            duration: 3,
             ease: 'elastic',
             opacity: 1,
             scrollTrigger: {
-                trigger: "chatText.current",
-                start: 3200,
+                scrub: 1,
+                start: '55% top',
+                // markers: true,
             }
         });
 

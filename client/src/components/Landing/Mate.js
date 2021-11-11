@@ -3,8 +3,8 @@ import './Mate.scss';
 import friends from './LandingSVG/friends.svg'
 import readingGlasses from './LandingSVG/readingGlasses.svg'
 import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// gsap.registerPlugin(ScrollTrigger, CSSPlugin);
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 
 function Mate() {
@@ -23,33 +23,34 @@ function Mate() {
 
         gsap.to(back.current, {
             y: '10%',
-            duration: 4,
+            duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "FAQ.current",
-                start: 300,
+                scrub: 1,
+                start: '50 top',
+                // markers: true,
             }
         })
 
         gsap.to(line.current, {
             y: '120%',
-            duration: 4,
+            duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "FAQ.current",
-                start: 400,
+                scrub: 1,
+                // markers: true,
             }
         });
         gsap.to(FAQ.current, {
             x: '35%',
-            duration: 4,
+            duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "FAQ.current",
-                start: 400,
+                scrub: 1,
+
             }
         });
 
@@ -59,8 +60,8 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "mate.current",
-                start: 400,
+                scrub: 1,
+
             }
         });
     });

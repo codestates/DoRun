@@ -12,24 +12,26 @@ function Join() {
 
     useEffect(() => {
         gsap.to(joinGIF.current, {
-            y: '-80%',
-            duration: 3,
+            y: '60%',
+            duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "joinGIF.current",
-                start: 2100,
+                scrub: 1,
+                start: '40% top',
                 // markers: true,
+
             }
         });
         gsap.to(joinText.current, {
-            y: '50%',
-            duration: 3,
+            y: '-60%',
+            duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                trigger: "joinText.current",
-                start: 2100,
+                scrub: 1,
+                start: '40% top',
+                // markers: true,
             }
         });
 

@@ -10,7 +10,7 @@ import {
 import { User } from "./User";
 import { Chat } from "./Chat";
 
-@Entity()
+@Entity("crew")
 export class Crew extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "int" })
   id: number;

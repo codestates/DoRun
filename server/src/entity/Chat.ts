@@ -11,7 +11,7 @@ import {
 } from "typeorm";
 import { Crew } from "./Crew";
 
-@Entity()
+@Entity("chat")
 export class Chat extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "int" })
   id: number;

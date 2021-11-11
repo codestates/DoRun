@@ -41,14 +41,6 @@ const LoginPage = () => {
       });
   };
 
-  // 구글 로그인을 버튼
-  // const Container = styled.div`
-  // width: 190px;
-  // height: 50px;
-  // margin-top: 30px;
-  // margin-left: 80px;
-  // padding: 3px;
-  // `
   return (
     <>
       <div className="loginBlock">

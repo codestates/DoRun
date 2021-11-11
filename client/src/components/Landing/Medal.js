@@ -27,8 +27,8 @@ function Medal() {
             opacity: 1,
             scrollTrigger: {
                 trigger: "growing.current",
-                start: 3800,
-                markers: true,
+                start: 3700,
+                // markers: true,
             }
         });
         gsap.to(medalFirst.current, {
@@ -38,7 +38,7 @@ function Medal() {
             opacity: 1,
             scrollTrigger: {
                 trigger: "medalFirst.current",
-                start: 3950,
+                start: 3750,
             }
         });
         gsap.to(medalSecond.current, {
@@ -48,7 +48,7 @@ function Medal() {
             opacity: 1,
             scrollTrigger: {
                 trigger: "medalSecond.current",
-                start: 3950,
+                start: 3750,
             }
         });
         gsap.to(medalThird.current, {
@@ -58,7 +58,7 @@ function Medal() {
             opacity: 1,
             scrollTrigger: {
                 trigger: "medalThird.current",
-                start: 3950,
+                start: 3800,
             }
         });
         gsap.to(winnerTrophy.current, {
@@ -68,7 +68,7 @@ function Medal() {
             opacity: 1,
             scrollTrigger: {
                 trigger: "winnerTrophy.current",
-                start: 3950,
+                start: 3800,
             }
         });
 

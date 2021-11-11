@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './WithdrawalModal.scss';
 
 // const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
@@ -20,9 +19,14 @@ const WithdrawalModal = () => {
         </div>
         <br />
         <div className="modalFooter">
-          <Link to="/">
-            <div className="toHome">확 인</div>
-          </Link>
+          <div
+            className="toHome"
+            onClick={() => {
+              document.location.href = '/';
+            }}
+          >
+            확 인
+          </div>
         </div>
         <br />
       </div>

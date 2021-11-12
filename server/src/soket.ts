@@ -12,17 +12,19 @@ async function socketInit(server) {
     },
     transports: ["websocket"],
   });
-  const pubClient = new RedisClient({
-    host: process.env.REDIS_HOST,
-    port: parseInt(process.env.REDIS_PORT),
-    password: process.env.REDIS_PASSWORD,
-  });
-  const subClient = pubClient.duplicate();
+  // const pubClient = new RedisClient({
+  //   host: process.env.REDIS_HOST,
+  //   port: parseInt(process.env.REDIS_PORT),
+  //   password: process.env.REDIS_PASSWORD,
+  // });
+  // const subClient = pubClient.duplicate();
 
-  io.adapter(createAdapter(pubClient, subClient));
+  // io.adapter(createAdapter(pubClient, subClient));
+
+  const chatIo = io.of("/");
   const processPID = require("process"); //PID test
   try {
-    io.on("connect", (socket) => {
+    chatIo.on("connect", (socket) => {
       console.log(`connect ${socket.id}`);
 
       socket.on("disconnect", () => {

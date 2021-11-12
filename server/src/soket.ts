@@ -21,9 +21,10 @@ async function socketInit(server) {
 
   io.adapter(createAdapter(pubClient, subClient));
 
+  const chatIo = io.of("/");
   const processPID = require("process"); //PID test
   try {
-    io.on("connect", (socket) => {
+    chatIo.on("connect", (socket) => {
       console.log(`connect ${socket.id}`);
 
       socket.on("disconnect", () => {
@@ -49,7 +50,7 @@ async function socketInit(server) {
           });
           const { createdAt, message, serverMsg } = await Chat.save(ChatDB);
 
-          io.to(crewId).emit(
+          chatIo.to(crewId).emit(
             "recvMessage",
             userId,
             "",
@@ -76,7 +77,7 @@ async function socketInit(server) {
       });
 
       socket.on("leaveRoom", async (crewId) => {
-        io.leave(crewId);
+        chatIo.leave(crewId);
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
@@ -89,7 +90,7 @@ async function socketInit(server) {
         });
         const { createdAt } = await Chat.save(ChatDB);
         //message = message + processPID.pid;
-        io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
+        chatIo.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         //io.emit("recvMessage", { name, message });
       });
 

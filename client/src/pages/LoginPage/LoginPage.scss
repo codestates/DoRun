@@ -55,11 +55,12 @@
 }
 .findPassword {
   background-color: #ffffff;
-  margin: 10px 0px 0px 210px;
+  margin-top: 10px;
+  float: right;
   text-align: right;
-  font-size: 12px;
+  font-size: 0.8rem;
   font-weight: bold;
-  color: #777;
+  color: #999;
   cursor: pointer;
 }
 .isRegisted {
@@ -98,8 +99,8 @@ input[type='submit'] {
   text-transform: uppercase;
   border: none;
   padding: 20px;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 500;
   letter-spacing: 10px;
   cursor: pointer;
   border-radius: 100px;

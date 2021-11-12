@@ -68,6 +68,9 @@ const LoginPage = () => {
                 type={visibility}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                style={{
+                  fontFamily: 'GmarketSans',
+                }}
               />
               <div className="showBtn" onClick={isVisible}>
                 show

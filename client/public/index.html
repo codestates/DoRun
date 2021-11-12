@@ -21,24 +21,41 @@
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <style>
+    @font-face {
+      font-family: 'GmarketSans';
+      font-weight: 300;
+      font-style: normal;
+      src: url(https://cdn.jsdelivr.net/gh/webfontworld/GmarketSans/GmarketSansTTFLight.woff2) format('woff2'),
+        url(https://cdn.jsdelivr.net/gh/webfontworld/GmarketSans/GmarketSansTTFLight.woff) format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Cafe24Ohsquare';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Cafe24Ohsquareair';
+      font-weight: normal;
+      font-style: normal;
+      src: url(https://cdn.jsdelivr.net/gh/webfontworld/cafe24/Cafe24Ohsquareair.woff2) format('woff2');
+      font-display: swap;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Cafe24Ohsquare', 'Cafe24Ohsquareair', 'GmarketSans';
     }
 
     body {
       background: #f8f9fa;
     }
   </style>
-  <style>
-    .link {
-      text-decoration: none;
-      color: inherit;
-    }
-  </style>
-
   <title>DoRun</title>
 </head>
 

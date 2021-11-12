@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Logout from '../../components/Logout/Logout';
 import Footer from '../../components/Footer/Footer';
 import MyAccount from './MyAccount/MyAccount';
 import MyDoRun from './MyDoRun/MyDoRun';
@@ -61,7 +60,6 @@ const MyPage = () => {
     await axios
       .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
       .then((res) => {
-        console.log(res);
         const {
           title,
           date,

@@ -39,7 +39,7 @@ async function socketInit(server) {
         socket.join(crewId);
         if (!StartChatId) {
           const ChatDB = Chat.create({
-            message: `${nickname}님이 입장하셨습니다.`,
+            message: `${nickname}님이 입장하셨습니다.${processPID.pid}`,
             crewId,
             userId,
             serverMsg: true,
@@ -77,6 +77,7 @@ async function socketInit(server) {
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
+        message = message + processPID.pid;
         const ChatDB = Chat.create({
           nickname,
           message,

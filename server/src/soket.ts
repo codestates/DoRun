@@ -6,57 +6,31 @@ import { RedisClient } from "redis";
 
 async function socketInit(server) {
   const io = require("socket.io")(server, {
-    cors: {
-      origin: "*",
-      credentials: true,
-    },
     transports: ["websocket"],
   });
+  const pubClient = new RedisClient({
+    host: process.env.REDIS_HOST,
+    port: parseInt(process.env.REDIS_PORT),
+  });
+  const subClient = pubClient.duplicate();
 
-  /////////
-  // const { setupWorker } = require("@socket.io/sticky");
-  // const { createAdapter } = require("@socket.io/cluster-adapter");
-  // io.adapter(createAdapter());
-  // setupWorker(io);
-  //////////////////////////////
-  // const redis = require("socket.io-redis");
-  // io.adapter(
-  //   redis({
-  //     host: process.env.REDIS_HOST,
-  //     port: parseInt(process.env.REDIS_PORT),
-  //     password: process.env.REDIS_PASSWORD,
-  //   })
-  // );
-
-  /////////
-  // const pubClient = new RedisClient({
-  //   host: process.env.REDIS_HOST,
-  //   port: parseInt(process.env.REDIS_PORT),
-  //   password: process.env.REDIS_PASSWORD,
-  // });
-  // const subClient = pubClient.duplicate();
-
-  // io.adapter(createAdapter(pubClient, subClient));
-  //const processPID = require("process"); //PID test
-
-  const chatIo = io.of("/");
+  io.adapter(createAdapter(pubClient, subClient));
 
   try {
-    chatIo.on("connect", (socket) => {
+    io.on("connect", (socket) => {
       console.log(`connect ${socket.id}`);
 
       socket.on("disconnect", () => {
         console.log(`disconnect ${socket.id}`);
       });
-
-      //crewId, userId
       socket.on("joinRoom", async (crewId, userId, nickname) => {
-        // db에 최초 접속시에만 메세지확인해서 없으면 저장 있으면 저장 노노
-        //클라에서 userId로 비교하는게 아니고 message로 비교
+        console.log(crewId);
+        socket.join(String(crewId));
+
         const StartChatId = await Chat.findOne({
           where: { userId, crewId },
         });
-        socket.join(crewId);
+
         if (!StartChatId) {
           const ChatDB = Chat.create({
             message: `${nickname}님이 입장하셨습니다.`,
@@ -66,37 +40,18 @@ async function socketInit(server) {
           });
           const { createdAt, message, serverMsg } = await Chat.save(ChatDB);
 
-          io.to(crewId).emit(
-            "recvMessage",
-            userId,
-            "",
-            message, //`${nickname}님이 입장하셨습니다.`,
-            createdAt,
-            serverMsg
-          );
+          io.to(String(crewId)).emit("recvMessage", userId, "", message, createdAt, serverMsg);
         }
-        // const ChatDB = Chat.create({
-        //   message: `${nickname}님이 입장하셨습니다.`,
-        //   crewId,
-        //   userId,
-        // });
-        // const { createdAt } = await Chat.save(ChatDB);
-        // socket.join(crewId);
-
-        // io.to(crewId).emit(
-        //   "recvMessage",
-        //   "server",
-        //   "server",
-        //   `${nickname}님이 입장하셨습니다.`,
-        //   createdAt
-        // );
       });
 
       socket.on("leaveRoom", async (crewId) => {
-        io.leave(crewId);
+        io.leave(String(crewId));
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
+        const sockets = await io.in(2).allSockets();
+        console.log(sockets);
+        console.log(crewId);
         const ChatDB = Chat.create({
           nickname,
           message,
@@ -105,8 +60,9 @@ async function socketInit(server) {
         });
         const { createdAt } = await Chat.save(ChatDB);
         //message = message + processPID.pid;
-        io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
-        //io.emit("recvMessage", { name, message });
+        // io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
+        // io.emit("recvMessage", userId, nickname, message, createdAt);
+        io.to(String(crewId)).emit("recvMessage", userId, nickname, message, createdAt);
       });
 
       socket.on("getAllMessages", async (userId, crewId) => {

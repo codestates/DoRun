@@ -89,7 +89,7 @@ async function socketInit(server) {
         });
         const { createdAt } = await Chat.save(ChatDB);
         //message = message + processPID.pid;
-        socket.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
+        io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         //io.emit("recvMessage", { name, message });
       });
 

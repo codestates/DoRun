@@ -21,7 +21,7 @@ async function socketInit(server) {
 
   io.adapter(createAdapter(pubClient, subClient));
 
-  //const chatIo = io.of("/");
+  const chatIo = io.of("/");
   const processPID = require("process"); //PID test
   try {
     io.on("connect", (socket) => {

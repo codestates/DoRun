@@ -78,6 +78,9 @@ const RegisterPage = (props) => {
               required: true,
               pattern: /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-zA-Z]).*$/,
             })}
+            style={{
+              fontFamily: 'GmarketSans',
+            }}
           />
           {errors.password && errors.password.type === 'required' && (
             <p> 비밀번호를 입력해주세요.</p>
@@ -94,6 +97,9 @@ const RegisterPage = (props) => {
               required: true,
               validate: (value) => value === password.current,
             })}
+            style={{
+              fontFamily: 'GmarketSans',
+            }}
           />
           {errors.password_confirm &&
             errors.password_confirm.type === 'required' && (

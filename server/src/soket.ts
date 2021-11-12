@@ -11,7 +11,7 @@ async function socketInit(server) {
   const pubClient = new RedisClient({
     host: process.env.REDIS_HOST,
     port: parseInt(process.env.REDIS_PORT),
-    password: process.env.REDIS_PASSWORD,
+    //password: process.env.REDIS_PASSWORD,
   });
   const subClient = pubClient.duplicate();
 

@@ -18,7 +18,7 @@ function Join() {
             opacity: 1,
             scrollTrigger: {
                 scrub: 1,
-                start: '40% top',
+                start: '35% top',
                 // markers: true,
 
             }
@@ -30,7 +30,7 @@ function Join() {
             opacity: 1,
             scrollTrigger: {
                 scrub: 1,
-                start: '40% top',
+                start: '35% top',
                 // markers: true,
             }
         });

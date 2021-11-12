@@ -39,11 +39,11 @@
 
 
 .searchContentText{
+    flex-direction: column;
     width: 50vw;
     height: 20vh;
     margin-top: 3vw;
     margin-left: 5vw;
-    flex-direction: column;
     z-index: 999;
     // border: 1px solid red;
 }
@@ -51,7 +51,8 @@
 .searchContentLine {
     font-size: 2.5vw;
     font-weight: 500;
-    line-height: 4.5vw;
+    line-height: 4vw;
+    font-family: 'Cafe24Ohsquare';
     // border: 1px solid gray;
 }
 

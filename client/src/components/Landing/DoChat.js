@@ -35,14 +35,14 @@ function DoChat() {
         });
 
         gsap.to(chatText.current, {
-            y: '120%',
+            y: '-80%',
             duration: 3,
-            ease: 'elastic',
+            ease: 'back',
             opacity: 1,
             scrollTrigger: {
                 scrub: 1,
-                start: '55% top',
-                // markers: true,
+                start: '60% top',
+                markers: true,
             }
         });
 

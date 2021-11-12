@@ -121,7 +121,7 @@ async function signoutUser(dataToSubmit) {
     .catch((e) => console.log(e));
 
   return {
-    type: LOGOUT_USER,
+    type: SIGNOUT_USER,
     payload: request,
   };
 }

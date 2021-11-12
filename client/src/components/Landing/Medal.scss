@@ -1,7 +1,6 @@
 .medalWrapper{
-    margin: 20rem auto;
+    margin: 20rem auto 10rem auto;
     // border: 1px solid rgb(175, 175, 179);
-
 }
 
 .growingTextWrapper{
@@ -43,13 +42,42 @@
 .medal{ 
     width: 7vw;
     height: 7vw;
-    margin-top: 9vw;
+    margin-top: 7vw;
     margin-left: 1vw;
-    &:last-child {
+    &:last-child() {
         height: 7.2vw;
     }
     // border: 1px solid green;
 }
+
+.topBtn{
+  // float: right;
+  width: 8vh;
+  height: 12vh;
+  margin-top: 20vh;
+  margin-left: 85vw;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.5vh;
+  color: rgb(90, 200, 214);
+  &:hover{
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+  // .topBtnLine1{
+  //     font-size: 1.5vh;
+  //     color: rgb(90, 200, 214);
+  // }
+  // .topBtnLine2{
+  //   font-size: 1.5vh;
+  //   color: rgb(90, 200, 214);
+  // }
+  // .topBtnLine3{
+  //   font-size: 1.5vh;
+  //   color: rgb(90, 200, 214);
+  // }
+}
+
 
 
 @media screen and (max-width: 768px) {

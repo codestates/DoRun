@@ -61,7 +61,6 @@ const MyPage = () => {
     await axios
       .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
       .then((res) => {
-        console.log(res);
         const {
           title,
           date,

@@ -7,7 +7,6 @@ import MapPage from './pages/MapPage/MapPage';
 import MyPage from './pages/MyPage/MyPage';
 import ChatPage from './pages/ChatPage/ChatPage';
 // import Auth from './hoc/auth';
-import Test from './pages/test';
 import Nav from './components/Header/Nav';
 
 const App = () => {
@@ -32,7 +31,6 @@ const App = () => {
         <Route path="/map" component={MapPage} />
         <Route path="/mypage" component={MyPage} />
         <Route path="/chat" component={ChatPage} />
-        <Route path="/test" component={Test} />
       </Switch>
     </>
   );

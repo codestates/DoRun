@@ -19,7 +19,7 @@ const http = require("http");
 
 createConnection(config)
   .then(() => {
-    console.log("DB CONNECTION!", process.env.NODE_ENV);
+    console.log("DB CONNECTION!");
   })
   .catch((error) => {
     console.log(error);

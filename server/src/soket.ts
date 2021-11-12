@@ -6,10 +6,6 @@ import { RedisClient } from "redis";
 
 async function socketInit(server) {
   const io = require("socket.io")(server, {
-    cors: {
-      origin: "*",
-      credentials: true,
-    },
     transports: ["websocket"],
   });
   const pubClient = new RedisClient({
@@ -21,10 +17,9 @@ async function socketInit(server) {
 
   io.adapter(createAdapter(pubClient, subClient));
 
-  const chatIo = io.of("/");
   const processPID = require("process"); //PID test
   try {
-    chatIo.on("connect", (socket) => {
+    io.on("connect", (socket) => {
       console.log(`connect ${socket.id}`);
 
       socket.on("disconnect", () => {
@@ -50,7 +45,7 @@ async function socketInit(server) {
           });
           const { createdAt, message, serverMsg } = await Chat.save(ChatDB);
 
-          chatIo.to(crewId).emit(
+          io.to(crewId).emit(
             "recvMessage",
             userId,
             "",
@@ -77,7 +72,7 @@ async function socketInit(server) {
       });
 
       socket.on("leaveRoom", async (crewId) => {
-        chatIo.leave(crewId);
+        io.leave(crewId);
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
@@ -90,7 +85,7 @@ async function socketInit(server) {
         });
         const { createdAt } = await Chat.save(ChatDB);
         //message = message + processPID.pid;
-        chatIo.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
+        io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         //io.emit("recvMessage", { name, message });
       });
 

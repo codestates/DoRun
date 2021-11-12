@@ -30,7 +30,7 @@ const CreateModal = ({ createModalHandler, location }) => {
       time: `${createData.startTime} ~ ${createData.endTime}`,
       userId: userId,
       locationMa: location.Ma,
-      locationLa: location.La
+      locationLa: location.La,
     };
 
     if (
@@ -99,6 +99,7 @@ const CreateModal = ({ createModalHandler, location }) => {
               <input
                 className="right_input"
                 type="text"
+                maxlength="16"
                 onChange={(e) => {
                   setCreateData({ ...createData, title: e.target.value });
                 }}
@@ -109,6 +110,7 @@ const CreateModal = ({ createModalHandler, location }) => {
               <input
                 className="right_input"
                 type="text"
+                maxlength="15"
                 onChange={(e) => {
                   setCreateData({ ...createData, departure: e.target.value });
                 }}

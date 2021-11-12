@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Logout from '../../components/Logout/Logout';
 import Footer from '../../components/Footer/Footer';
 import MyAccount from './MyAccount/MyAccount';
 import MyDoRun from './MyDoRun/MyDoRun';

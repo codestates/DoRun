@@ -13,6 +13,7 @@ const Footer = () => {
           <div className="footer__wrap__content">
             <div className="footer__title">About</div>
             <a
+              className="footer_link"
               href="https://github.com/codestates/DoRun/wiki"
               target="_blank"
               rel="noopener noreferrer"
@@ -20,6 +21,7 @@ const Footer = () => {
               Wiki
             </a>
             <a
+              className="footer_link"
               href="https://github.com/codestates/DoRun"
               target="_blank"
               rel="noopener noreferrer"
@@ -32,6 +34,7 @@ const Footer = () => {
             <div className="footer__title">Contact</div>
             <div>
               <a
+                className="footer_link"
                 href="https://github.com/95mg"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -39,6 +42,7 @@ const Footer = () => {
                 김민경
               </a>
               <a
+                className="footer_link"
                 href="https://github.com/raonzane"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -48,6 +52,7 @@ const Footer = () => {
             </div>
             <div>
               <a
+                className="footer_link"
                 href="https://github.com/Mokodoko"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -55,6 +60,7 @@ const Footer = () => {
                 안지균
               </a>
               <a
+                className="footer_link"
                 href="https://github.com/chayezo"
                 target="_blank"
                 rel="noopener noreferrer"

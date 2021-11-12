@@ -19,11 +19,13 @@ async function socketInit(server) {
   });
   const subClient = pubClient.duplicate();
 
+  const namespace1 = io.of("/namespace1");
+
   io.adapter(createAdapter(pubClient, subClient));
 
   const processPID = require("process"); //PID test
   try {
-    io.on("connect", (socket) => {
+    namespace1.on("connect", (socket) => {
       console.log(`connect ${socket.id}`);
 
       socket.on("disconnect", () => {
@@ -49,7 +51,7 @@ async function socketInit(server) {
           });
           const { createdAt, message, serverMsg } = await Chat.save(ChatDB);
 
-          io.to(crewId).emit(
+          namespace1.to(crewId).emit(
             "recvMessage",
             userId,
             "",
@@ -76,7 +78,7 @@ async function socketInit(server) {
       });
 
       socket.on("leaveRoom", async (crewId) => {
-        io.leave(crewId);
+        namespace1.leave(crewId);
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
@@ -89,7 +91,7 @@ async function socketInit(server) {
         });
         const { createdAt } = await Chat.save(ChatDB);
         //message = message + processPID.pid;
-        io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
+        namespace1.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         //io.emit("recvMessage", { name, message });
       });
 

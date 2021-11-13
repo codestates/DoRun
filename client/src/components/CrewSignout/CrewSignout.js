@@ -5,8 +5,6 @@ axios.defaults.withCredentials = true;
 
 function CrewSignout({ crewSignoutOpen, setCrewSignoutOpen }) {
   const currentUserId = sessionStorage.getItem('userId');
-  const currentCrewId = sessionStorage.getItem('userCrewId');
-  console.log(typeof currentCrewId);
 
   const closeCrewSignout = () => {
     if (crewSignoutOpen === true) {

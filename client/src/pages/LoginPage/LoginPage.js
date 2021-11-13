@@ -76,7 +76,6 @@ const LoginPage = () => {
                 show
               </div>
             </div>
-            <span className="findPassword">Forgot your password?</span>
             <input type="submit" name="login" style={{ marginTop: '100px' }} />
             <div className="isRegisted">
               <span>아직 회원이 아니신가요?</span>

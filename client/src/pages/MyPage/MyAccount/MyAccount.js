@@ -162,6 +162,7 @@ const MyAccount = () => {
           <br />
           <div className="wrapper_bot">
             <div className="accountErrMsg">{errMsg && errMsg}</div>
+            <br />
             <button className="mid_editBtn" onClick={editHandler}>
               수 정
             </button>

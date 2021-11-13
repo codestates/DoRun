@@ -99,7 +99,7 @@ const CreateModal = ({ createModalHandler, location }) => {
               <input
                 className="right_input"
                 type="text"
-                maxlength="16"
+                maxLength="16"
                 onChange={(e) => {
                   setCreateData({ ...createData, title: e.target.value });
                 }}
@@ -110,7 +110,7 @@ const CreateModal = ({ createModalHandler, location }) => {
               <input
                 className="right_input"
                 type="text"
-                maxlength="15"
+                maxLength="15"
                 onChange={(e) => {
                   setCreateData({ ...createData, departure: e.target.value });
                 }}

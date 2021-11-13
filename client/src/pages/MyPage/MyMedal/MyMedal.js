@@ -4,7 +4,8 @@ import './MyMedal.scss';
 const MyMedal = () => {
   return (
     <>
-      <div className="MyMedal">
+      <div className="Preparing">서비스 준비 중...</div>
+      {/* <div className="MyMedal">
         <div className="MyMedal_wrapper">
           <div className="MyMedal_medalArea">
             <div className="medal_imgArea">
@@ -31,7 +32,7 @@ const MyMedal = () => {
             <div className="medal_info">medal4 info</div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

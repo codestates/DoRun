@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux';
 import './Withdrawal.scss';
 import WithdrawalModal from '../WithdrawalModal/WithdrawalModal';
 import { signoutUser } from '../../_actions/user_action';
+import axios from 'axios';
 
 const Withdrawal = () => {
+  const userId = Number(sessionStorage.getItem('userId'));
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
   const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
@@ -13,9 +15,10 @@ const Withdrawal = () => {
     setIsActive(!isActive);
   };
 
-
   const clicked = () => {
-    dispatch(signoutUser(sessionStorage.getItem('userId')))
+    axios.delete(`${process.env.REACT_APP_SERVER}/crew/${userId}`);
+
+    dispatch(signoutUser(userId))
       .then((res) => {
         console.log('탈퇴에 대한 응답입니다.', res);
         WithdrawalModalHandler();
@@ -31,6 +34,7 @@ const Withdrawal = () => {
 
   return (
     <>
+      <div className="clicked_header">DoRun 회원탈퇴</div>
       <div className="clicked_body">
         <div>안내사항을 확인하고, Run Away 버튼을 눌러</div>
         <div>DoRun 서비스를 탈퇴할 수 있습니다.</div>
@@ -50,7 +54,7 @@ const Withdrawal = () => {
         <br />
       </div>
       <div className="clicked_footer">
-        <div>
+        <div className="footer_input">
           <input
             type="checkbox"
             onClick={checked}

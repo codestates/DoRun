@@ -4,6 +4,7 @@ $main: rgb(59, 201, 219);
   height: 540px;
   padding: 10px 10px 0px 10px;
   font-weight: bold;
+  border-top: 1px solid #dee2e6;
 }
 
 .myDoRunInfo {
@@ -166,4 +167,22 @@ $main: rgb(59, 201, 219);
   font-weight: bold;
   background-color: #ffe457;
   border-radius: 20px;
+}
+
+.MyDoRun_unjoined {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 540px;
+  .unjoined_content {
+    font-size: 20px;
+    margin: 20px;
+  }
+  .unjoined_link {
+    &:visited {
+      color: $main;
+      text-decoration: none;
+    }
+  }
 }

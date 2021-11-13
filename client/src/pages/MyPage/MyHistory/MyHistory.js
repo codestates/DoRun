@@ -9,7 +9,8 @@ const MyHistory = () => {
 
   return (
     <>
-      <div className="MyHistory">
+      <div className="Preparing">서비스 준비 중...</div>
+      {/* <div className="MyHistory">
         <div className="MyHistory_wrapper">
           <div className="MyHistory_top">
             <div className="MyHistory_title">나의 DoRun 모아보기</div>
@@ -30,7 +31,7 @@ const MyHistory = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -66,6 +66,7 @@
       background-color: #eeeeee;
       border: 1px solid #dee2e6;
       border-radius: 4px;
+      font-family: 'Cafe24Ohsquareair';
     }
     .right_date {
       display: flex;
@@ -80,10 +81,11 @@
       border-radius: 4px;
       .date {
         font-size: 0.8rem;
-        width: 245px;
+        width: 240px;
         height: 32px;
         border: none;
         background-color: #eeeeee;
+        font-family: 'Cafe24Ohsquareair';
       }
       input[type='date']::-webkit-calendar-picker-indicator {
         filter: invert(100%) brightness(50%);
@@ -116,6 +118,7 @@
         height: 32px;
         border: none;
         background-color: #eeeeee;
+        font-family: 'Cafe24Ohsquareair';
       }
       input[type='time']::-webkit-calendar-picker-indicator {
         filter: invert(100%) brightness(50%);
@@ -144,6 +147,7 @@
         align-items: center;
         justify-content: left;
         font-size: 0.8rem;
+        font-family: 'Cafe24Ohsquareair';
         .radios {
           margin: 2px 4px 0px;
         }
@@ -180,6 +184,7 @@
       background-color: #eeeeee;
       border: 1px solid #dee2e6;
       border-radius: 4px;
+      font-family: 'Cafe24Ohsquareair';
     }
   }
 }

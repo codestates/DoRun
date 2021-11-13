@@ -10,7 +10,6 @@ const config: ConnectionOptions = {
   database: process.env.DATABASE_NAME,
   synchronize: true,
   logging: false,
-
   // "entities": [
   //    //"../**/*.entity.{ts,js}"
   //    //"src/entity/**/*.ts",

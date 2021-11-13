@@ -1,6 +1,7 @@
 .joinWrapper{
-    margin: 15rem auto;
-    // border: 1px solid blue;
+  width: 100vw;
+  margin: 10rem auto 15rem auto;
+  // border: 1px solid blue;
 }
 
 .join{
@@ -13,7 +14,7 @@
   flex-direction: column;
   width: 40vw;
   height: 40vw;
-  margin-top: 7vw;
+  margin-top: 10vw;
   margin-left: 7vw;
   margin-bottom: 50vw;
   border-radius: 8px;
@@ -25,7 +26,7 @@
   flex-direction: column;
   width: 50vw;
   height: 30vw;
-  margin-top: 45vw;
+  margin-top: 50vw;
   text-align: center;
   justify-content: center;
   background-image: url('./LandingSVG/blob2.png');
@@ -39,7 +40,7 @@
   font-size: 2vw;
   font-weight: 500;
   &:nth-child(1) {
-    margin-top: 10vw;
+    margin-top: 12vw;
   }
   // border: 1px solid gray;
 }

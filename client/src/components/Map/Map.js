@@ -91,6 +91,7 @@ const Map = () => {
           //! 커스텀 오버레이 클릭 이벤트: 커스텀 오버레이를 클릭하면 모달로 연결
           customOverlayContent.addEventListener('click', () => {
             setCreateModalPosition('createUp');
+            setCrewModalPosition('down');
           });
 
           // console.log('생성마커 모달 값', createModalPosition)
@@ -115,6 +116,7 @@ const Map = () => {
               if (overlayPosition !== customOverlay) {
                 customOverlay.setMap(null);
                 setCreateModalPosition('createDown');
+                setCrewModalPosition('down');
               }
               if (createMarker.getPosition()) {
                 setCreateMarkerposition({
@@ -162,6 +164,7 @@ const Map = () => {
 
                 joinMarker.addListener('click', function () {
                   setCrewModalPosition('up');
+                  setCreateModalPosition('down');
                   // console.log('정보 좀 줘', joinMarker.getPosition())
                   // console.log('크루 아이디로 정보를 주세요', joinMarker.Gb)
                   const joinMarkerId = joinMarker.Gb;

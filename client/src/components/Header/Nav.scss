@@ -59,6 +59,18 @@ header {
   }
 }
 
+.logoutBtn {
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  &:hover {
+    color: #3bc9db;
+  }
+}
+
 .fa-code {
   margin-left: 1rem;
 }
@@ -117,6 +129,14 @@ header {
   }
 
   .nav-links {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+    &:hover {
+      color: #ffdd40;
+    }
+  }
+  .logoutBtn {
     padding: 1.5rem;
     width: 100%;
     display: table;

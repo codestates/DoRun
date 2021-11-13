@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import './Search.scss';
 import map from './LandingSVG/map.svg'
+import searchBackLeft from './LandingSVG/searchBackLeft.svg'
+import searchBackRight from './LandingSVG/searchBackRight.svg'
 import search from './LandingSVG/search2.gif'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,63 +10,91 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 function Search() {
-    const searchGIF = useRef(null);
-    const searchMate = useRef(null);
-    const searchText = useRef(null);
+  const searchGIF = useRef(null);
+  const searchMate = useRef(null);
+  const searchText = useRef(null);
+  const searchLeft = useRef(null);
+  const searchRight = useRef(null);
 
 
-    useEffect(() => {
-        gsap.to(searchGIF.current, {
-            y: '70%',
-            duration: 2,
-            ease: 'back',
-            opacity: 1,
-            scrollTrigger: {
-                scrub: 1,
-                start: '10 top',
-                // markers: true,
-            }
-        });
-        gsap.to(searchMate.current, {
-            x: '-30%',
-            duration: 1,
-            ease: 'back',
-            opacity: 1,
-            scrollTrigger: {
-                scrub: 1,
-                // markers: true,
-            }
-        });
-        gsap.to(searchText.current, {
-            x: '20%',
-            duration: 1,
-            ease: 'back',
-            opacity: 1,
-            scrollTrigger: {
-                scrub: 1,
-            }
-        });
-
-
+  useEffect(() => {
+    gsap.to(searchGIF.current, {
+      y: '75%',
+      duration: 2,
+      ease: 'back',
+      opacity: 1,
+      scrollTrigger: {
+        scrub: 1,
+        start: '10 top',
+        // markers: true,
+      }
+    });
+    gsap.to(searchLeft.current, {
+      x: '10%',
+      duration: 2,
+      ease: 'back',
+      opacity: 1,
+      scrollTrigger: {
+        scrub: 1,
+        start: 'top top',
+        // markers: true,
+      }
+    });
+    gsap.to(searchRight.current, {
+      x: '-10%',
+      duration: 2,
+      ease: 'back',
+      opacity: 1,
+      scrollTrigger: {
+        scrub: 1,
+        start: 'top top',
+        // markers: true,
+      }
+    });
+    gsap.to(searchMate.current, {
+      x: '-30%',
+      duration: 1,
+      ease: 'back',
+      opacity: 1,
+      scrollTrigger: {
+        scrub: 1,
+        // markers: true,
+      }
+    });
+    gsap.to(searchText.current, {
+      x: '25%',
+      duration: 1,
+      ease: 'back',
+      opacity: 1,
+      scrollTrigger: {
+        scrub: 1,
+      }
     });
 
-    return (
-        <>
-            <div className="searchWrapper">
-                <div className="searchGIFWrapper">
-                    <img className='searchGIF' src={search} ref={searchGIF} />
-                </div>
-                <div className="searchContentWrapper">
-                    <div className="searchContentText" ref={searchText}>
-                        <div className="searchContentLine">손 안에 핸드폰만 있으면</div>
-                        <div className="searchContentLine">언제 어디서든 함께 뛰어줄</div>
-                        <div className="searchContentLine">Do Run 메이트를 만날 수 있습니다!</div>
-                    </div>
-                    <img className="search" src={map} ref={searchMate} />
-                </div>
-            </div>
-        </>
-    )
+
+  });
+
+  return (
+    <>
+      <div className="searchWrapper">
+        <div className="searchGIFWrapper">
+          <img className='searchGIF' src={search} ref={searchGIF} />
+        </div>
+        <div className="searchGIFWrapperBack">
+          <div className="searchLeft" ref={searchLeft} >여의도 한강공원, 망원역 1번 출구, 서리풀 공원</div>
+          <div className="searchRight" ref={searchRight}>합정역 4번 출구, 도림천, 한강공원 광나루 지구</div>
+        </div>
+        <div className="searchContentWrapper">
+          <div className="searchContentText" ref={searchText}>
+            <div className="searchContentLine">손 안에 핸드폰만 있으면</div>
+            <div className="searchContentLine">언제 어디서든 함께 뛰어줄</div>
+            <div className="searchContentLine">Do Run 메이트를 만날 수 있습니다!</div>
+          </div>
+          <img className="search" src={map} ref={searchMate} />
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default Search

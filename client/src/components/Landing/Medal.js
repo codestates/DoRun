@@ -5,6 +5,7 @@ import medal1 from './LandingSVG/medal1.png';
 import medal2 from './LandingSVG/medal2.png';
 import medal3 from './LandingSVG/medal3.png';
 import winner from './LandingSVG/winner.png';
+import topBtn from './LandingSVG/topBtn.png';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -17,9 +18,7 @@ function Medal() {
   const medalSecond = useRef(null);
   const medalThird = useRef(null);
   const winnerTrophy = useRef(null);
-  const topBtn1 = useRef(null);
-  const topBtn2 = useRef(null);
-  const topBtn3 = useRef(null);
+  const theTopBtn = useRef(null);
 
   useEffect(() => {
 
@@ -35,8 +34,8 @@ function Medal() {
     });
 
     gsap.to(medalFirst.current, {
-      y: '-70%',
-      duration: 5,
+      y: '-250%',
+      duration: 11,
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
@@ -46,76 +45,54 @@ function Medal() {
       }
     });
     gsap.to(medalSecond.current, {
-      y: '-70%',
-      duration: 6,
+      y: '-250%',
+      duration: 15,
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
         scrub: 1,
-        start: '67% top',
+        start: '66% top',
         // markers: true,
       }
     });
     gsap.to(medalThird.current, {
-      y: '-70%',
-      duration: 7,
+      y: '-250%',
+      duration: 17,
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
         scrub: 1,
-        start: '69% top',
+        start: '68% top',
         // markers: true,
       }
     });
     gsap.to(winnerTrophy.current, {
-      y: '-70%',
-      duration: 8,
+      y: '-250%',
+      duration: 20,
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
         scrub: 1,
-        start: '71% top',
+        start: '70% top',
         // markers: true,
       }
     });
 
-
-    gsap.to(topBtn1.current, {
-      y: '-255%',
-      duration: 10,
+    gsap.to(theTopBtn.current, {
+      y: '-150%',
+      duration: 1,
       ease: 'back',
       opacity: 1,
-      scrollTrigger: {
-        scrub: 1,
-        start: '79% top',
-        // markers: true,
-      }
-    });
-
-
-    gsap.to(topBtn2.current, {
-      y: '85%',
-      duration: 4,
-      ease: 'back',
-      opacity: 1,
-      scrollTrigger: {
-        scrub: 1,
-        start: '75% top',
-        // markers: true,
-      }
-    });
-
-    gsap.to(topBtn3.current, {
-      y: '85%',
-      duration: 4,
-      ease: 'back',
-      opacity: 1,
-      scrollTrigger: {
-        scrub: 1,
-        start: '75% top',
-        // markers: true,
-      }
-    });
+      satrt: "90%",
+      repeat: -1,
+      repeatDelay: 1,
+      markers: true,
+      // scrollTrigger: {
+      //   scrub: 1,
+      //   start: "75%",
+      //   markers: true,
+      // }
+    })
 
 
   });
@@ -149,9 +126,7 @@ function Medal() {
         </div>
       </div>
       <div className="topBtn" onClick={pageMovingHandler}>
-        <div className="topBtnLine1" ref={topBtn1}> ▲ </div>
-        <div className="topBtnLine2" ref={topBtn2}> Let's </div>
-        <div className="topBtnLine3" ref={topBtn3}> Do Run ?</div>
+        <img className="topBtnImg" src={topBtn} ref={theTopBtn} />
       </div>
     </div>
   )

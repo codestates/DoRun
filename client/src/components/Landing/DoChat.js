@@ -3,7 +3,9 @@ import './DoChat.scss';
 import doChat from './LandingSVG/doChat.gif'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
 
 function DoChat() {
 
@@ -17,10 +19,7 @@ function DoChat() {
             duration: 3,
             ease: 'elastic',
             opacity: 1,
-            scrollTrigger: {
-                scrub: 1,
-                start: '60% top',
-            }
+            repeat: -1,
         });
 
         gsap.to(dotsRight.current, {
@@ -28,23 +27,19 @@ function DoChat() {
             duration: 3,
             ease: 'elastic',
             opacity: 1,
-            scrollTrigger: {
-                scrub: 1,
-                start: '60% top',
-            }
+            repeat: -1,
         });
 
         gsap.to(chatText.current, {
-            y: '-80%',
-            duration: 3,
-            ease: 'back',
-            opacity: 1,
-            scrollTrigger: {
-                scrub: 1,
-                start: '60% top',
-                markers: true,
-            }
-        });
+            text: {
+                value: "같은 크루의 Do Run 메이트들과 간편하게 연락을 주고 받아보세요!"
+            },
+            duration: 5,
+            ease: "none",
+            repeat: -1,
+            repeatDelay: 1,
+        })
+
 
 
     })
@@ -59,8 +54,6 @@ function DoChat() {
                         <div className="doChatBubbleLeftDots" ref={dotsLeft}>...</div>
                     </div>
                     <div className="doChatBubblesText" ref={chatText}>
-                        <div className="doChatBubblesLine"> 크루의 Do Run 메이트들과</div>
-                        <div className="doChatBubblesLine"> 간편하게 연락을 주고 받을 수도 있습니다</div>
                     </div>
                     <div className="doChatBubbleRight">
                         <div className="doChatBubbleRightDots" ref={dotsRight}>...</div>

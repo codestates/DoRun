@@ -44,9 +44,9 @@ function Join() {
             <div className='join'>
                 <img className='joinGIF' src={create} ref={joinGIF} />
                 <div className='joinContenText' ref={joinText}>
-                    <div className='joinContenLine' > 내가 원하는 곳에서 얼마나 달릴지</div>
-                    <div className='joinContenLine' > 쉽고 빠르게 Do Run 크루를 만들고</div>
-                    <div className='joinContenLine' > Do Run 메이트를 모집할 수도 있습니다!</div>
+                    <div className='joinContenLine' > 내가 원하는 장소, 원하는 시간에 맞춰</div>
+                    <div className='joinContenLine' > 쉽고 빠르게 Do Run 크루를 만들어</div>
+                    <div className='joinContenLine' > 함께 뛸 메이트를 모집할 수도 있습니다!</div>
                 </div>
             </div>
         </div>

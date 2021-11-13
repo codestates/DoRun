@@ -135,7 +135,17 @@
       align-items: normal;
       overflow-y: auto;
       &::-webkit-scrollbar {
-        display: none;
+        width: 7px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #3bc9db;
+        border-radius: 10px;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+      }
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        box-shadow: inset 0px 0px 5px white;
       }
     }
   }

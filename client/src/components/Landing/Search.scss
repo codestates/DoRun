@@ -1,59 +1,95 @@
 .searchWrapper{
-    margin: 30rem auto auto auto;
-    // border: 1px solid blue;
+  width: 100vw;
+  margin: 10rem auto auto auto;
+  // border: 1px solid blue;
+}
+
+
+.searchGIFWrapperBack {
+  display: flex;
+  // z-index: 1;
+}
+
+.searchLeft{
+  position: absolute;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: fit-content;
+  height: 20vh;
+  margin-top: 3vw;
+  font-size: 5vw !important;
+  z-index: 5;
+  color:rgba(90, 206, 235, 0.322);
+  // border: 1px solid pink;
+
+  }
+  
+.searchRight {
+  position:relative;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: fit-content;
+  height: 20vh;
+  text-align: right;
+  font-size: 5vw !important;
+  z-index: 1;
+  color:rgba(93, 182, 223, 0.445);
+  // border: 1px solid skyblue;
 }
 
 .searchGIFWrapper{
-    margin-top: -20vw;
+  position: relative;
+  margin-top: -5vh;
+  z-index: 99;
     // border: 1px solid blue;
 }
 
+
 .searchGIF{
-    flex-direction: column;
-    width: 60vw;
-    height: 35vw;
-    margin-left: 20%;
-    margin-bottom: 20%;
-    border-radius: 12px;
-    // border: 1px solid red;
+  flex-direction: column;
+  width: 60vw;
+  height: 35vw;
+  margin-left: 20%;
+  border-radius: 12px;
+  z-index: 99;
+  box-shadow: 1 1 1 1;
+  // border: 1px solid red;
 }
 
 .searchContentWrapper{
-    display: flex;
-    // border: 1px solid red;
+  display: flex;
+  // position:relative;
+  // margin-top: 15vw;
+  // border: 1px solid red;
 }
-
-
-
-
-.search{
-    flex-direction: column;
-    width: 30vw;
-    height: 50vw;
-    margin-top: -20vw;
-    margin-left: 25vw;
-    z-index: 999;
-    // border: 1px solid red;
-}
-
-
 
 .searchContentText{
     flex-direction: column;
     width: 50vw;
-    height: 20vh;
-    margin-top: 3vw;
-    margin-left: 5vw;
+    height: 50vw;
+    margin-top: -20vh;
+    margin-left: 10vw;
     z-index: 999;
     // border: 1px solid red;
 }
 
 .searchContentLine {
-    font-size: 2.5vw;
-    font-weight: 500;
-    line-height: 4vw;
-    font-family: 'Cafe24Ohsquare';
+  font-size: 2vw;
+  font-weight: 500;
+  &:nth-child(1) {
+    margin-top: 25vw;
+  }
     // border: 1px solid gray;
+}
+
+.search{
+  flex-direction: column;
+  width: 30vw;
+  height: 50vw;
+  margin-top: -20vh;
+  margin-left: 25vw;
+  z-index: 999;
+  // border: 1px solid red;
 }
 
 @media screen and (max-width: 768px) {

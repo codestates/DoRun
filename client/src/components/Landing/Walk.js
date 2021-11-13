@@ -14,30 +14,13 @@ function Walk() {
 
     useEffect(() => {
 
-        // var tl = gsap.timeline({ repeat: 10, repeatDelay: 1 });
-
-        // tl.from(run.current, {
-        //     x: '20%',
-        //     duration: 1,
-        //     ease: 'back',
-        //     opacity: 1,
-        // })
-        // tl.to(run.current, {
-        //     x: '120%',
-        //     duration: 3,
-        // })
-
-
         gsap.to(run.current, {
             x: '20%',
             duration: 5,
             ease: 'back',
             opacity: 1,
-            // scrollTrigger: {
-            //     scrub: 1,
-            //     start: "top",
-            //     markers: true,
-            // }
+            repeat: -1,
+            repeatDelay: 2,
         });
 
         gsap.to(line.current, {
@@ -45,10 +28,8 @@ function Walk() {
             duration: 5,
             ease: 'back',
             opacity: 1,
-            // scrollTrigger: {
-            //     scrub: 1,
-            //     start: "0px",
-            // }
+            repeat: -1,
+            repeatDelay: 2,
         });
 
     });

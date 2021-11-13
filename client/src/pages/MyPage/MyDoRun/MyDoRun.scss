@@ -44,12 +44,12 @@ $main: rgb(59, 201, 219);
   padding: 1px;
   font-weight: 600;
   font-size: 18px;
-  color: #436f75;
+  color: $main;
 }
 
 .title {
   margin: auto;
-  font-size: 23px;
+  font-size: 20px;
   color: $main;
 }
 
@@ -58,34 +58,31 @@ $main: rgb(59, 201, 219);
   height: 40px;
   margin: auto;
   padding: 2px;
-  color: $main;
+  color: #6e6e6e;
   text-align: center;
   overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .date {
   margin: auto;
-  color: $main;
+  color: #6e6e6e;
   text-align: left;
 }
 
 .time {
   margin: auto;
-  color: $main;
+  color: #6e6e6e;
 }
 
 .personnel {
   margin: auto;
-  color: $main;
+  color: #6e6e6e;
 }
 
 .level {
   display: flex;
   margin: auto;
-  color: $main;
+  color: #6e6e6e;
 }
 
 .crewLevel {
@@ -98,6 +95,8 @@ $main: rgb(59, 201, 219);
   text-align: center;
   align-items: center;
   border-radius: 30px;
+  font-size: 0.9rem;
+  color: #c2c2c2;
   &.picked {
     color: white;
     background-color: $main;
@@ -111,6 +110,7 @@ $main: rgb(59, 201, 219);
 }
 .Desc {
   width: 250px;
+  height: 100px;
   margin-left: 3px;
   padding: 3px;
   text-align: left;
@@ -118,7 +118,17 @@ $main: rgb(59, 201, 219);
   color: rgb(167, 167, 167);
   overflow: auto;
   &::-webkit-scrollbar {
-    display: none;
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #3bc9db;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
   }
 }
 

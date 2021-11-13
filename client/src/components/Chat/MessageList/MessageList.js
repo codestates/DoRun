@@ -41,7 +41,10 @@ const MessageList = ({ messages, userId }) => {
             messageList.push(
               <div className="message-row other-message" key={index}>
                 <div className="message-content">
-                  <img src="/defaultImg.png" alt="profileImg" />
+                  <img
+                    src={el.profileImg || '/defaultImg.png'}
+                    alt="profileImg"
+                  />
                   <div className="message-username">{el.nickname}</div>
                   <div className="message-text">{el.message}</div>
                   <div className="message-time">{fixedDate}</div>

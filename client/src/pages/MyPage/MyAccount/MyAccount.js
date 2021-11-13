@@ -141,6 +141,9 @@ const MyAccount = () => {
               onChange={(e) => {
                 setUserInfo({ ...userInfo, password: e.target.value });
               }}
+              style={{
+                fontFamily: 'GmarketSans',
+              }}
             />
             <div className="mid_title">새로운 비밀번호</div>
             <input
@@ -149,6 +152,9 @@ const MyAccount = () => {
               onChange={(e) => {
                 setUserInfo({ ...userInfo, newPass1: e.target.value });
               }}
+              style={{
+                fontFamily: 'GmarketSans',
+              }}
             />
             <div className="mid_title">새로운 비밀번호 확인</div>
             <input
@@ -156,6 +162,9 @@ const MyAccount = () => {
               type="password"
               onChange={(e) => {
                 setUserInfo({ ...userInfo, newPass2: e.target.value });
+              }}
+              style={{
+                fontFamily: 'GmarketSans',
               }}
             />
           </div>

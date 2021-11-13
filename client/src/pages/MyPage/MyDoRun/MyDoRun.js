@@ -94,7 +94,7 @@ const MyDoRun = ({ dorunInfo }) => {
               </div>
             </div>
             <div className="myDoRunList">
-              <div className="listCategory">세부사항</div>
+              <div className="listCategory_desc">세부사항</div>
               <div className="Desc"> {dorunInfo.desc} </div>
             </div>
           </div>

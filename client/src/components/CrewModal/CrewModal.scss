@@ -72,6 +72,7 @@
       align-items: center;
       justify-content: center;
       color: #6e6e6e;
+      font-family: 'Cafe24Ohsquareair';
 
       //! 아래로 고친부분
       &:nth-child(2) {
@@ -104,6 +105,7 @@
         font-weight: bold;
         border: 2px solid #3bc9db;
         border-radius: 30px;
+        font-family: 'Cafe24Ohsquareair';
       }
       .focused {
         width: 4rem;
@@ -115,23 +117,20 @@
         background-color: #3bc9db;
         color: #ffffff;
         font-weight: bold;
-        border: px solid #3bc9db;
+        border: 2px solid #3bc9db;
         border-radius: 30px;
+        font-family: 'Cafe24Ohsquareair';
       }
     }
 
     .right_details {
       width: 245px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      max-height: 100px;
       margin-top: 10px;
-      padding: 0 10px 0 10px;
+      padding: 0px 20px;
       color: #6e6e6e;
       font-weight: normal;
-
-      //! 아래로 고친부분
-      height: 150px;
+      font-family: 'Cafe24Ohsquareair';
       align-items: normal;
       overflow-y: auto;
       &::-webkit-scrollbar {

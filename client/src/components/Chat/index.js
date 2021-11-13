@@ -20,6 +20,7 @@ const Chat = () => {
     message: '',
     createdAt: '',
     serverMsg: '',
+    profileImg: '',
   });
 
   const [messages, setMessages] = useState([]);
@@ -35,13 +36,14 @@ const Chat = () => {
   useEffect(() => {
     socket.on(
       'recvMessage',
-      (userId, nickname, message, chatCreatedAt, serverMsg) => {
+      (userId, nickname, message, createdAt, serverMsg, profileImg) => {
         setSocketMsg({
           userId: userId,
           nickname: nickname,
           message: message,
-          createdAt: chatCreatedAt,
+          createdAt: createdAt,
           serverMsg: serverMsg,
+          profileImg: profileImg,
         });
       }
     );

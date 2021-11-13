@@ -40,12 +40,19 @@ $main: rgb(59, 201, 219);
 }
 
 .listCategory {
-  flex-direction: column;
   width: 75px;
   padding: 1px;
   font-weight: 600;
   font-size: 18px;
   color: $main;
+  &_desc {
+    width: 75px;
+    height: 100px;
+    padding: 1px;
+    font-weight: 600;
+    font-size: 18px;
+    color: $main;
+  }
 }
 
 .title {
@@ -62,28 +69,33 @@ $main: rgb(59, 201, 219);
   color: #6e6e6e;
   text-align: center;
   overflow: auto;
+  font-family: 'Cafe24Ohsquareair';
 }
 
 .date {
   margin: auto;
   color: #6e6e6e;
   text-align: left;
+  font-family: 'Cafe24Ohsquareair';
 }
 
 .time {
   margin: auto;
   color: #6e6e6e;
+  font-family: 'Cafe24Ohsquareair';
 }
 
 .personnel {
   margin: auto;
   color: #6e6e6e;
+  font-family: 'Cafe24Ohsquareair';
 }
 
 .level {
   display: flex;
   margin: auto;
   color: #6e6e6e;
+  font-family: 'Cafe24Ohsquareair';
 }
 
 .crewLevel {
@@ -98,6 +110,7 @@ $main: rgb(59, 201, 219);
   border-radius: 30px;
   font-size: 0.9rem;
   color: #c2c2c2;
+  font-family: 'Cafe24Ohsquareair';
   &.picked {
     color: white;
     background-color: $main;
@@ -108,16 +121,18 @@ $main: rgb(59, 201, 219);
   display: flex;
   margin: auto;
   color: $main;
+  font-family: 'Cafe24Ohsquareair';
 }
 .Desc {
   width: 250px;
   height: 100px;
   margin-left: 3px;
-  padding: 3px;
+  padding: 0px 20px;
   text-align: left;
   font-weight: 450;
-  color: rgb(167, 167, 167);
+  color: #6e6e6e;
   overflow: auto;
+  font-family: 'Cafe24Ohsquareair';
   &::-webkit-scrollbar {
     width: 7px;
   }

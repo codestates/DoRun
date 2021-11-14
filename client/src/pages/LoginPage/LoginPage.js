@@ -1,7 +1,7 @@
 import './LoginPage.scss';
 import React, { useState } from 'react';
-import { Link, withRouter, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
 import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
@@ -9,12 +9,10 @@ import Footer from '../../components/Footer/Footer';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visibility, setVisibility] = useState('password');
   const [mismatched, setMismatched] = useState(false);
-  const user = useSelector((state) => state.user);
 
   const isVisible = () => {
     if (visibility === 'password') {

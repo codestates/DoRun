@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CrewSignout from '../../../components/CrewSignout/CrewSignout';
 import CrewSignoutBack from '../../../components/CrewSignout/CrewSignoutBack';
+import { useSelector } from 'react-redux';
 
 const MyDoRun = ({ dorunInfo }) => {
   const [crewSignoutOpen, setCrewSignoutOpen] = useState(false);
-  const userCrewId = Number(sessionStorage.getItem('userCrewId'));
+  const userCrewId = useSelector((state) => state.user.userCrewId);
 
   const crewSignoutModalHandler = () => {
     if (crewSignoutOpen === true) {

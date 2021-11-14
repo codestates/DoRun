@@ -1,10 +1,13 @@
 import React from 'react';
 import './CrewSignout.scss';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { withdrawalCrew } from '../../_actions/crew_action';
 axios.defaults.withCredentials = true;
 
 function CrewSignout({ crewSignoutOpen, setCrewSignoutOpen }) {
-  const currentUserId = sessionStorage.getItem('userId');
+  const userId = useSelector((state) => state.user.userId);
+  const dispatch = useDispatch();
 
   const closeCrewSignout = () => {
     if (crewSignoutOpen === true) {
@@ -12,12 +15,9 @@ function CrewSignout({ crewSignoutOpen, setCrewSignoutOpen }) {
     }
   };
   const crewSignoutHandler = () => {
-    axios
-      .delete(`${process.env.REACT_APP_SERVER}/crew/${currentUserId}`)
+    dispatch(withdrawalCrew(userId))
       .then((res) => {
-        console.log('크루 탈퇴 요청에 대한 응답입니다', res);
-        if (res.data.message === 'success') {
-          sessionStorage.setItem('userCrewId', 'null');
+        if (res.payload.data.message === 'success') {
           location.reload();
         }
       })

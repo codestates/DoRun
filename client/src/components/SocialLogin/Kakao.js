@@ -8,10 +8,10 @@ axios.defaults.withCredentials = true;
 const SocialLoginKakao = () => {
 
   //! 로컬 때 사용하는 kakaoAPI
-  // const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=http://localhost:3000/login`;
+  const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=http://localhost:3000/login`;
 
   //! 배포 때 사용하는 kakaoAPI
-  const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=${REACT_APP_KAKAO_REDIRECT_URL}`;
+  // const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=${REACT_APP_KAKAO_REDIRECT_URL}`;
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -23,6 +23,7 @@ const SocialLoginKakao = () => {
 
   let requestURL = new URL(window.location.href);
   let code = requestURL.searchParams.get('code');
+  // console.log('카카오페이지 인가코드', code)
 
   if (code) {
     dispatch(kakaoUser(code))

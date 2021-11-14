@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { createCrew } from '../../_actions/crew_action';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import SuccessModal from '../SuccessModal/SuccessModal';
@@ -7,7 +7,7 @@ import './CreateModal.scss';
 
 const CreateModal = ({ createModalHandler, location }) => {
   // console.log('create Modal페이지입니다', location)
-  const userId = Number(sessionStorage.getItem('userId'));
+  const userId = useSelector((state) => state.user.userId);
   const today = new Date().toISOString().slice(0, 10);
   const dispatch = useDispatch();
   const [createData, setCreateData] = useState({
@@ -51,8 +51,7 @@ const CreateModal = ({ createModalHandler, location }) => {
         dispatch(createCrew(body))
           .then((res) => {
             if (res.payload.data.message === 'success') {
-              // console.log('유저가 갖게 될 크루 아이디입니다', res.payload.data.data.id)
-              sessionStorage.setItem('userCrewId', res.payload.data.data.id);
+              console.log(res);
               SuccessModalHandler();
             }
           })

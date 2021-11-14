@@ -5,6 +5,7 @@ import './RegisterPage.scss';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../../_actions/user_action';
+import Footer from '../../components/Footer/Footer';
 
 const RegisterPage = (props) => {
   const dispatch = useDispatch();
@@ -14,8 +15,6 @@ const RegisterPage = (props) => {
   password.current = watch('password');
 
   const onSubmit = async (data) => {
-    console.log('data', data);
-
     const { email, nickname, password } = getValues();
     let body = {
       email,
@@ -25,9 +24,7 @@ const RegisterPage = (props) => {
 
     dispatch(registerUser(body)).then((res) => {
       if (res.payload.message === 'success') {
-        console.log('res.payload', res.payload);
         props.history.push('/login');
-        console.log('res' + res.payload);
       } else {
         alert('Failed to sign up');
       }
@@ -35,85 +32,88 @@ const RegisterPage = (props) => {
   };
 
   return (
-    <div className="registerBlock">
-      <div className="registerWrapper">
-        <h1 className="registerTitle">Sign Up</h1>
-        <form className="registerFrm" onSubmit={handleSubmit(onSubmit)}>
-          <label className="labelTitle">이메일</label>
-          <input
-            name="email"
-            type="email"
-            ref={register({
-              required: true,
-              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            })}
-          />
-          {errors.email && errors.email.type === 'required' && (
-            <p>이메일을 입력해주세요.</p>
-          )}
-          {errors.email && errors.email.type === 'pattern' && (
-            <p>이메일 형식이 잘못 되었습니다.</p>
-          )}
-
-          <label className="labelTitle">사용자 이름</label>
-          <input
-            name="nickname"
-            ref={register({
-              required: true,
-              maxLength: 6,
-            })}
-          />
-          {errors.nickname && errors.nickname.type === 'required' && (
-            <p> 이름을 입력해주세요.</p>
-          )}
-          {errors.nickname && errors.nickname.type === 'maxLength' && (
-            <p> 이름은 최대 6글자까지 입력 가능합니다.</p>
-          )}
-
-          <label className="labelTitle">비밀번호</label>
-          <input
-            name="password"
-            type="password"
-            ref={register({
-              required: true,
-              pattern: /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-zA-Z]).*$/,
-            })}
-            style={{
-              fontFamily: 'GmarketSans',
-            }}
-          />
-          {errors.password && errors.password.type === 'required' && (
-            <p> 비밀번호를 입력해주세요.</p>
-          )}
-          {errors.password && errors.password.type === 'pattern' && (
-            <p> 영문과 숫자를 혼용하여 8자 이상 16자 이하 입력해주세요</p>
-          )}
-
-          <label className="labelTitle">비밀번호 확인</label>
-          <input
-            type="password"
-            name="password_confirm"
-            ref={register({
-              required: true,
-              validate: (value) => value === password.current,
-            })}
-            style={{
-              fontFamily: 'GmarketSans',
-            }}
-          />
-          {errors.password_confirm &&
-            errors.password_confirm.type === 'required' && (
-              <p> 비밀번호 확인을 위해 입력해주세요.</p>
+    <>
+      <div className="registerBlock">
+        <div className="registerWrapper">
+          <h1 className="registerTitle">Sign Up</h1>
+          <form className="registerFrm" onSubmit={handleSubmit(onSubmit)}>
+            <label className="labelTitle">이메일</label>
+            <input
+              name="email"
+              type="email"
+              ref={register({
+                required: true,
+                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              })}
+            />
+            {errors.email && errors.email.type === 'required' && (
+              <p>이메일을 입력해주세요.</p>
             )}
-          {errors.password_confirm &&
-            errors.password_confirm.type === 'validate' && (
-              <p> Do not match. 비밀번호를 확인해주세요.</p>
+            {errors.email && errors.email.type === 'pattern' && (
+              <p>이메일 형식이 잘못 되었습니다.</p>
             )}
 
-          <input type="submit" style={{ marginTop: '100px' }} />
-        </form>
+            <label className="labelTitle">사용자 이름</label>
+            <input
+              name="nickname"
+              ref={register({
+                required: true,
+                maxLength: 6,
+              })}
+            />
+            {errors.nickname && errors.nickname.type === 'required' && (
+              <p> 이름을 입력해주세요.</p>
+            )}
+            {errors.nickname && errors.nickname.type === 'maxLength' && (
+              <p> 이름은 최대 6글자까지 입력 가능합니다.</p>
+            )}
+
+            <label className="labelTitle">비밀번호</label>
+            <input
+              name="password"
+              type="password"
+              ref={register({
+                required: true,
+                pattern: /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-zA-Z]).*$/,
+              })}
+              style={{
+                fontFamily: 'GmarketSans',
+              }}
+            />
+            {errors.password && errors.password.type === 'required' && (
+              <p> 비밀번호를 입력해주세요.</p>
+            )}
+            {errors.password && errors.password.type === 'pattern' && (
+              <p> 영문과 숫자를 혼용하여 8자 이상 16자 이하 입력해주세요</p>
+            )}
+
+            <label className="labelTitle">비밀번호 확인</label>
+            <input
+              type="password"
+              name="password_confirm"
+              ref={register({
+                required: true,
+                validate: (value) => value === password.current,
+              })}
+              style={{
+                fontFamily: 'GmarketSans',
+              }}
+            />
+            {errors.password_confirm &&
+              errors.password_confirm.type === 'required' && (
+                <p> 비밀번호 확인을 위해 입력해주세요.</p>
+              )}
+            {errors.password_confirm &&
+              errors.password_confirm.type === 'validate' && (
+                <p> Do not match. 비밀번호를 확인해주세요.</p>
+              )}
+
+            <input type="submit" style={{ marginTop: '100px' }} />
+          </form>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

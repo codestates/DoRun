@@ -102,6 +102,7 @@ function Medal() {
         scrollTrigger: {
           start: "60% top",
           end: "bottom",
+          opacity: 0,
           scrub: 1,
           // markers: true,
           toggleActions: "play reverse play reverse",

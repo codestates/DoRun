@@ -13,8 +13,13 @@ const SocialLoginGoogle = () => {
   // 구글 연동 성공 시 실행되는 함수
   const responseSucess = async (response) => {
     const handleLogin = async (e) => {
-      dispatch(googleUser(response.profileObj));
-      document.location.href = '/';
+      dispatch(googleUser(response.profileObj))
+        .then((res) => {
+          if (res.payload.data.id) {
+            document.location.href = '/';
+          }
+        })
+        .catch((e) => console.log(e))
     };
 
     handleLogin();

@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './Search.scss';
 import map from './LandingSVG/map.svg'
-import searchBackLeft from './LandingSVG/searchBackLeft.svg'
-import searchBackRight from './LandingSVG/searchBackRight.svg'
 import search from './LandingSVG/search2.gif'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

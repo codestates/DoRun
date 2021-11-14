@@ -6,6 +6,7 @@ import medal2 from './LandingSVG/medal2.png';
 import medal3 from './LandingSVG/medal3.png';
 import winner from './LandingSVG/winner.png';
 import topBtn from './LandingSVG/topBtn.png';
+import medalsBack from './LandingSVG/medalBack.svg';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +20,7 @@ function Medal() {
   const medalThird = useRef(null);
   const winnerTrophy = useRef(null);
   const theTopBtn = useRef(null);
+  const medalBackIMG = useRef(null);
 
   useEffect(() => {
 
@@ -86,7 +88,7 @@ function Medal() {
       satrt: "90%",
       repeat: -1,
       repeatDelay: 1,
-      markers: true,
+      // markers: true,
       // scrollTrigger: {
       //   scrub: 1,
       //   start: "75%",
@@ -94,6 +96,36 @@ function Medal() {
       // }
     })
 
+    var tl = gsap.timeline(
+      {
+
+        scrollTrigger: {
+          start: "60% top",
+          end: "bottom",
+          scrub: 1,
+          // markers: true,
+          toggleActions: "play reverse play reverse",
+        }
+      }
+    );
+
+
+    tl.to(medalBackIMG.current,
+      {
+        opacity: 0,
+
+      }
+    )
+    tl.to(medalBackIMG.current,
+      {
+        opacity: 0.8,
+
+      })
+    tl.to(medalBackIMG.current,
+      {
+        opacity: 1,
+
+      })
 
   });
 
@@ -113,11 +145,14 @@ function Medal() {
   return (
     <div className="medalWrapper">
       <div className="growingTextWrapper">
-        <div className="growingLine"> 원할 때마다 한번씩 Do Run 메이트와 달리며 </div>
-        <div className="growingLine"> 어느새 성장해있는 실력을 확인하세요! </div>
+        <div className="growingLine"> Do Run 메이트와 함께 달리며 </div>
+        <div className="growingLine"> 어느새 성장해있는 나의 실력을 확인하세요! </div>
       </div>
       <div className="growingPicWrapper">
         <img className="growing" src={grow} ref={growing} />
+        <div className="medalBackWrapper">
+          <img className="medalBack" src={medalsBack} ref={medalBackIMG}></img>
+        </div>
         <div className="medals">
           <img className="medal" ref={medalFirst} src={medal1} />
           <img className="medal" ref={medalSecond} src={medal2} />

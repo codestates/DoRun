@@ -1,7 +1,7 @@
 import React from 'react';
 
 const WrongApproach = () => {
-  return <div></div>;
+  return <div className="WrongApproach"></div>;
 };
 
 export default WrongApproach;

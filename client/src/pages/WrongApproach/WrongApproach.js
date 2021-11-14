@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './WrongApproach.scss';
-import Loading from '../../components/Loading/Loading';
 
 const WrongApproach = () => {
   const [loading, setLoading] = useState(false);

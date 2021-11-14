@@ -60,17 +60,16 @@ header {
   }
 
   &:visited {
-    color: #333;
+    color: black;
     text-decoration: none;
   }
 }
 
 .logoutBtn {
-  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  height: 100%;
-  border-bottom: 3px solid transparent;
   cursor: pointer;
   &:hover {
     color: #3bc9db;
@@ -133,7 +132,7 @@ header {
     width: 100%;
     display: table;
     &:hover {
-      color: #ffdd40;
+      color: #ffdd40 !important;
     }
   }
   .logoutBtn {

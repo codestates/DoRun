@@ -8,13 +8,15 @@ async function socketInit(server) {
   const io = require("socket.io")(server, {
     transports: ["websocket"],
   });
-  const pubClient = new RedisClient({
-    host: process.env.REDIS_HOST,
-    port: parseInt(process.env.REDIS_PORT),
-  });
-  const subClient = pubClient.duplicate();
+  if (process.env.NODE_ENV !== "dev") {
+    const pubClient = new RedisClient({
+      host: process.env.REDIS_HOST,
+      port: parseInt(process.env.REDIS_PORT),
+    });
+    const subClient = pubClient.duplicate();
 
-  io.adapter(createAdapter(pubClient, subClient));
+    io.adapter(createAdapter(pubClient, subClient));
+  }
 
   try {
     io.on("connect", (socket) => {
@@ -49,9 +51,6 @@ async function socketInit(server) {
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
-        const sockets = await io.in(2).allSockets();
-        console.log(sockets);
-        console.log(crewId);
         const ChatDB = Chat.create({
           nickname,
           message,
@@ -59,10 +58,12 @@ async function socketInit(server) {
           userId,
         });
         const { createdAt } = await Chat.save(ChatDB);
+        const userInfo = await User.find({ id: userId });
+        const profileImg = await User.findOne({ select: ["image"], where: { id: userId } });
         //message = message + processPID.pid;
         // io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         // io.emit("recvMessage", userId, nickname, message, createdAt);
-        io.to(String(crewId)).emit("recvMessage", userId, nickname, message, createdAt);
+        io.to(String(crewId)).emit("recvMessage", userId, nickname, message, profileImg, createdAt);
       });
 
       socket.on("getAllMessages", async (userId, crewId) => {
@@ -84,14 +85,6 @@ async function socketInit(server) {
           });
           socket.emit("getAllMessages", filteredChat);
         }
-
-        // const filteredChat = await Chat.find({
-        //   select:
-        //   skip: StartChatId.id,
-        //   where: {
-        //     crewId: StartChatId.crewId,
-        //   },
-        // });
       });
 
       socket.on("error", async (err) => {

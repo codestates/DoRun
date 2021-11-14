@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import ChatHeader from './ChatHeader/ChatHeader';
 import './ChatShell.scss';
 import Input from './Input/Input';
@@ -11,9 +12,9 @@ const socket = io(`${process.env.REACT_APP_SERVER}`, {
 });
 
 const Chat = () => {
-  const userCrewId = Number(sessionStorage.getItem('userCrewId'));
-  const userId = Number(sessionStorage.getItem('userId'));
-  const nickname = sessionStorage.getItem('userNickname');
+  const userId = useSelector((state) => state.user.userId);
+  const userCrewId = useSelector((state) => state.user.userCrewId);
+  const nickname = useSelector((state) => state.user.nickname);
   const [socketMsg, setSocketMsg] = useState({
     userId: '',
     nickname: '',

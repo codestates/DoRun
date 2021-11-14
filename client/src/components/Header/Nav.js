@@ -4,12 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import Logout from '../Logout/Logout';
+import { useSelector } from 'react-redux';
 
 const Nav = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const Close = () => setClick(false);
-  const userId = sessionStorage.getItem('userId');
+  const userId = useSelector((state) => state.user.userId);
   return (
     <>
       <header>
@@ -34,7 +35,7 @@ const Nav = () => {
                   DoRun!
                 </NavLink>
               </li>
-              {userId === null ? (
+              {!userId ? (
                 <>
                   <li className="nav-item">
                     <NavLink

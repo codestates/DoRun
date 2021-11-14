@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import axios from 'axios';
 import './CrewModal.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { joinCrew } from '../../_actions/crew_action';
 
 const CrewModal = ({ crewModalHandler, crewId }) => {
-  // console.log('크루 모달의 아이디입니다,',  crewId)
-  const userId = Number(sessionStorage.getItem('userId'));
-  console.log('유저님 몇 번이신가요', userId);
-  let userCrewId = Number(sessionStorage.getItem('userCrewId'));
+  const dispatch = useDispatch();
+  const userId = useSelector((state) => state.user.userId);
+  const userCrewId = useSelector((state) => state.user.userCrewId);
   const [errMsg, setErrMsg] = useState('');
   const [crewData, setCrewData] = useState({
     title: '',
@@ -48,14 +49,9 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         setIsConfirmModalOpen(true);
       } else if (!userCrewId) {
         // 크루 가입 요청
-        console.log('지금 유저의 아이디', userId);
-        axios
-          .post(`${process.env.REACT_APP_SERVER}/crew/${userId}/${crewId}`)
-          .then((res) => {
-            console.log(res);
-            sessionStorage.setItem('userCrewId', crewId);
-            confirmModalHandler();
-          });
+        dispatch(joinCrew(userId, crewId)).then((res) => {
+          confirmModalHandler();
+        });
       } else {
         setErrMsg(
           <div className="crewErrMsg">⚠ 이미 가입한 크루가 존재합니다!!</div>

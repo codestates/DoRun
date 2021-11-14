@@ -1,0 +1,35 @@
+.WrongApproach {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+
+  .WrongApproach_img {
+    width: 50px;
+    height: 50px;
+  }
+  .WrongApproach_title {
+    margin: 20px;
+  }
+  .WrongApproach_text {
+    margin-bottom: 5px;
+    color: #6e6e6e;
+    font-family: 'Cafe24Ohsquareair';
+  }
+  .WrongApproach_toHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    color: #3bc9db;
+    border: 1px solid #3bc9db;
+    border-radius: 10px;
+    font-family: 'Cafe24Ohsquareair';
+    &:visited {
+      color: #3bc9db;
+    }
+  }
+}

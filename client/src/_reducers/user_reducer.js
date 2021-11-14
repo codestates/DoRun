@@ -1,23 +1,37 @@
 import {
   LOGIN_USER,
   REGISTER_USER,
-  AUTH_USER,
   KAKAO_USER,
   GOOGLE_USER,
   LOGOUT_USER,
-  SIGNOUT_USER
+  SIGNOUT_USER,
+  CREATE_CREW,
+  JOIN_CREW,
+  WITHDRAWAL_CREW,
 } from '../_actions/types';
 
-export default function user(state = {}, action) {
+export default function user(
+  state = {
+    userId: null,
+    nickname: null,
+    image: null,
+    userCrewId: null,
+    accessToken: null,
+  },
+  action
+) {
   switch (action.type) {
     case LOGIN_USER:
-      return { ...state, loginUser: action.payload };
+      return {
+        userId: action.payload.data.id,
+        nickname: action.payload.data.nickname,
+        image: action.payload.data.image,
+        userCrewId: action.payload.data.crewId,
+        accessToken: action.payload.accessToken,
+      };
       break;
     case REGISTER_USER:
-      return { ...state, register: action.payload };
-      break;
-    case AUTH_USER:
-      return { ...state, userData: action.payload };
+      return { ...state };
       break;
     case GOOGLE_USER:
       return { ...state, loginSuccess: action.payload };
@@ -26,10 +40,43 @@ export default function user(state = {}, action) {
       return { ...state, loginSuccess: action.payload };
       break;
     case LOGOUT_USER:
-      return { ...state, loginSuccess: action.payload };
+      return {
+        userId: null,
+        nickname: null,
+        image: null,
+        userCrewId: null,
+        accessToken: null,
+      };
       break;
     case SIGNOUT_USER:
-      return {};
+      return {
+        userId: null,
+        nickname: null,
+        image: null,
+        userCrewId: null,
+        accessToken: null,
+      };
+      break;
+
+    case CREATE_CREW:
+      return {
+        ...state,
+        userCrewId: action.payload.data.data.crewId,
+      };
+      break;
+
+    case JOIN_CREW:
+      return {
+        ...state,
+        userCrewId: action.payload.data.data.crewId,
+      };
+      break;
+
+    case WITHDRAWAL_CREW:
+      return {
+        ...state,
+        userCrewId: null,
+      };
       break;
     default:
       return state;

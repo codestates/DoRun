@@ -1,6 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../_actions/user_action';
 import './ChangedModal.scss';
 
@@ -12,12 +11,13 @@ import './ChangedModal.scss';
 
 const ChangedModal = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const userId = sessionStorage.getItem('userId');
+  const userId = useSelector((state) => state.user.userId);
 
   const handleLogout = () => {
     dispatch(logoutUser(userId));
-    document.location.href = '/';
+    setTimeout(() => {
+      document.location.href = '/';
+    }, 500);
   };
   return (
     <div className="modalContainer">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import Footer from '../../components/Footer/Footer';
 import MyAccount from './MyAccount/MyAccount';
 import MyDoRun from './MyDoRun/MyDoRun';
@@ -10,8 +11,8 @@ import axios from 'axios';
 import './MyPage.scss';
 
 const MyPage = () => {
-  const userId = Number(sessionStorage.getItem('userId'));
-  const userCrewId = Number(sessionStorage.getItem('userCrewId'));
+  const userId = useSelector((state) => state.user.userId);
+  const userCrewId = useSelector((state) => state.user.userCrewId);
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = OutsideClick(dropdownRef, false);
   const dropDownHandler = () => setIsActive(!isActive);
@@ -33,6 +34,18 @@ const MyPage = () => {
   const [userInfo, setUserInfo] = useState({
     nickname: '',
     image: '',
+  });
+
+  //! 여기 밑으로 myDorun 카드
+  const [dorunInfo, setDorunInfo] = useState({
+    title: '',
+    date: '',
+    departure: '',
+    time: '',
+    personnel: '',
+    level: '',
+    distance: '',
+    desc: '',
   });
 
   useEffect(() => {
@@ -70,18 +83,6 @@ const MyPage = () => {
         });
     }
   }, []);
-
-  //! 여기 밑으로 myDorun 카드
-  const [dorunInfo, setDorunInfo] = useState({
-    title: '',
-    date: '',
-    departure: '',
-    time: '',
-    personnel: '',
-    level: '',
-    distance: '',
-    desc: '',
-  });
 
   return (
     <>

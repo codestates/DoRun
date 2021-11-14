@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ChangedModal from '../../../components/ChangedModal/ChangedModal';
 import './MyAccount.scss';
+import { useSelector } from 'react-redux';
+
 const MyAccount = () => {
   const [userInfo, setUserInfo] = useState({
     nickname: '',
@@ -79,7 +81,7 @@ const MyAccount = () => {
   };
 
   // 유저 정보 로드
-  const userId = sessionStorage.getItem('userId');
+  const userId = useSelector((state) => state.user.userId);
   useEffect(async () => {
     await axios
       .get(`${process.env.REACT_APP_SERVER}/user/${userId}`)

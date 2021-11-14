@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './Withdrawal.scss';
 import WithdrawalModal from '../WithdrawalModal/WithdrawalModal';
 import { signoutUser } from '../../_actions/user_action';
-import axios from 'axios';
+import { withdrawalCrew } from '../../_actions/crew_action';
 
 const Withdrawal = () => {
-  const userId = Number(sessionStorage.getItem('userId'));
+  const userId = useSelector((state) => state.user.userId);
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
   const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
@@ -16,8 +16,7 @@ const Withdrawal = () => {
   };
 
   const clicked = () => {
-    axios.delete(`${process.env.REACT_APP_SERVER}/crew/${userId}`);
-
+    dispatch(withdrawalCrew(userId));
     dispatch(signoutUser(userId))
       .then((res) => {
         console.log('탈퇴에 대한 응답입니다.', res);

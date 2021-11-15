@@ -104,10 +104,10 @@ const Map = () => {
             createdMap,
             'click',
             function (mouseEvent) {
-              console.log(
-                '생성마커 모달 값 in 지도 이벤트',
-                createModalPosition
-              );
+              // console.log(
+              //   '생성마커 모달 값 in 지도 이벤트',
+              //   createModalPosition
+              // );
               var latlng = mouseEvent.latLng;
               createMarker.setPosition(latlng);
               let overlayPosition = customOverlay.getPosition();
@@ -145,8 +145,8 @@ const Map = () => {
             .then((res) => {
               //! 단순히 지도에 렌더만 담당(forEach)
               let crewData = res.data.data;
-              console.log();
-              console.log('지도 렌더 시에 렌더 되는 내용들입니다', res);
+              // console.log();
+              // console.log('지도 렌더 시에 렌더 되는 내용들입니다', res);
               crewData.forEach((el) => {
                 // console.log('크루 데이터 속', el)
                 let Ma = el.locationMa;
@@ -169,8 +169,9 @@ const Map = () => {
                   // console.log('정보 좀 줘', joinMarker.getPosition())
                   // console.log('크루 아이디로 정보를 주세요', joinMarker.Gb)
                   const joinMarkerId = joinMarker.Gb;
-                  console.log('마커의 데이터', joinMarkerId);
+                  // console.log('마커의 데이터', joinMarkerId);
                   // setCrewIdInfo('왜 안 될까')
+
                   setCrewIdInfo(joinMarkerId);
                 });
               });

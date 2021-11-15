@@ -1,17 +1,21 @@
 .mateWrapper{
+    width: 100%;
     position: relative;
-    margin: 20rem auto;
+    margin: 20rem auto 10rem auto;
     background-image: url("../Landing/LandingSVG/blob.svg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 50vw;
+    background-size: 70vw;
+    // border: 1px solid red;
 }
 
 .mateBack{
     z-index: 1;
+    // border: 1px solid red;
 }
 
 .mateLine {
+    font-family: 'Cafe24Ohsquare';
     font-size: 2.5vw;
     font-weight: 500;
     line-height: 160%;
@@ -30,17 +34,17 @@
 .FAQ{
     flex-direction: column;
     flex: 1 1 auto;
-    width: 35vw;
-    height: 35vw;
-    margin-top: 5vw;
+    width: 30vw;
+    height: 30vw;
+    // margin-top: 5vw;
     transform: rotate(90deg);
 }
 
 .mate{
     flex-direction: column;
     flex: 1 1 auto;
-    width: 40vw;
-    height: 45vw;
+    width: 30vw;
+    height: 30vw;
 }
 
 

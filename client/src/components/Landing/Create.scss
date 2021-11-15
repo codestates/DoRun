@@ -1,6 +1,7 @@
 .joinWrapper{
-    margin: 15rem auto;
-    // border: 1px solid blue;
+  width: 100%;
+  margin-top: 3vw auto 10rem auto;
+  // border: 1px solid blue;
 }
 
 .join{
@@ -13,7 +14,7 @@
   flex-direction: column;
   width: 40vw;
   height: 40vw;
-  margin-top: 7vw;
+  margin-top: 10vw;
   margin-left: 7vw;
   margin-bottom: 50vw;
   border-radius: 8px;
@@ -21,25 +22,41 @@
   // border: 1px solid green;
 }
 
-.joinContenText{
+.joinContentBack {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  margin-top: 15%;
+  margin-left: 5vw;
+  z-index: 1;
+  // border: 1px solid red;
+  opacity: 0.5;
+}
+
+.joinContentText{
+  position: relative;
   flex-direction: column;
   width: 50vw;
   height: 30vw;
-  margin-top: 35vw;
+  margin-top: 55vw;
   text-align: center;
+  font-size: 2vw;
   justify-content: center;
-  background-image: url('./LandingSVG/blob2.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 50vw;
+  z-index: 10;
+  // background-image: url('./LandingSVG/blob2.png');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: 50vw;
   // border: 1px solid orange;
 }
 
 .joinContenLine{
+  position: relative;
   font-size: 2vw;
   font-weight: 500;
+  z-index: 10;
   &:nth-child(1) {
-    margin-top: 10vw;
+    margin-top: 12vw;
   }
   // border: 1px solid gray;
 }

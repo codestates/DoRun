@@ -39,7 +39,7 @@ const Map = () => {
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${REACT_APP_KAKAO_MAP}&autoload=false`;
-    document.head.appendChild(script);
+    document.body.appendChild(script);
 
     script.onload = () => {
       const { kakao } = window;
@@ -52,6 +52,7 @@ const Map = () => {
           draggable: true,
           disableDoubleClickZoom: false,
         };
+        console.log('container', container);
         const createdMap = new kakao.maps.Map(container, options);
         setMap(createdMap);
         // ----------------------------------------------------------------------- basic setting

@@ -19,7 +19,7 @@ const SignUp = async (req: Request, res: Response) => {
       nickname,
       password,
       email,
-      image: req.body.imageUrl || null, //확인필요
+      //image: req.body.imageUrl || null, //확인필요
       //isauth: true,
     });
 

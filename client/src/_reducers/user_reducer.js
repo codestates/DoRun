@@ -44,14 +44,14 @@ export default function user(
       };
       break;
     case KAKAO_USER:
-      console.log('action type', action.type)
+      console.log(action.payload.data)
       return {
         ...state,
-        // userId: action.payload.data.id,
-        // nickname: action.payload.data.nickname,
-        // image: action.payload.data.image,
-        // userCrewId: action.payload.data.crewId,
-        // accessToken: action.payload.accessToken,
+        userId: action.payload.data.id,
+        nickname: action.payload.data.nickname,
+        image: action.payload.data.image,
+        userCrewId: action.payload.data.crewId,
+        accessToken: action.payload.accessToken,
       };
       break;
     case LOGOUT_USER:

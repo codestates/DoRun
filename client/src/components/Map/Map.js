@@ -6,8 +6,11 @@ import CrewModal from '../CrewModal/CrewModal';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 const { REACT_APP_KAKAO_MAP } = process.env;
+import { useSelector } from 'react-redux';
 
 const Map = () => {
+  const userId = useSelector((state) => state.user.userId);
+  const userCrewId = useSelector((state) => state.user.userCrewId);
   useEffect(() => {
     createMap();
   }, []);
@@ -57,10 +60,7 @@ const Map = () => {
         // ----------------------------------------------------------------------- basic setting
 
         //! userID가 있고, Crew에 속해있지 않은 사람에게 crewCreate 마커 생성
-        if (
-          sessionStorage.getItem('userId') !== 'null' &&
-          sessionStorage.getItem('userCrewId') === 'null'
-        ) {
+        if (userId && userCrewId === null) {
           //! 크루 생성 마커 이미지
           var createMarkerImgSrc =
             'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png';
@@ -140,7 +140,7 @@ const Map = () => {
         //! 지도 위에 기존 크루의 정보를 띄우는 함수
         async function callCrewData() {
           await axios
-            .get(`${process.env.REACT_APP_SERVER}/crew/`)
+            .get(`${process.env.REACT_APP_SERVER}/crew`)
             .then((res) => {
               //! 단순히 지도에 렌더만 담당(forEach)
               let crewData = res.data.data;

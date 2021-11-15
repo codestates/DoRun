@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ChangedModal from '../../../components/ChangedModal/ChangedModal';
 import './MyAccount.scss';
+import { useSelector } from 'react-redux';
+
 const MyAccount = () => {
   const [userInfo, setUserInfo] = useState({
     nickname: '',
@@ -79,7 +81,7 @@ const MyAccount = () => {
   };
 
   // 유저 정보 로드
-  const userId = sessionStorage.getItem('userId');
+  const userId = useSelector((state) => state.user.userId);
   useEffect(async () => {
     await axios
       .get(`${process.env.REACT_APP_SERVER}/user/${userId}`)
@@ -141,6 +143,9 @@ const MyAccount = () => {
               onChange={(e) => {
                 setUserInfo({ ...userInfo, password: e.target.value });
               }}
+              style={{
+                fontFamily: 'GmarketSans',
+              }}
             />
             <div className="mid_title">새로운 비밀번호</div>
             <input
@@ -148,6 +153,9 @@ const MyAccount = () => {
               type="password"
               onChange={(e) => {
                 setUserInfo({ ...userInfo, newPass1: e.target.value });
+              }}
+              style={{
+                fontFamily: 'GmarketSans',
               }}
             />
             <div className="mid_title">새로운 비밀번호 확인</div>
@@ -157,11 +165,15 @@ const MyAccount = () => {
               onChange={(e) => {
                 setUserInfo({ ...userInfo, newPass2: e.target.value });
               }}
+              style={{
+                fontFamily: 'GmarketSans',
+              }}
             />
           </div>
           <br />
           <div className="wrapper_bot">
             <div className="accountErrMsg">{errMsg && errMsg}</div>
+            <br />
             <button className="mid_editBtn" onClick={editHandler}>
               수 정
             </button>

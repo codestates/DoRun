@@ -25,6 +25,7 @@ async function socketInit(server) {
       socket.on("disconnect", () => {
         console.log(`disconnect ${socket.id}`);
       });
+
       socket.on("joinRoom", async (crewId, userId, nickname) => {
         console.log(crewId);
         socket.join(String(crewId));
@@ -42,7 +43,7 @@ async function socketInit(server) {
           });
           const { createdAt, message, serverMsg } = await Chat.save(ChatDB);
 
-          io.to(String(crewId)).emit("recvMessage", userId, "", message, createdAt, serverMsg);
+          io.to(String(crewId)).emit("recvMessage", { userId, message, createdAt, serverMsg });
         }
       });
 
@@ -63,7 +64,13 @@ async function socketInit(server) {
         //message = message + processPID.pid;
         // io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         // io.emit("recvMessage", userId, nickname, message, createdAt);
-        io.to(String(crewId)).emit("recvMessage", userId, nickname, message, profileImg, createdAt);
+        io.to(String(crewId)).emit("recvMessage", {
+          userId,
+          nickname,
+          message,
+          profileImg,
+          createdAt,
+        });
       });
 
       socket.on("getAllMessages", async (userId, crewId) => {
@@ -83,7 +90,7 @@ async function socketInit(server) {
             id: MoreThanOrEqual(StartChatId.id),
             crewId: StartChatId.crewId,
           });
-          socket.emit("getAllMessages", filteredChat);
+          socket.emit("getAllMessages", { filteredChat });
         }
       });
 

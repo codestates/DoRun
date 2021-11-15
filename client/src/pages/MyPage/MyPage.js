@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import Footer from '../../components/Footer/Footer';
 import MyAccount from './MyAccount/MyAccount';
 import MyDoRun from './MyDoRun/MyDoRun';
@@ -10,40 +11,34 @@ import axios from 'axios';
 import './MyPage.scss';
 
 const MyPage = () => {
+  const userId = useSelector((state) => state.user.userId);
+  const userCrewId = useSelector((state) => state.user.userCrewId);
+  const dropdownRef = useRef(null);
+  const [isActive, setIsActive] = OutsideClick(dropdownRef, false);
+  const dropDownHandler = () => setIsActive(!isActive);
+
   const [focused, setFocused] = useState({
     account: '',
     dorun: '',
     history: '',
     medal: '',
   });
+
   const [content, setContent] = useState({
     account: false,
     dorun: false,
     history: false,
     medal: false,
   });
-  const userId = sessionStorage.getItem('userId');
+
   const [userInfo, setUserInfo] = useState({
     nickname: '',
     image: '',
   });
 
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = OutsideClick(dropdownRef, false);
-  const dropDownHandler = () => setIsActive(!isActive);
-
-  useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER}/user/${userId}`).then((res) => {
-      setUserInfo({
-        ...res.data.data,
-        image: res.data.data.image,
-      });
-    });
-  }, []);
-
   //! 여기 밑으로 myDorun 카드
   const [dorunInfo, setDorunInfo] = useState({
-    title: '가입한 크루가 없습니다',
+    title: '',
     date: '',
     departure: '',
     time: '',
@@ -53,37 +48,41 @@ const MyPage = () => {
     desc: '',
   });
 
-  const userCrewId = sessionStorage.getItem('userCrewId');
-  // console.log('현재 유저의 userCrewId', userCrewId)
-
-  const checkMyDoRun = async () => {
-    await axios
-      .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
-      .then((res) => {
-        const {
-          title,
-          date,
-          departure,
-          time,
-          personnel,
-          level,
-          distance,
-          desc,
-        } = res.data.data;
-        const crewParticipant = res.data.CrewInUser;
-        setDorunInfo({
-          title,
-          date,
-          departure,
-          time,
-          personnel: `${crewParticipant.length}/${personnel.slice(1)}`,
-          level,
-          distance,
-          desc,
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_SERVER}/user/${userId}`).then((res) => {
+      setUserInfo({
+        ...res.data.data,
+        image: res.data.data.image,
+      });
+    });
+    if (userCrewId) {
+      axios
+        .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
+        .then((res) => {
+          const {
+            title,
+            date,
+            departure,
+            time,
+            personnel,
+            level,
+            distance,
+            desc,
+          } = res.data.data;
+          const crewParticipant = res.data.CrewInUser;
+          setDorunInfo({
+            title,
+            date,
+            departure,
+            time,
+            personnel: `${crewParticipant.length}명 / ${personnel.slice(1)}`,
+            level,
+            distance,
+            desc,
+          });
         });
-      })
-      .catch((e) => console.log(e));
-  };
+    }
+  }, []);
 
   return (
     <>
@@ -184,8 +183,7 @@ const MyPage = () => {
                         ...content,
                         dorun: true,
                       });
-                    }, 500),
-                    checkMyDoRun();
+                    }, 500);
                 }}
               >
                 <div className="card_left">

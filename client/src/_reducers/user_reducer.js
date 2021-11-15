@@ -44,7 +44,15 @@ export default function user(
       };
       break;
     case KAKAO_USER:
-      return { ...state, loginSuccess: action.payload };
+      console.log('action type', action.type)
+      return {
+        ...state,
+        // userId: action.payload.data.id,
+        // nickname: action.payload.data.nickname,
+        // image: action.payload.data.image,
+        // userCrewId: action.payload.data.crewId,
+        // accessToken: action.payload.accessToken,
+      };
       break;
     case LOGOUT_USER:
       return {

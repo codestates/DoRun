@@ -100,11 +100,11 @@ function Medal() {
       {
 
         scrollTrigger: {
-          start: "60% top",
-          end: "bottom",
+          start: "55% top",
+          end: "bottom bottom",
           opacity: 0,
           scrub: 1,
-          // markers: true,
+          markers: true,
           toggleActions: "play reverse play reverse",
         }
       }
@@ -119,7 +119,7 @@ function Medal() {
     )
     tl.to(medalBackIMG.current,
       {
-        opacity: 0.8,
+        opacity: 0.3,
 
       })
     tl.to(medalBackIMG.current,

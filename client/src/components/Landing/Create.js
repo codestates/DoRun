@@ -14,7 +14,7 @@ function Join() {
 
     useEffect(() => {
         gsap.to(joinGIF.current, {
-            y: '60%',
+            y: '40%',
             duration: 1,
             ease: 'back',
             opacity: 1,

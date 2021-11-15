@@ -23,39 +23,40 @@ function Search() {
       opacity: 1,
       scrollTrigger: {
         scrub: 1,
-        start: '10 top',
+        start: '10% top',
         // markers: true,
       }
     });
     gsap.to(searchLeft.current, {
       x: '10%',
-      duration: 2,
+      duration: 3,
       ease: 'back',
-      opacity: 1,
+      opacity: 3,
       scrollTrigger: {
-        scrub: 1,
+        scrub: 3,
         start: 'top top',
         // markers: true,
       }
     });
     gsap.to(searchRight.current, {
       x: '-10%',
-      duration: 2,
+      duration: 3,
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
-        scrub: 1,
-        start: 'top top',
+        scrub: 3,
+        start: '10% top',
         // markers: true,
       }
     });
     gsap.to(searchMate.current, {
-      x: '-30%',
+      x: '-35%',
       duration: 1,
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
         scrub: 1,
+        start: '10% top',
         // markers: true,
       }
     });
@@ -66,6 +67,7 @@ function Search() {
       opacity: 1,
       scrollTrigger: {
         scrub: 1,
+        start: '10% top',
       }
     });
 

@@ -11,7 +11,7 @@ const SocialLoginKakao = () => {
   const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=http://localhost:3000/login`;
 
   //! 배포 때 사용하는 kakaoAPI
-  // const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=${REACT_APP_KAKAO_REDIRECT_URL}`;
+  // const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=${REACT_APP_KAKAO_REDIRECT_URL}/login`;
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -28,7 +28,9 @@ const SocialLoginKakao = () => {
   if (code) {
     dispatch(kakaoUser(code))
       .then((res) => {
-        document.location.href = '/';
+        console.log('카카오 페이지 응답', res)
+
+        // document.location.href = '/';
       })
       .catch(e => console.log(e))
   }

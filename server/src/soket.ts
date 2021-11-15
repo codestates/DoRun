@@ -60,6 +60,7 @@ async function socketInit(server) {
         const { createdAt } = await Chat.save(ChatDB);
         const userInfo = await User.find({ id: userId });
         const profileImg = await User.findOne({ select: ["image"], where: { id: userId } });
+        const { image } = profileImg;
         //message = message + processPID.pid;
         // io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         // io.emit("recvMessage", userId, nickname, message, createdAt);
@@ -67,7 +68,7 @@ async function socketInit(server) {
           userId,
           nickname,
           message,
-          profileImg,
+          image,
           createdAt,
         });
       });
@@ -120,7 +121,7 @@ async function socketInit(server) {
             //.where("user.id = :id",{id:user})
             //.where("user.crewId = :crewId", { crewId })
             .getMany();
-          socket.emit("getAllMessages", { filteredChat });
+          socket.emit("getAllMessages", filteredChat);
         }
       });
 

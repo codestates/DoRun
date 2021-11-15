@@ -30,26 +30,25 @@ const Chat = () => {
     socket.emit('joinRoom', userCrewId, userId, nickname);
     socket.emit('getAllMessages', userId, userCrewId);
     socket.on('getAllMessages', (data) => {
+      console.log(data);
       setMessages([...data]);
     });
   }, []);
 
   useEffect(() => {
-    socket.on(
-      'recvMessage',
-      (userId, nickname, message, createdAt, serverMsg, profileImg) => {
-        setSocketMsg({
-          userId: userId,
-          nickname: nickname,
-          message: message,
-          createdAt: createdAt,
-          serverMsg: serverMsg,
-          profileImg: profileImg,
-        });
-      }
-    );
+    socket.on('recvMessage', (data) => {
+      setSocketMsg({
+        userId: data.userId,
+        nickname: data.nickname,
+        message: data.message,
+        createdAt: data.createdAt,
+        serverMsg: data.serverMsg,
+        profileImg: data.image,
+      });
+    });
   }, []);
   useEffect(() => {
+    console.log(messages);
     if (socketMsg.message) {
       setMessages([...messages, socketMsg]);
     }

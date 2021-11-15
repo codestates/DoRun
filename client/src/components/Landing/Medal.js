@@ -104,7 +104,7 @@ function Medal() {
           end: "bottom bottom",
           opacity: 0,
           scrub: 1,
-          markers: true,
+          // markers: true,
           toggleActions: "play reverse play reverse",
         }
       }

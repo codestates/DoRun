@@ -25,7 +25,6 @@ async function socketInit(server) {
       socket.on("disconnect", () => {
         console.log(`disconnect ${socket.id}`);
       });
-
       socket.on("joinRoom", async (crewId, userId, nickname) => {
         console.log(crewId);
         socket.join(String(crewId));
@@ -85,11 +84,42 @@ async function socketInit(server) {
           },
         });
         if (!!StartChatId) {
-          const filteredChat = await getRepository(Chat).find({
-            //select: ["id", "nickname", "message", "createdAt"],
-            id: MoreThanOrEqual(StartChatId.id),
-            crewId: StartChatId.crewId,
-          });
+          //일단 살려두기
+          // if (StartChatId) {
+          // const filteredChat = await getRepository(Chat).find({
+          //   //select: ["id", "nickname", "message", "createdAt"],
+          //   id: MoreThanOrEqual(StartChatId.id),
+          //   crewId: StartChatId.crewId,
+          // });
+          // const filteredChat = await Chat.find({
+          //   relations: ["crew","user"],
+          //   select: ["id", "nickname", "message", "createdAt"],
+          //   //where: { User: { crewId: crewId } },
+          // });
+          // const filteredChat = await getRepository(Chat)
+          //   .createQueryBuilder("chat")
+          //   .leftJoinAndSelect("users", "user", "user.crewId = chat.crewId")
+          //   .leftJoinAndSelect("crew.users", "users")
+          //   .where("users.crewId = :crewId", { crewId })
+          //   .getMany();
+          // const filteredChat = await getRepository(Chat).find({
+          //   //select: ["id", "nickname", "message", "createdAt"],
+          //   join:{
+          //     alias:"chat"
+          //   },
+          //   id: MoreThanOrEqual(StartChatId.id),
+          //   crewId: StartChatId.crewId,
+          // });
+          const filteredChat = await getRepository(Chat)
+            .createQueryBuilder("chat")
+            .where("chat.crewId = :crewId", { crewId })
+            .andWhere("chat.id >= :id", { id: StartChatId.id })
+            // .leftJoinAndSelect("users", "user", "user.crewId = chat.crewId")
+            .leftJoinAndSelect("chat.crew", "crew")
+            .leftJoinAndSelect("crew.users", "user", "user.id = chat.userId")
+            //.where("user.id = :id",{id:user})
+            //.where("user.crewId = :crewId", { crewId })
+            .getMany();
           socket.emit("getAllMessages", { filteredChat });
         }
       });

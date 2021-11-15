@@ -36,7 +36,6 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
           });
         });
     }
-
   }, [crewId]);
 
   // 크루가입이 가능한지 확인

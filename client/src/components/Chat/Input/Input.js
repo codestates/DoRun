@@ -54,6 +54,7 @@ const Input = ({ socket, userId, userCrewId, nickname }) => {
           type="text"
           placeholder="Enter Message"
           autoComplete="off"
+          autoFocus
         />
         {showEmojis && (
           <div>

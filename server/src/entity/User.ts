@@ -23,7 +23,11 @@ export class User extends BaseEntity {
   @Column({ type: "varchar" })
   email: string;
 
-  @Column({ type: "varchar", nullable: true })
+  @Column({
+    type: "varchar",
+    nullable: true,
+    default: "https://dorun-image.s3.ap-northeast-2.amazonaws.com/images/defaultImg.png",
+  })
   image: string;
 
   @Column({ type: "simple-array", nullable: true })

@@ -2,11 +2,11 @@ import axios from 'axios';
 import './Kakao.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { kakaoUser } from '../../_actions/user_action';
-const { REACT_APP_KAKAO_SOCIAL_LOGIN, REACT_APP_KAKAO_REDIRECT_URL } = process.env;
+const { REACT_APP_KAKAO_SOCIAL_LOGIN, REACT_APP_KAKAO_REDIRECT_URL } =
+  process.env;
 axios.defaults.withCredentials = true;
 
 const SocialLoginKakao = () => {
-
   //! 로컬 때 사용하는 kakaoAPI
   const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=http://localhost:3000/login`;
 
@@ -32,7 +32,7 @@ const SocialLoginKakao = () => {
 
         // document.location.href = '/';
       })
-      .catch(e => console.log(e))
+      .catch((e) => console.log(e));
   }
 
   return (

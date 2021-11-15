@@ -1,6 +1,6 @@
-$--message-time-color: #ccc;
+$--message-time-color: #ddd;
 $--message-user-color: #999;
-$--message-text-color: #222;
+$--message-text-color: #333;
 $--dark-color-a: #15aabf;
 $--dark-color-b: #22b8cf;
 $--light-color: #c5f6fa;
@@ -20,7 +20,6 @@ $--error-color: #d9534f;
     display: flex;
     align-items: center;
     justify-content: center;
-    // flex-basis: 100%;
     margin: 8px 0px 15px 0px;
     color: $--message-user-color;
     font-size: 0.8rem;
@@ -40,22 +39,25 @@ $--error-color: #d9534f;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
-      .message-time {
-        font-size: 0.1rem;
-        color: $--message-time-color;
-      }
+    }
+    .message-text {
+      font-family: 'Cafe24Ohsquareair';
+      font-weight: bold;
+    }
+    .message-time {
+      font-family: 'Cafe24Ohsquareair';
+      font-size: 0.5rem;
+      color: $--message-time-color;
     }
   }
 
   .message-row {
     display: grid;
     grid-template-columns: 80%;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 
     > .message-content {
       display: grid;
-
       > img {
         border-radius: 100%;
         grid-row: span 3;
@@ -64,12 +66,16 @@ $--error-color: #d9534f;
       }
 
       > .message-time {
-        margin-left: 0.5rem;
-        font-size: 0.1rem;
+        font-family: 'Cafe24Ohsquareair';
+        margin-left: 0.2rem;
+        font-size: 0.5rem;
+        margin-top: -2px;
         color: $--message-time-color;
       }
       > .message-username {
-        margin-left: 0.5rem;
+        font-family: 'Cafe24Ohsquareair';
+        font-weight: bold;
+        margin-left: 0.3rem;
         margin-bottom: 0.1rem;
         font-size: 0.7rem;
         color: $--message-user-color;

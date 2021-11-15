@@ -18,7 +18,7 @@ const config: ConnectionOptions = {
   // ],
   entities:
     //process.env.NODE_ENV === "dev" ? ["src/entity/**/*.ts"] : ["dist/src/entity/**/*{.js,.ts}"],
-    ["src/entity/**/*.ts"],
+    ["dist/src/entity/**/*{.js,.ts}"],
   migrations: [
     "src/migration/**/*.ts",
     // __dirname + '/migrations/**/*{.ts,.js}',

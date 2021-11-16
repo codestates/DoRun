@@ -8,7 +8,7 @@
 그런데 같이 뛰려면 친목은 필수고 모르는 사람과 연락처도 공유해야 한다고?   
 몇 번 못 나가면 벌금에 심지어는 모임에서 영구 제명이라고?   
 이 바쁜 사회에서 운동만 같이 해줄 친구 어디 없을까요?  
- #### [_Let's DoRun!!_](https://https://www.dorunapp.com)
+ #### [_Let's DoRun!!_](https://www.dorunapp.com)
   
   
   

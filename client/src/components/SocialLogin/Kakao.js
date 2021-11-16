@@ -2,8 +2,7 @@ import axios from 'axios';
 import './Kakao.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { kakaoUser } from '../../_actions/user_action';
-const { REACT_APP_KAKAO_SOCIAL_LOGIN, REACT_APP_KAKAO_REDIRECT_URL } =
-  process.env;
+const { REACT_APP_KAKAO_SOCIAL_LOGIN, REACT_APP_KAKAO_REDIRECT_URL } = process.env;
 axios.defaults.withCredentials = true;
 
 const SocialLoginKakao = () => {
@@ -14,7 +13,6 @@ const SocialLoginKakao = () => {
   const kakaoAPI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAO_SOCIAL_LOGIN}&redirect_uri=${REACT_APP_KAKAO_REDIRECT_URL}`;
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   // 카카오 로그인 페이지를 로드합니다.
   const handleSocialLoginWithKakao = () => {
@@ -23,11 +21,14 @@ const SocialLoginKakao = () => {
 
   let requestURL = new URL(window.location.href);
   let code = requestURL.searchParams.get('code');
+  // console.log('카카오페이지 인가코드', code)
 
   if (code) {
     dispatch(kakaoUser(code))
       .then((res) => {
-        document.location.href = '/';
+        if (res.payload.message === 'success') {
+          document.location.href = '/';
+        }
       })
       .catch((e) => console.log(e));
   }

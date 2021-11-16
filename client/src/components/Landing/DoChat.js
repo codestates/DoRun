@@ -3,48 +3,65 @@ import './DoChat.scss';
 import doChat from './LandingSVG/doChat.gif'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
 
 function DoChat() {
 
     const dotsLeft = useRef(null);
     const dotsRight = useRef(null);
+    const bubbleLeft = useRef(null);
+    const bubbleRight = useRef(null);
     const chatText = useRef(null);
+    const doChatGIF = useRef(null);
+    const doChatBubbles = useRef(null);
 
     useEffect(() => {
-        gsap.to(dotsLeft.current, {
-            y: '-100%',
-            duration: 3,
-            ease: 'elastic',
-            opacity: 1,
+        gsap.to(doChatGIF.current, {
+            y: '-50%',
+            duration: 5,
+            ease: 'back',
             scrollTrigger: {
                 scrub: 1,
-                start: '60% top',
-            }
-        });
-
-        gsap.to(dotsRight.current, {
-            y: '-100%',
-            duration: 3,
-            ease: 'elastic',
-            opacity: 1,
-            scrollTrigger: {
-                scrub: 1,
-                start: '60% top',
-            }
-        });
-
-        gsap.to(chatText.current, {
-            y: '120%',
-            duration: 3,
-            ease: 'elastic',
-            opacity: 1,
-            scrollTrigger: {
-                scrub: 1,
-                start: '55% top',
+                start: '45% top',
                 // markers: true,
             }
-        });
+        })
+
+        gsap.to(doChatBubbles.current, {
+            y: '-50%',
+            duration: 3,
+            ease: 'back',
+            scrollTrigger: {
+                start: '45% top',
+                // markers: true,
+            }
+        })
+        gsap.to(chatText.current, {
+            text: {
+                value: "같은 크루의 Do Run 메이트들과 간편하게 연락을 주고 받아보세요!"
+            },
+            duration: 5,
+            ease: "none",
+            repeat: -1,
+            repeatDelay: 1,
+        })
+
+        gsap.to(bubbleLeft.current, {
+            y: '-80%',
+            duration: 4,
+            ease: 'elastic',
+            repeat: -1,
+        })
+        gsap.to(bubbleRight.current, {
+            y: '-80%',
+            duration: 4,
+            ease: 'elastic',
+            repeat: -1,
+
+        })
+
 
 
     })
@@ -53,16 +70,14 @@ function DoChat() {
     return (
         <div className="doChatWrapper">
             <div className='doChat'>
-                <img className='doChatGIF' src={doChat} />
-                <div className="doChatBubbles">
-                    <div className="doChatBubbleLeft" >
+                <img className='doChatGIF' src={doChat} ref={doChatGIF} />
+                <div className="doChatBubbles" ref={doChatBubbles}>
+                    <div className="doChatBubbleLeft" ref={bubbleLeft}>
                         <div className="doChatBubbleLeftDots" ref={dotsLeft}>...</div>
                     </div>
                     <div className="doChatBubblesText" ref={chatText}>
-                        <div className="doChatBubblesLine"> 크루의 Do Run 메이트들과</div>
-                        <div className="doChatBubblesLine"> 간편하게 연락을 주고 받을 수도 있습니다</div>
                     </div>
-                    <div className="doChatBubbleRight">
+                    <div className="doChatBubbleRight" ref={bubbleRight}>
                         <div className="doChatBubbleRightDots" ref={dotsRight}>...</div>
                     </div>
                 </div>

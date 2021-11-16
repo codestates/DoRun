@@ -60,17 +60,26 @@ async function socketInit(server) {
         const { createdAt } = await Chat.save(ChatDB);
         const userInfo = await User.find({ id: userId });
         const profileImg = await User.findOne({ select: ["image"], where: { id: userId } });
-        const { image } = profileImg;
+        if (!profileImg) {
+          io.to(String(crewId)).emit("recvMessage", {
+            userId,
+            nickname,
+            message,
+            image: "https://dorun-image.s3.ap-northeast-2.amazonaws.com/images/defaultImg.png",
+            createdAt,
+          });
+        } else {
+          io.to(String(crewId)).emit("recvMessage", {
+            userId,
+            nickname,
+            message,
+            image: profileImg.image,
+            createdAt,
+          });
+        }
         //message = message + processPID.pid;
         // io.to(crewId).emit("recvMessage", userId, nickname, message, createdAt);
         // io.emit("recvMessage", userId, nickname, message, createdAt);
-        io.to(String(crewId)).emit("recvMessage", {
-          userId,
-          nickname,
-          message,
-          image,
-          createdAt,
-        });
       });
 
       socket.on("getAllMessages", async (userId, crewId) => {

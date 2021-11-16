@@ -1,30 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import './Withdrawal.scss';
 import WithdrawalModal from '../WithdrawalModal/WithdrawalModal';
-import { signoutUser } from '../../_actions/user_action';
-import { withdrawalCrew } from '../../_actions/crew_action';
 
 const Withdrawal = () => {
-  const userId = useSelector((state) => state.user.userId);
-  const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
   const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
 
   const checked = () => {
     setIsActive(!isActive);
-  };
-
-  const clicked = () => {
-    dispatch(withdrawalCrew(userId));
-    dispatch(signoutUser(userId))
-      .then((res) => {
-        console.log('탈퇴에 대한 응답입니다.', res);
-        WithdrawalModalHandler();
-      })
-      .catch((e) => {
-        console.log(e);
-      });
   };
 
   const WithdrawalModalHandler = () => {
@@ -64,7 +47,7 @@ const Withdrawal = () => {
         <br />
         <button
           className={`withdrawal_btn ${isActive ? `active` : 'inactive'}`}
-          onClick={clicked}
+          onClick={WithdrawalModalHandler}
           disabled={isActive ? '' : 'disabled'}
         >
           Run Away...

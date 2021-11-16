@@ -45,6 +45,7 @@ const RegisterPage = (props) => {
                 required: true,
                 pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
               })}
+              autoFocus
             />
             {errors.email && errors.email.type === 'required' && (
               <p>이메일을 입력해주세요.</p>

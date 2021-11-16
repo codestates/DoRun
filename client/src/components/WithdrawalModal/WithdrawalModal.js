@@ -1,5 +1,8 @@
 import React from 'react';
 import './WithdrawalModal.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { signoutUser } from '../../_actions/user_action';
+import { withdrawalCrew } from '../../_actions/crew_action';
 
 // const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
 // const WithdrawalModalHandler = () => {
@@ -8,6 +11,19 @@ import './WithdrawalModal.scss';
 // {isWithdrawalModalOpen && <WithdrawalModal WithdrawalModalHandler={WithdrawalModalHandler} />}
 
 const WithdrawalModal = () => {
+  const userId = useSelector((state) => state.user.userId);
+  const dispatch = useDispatch();
+  const clicked = async () => {
+    await dispatch(withdrawalCrew(userId));
+    await dispatch(signoutUser(userId))
+      .then((res) => {
+        console.log('탈퇴에 대한 응답입니다.', res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    document.location.href = '/';
+  };
   return (
     <div className="WithdrawalModalmodalContainer">
       <div className="WithdrawalModalmodal">
@@ -19,12 +35,7 @@ const WithdrawalModal = () => {
         </div>
         <br />
         <div className="modalFooter">
-          <div
-            className="toHome"
-            onClick={() => {
-              document.location.href = '/';
-            }}
-          >
+          <div className="toHome" onClick={clicked}>
             확 인
           </div>
         </div>

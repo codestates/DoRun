@@ -44,18 +44,17 @@ function Mate() {
             }
         });
         gsap.to(FAQ.current, {
-            x: '35%',
+            x: '40%',
             duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
                 scrub: 1,
-
             }
         });
 
         gsap.to(mate.current, {
-            x: '-35%',
+            x: '-40%',
             duration: 4,
             ease: 'back',
             opacity: 1,

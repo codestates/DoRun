@@ -27,10 +27,13 @@
 <img alt="JavaScript" src ="https://img.shields.io/badge/JavaScript-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=000"/> <img alt="React" src ="https://img.shields.io/badge/React-61DAFB.svg?&style=for-the-badge&logo=React&logoColor=000000"/>
 <img alt="React Hooks" src ="https://img.shields.io/badge/React Hooks-61DAFB.svg?&style=for-the-badge&logo=React&logoColor=000000"/>
 <img alt="Redux" src ="https://img.shields.io/badge/Redux-764ABC.svg?&style=for-the-badge&logo=Redux&logoColor=fff"/>
+<img alt="Redux Persist" src ="https://img.shields.io/badge/Redux Persist-764ABC.svg?&style=for-the-badge&logo=Redux&logoColor=fff"/>
 <img alt="React Router" src ="https://img.shields.io/badge/React Router-CA4245.svg?&style=for-the-badge&logo=React Router&logoColor=fff"/>
 <img alt="Axios" src ="https://img.shields.io/badge/Axios-B31B1B.svg?&style=for-the-badge&logo=Axios&logoColor=fff"/>
 <img alt="Sass" src ="https://img.shields.io/badge/Sass-CC6699.svg?&style=for-the-badge&logo=Sass&logoColor=fff"/>
 <img alt="styled-components" src ="https://img.shields.io/badge/styled components-DB7093.svg?&style=for-the-badge&logo=styled components&logoColor=fff"/>
+<img alt="GSAP" src ="https://img.shields.io/badge/GSAP-68BC71.svg?&style=for-the-badge&logo=GSAP&logoColor=fff"/>
+
 
 ### Back-End
 <img alt="TypeScript" src ="https://img.shields.io/badge/TypeScript-3178C6.svg?&style=for-the-badge&logo=TypeScript&logoColor=fff"/> <img alt="Node.js" src ="https://img.shields.io/badge/Node.js-339933.svg?&style=for-the-badge&logo=Node.js&logoColor=fff"/>
@@ -39,6 +42,10 @@
 <img alt="typeORM" src ="https://img.shields.io/badge/typeORM-C9284D.svg?&style=for-the-badge&logo=typeORM&logoColor=fff"/>
 <img alt="JSON Web Tokens" src ="https://img.shields.io/badge/JSON Web Tokens-000000.svg?&style=for-the-badge&logo=JSON Web Tokens&logoColor=fff"/>
 <img alt="Socket.io" src ="https://img.shields.io/badge/Socket.io-010101.svg?&style=for-the-badge&logo=Socket.io&logoColor=ffffff"/>
+<img alt="Redis" src ="https://img.shields.io/badge/Redis-DC382D.svg?&style=for-the-badge&logo=Redis&logoColor=ffffff"/>
+<img alt="Cluster" src ="https://img.shields.io/badge/Cluster-DC382D.svg?&style=for-the-badge&logo=Cluster&logoColor=ffffff"/>
+
+
 
 ### Deploy
 <img alt="Amazon AWS" src ="https://img.shields.io/badge/Amazon AWS-232F3E.svg?&style=for-the-badge&logo=Amazon AWS&logoColor=ffffff"/>

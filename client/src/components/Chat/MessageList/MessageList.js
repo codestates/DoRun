@@ -42,7 +42,7 @@ const MessageList = ({ messages, userId }) => {
               <div className="message-row other-message" key={index}>
                 <div className="message-content">
                   <img
-                    src={el.profileImg || '/defaultImg.png'}
+                    src={el.profileImg || el.crew.users[0].image}
                     alt="profileImg"
                   />
                   <div className="message-username">{el.nickname}</div>

@@ -57,6 +57,7 @@ const LoginPage = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                autoFocus
               />
             </div>
             <label className="labelTitle">비밀번호</label>

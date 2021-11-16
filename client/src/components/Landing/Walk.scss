@@ -1,4 +1,5 @@
 .walkWrapper {
+  width: 100%;
   display: flex;
   margin: 15rem auto 10rem auto;
   // border: 1px solid blue;
@@ -56,6 +57,7 @@
     background-position: right center;
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
   }
 }
 

@@ -42,7 +42,11 @@ const SignUp = async (req: Request, res: Response) => {
 
 const SignOut = async (req: Request, res: Response) => {
   try {
-    const userInfo = await User.findOne(req.body.userId);
+    const userId = req.params.userId;
+    if (!userId) {
+      return res.status(500).send({ message: "Not UserId" });
+    }
+    const userInfo = await User.findOneOrFail(userId);
     await User.remove(userInfo);
     res.clearCookie("refreshToken");
     return res.status(200).send({ message: "success" });

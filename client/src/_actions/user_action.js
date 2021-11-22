@@ -54,19 +54,18 @@ async function googleUser(dataToSubmit) {
 }
 
 async function kakaoUser(dataToSubmit) {
-
   // console.log('인가코드', dataToSubmit);
   const request = await axios
     .post(`${process.env.REACT_APP_SERVER}/oauth/kakao`, {
-      authorizationCode: dataToSubmit
+      authorizationCode: dataToSubmit,
     })
     .then((response) => {
       // console.log('인가를 받아온 응답입니다', response)
-      return response.data
+      return response.data;
     })
     .catch((e) => console.log(e));
 
-  console.log('request', request)
+  console.log('request', request);
   return {
     type: KAKAO_USER,
     payload: request,
@@ -87,9 +86,9 @@ async function logoutUser(dataToSubmit) {
   };
 }
 
-async function signoutUser(dataToSubmit) {
+async function signoutUser(userId) {
   const request = await axios
-    .delete(`${process.env.REACT_APP_SERVER}/user/signout`, dataToSubmit)
+    .delete(`${process.env.REACT_APP_SERVER}/user/signout/${userId}`)
     .then((response) => {
       console.log(response);
     })

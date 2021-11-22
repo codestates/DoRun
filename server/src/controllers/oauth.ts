@@ -43,36 +43,13 @@ const Google = async (req: Request, res: Response) => {
 
 const Kakao = async (req: Request, res: Response) => {
   try {
-    const tokenUrl = "https://kauth.kakao.com/oauth/token";
-    const userInfoUrl = "https://kapi.kakao.com/v2/user/me";
+    const kakaoUserInfo: any = await kakaoLogin(req.body.authorizationCode);
 
-    const { data } = await axios.post(
-      tokenUrl,
-      formUrlEncoded({
-        code: req.body.authorizationCode,
-        grant_type: "authorization_code",
-        client_id: process.env.KAKAO_CLIENT_ID,
-        redirect_uri: process.env.KAKAO_REDIRECT_URL,
-      }),
-      {
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded",
-        },
-      }
-    );
-
-    if (!data) {
+    if (!kakaoUserInfo) {
       return res.status(500).send({
         message: "invalid authorizationCode",
       });
     }
-
-    const kakaoAccessToken = data["access_token"];
-    const kakaoUserInfo = await axios.get(userInfoUrl, {
-      headers: {
-        Authorization: `Bearer ${kakaoAccessToken}`,
-      },
-    });
 
     const kakaoEmail = `${kakaoUserInfo.data["id"]}@kakao.com`;
 
@@ -86,7 +63,6 @@ const Kakao = async (req: Request, res: Response) => {
         email: kakaoEmail,
         password: kakaoUserInfo.data["id"],
         oauth: "kakao",
-        //isauth: true,
       });
       userInfo = await User.save(userInfo);
     }
@@ -103,6 +79,39 @@ const Kakao = async (req: Request, res: Response) => {
   } catch (err) {
     console.log(err);
     return res.status(500).send({ message: "Internal Server Error", err: err });
+  }
+};
+
+const kakaoLogin = async (authorizationCode: string) => {
+  try {
+    const tokenUrl = "https://kauth.kakao.com/oauth/token";
+    const userInfoUrl = "https://kapi.kakao.com/v2/user/me";
+
+    const { data } = await axios.post(
+      tokenUrl,
+      formUrlEncoded({
+        code: authorizationCode,
+        grant_type: "authorization_code",
+        client_id: process.env.KAKAO_CLIENT_ID,
+        redirect_uri: process.env.KAKAO_REDIRECT_URL,
+      }),
+      {
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+
+    const kakaoAccessToken = data["access_token"];
+    const kakaoUserInfo = await axios.get(userInfoUrl, {
+      headers: {
+        Authorization: `Bearer ${kakaoAccessToken}`,
+      },
+    });
+
+    return kakaoUserInfo;
+  } catch (err) {
+    return null;
   }
 };
 

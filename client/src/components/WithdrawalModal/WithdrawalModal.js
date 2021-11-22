@@ -15,13 +15,7 @@ const WithdrawalModal = () => {
   const dispatch = useDispatch();
   const clicked = async () => {
     await dispatch(withdrawalCrew(userId));
-    await dispatch(signoutUser(userId))
-      .then((res) => {
-        console.log('탈퇴에 대한 응답입니다.', res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    await dispatch(signoutUser(userId));
     document.location.href = '/';
   };
   return (

@@ -5,7 +5,7 @@ import { upload } from "../utils/multer";
 const userRoter = Router();
 
 userRoter.post("/signup", UserController.SignUp);
-userRoter.delete("/signout", UserController.SignOut);
+userRoter.delete("/signout/:userId", UserController.SignOut);
 userRoter.post("/login", UserController.Login);
 userRoter.post("/logout", UserController.logout);
 //userRoter.patch("/", authCheck, UserController.Edit);

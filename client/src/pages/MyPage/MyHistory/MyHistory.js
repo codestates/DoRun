@@ -1,38 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MyHistoryClicked from './MyHistoryClicked';
 import './MyHistory.scss';
 
 const MyHistory = () => {
-  const crews = [
-    { crewId: '1', title: '두런', createdAt: '11.01' },
-    { crewId: '2', title: '두런두런', createdAt: '11.02' },
-  ];
+  const [focused, setFocused] = useState('');
+  const [clicked, setClicked] = useState(false);
 
   return (
-    <>
-      <div className="Preparing">서비스 준비 중...</div>
-      {/* <div className="MyHistory">
-        <div className="MyHistory_wrapper">
-          <div className="MyHistory_top">
-            <div className="MyHistory_title">나의 DoRun 모아보기</div>
-          </div>
-
-          <div className="MyHistory_mid">
-            <div className="MyHistory_content">
-              <span className="MyHistory_date">{crews[0].createdAt}</span>
-              <span className="MyHistory_DoRunTitle">{crews[0].title}</span>
-            </div>
-            <div className="MyHistory_content">
-              <span className="MyHistory_date">{crews[1].createdAt}</span>
-              <span className="MyHistory_DoRunTitle">{crews[1].title}</span>
-            </div>
-            <div className="MyHistory_content">
-              <span className="MyHistory_date">createdAt</span>
-              <span className="MyHistory_DoRunTitle">title</span>
-            </div>
-          </div>
+    <div className={`card${focused}`}>
+      <div
+        className="card_wrapper"
+        onClick={() => {
+          setFocused('_focused'),
+            setTimeout(() => {
+              setClicked(true);
+            }, 500);
+        }}
+      >
+        <div className="card_left">
+          <img className="card_img" src="/MyHistory.png" alt="Card Img" />
         </div>
-      </div> */}
-    </>
+        <div className="card_right">
+          <h2 className="card_title">My History</h2>
+          <div className="card_content">DoRun 기록 확인</div>
+        </div>
+      </div>
+      {clicked && (
+        <>
+          <MyHistoryClicked />
+          <div
+            className="content_opened"
+            onClick={() => {
+              setFocused(''), setClicked(false);
+            }}
+          >
+            <img className="content_close" src="/close.png" alt="close" />
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 

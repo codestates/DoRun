@@ -82,10 +82,14 @@ const LoginPage = () => {
                 회원가입 하기
               </Link>
             </div>
-            <div className="socialGoogle">
-              <SocialLoginGoogle />
+            <div className="socialLogin">
+              <div className="socialGoogle">
+                <SocialLoginGoogle />
+              </div>
+              <div className="socialKakao">
+                <SocialLoginKakao />
+              </div>
             </div>
-            <SocialLoginKakao />
           </form>
         </div>
       </div>

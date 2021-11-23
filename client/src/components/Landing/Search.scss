@@ -1,6 +1,7 @@
 .searchWrapper{
   width: 100%;
-  margin: 15rem auto auto auto;
+  // margin: 15rem auto auto auto;
+  margin: 20vh auto 10vh auto; 
   // border: 2px solid blue;
 }
 
@@ -39,7 +40,7 @@
 
 .searchGIFWrapper{
   position: relative;
-  margin-top: -5vh;
+  margin-top: 15vh;
   z-index: 99;
     // border: 1px solid blue;
 }
@@ -47,9 +48,9 @@
 
 .searchGIF{
   flex-direction: column;
-  width: 60vw;
-  height: 35vw;
-  margin-left: 20%;
+  width: 60vh;
+  height: 35vh;
+  margin: auto 25%;
   border-radius: 12px;
   z-index: 99;
   box-shadow: 1 1 1 1;

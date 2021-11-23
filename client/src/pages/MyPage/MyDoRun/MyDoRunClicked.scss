@@ -1,0 +1,201 @@
+$main: rgb(59, 201, 219);
+
+.myDoRunForm {
+  height: 540px;
+  padding: 10px 10px 0px 10px;
+  font-weight: bold;
+  border-top: 1px solid #dee2e6;
+}
+
+.myDoRunInfo {
+  margin: 1px auto;
+}
+
+.myDoRunList {
+  display: flex;
+  width: auto;
+  height: 40px;
+  margin: 10px auto;
+  padding: 3px;
+  text-align: right;
+  align-items: center;
+
+  &:nth-child(1) {
+    //* 크루 타이틀
+    height: 43px;
+    margin-top: 0px !important;
+    margin-bottom: 20px;
+    text-align: left !important;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &:last-child {
+    //* 크루 세부 사항
+    height: 120px;
+    margin-bottom: 13px;
+  }
+}
+
+.listCategory {
+  width: 75px;
+  padding: 1px;
+  font-weight: 600;
+  font-size: 18px;
+  color: $main;
+  &_desc {
+    width: 75px;
+    height: 100px;
+    padding: 1px;
+    font-weight: 600;
+    font-size: 18px;
+    color: $main;
+  }
+}
+
+.title {
+  margin: auto;
+  font-size: 20px;
+  color: $main;
+}
+
+.departure {
+  margin: auto;
+  padding: 2px;
+  color: #6e6e6e;
+  text-align: center;
+  overflow: auto;
+  font-family: 'Cafe24Ohsquareair';
+}
+
+.date {
+  margin: auto;
+  color: #6e6e6e;
+  text-align: left;
+  font-family: 'Cafe24Ohsquareair';
+}
+
+.time {
+  margin: auto;
+  color: #6e6e6e;
+  font-family: 'Cafe24Ohsquareair';
+}
+
+.personnel {
+  margin: auto;
+  color: #6e6e6e;
+  font-family: 'Cafe24Ohsquareair';
+}
+
+.level {
+  display: flex;
+  margin: auto;
+  color: #6e6e6e;
+  font-family: 'Cafe24Ohsquareair';
+}
+
+.crewLevel {
+  flex-direction: column;
+  width: 63px;
+  // height: 35px;
+  padding: 5px 5px;
+  margin: 2px 5px 5px 5px;
+  border: 2px solid $main;
+  text-align: center;
+  align-items: center;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  color: #c2c2c2;
+  font-family: 'Cafe24Ohsquareair';
+  &.picked {
+    color: white;
+    background-color: $main;
+  }
+}
+
+.distance {
+  display: flex;
+  margin: auto;
+  color: $main;
+  font-family: 'Cafe24Ohsquareair';
+}
+.Desc {
+  width: 250px;
+  height: 100px;
+  margin-left: 3px;
+  padding: 0px 20px;
+  text-align: left;
+  font-weight: 450;
+  color: #6e6e6e;
+  overflow: auto;
+  font-family: 'Cafe24Ohsquareair';
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #3bc9db;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+}
+
+.goOutMyDorun {
+  display: flex;
+}
+
+.crewSigout {
+  flex-direction: column;
+  flex: 0 1 1;
+  width: 150px;
+  padding: 10px 15px;
+  margin: auto;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: $main;
+  border-radius: 20px;
+}
+
+.crewChat {
+  flex-direction: column;
+  flex: 0 1 1;
+  width: 150px;
+  margin: auto;
+  margin-left: 5px;
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #ffe457;
+  border-radius: 20px;
+}
+
+.MyDoRun_unjoined {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 540px;
+  .unjoined_content {
+    font-size: 20px;
+    margin: 20px;
+  }
+  .unjoined_link {
+    &:visited {
+      color: $main;
+      text-decoration: none;
+    }
+  }
+}

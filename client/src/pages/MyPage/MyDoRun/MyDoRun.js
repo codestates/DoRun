@@ -1,126 +1,44 @@
-import './MyDoRun.scss';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import CrewSignout from '../../../components/CrewSignout/CrewSignout';
-import CrewSignoutBack from '../../../components/CrewSignout/CrewSignoutBack';
-import { useSelector } from 'react-redux';
+import MyDoRunClicked from './MyDoRunClicked';
+import './MyDoRun.scss';
 
-const MyDoRun = ({ dorunInfo }) => {
-  const [crewSignoutOpen, setCrewSignoutOpen] = useState(false);
-  const userCrewId = useSelector((state) => state.user.userCrewId);
-
-  const crewSignoutModalHandler = () => {
-    if (crewSignoutOpen === true) {
-      setCrewSignoutOpen(false);
-    }
-    if (crewSignoutOpen === false) {
-      setCrewSignoutOpen(true);
-    }
-  };
+const MyDoRun = () => {
+  const [focused, setFocused] = useState('');
+  const [clicked, setClicked] = useState(false);
 
   return (
-    <>
-      {userCrewId ? (
-        <div className="myDoRunForm">
-          <div className="myDoRunInfo">
-            <div className="myDoRunList">
-              <div className="title">{dorunInfo.title}</div>
-            </div>
-            <div className="myDoRunList">
-              <div className="listCategory">출발지</div>
-              <div className="departure"> {dorunInfo.departure} </div>
-            </div>
-            <div className="myDoRunList">
-              <div className="listCategory">날짜</div>
-              <div className="date"> {dorunInfo.date} </div>
-            </div>
-            <div className="myDoRunList">
-              <div className="listCategory">시간</div>
-              <div className="time"> {dorunInfo.time} </div>
-            </div>
-            <div className="myDoRunList">
-              <div className="listCategory">인원</div>
-              <div className="personnel"> {dorunInfo.personnel} </div>
-            </div>
-            <div className="myDoRunList">
-              <div className="listCategory">난이도</div>
-              <div className="level">
-                {dorunInfo.level === '쉬움' ? (
-                  <>
-                    <div className="crewLevel picked">쉬움</div>
-                    <div className="crewLevel">보통</div>
-                    <div className="crewLevel">어려움</div>
-                  </>
-                ) : dorunInfo.level === '보통' ? (
-                  <>
-                    <div className="crewLevel">쉬움</div>
-                    <div className="crewLevel picked">보통</div>
-                    <div className="crewLevel">어려움</div>
-                  </>
-                ) : dorunInfo.level === '어려움' ? (
-                  <>
-                    <div className="crewLevel">쉬움</div>
-                    <div className="crewLevel">보통</div>
-                    <div className="crewLevel picked">어려움</div>
-                  </>
-                ) : (
-                  dorunInfo.level
-                )}
-              </div>
-            </div>
-            <div className="myDoRunList">
-              <div className="listCategory">거리</div>
-              <div className="distance">
-                {dorunInfo.distance === '~5km' ? (
-                  <>
-                    <div className="crewLevel picked">~5km</div>
-                    <div className="crewLevel">~10km</div>
-                    <div className="crewLevel">15km~</div>
-                  </>
-                ) : dorunInfo.distance === '~10km' ? (
-                  <>
-                    <div className="crewLevel">~5km</div>
-                    <div className="crewLevel picked">~10km</div>
-                    <div className="crewLevel">15km~</div>
-                  </>
-                ) : dorunInfo.distance === '15km~' ? (
-                  <>
-                    <div className="crewLevel">~5km</div>
-                    <div className="crewLevel">~10km</div>
-                    <div className="crewLevel picked">15km~</div>
-                  </>
-                ) : (
-                  dorunInfo.distance
-                )}
-              </div>
-            </div>
-            <div className="myDoRunList">
-              <div className="listCategory_desc">세부사항</div>
-              <div className="Desc"> {dorunInfo.desc} </div>
-            </div>
-          </div>
-          <div className="goOutMyDorun">
-            <div className="crewSigout" onClick={crewSignoutModalHandler}>
-              <CrewSignout
-                crewSignoutOpen={crewSignoutOpen}
-                setCrewSignoutOpen={setCrewSignoutOpen}
-              />
-              <CrewSignoutBack crewSignoutOpen={crewSignoutOpen} />
-            </div>
-            <Link to="/chat">
-              <div className="crewChat">Do Chat !!</div>
-            </Link>
-          </div>
+    <div className={`card${focused}`}>
+      <div
+        className="card_wrapper"
+        onClick={() => {
+          setFocused('_focused'),
+            setTimeout(() => {
+              setClicked(true);
+            }, 500);
+        }}
+      >
+        <div className="card_left">
+          <img className="card_img" src="/MyDoRun.png" alt="Card Img" />
         </div>
-      ) : (
-        <div className="MyDoRun_unjoined">
-          <div className="unjoined_content">가입한 크루가 없습니다.</div>
-          <Link to="/map" className="unjoined_link">
-            크루 가입하러 가기 {'>>'}
-          </Link>
+        <div className="card_right">
+          <h2 className="card_title">My DoRun</h2>
+          <div className="card_content">크루정보 확인 및 크루채팅</div>
         </div>
+      </div>
+      {clicked && (
+        <>
+          <MyDoRunClicked />
+          <div
+            className="content_opened"
+            onClick={() => {
+              setFocused(''), setClicked(false);
+            }}
+          >
+            <img className="content_close" src="/close.png" alt="close" />
+          </div>
+        </>
       )}
-    </>
+    </div>
   );
 };
 

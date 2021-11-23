@@ -187,7 +187,7 @@ const Map = () => {
     if (state) {
       createMap();
     }
-    return () => setState(false);
+    return () => setState(false); // useEffect console err
   }, []);
 
   return (

@@ -87,7 +87,7 @@ const MyPage = () => {
           });
       }
     }
-    return () => setState(false);
+    return () => setState(false); // useEffect console err
   }, []);
 
   return (

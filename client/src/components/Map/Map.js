@@ -11,10 +11,8 @@ import { useSelector } from 'react-redux';
 const Map = () => {
   const userId = useSelector((state) => state.user.userId);
   const userCrewId = useSelector((state) => state.user.userCrewId);
-  useEffect(() => {
-    createMap();
-  }, []);
 
+  const [state, setState] = useState(true);
   const [map, setMap] = useState(null);
   const [crewIdInfo, setCrewIdInfo] = useState(0);
   const [crewModalPosition, setCrewModalPosition] = useState('down');
@@ -39,6 +37,7 @@ const Map = () => {
   customOverlayContent.innerHTML = 'Do Run!';
 
   const createMap = () => {
+    let container = document.getElementById('Mymap');
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${REACT_APP_KAKAO_MAP}&autoload=false`;
@@ -47,7 +46,6 @@ const Map = () => {
     script.onload = () => {
       const { kakao } = window;
       kakao.maps.load(() => {
-        let container = document.getElementById('Mymap');
         let options = {
           center: new kakao.maps.LatLng(37.52406330545825, 126.98054529969014),
           level: 7,
@@ -55,7 +53,6 @@ const Map = () => {
           draggable: true,
           disableDoubleClickZoom: false,
         };
-        console.log('container', container);
         const createdMap = new kakao.maps.Map(container, options);
         setMap(createdMap);
         // ----------------------------------------------------------------------- basic setting
@@ -185,6 +182,13 @@ const Map = () => {
       });
     };
   };
+
+  useEffect(() => {
+    if (state) {
+      createMap();
+    }
+    return () => setState(false);
+  }, []);
 
   return (
     <>

@@ -23,19 +23,21 @@ a {
   max-height: 450px;
   width: 100%;
 }
-
+// and (min-width: 320px)
 @media screen and (max-width: 768px) {
   .chatWrapper {
     border-radius: 0;
     margin: 0;
     width: 100%;
+    height: calc(100vh - 80px);
+    min-width: 360px;
   }
   .chatHeader {
     display: none;
   }
   .chatMain {
     display: block;
-    max-height: 600px;
+    min-height: calc(100vh - 160px);
   }
   .chatSidebar {
     padding: 20px 20px 0px;
@@ -45,6 +47,6 @@ a {
   }
 
   #chatMessageList {
-    max-height: 450px;
+    max-height: calc(100vh - 303px);
   }
 }

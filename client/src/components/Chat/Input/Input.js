@@ -59,12 +59,12 @@ const Input = ({ socket, userId, userCrewId, nickname }) => {
         {showEmojis && (
           <div>
             <Picker
-              set="twitter"
+              set="apple"
               onSelect={addEmoji}
               style={{
                 position: 'absolute',
                 top: '200px',
-                left: '90px',
+                left: '130px',
               }}
             />
           </div>

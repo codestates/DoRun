@@ -11,6 +11,7 @@ import axios from 'axios';
 import './MyPage.scss';
 
 const MyPage = () => {
+  const [state, setState] = useState(true);
   const userId = useSelector((state) => state.user.userId);
   const userCrewId = useSelector((state) => state.user.userCrewId);
   const dropdownRef = useRef(null);
@@ -49,39 +50,44 @@ const MyPage = () => {
   });
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER}/user/${userId}`).then((res) => {
-      setUserInfo({
-        ...res.data.data,
-        image: res.data.data.image,
-      });
-    });
-    if (userCrewId) {
+    if (state) {
       axios
-        .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
+        .get(`${process.env.REACT_APP_SERVER}/user/${userId}`)
         .then((res) => {
-          const {
-            title,
-            date,
-            departure,
-            time,
-            personnel,
-            level,
-            distance,
-            desc,
-          } = res.data.data;
-          const crewParticipant = res.data.CrewInUser;
-          setDorunInfo({
-            title,
-            date,
-            departure,
-            time,
-            personnel: `${crewParticipant.length}명 / ${personnel.slice(1)}`,
-            level,
-            distance,
-            desc,
+          setUserInfo({
+            ...res.data.data,
+            image: res.data.data.image,
           });
         });
+      if (userCrewId) {
+        axios
+          .get(`${process.env.REACT_APP_SERVER}/crew/${userCrewId}`)
+          .then((res) => {
+            const {
+              title,
+              date,
+              departure,
+              time,
+              personnel,
+              level,
+              distance,
+              desc,
+            } = res.data.data;
+            const crewParticipant = res.data.CrewInUser;
+            setDorunInfo({
+              title,
+              date,
+              departure,
+              time,
+              personnel: `${crewParticipant.length}명 / ${personnel.slice(1)}`,
+              level,
+              distance,
+              desc,
+            });
+          });
+      }
     }
+    return () => setState(false);
   }, []);
 
   return (

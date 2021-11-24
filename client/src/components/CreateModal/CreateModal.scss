@@ -1,6 +1,3 @@
-// .createModal {
-// }
-
 .createModalHeader {
   display: flex;
   flex-direction: row-reverse;
@@ -215,21 +212,24 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .createModalBody {
-    height: 300px;
-    overflow: auto;
-  }
-  .createModalBody::-webkit-scrollbar {
-    width: 7px;
-  }
-  .createModalBody::-webkit-scrollbar-thumb {
-    background-color: #3bc9db;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  .createModalBody::-webkit-scrollbar-track {
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
+  .createModal {
+    width: 97%;
+    .createModalBody {
+      height: 300px;
+      overflow: auto;
+    }
+    .createModalBody::-webkit-scrollbar {
+      width: 7px;
+    }
+    .createModalBody::-webkit-scrollbar-thumb {
+      background-color: #3bc9db;
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+    .createModalBody::-webkit-scrollbar-track {
+      border-radius: 10px;
+      box-shadow: inset 0px 0px 5px white;
+    }
   }
 }

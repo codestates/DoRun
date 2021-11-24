@@ -4,6 +4,7 @@
   // margin: 15rem auto 10rem auto;
   margin: 10vh auto 5vh auto;
   // border: 1px solid blue;
+  overflow-x: hidden;
 }
 
 .walk {
@@ -35,7 +36,9 @@
 }
 
 .walkBtn {
-  width: 8rem;
+  min-width: 4rem;
+  max-width: 8rem;
+  height: 3rem;
   margin-top: 1rem;
   padding: 0.7rem 1rem;
   text-align: center;
@@ -43,17 +46,18 @@
   color: white;
   font-style: italic;
   font-size: 1.3rem;
+  // font-size: 3vw;
   font-weight: 800;
   transition: 0.5s;
   background-size: 200% auto;
   box-shadow: 0 0 20px lightgray;
+  border-radius: 20px;
   background-image: linear-gradient(
     to right,
     #1fa2ff 0%,
     #12d8fa 51%,
     #1fa2ff 100%
   );
-  border-radius: 20px;
   &:hover {
     background-position: right center;
     color: #fff;

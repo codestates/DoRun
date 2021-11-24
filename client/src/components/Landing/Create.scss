@@ -1,14 +1,17 @@
 .joinWrapper{
   width: 100%;
-  margin-top: 3vw auto 10rem auto;
-  border: 1px solid blue;
-  overflow-x: hidden;
+  height: 65vw;
+  margin: 5vh auto;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  // border: 1px solid blue;
 }
 
 .join{
-    display: flex;
-    display: relative;
-    // border: 1px solid red;
+  display: flex;
+  position: relative;
+  height: 50vh;
+  // border: 1px solid red;
 }
 
 
@@ -16,11 +19,11 @@
   flex-direction: column;
   width: 40vw;
   height: 40vw;
-  margin-top: 10vw;
+  margin-top: 5vw;
   margin-left: 7vw;
   margin-bottom: 50vw;
   border-radius: 8px;
-  z-index: 999;
+  z-index: 10;
   // border: 1px solid green;
 }
 
@@ -28,11 +31,12 @@
   position: absolute;
   width: 60vw;
   height: 60vw;
-  margin-top: 15%;
-  margin-left: 5vw;
+  // margin-top: 8%;
+  margin-left: 27vw;
   z-index: 1;
-  border: 1px solid red;
   opacity: 0.5;
+  overflow-x: hidden;
+  // border: 1px solid red;
 }
 
 .joinContentText{
@@ -40,11 +44,12 @@
   flex-direction: column;
   width: 50vw;
   height: 30vw;
-  margin-top: 55vw;
+  margin-top: 30vw;
   text-align: center;
   font-size: 2vw;
   justify-content: center;
   z-index: 10;
+  // border: 1px solid navy;
 }
 
 .joinContenLine{

@@ -19,7 +19,7 @@ function DoChat() {
 
     useEffect(() => {
         gsap.to(doChatGIF.current, {
-            y: '-50%',
+            y: '30%',
             duration: 5,
             ease: 'back',
             scrollTrigger: {
@@ -49,13 +49,13 @@ function DoChat() {
         })
 
         gsap.to(bubbleLeft.current, {
-            y: '-80%',
+            y: '-40%',
             duration: 4,
             ease: 'elastic',
             repeat: -1,
         })
         gsap.to(bubbleRight.current, {
-            y: '-80%',
+            y: '-40%',
             duration: 4,
             ease: 'elastic',
             repeat: -1,

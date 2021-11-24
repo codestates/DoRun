@@ -50,7 +50,6 @@ function Walk() {
                     <div className='line' > '오늘만 함께 할' </div>
                     <div className='line' > Do Run 메이트를 만들어보세요! </div>
                     <div className='walkBtn' onClick={pagehandler}> Do Run!! </div>
-
                 </div>
             </div>
         </>

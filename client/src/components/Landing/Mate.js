@@ -27,7 +27,7 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
                 start: '50 top',
                 // markers: true,
             }
@@ -39,7 +39,7 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
                 // markers: true,
             }
         });
@@ -49,7 +49,7 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
             }
         });
 
@@ -59,7 +59,7 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
 
             }
         });

@@ -1,8 +1,10 @@
 .searchWrapper{
   width: 100%;
   // margin: 15rem auto auto auto;
-  margin: 20vh auto 10vh auto; 
+  margin: 5vh auto 0px auto; 
   // border: 2px solid blue;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 
@@ -40,7 +42,7 @@
 
 .searchGIFWrapper{
   position: relative;
-  margin-top: 15vh;
+  margin-top: 5vw;
   z-index: 99;
     // border: 1px solid blue;
 }
@@ -48,8 +50,8 @@
 
 .searchGIF{
   flex-direction: column;
-  width: 60vh;
-  height: 35vh;
+  width: 50vw;
+  height: 35vw;
   margin: auto 25%;
   border-radius: 12px;
   z-index: 99;
@@ -65,8 +67,8 @@
     flex-direction: column;
     width: 50vw;
     height: 50vw;
-    margin-top: -20vh;
-    margin-left: 10vw;
+    margin-top: -30vh;
+    margin-left: 9vw;
     z-index: 999;
     // border: 2px solid black;
 }
@@ -77,6 +79,9 @@
   &:nth-child(1) {
     margin-top: 25vw;
   }
+  // &:last-child {
+  //   ;
+  // }
     // border: 1px solid gray;
 }
 
@@ -84,7 +89,7 @@
   flex-direction: column;
   width: 30vw;
   height: 50vw;
-  margin-top: -20vh;
+  margin-top: -30vh;
   margin-left: 25vw;
   z-index: 999;
   // border: 2px solid black;

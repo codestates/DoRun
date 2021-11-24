@@ -1,6 +1,6 @@
 .medalWrapper{
     width: 100%;
-    margin: 10rem auto;
+    margin: 15vh auto 2vh auto;
     // border: 1px solid rgb(175, 175, 179);
 }
 
@@ -15,6 +15,7 @@
   height: 60vw;
   margin-left: 5%;
   margin-top: -10%;
+  overflow-x: hidden;
   // border: 1px solid purple;
   // background-color: olive;
 }
@@ -23,7 +24,7 @@
 .growingTextWrapper{
   position:absolute;
   height: 10vw;
-  margin-left: 27%;
+  margin-left: 30%;
   text-align: center;
   justify-content: center;
   z-index: 999;
@@ -55,7 +56,7 @@
     display: flex;
     width: 50%;
     height: 50%;
-    margin-top: 30vw;
+    margin-top: 30%;
     margin-left: 20vw;
     z-index: 999;
     // border: 1px solid red;
@@ -63,14 +64,14 @@
 }
 
 .medal{ 
-    width: 7vw;
-    height: 7vw;
-    margin-top: 7vw;
-    margin-left: 1vw;
-    &:last-child() {
-        height: 7.2vw;
-    }
-    // border: 1px solid green;
+  width: 7vw;
+  height: 7vw;
+  margin-top: 7vw;
+  margin-left: 1vw;
+  &:last-child() {
+      height: 7.2vw;
+  }
+  // border: 1px solid green;
 }
 
 .topBtn{

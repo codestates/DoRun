@@ -15,7 +15,7 @@
 .bodyTop {
   text-align: center;
   padding: 10px;
-  width: 400px; //! 고친부분
+  // width: 400px; //! 고친부분
 
   .crewTitle {
     max-width: 300px;
@@ -179,21 +179,23 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .crewModalBody {
-    height: 300px;
-    overflow: auto;
-  }
-  .crewModalBody::-webkit-scrollbar {
-    width: 7px;
-  }
-  .crewModalBody::-webkit-scrollbar-thumb {
-    background-color: #3bc9db;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  .crewModalBody::-webkit-scrollbar-track {
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
+  .crewModal {
+    .crewModalBody {
+      height: 315px;
+      overflow: auto;
+    }
+    .crewModalBody::-webkit-scrollbar {
+      width: 7px;
+    }
+    .crewModalBody::-webkit-scrollbar-thumb {
+      background-color: #3bc9db;
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+    .crewModalBody::-webkit-scrollbar-track {
+      border-radius: 10px;
+      box-shadow: inset 0px 0px 5px white;
+    }
   }
 }

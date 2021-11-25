@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
 import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
+import ResetPassword from '../../components/ResetPassword/ResetPassword';
 import Footer from '../../components/Footer/Footer';
 
 const LoginPage = () => {
@@ -30,6 +31,7 @@ const LoginPage = () => {
     };
     dispatch(loginUser(body))
       .then((res) => {
+        // console.log(res);
         if (res.payload.message === 'success') {
           document.location.href = '/';
         }
@@ -37,6 +39,13 @@ const LoginPage = () => {
       .catch((error) => {
         setMismatched(true);
       });
+  };
+
+  const [isResetPasswordOpen, setIsResetPasswordOpen] = useState(false);
+  const resetPasswordHandler = () => {
+    isResetPasswordOpen
+      ? setIsResetPasswordOpen(false)
+      : setIsResetPasswordOpen(true);
   };
 
   return (
@@ -75,6 +84,9 @@ const LoginPage = () => {
                 show
               </div>
             </div>
+            <div className="reset_password" onClick={resetPasswordHandler}>
+              비밀번호 재설정
+            </div>
             <input type="submit" name="login" style={{ marginTop: '100px' }} />
             <div className="isRegisted">
               <span>아직 회원이 아니신가요?</span>
@@ -87,8 +99,12 @@ const LoginPage = () => {
             </div>
             <SocialLoginKakao />
           </form>
+          {isResetPasswordOpen && (
+            <ResetPassword resetPasswordHandler={resetPasswordHandler} />
+          )}
         </div>
       </div>
+
       <Footer />
     </>
   );

@@ -16,7 +16,7 @@ const ResetPassword = ({ resetPasswordHandler }) => {
       .then((res) => {
         console.log(res);
         setClicked(true);
-        if (res.data.data.message === 'success') {
+        if (res.data.message === 'success') {
           setPassed(true);
         } else {
           setPassed(false);

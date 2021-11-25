@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import { User } from "../entity/User";
-import { TokensCreate } from "../utils/token";
+import { TokensCreate, ConfirmEmailToken, AccessTokenVerify } from "../utils/token";
 import * as bcrypt from "bcrypt";
+import { signUpEmail, passwordSend } from "../utils/nodemailer";
 
 const SignUp = async (req: Request, res: Response) => {
   try {
-    const { nickname, email } = req.body;
+    const { nickname, email }: { nickname: string; email: string } = req.body;
 
     const password = await bcrypt.hash(req.body.password, 10);
 
@@ -19,8 +20,6 @@ const SignUp = async (req: Request, res: Response) => {
       nickname,
       password,
       email,
-      //image: req.body.imageUrl || null, //확인필요
-      //isauth: true,
     });
 
     userInfo = await User.save(userInfo);
@@ -33,8 +32,11 @@ const SignUp = async (req: Request, res: Response) => {
       secure: true,
     });
 
+    const token = await ConfirmEmailToken(email);
+
+    signUpEmail(email, userInfo.id, token);
+
     return res.status(200).send({ data: userInfo, accessToken, message: "success" });
-    //////////////////////////////////////////
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
@@ -144,4 +146,83 @@ const userInfo = async (req: Request, res: Response) => {
   }
 };
 
-export { SignUp, SignOut, Login, logout, Edit, userInfo };
+const userConfirmEmail = async (req: Request, res: Response) => {
+  try {
+    const { userId, token }: any = req.params;
+
+    const data = await AccessTokenVerify(token);
+
+    const userInfo = await User.findOne({ id: userId });
+
+    if (!data || !userInfo) {
+      res.send(
+        `<script type="text/javascript">alert("Not verified"); window.location="/"; </script>`
+      );
+    } else {
+      userInfo.isauth = true;
+      User.save(userInfo);
+
+      res.send(
+        `<script type="text/javascript">alert("Successfully verified"); window.location="/"; </script>`
+      );
+    }
+  } catch (err) {
+    res.send(
+      `<script type="text/javascript">alert("Not verified"); window.location="/"; </script> 
+      err:${err}`
+    );
+  }
+};
+
+const ConfirmEmailReSend = async (req: Request, res: Response) => {
+  try {
+    const { userId, email }: { userId: number; email: string } = req.body;
+    if (!userId || !email) {
+      return res.status(400).send({ message: "invalid user info" });
+    }
+
+    const token = await ConfirmEmailToken(email);
+
+    signUpEmail(email, userId, token);
+
+    res.status(200).send({ message: "success" });
+  } catch (err) {
+    return res.status(500).send({ message: "Internal Server Error", err: err });
+  }
+};
+
+const PasswordReset = async (req: Request, res: Response) => {
+  try {
+    const { email }: { email: string } = req.body;
+
+    const userInfo = await User.findOne({ email });
+
+    if (!userInfo) {
+      return res.status(400).send({ message: "invalid user email" });
+    }
+
+    const randomPassword = Math.random().toString(36).substr(2, 11);
+    passwordSend(email, randomPassword);
+
+    const hashingPassword = await bcrypt.hash(randomPassword, 10);
+    userInfo.password = hashingPassword;
+
+    const SavedUser = User.save(userInfo);
+
+    res.status(200).send({ message: "success" });
+  } catch (err) {
+    return res.status(500).send({ message: "Internal Server Error", err: err });
+  }
+};
+
+export {
+  SignUp,
+  SignOut,
+  Login,
+  logout,
+  Edit,
+  userInfo,
+  userConfirmEmail,
+  ConfirmEmailReSend,
+  PasswordReset,
+};

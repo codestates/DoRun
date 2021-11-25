@@ -26,7 +26,7 @@ const TokensCreate = async (userInfo: User) => {
   return { accessToken, refreshToken };
 };
 
-const AccessTokenVerify = (accessToken: string) => {
+const AccessTokenVerify = async (accessToken: string) => {
   try {
     return verify(accessToken, process.env.ACCESS_SECRET);
   } catch (err) {
@@ -44,4 +44,19 @@ const RefreshTokenVerify = (accessToken: string) => {
   }
 };
 
-export { TokensCreate, AccessTokenCreate, AccessTokenVerify, RefreshTokenVerify };
+const ConfirmEmailToken = async (email: string) => {
+  try {
+    //const token = sign({ email }, process.env.ACCESS_SECRET, { expiresIn: "15m" });
+    return sign({ email }, process.env.ACCESS_SECRET, { expiresIn: "15m" });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export {
+  TokensCreate,
+  AccessTokenCreate,
+  AccessTokenVerify,
+  RefreshTokenVerify,
+  ConfirmEmailToken,
+};

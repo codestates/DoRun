@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { OutsideClick } from '../../components/DropDown/OutsideClick';
 import DropDown from '../../components/DropDown/DropDown';
-import axios from 'axios';
+import EmailVerification from '../../components/EmailVerification/EmailVerification';
 import MyAccount from './MyAccount/MyAccount';
 import MyDoRun from './MyDoRun/MyDoRun';
 import MyHistory from './MyHistory/MyHistory';
@@ -16,25 +16,9 @@ const MyPage = () => {
   const [isActive, setIsActive] = OutsideClick(dropdownRef, false);
   const dropDownHandler = () => setIsActive(!isActive);
 
-  //* 유저 정보 로드
-  const userId = useSelector((state) => state.user.userId);
-  const [userInfo, setUserInfo] = useState({
-    nickname: '',
-    image: '',
-  });
-  const [state, setState] = useState(true);
-  useEffect(() => {
-    if (state) {
-      axios
-        .get(`${process.env.REACT_APP_SERVER}/user/${userId}`)
-        .then((res) => {
-          setUserInfo({
-            ...res.data.data,
-          });
-        });
-    }
-    return () => setState(false); // useEffect console err
-  }, []);
+  //* 유저 정보
+  const userInfo = useSelector((state) => state.user);
+  console.log(userInfo);
 
   return (
     <>
@@ -58,17 +42,34 @@ const MyPage = () => {
           />
           <br />
           <div className="header_content">{userInfo.nickname}의 마이페이지</div>
+          <EmailVerification />
         </div>
 
         <div className="MyPage_body">
-          <div className="body_cards">
-            <MyAccount />
-            <MyDoRun />
-          </div>
-          <div className="body_cards">
-            <MyHistory />
-            <MyMedal />
-          </div>
+          {userInfo.isauth ? (
+            <>
+              <div className="body_cards">
+                <MyAccount />
+                <MyDoRun />
+              </div>
+              <div className="body_cards">
+                <MyHistory />
+                <MyMedal />
+              </div>
+            </>
+          ) : (
+            <div className="nonVerified">
+              <div className="nonVerified_text">
+                이메일 인증이 되지 않은 회원입니다.
+              </div>
+              <div className="nonVerified_text">
+                상단의 이메일 인증 재발송을 통해,
+              </div>
+              <div className="nonVerified_text">
+                이메일 인증을 진행해 주세요!!
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <Footer />

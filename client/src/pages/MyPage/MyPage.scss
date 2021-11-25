@@ -19,6 +19,13 @@
       border-radius: 50%;
       object-fit: cover;
     }
+    .header_email {
+      height: 20px;
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+      margin-right: 20px;
+    }
     .header_etc {
       width: 25px;
       height: 20px;
@@ -43,6 +50,20 @@
       display: flex;
       justify-content: center;
       gap: 3vw;
+    }
+
+    .nonVerified {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      height: 370px;
+
+      .nonVerified_text {
+        color: #6e6e6e;
+        font-size: 20px;
+      }
     }
   }
 }

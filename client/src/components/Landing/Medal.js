@@ -9,7 +9,9 @@ import topBtn from './LandingSVG/topBtn.png';
 import medalsBack from './LandingSVG/medalBack.svg';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 
 
@@ -42,7 +44,7 @@ function Medal() {
       opacity: 1,
       scrollTrigger: {
         scrub: 3,
-        start: '45% top',
+        start: '40% top',
         // markers: true,
       }
     });
@@ -53,7 +55,7 @@ function Medal() {
       opacity: 1,
       scrollTrigger: {
         scrub: 3,
-        start: '47% top',
+        start: '43% top',
         // markers: true,
       }
     });
@@ -64,7 +66,7 @@ function Medal() {
       opacity: 1,
       scrollTrigger: {
         scrub: 3,
-        start: '51% top',
+        start: '47% top',
         // markers: true,
       }
     });
@@ -75,7 +77,7 @@ function Medal() {
       opacity: 1,
       scrollTrigger: {
         scrub: 3,
-        start: '55% top',
+        start: '50% top',
         // markers: true,
       }
     });
@@ -85,7 +87,6 @@ function Medal() {
       duration: 1,
       ease: 'back',
       opacity: 1,
-      satrt: "90%",
       repeat: -1,
       repeatDelay: 1,
       // markers: true,
@@ -100,7 +101,7 @@ function Medal() {
       {
 
         scrollTrigger: {
-          start: "55% top",
+          start: "50% top",
           end: "bottom bottom",
           opacity: 0,
           scrub: 3,

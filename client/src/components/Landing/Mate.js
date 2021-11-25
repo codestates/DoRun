@@ -4,7 +4,9 @@ import friends from './LandingSVG/friends.svg'
 import readingGlasses from './LandingSVG/readingGlasses.svg'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 
 function Mate() {

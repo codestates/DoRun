@@ -1,16 +1,21 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Walk.scss';
+import GuestModeModal from '../GuestModeModal/GuestModeModal';
+import GuestModeModalBack from '../GuestModeModal/GuestModeModalBack';
 import walk from './LandingSVG/walk.svg';
 import { gsap } from "gsap";
-gsap.registerPlugin(ScrollTrigger);
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 
 function Walk() {
 
     const run = useRef(null);
     const line = useRef(null);
+    const [guestMode, setGuestMode] = useState(false);
 
     useEffect(() => {
 
@@ -35,8 +40,13 @@ function Walk() {
     });
 
     const history = useHistory();
+
     const pagehandler = () => {
         history.push('/map')
+    }
+
+    const guestModeHandler = () => {
+        setGuestMode(true);
     }
 
 
@@ -49,8 +59,13 @@ function Walk() {
                     <div className='line' > 혼자 뛰기 심심할 때, </div>
                     <div className='line' > '오늘만 함께 할' </div>
                     <div className='line' > Do Run 메이트를 만들어보세요! </div>
-                    <div className='walkBtn' onClick={pagehandler}> Do Run!! </div>
+                    <div className='btnWrapper'>
+                        <div className='walkBtn' onClick={pagehandler}> Do Run!! </div>
+                        <div className='guestBtn' onClick={guestModeHandler}> Guest Mode </div>
+                    </div>
                 </div>
+                <GuestModeModal guestMode={guestMode} setGuestMode={setGuestMode} />
+                <GuestModeModalBack guestMode={guestMode} />
             </div>
         </>
     )

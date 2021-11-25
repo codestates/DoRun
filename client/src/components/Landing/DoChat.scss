@@ -6,7 +6,7 @@
 }
 
 .doChat{
-  height: 60vw;
+  height: 66vw;
   z-index:999;
   // border: 1px solid red;
 }
@@ -15,13 +15,14 @@
   width: 45vw;
   height: 30vw;
   margin: 5vw 30% 0px 30%;
+  margin: 5vw 27%;
   z-index: 999;
   // border: 1px solid orange;
 }
 
 .doChatBubbles{
   display: flex;
-  width: 90vw;
+  width: 85vw;
   height: 5vw;
   margin: 10vw auto;
   // border: 1px solid black
@@ -30,7 +31,7 @@
 .doChatBubblesText{
   width: 35vw;
   height: 5vw;
-  margin: 5vw auto;
+  margin: 5vw 7vw;
   font-size: 2vw;
   text-align: center;
   justify-content: center;
@@ -50,8 +51,7 @@
   width: 15vw;
   height: 15vw;
   flex-direction: column;
-  margin-left: 5vw;
-  margin-right: 10vw;
+  margin-left: 3vw;
   background-image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -86,7 +86,7 @@
   width: 15vw;
   height: 15vw;
   flex-direction: column;
-  margin-left: 10vw;
+  // margin-left: 7vw;
   background-image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
   background-position: center;
   background-repeat: no-repeat;

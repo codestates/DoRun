@@ -4,7 +4,9 @@ import map from './LandingSVG/map.svg'
 import search from './LandingSVG/search2.gif'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 
 function Search() {

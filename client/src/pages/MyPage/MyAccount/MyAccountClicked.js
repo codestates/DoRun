@@ -31,7 +31,7 @@ const MyAccountClicked = () => {
     if (reg.test(userInfo.newPass1) || userInfo.newPass1 === '') {
       if (userInfo.newPass1 === userInfo.newPass2) {
         const formData = new FormData();
-        formData.set('userId', userId);
+        formData.set('userId', userData.userId);
         formData.set('nickname', userInfo.nickname);
         formData.set('image', preview);
         formData.set('password', userInfo.password);
@@ -72,27 +72,15 @@ const MyAccountClicked = () => {
       : setIsChangedModalOpen(true);
   };
 
-  //* 유저 정보 로드
-  const userId = useSelector((state) => state.user.userId);
+  //* 유저 정보
+  const userData = useSelector((state) => state.user);
   const [userInfo, setUserInfo] = useState({
-    nickname: '',
-    image: '',
+    nickname: userData.nickname,
+    image: userData.image,
     password: '',
     newPass1: '',
     newPass2: '',
   });
-  useEffect(async () => {
-    await axios
-      .get(`${process.env.REACT_APP_SERVER}/user/${userId}`)
-      .then((res) => {
-        setUserInfo({
-          ...res.data.data,
-          password: '',
-          newPass1: '',
-          newPass2: '',
-        });
-      });
-  }, []);
 
   return (
     <>

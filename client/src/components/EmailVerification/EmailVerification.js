@@ -21,7 +21,7 @@ const EmailVerification = () => {
       .post(`${process.env.REACT_APP_SERVER}/user/confirm_email`, body)
       .then((res) => {
         console.log(res);
-        if (res.data.data.message === 'success') {
+        if (res.data.message === 'success') {
           emailModalHandler();
         }
       });

@@ -12,5 +12,8 @@ userRoter.post("/logout", UserController.logout);
 userRoter.patch("/", upload.single("image"), UserController.Edit);
 //userRoter.get("/:userId", authCheck, UserController.userInfo);
 userRoter.get("/:userId", UserController.userInfo);
+userRoter.get("/confirm/:token/:userId", UserController.userConfirmEmail);
+userRoter.post("/confirm_email", UserController.ConfirmEmailReSend);
+userRoter.patch("/reset_password", UserController.PasswordReset);
 
 export default userRoter;

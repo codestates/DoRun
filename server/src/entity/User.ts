@@ -42,8 +42,8 @@ export class User extends BaseEntity {
   @Column({ type: "varchar", nullable: true })
   oauth: string;
 
-  // @Column({ type: "boolean", nullable: true })
-  // isauth: boolean;
+  @Column({ type: "boolean", nullable: true, default: false })
+  isauth: boolean;
 
   @Column({ type: "int", nullable: true })
   crewId: number;

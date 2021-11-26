@@ -21,6 +21,9 @@ export REDIS_PORT=$(aws ssm get-parameters --region ap-northeast-2 --names REDIS
 export REDIS_PASSWORD=$(aws ssm get-parameters --region ap-northeast-2 --names REDIS_PASSWORD --query Parameters[0].Value | sed 's/"//g')
 export NODEMAILER_USER=$(aws ssm get-parameters --region ap-northeast-2 --names NODEMAILER_USER --query Parameters[0].Value | sed 's/"//g')
 export NODEMAILER_PASSWORD=$(aws ssm get-parameters --region ap-northeast-2 --names NODEMAILER_PASSWORD --query Parameters[0].Value | sed 's/"//g')
+export SERVER_URL=$(aws ssm get-parameters --region ap-northeast-2 --names SERVER_URL --query Parameters[0].Value | sed 's/"//g')
+
+
 
 
 

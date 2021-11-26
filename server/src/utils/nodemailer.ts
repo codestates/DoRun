@@ -6,15 +6,15 @@ export const signUpEmail = async (email: string, userId: number, token: string) 
   try {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.NODEMAILER_USER,
         pass: process.env.NODEMAILER_PASSWORD,
       },
     });
-    //const url = "https://localhost:3000" + "/user/confirm/" + token;
-    const url = `http://localhost:3001/user/confirm/${token}/${userId}`;
+    //const url = `http://localhost:3001/user/confirm/${token}/${userId}`;
+    const url = `${process.env.SERVER_URL}/user/confirm/${token}/${userId}`;
 
     const emailInfo = await transporter.sendMail({
       from: `Dorun ${process.env.NODEMAILER_USER}`,
@@ -22,15 +22,17 @@ export const signUpEmail = async (email: string, userId: number, token: string) 
       subject: "이메일 인증",
       text: `링크:${url}`,
     });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const passwordSend = async (email: string, password: string) => {
   try {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.NODEMAILER_USER,
         pass: process.env.NODEMAILER_PASSWORD,
@@ -43,5 +45,7 @@ export const passwordSend = async (email: string, password: string) => {
       subject: "비밀번호 초기화",
       text: `변경된 비밀번호 ${password}`,
     });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 };

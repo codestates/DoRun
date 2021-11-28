@@ -215,6 +215,26 @@ const PasswordReset = async (req: Request, res: Response) => {
   }
 };
 
+const GuestLogin = async (req: Request, res: Response) => {
+  try {
+    let userInfo = User.create({
+      nickname: "Guest",
+      email: "Guest@Guest.com",
+      isauth: true,
+    });
+
+    userInfo = await User.save(userInfo);
+
+    res.status(200).send({ data: userInfo, Message: "success" });
+
+    setTimeout(() => {
+      User.remove(userInfo);
+    }, 1000 * 60 * 15); //15min
+  } catch (err) {
+    return res.status(500).send({ message: "Internal Server Error", err: err });
+  }
+};
+
 export {
   SignUp,
   SignOut,
@@ -225,4 +245,5 @@ export {
   userConfirmEmail,
   ConfirmEmailReSend,
   PasswordReset,
+  GuestLogin,
 };

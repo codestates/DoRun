@@ -229,7 +229,7 @@ const GuestLogin = async (req: Request, res: Response) => {
 
     setTimeout(() => {
       User.remove(userInfo);
-    }, 1000 * 60 * 15); //15min
+    }, 1000 * 60 * 30); //30min
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }

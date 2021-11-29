@@ -7,8 +7,12 @@ function GuestModeModal({ guestMode, setGuestMode }) {
         setGuestMode(false)
     }
 
-    const guestModalLogin = () => {
-        document.location.href = '/login';
+    const guestModeHandler = () => {
+        console.log('e')
+    }
+
+    const guestModalRegister = () => {
+        document.location.href = '/register';
     }
 
     return (
@@ -20,8 +24,8 @@ function GuestModeModal({ guestMode, setGuestMode }) {
                         게스트 모드 사용은 <br /> 30분의 시간 제한이 있습니다.
                     </div>
                     <div className="guestModeBtns">
-                        <div className="guestModeYes"> 동의하고 시작하기</div>
-                        <div className="guestModeNo" onClick={guestModalLogin}> 회원가입 하러가기</div>
+                        <div className="guestModeYes" onClick={guestModeHandler}> 동의하고 시작하기</div>
+                        <div className="guestModeNo" onClick={guestModalRegister}> 회원가입 하러가기</div>
                     </div>
                 </div> : ''}
         </>

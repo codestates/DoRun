@@ -87,7 +87,12 @@ const LoginPage = () => {
             <div className="reset_password" onClick={resetPasswordHandler}>
               비밀번호 재설정
             </div>
-            <input type="submit" name="login" style={{ marginTop: '100px' }} />
+            <input
+              type="submit"
+              value="DoRun!"
+              name="login"
+              style={{ marginTop: '100px' }}
+            />
             <div className="isRegisted">
               <span>아직 회원이 아니신가요?</span>
               <Link className="toRegister" to="/register">

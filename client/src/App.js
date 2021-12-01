@@ -10,6 +10,7 @@ import ChatPage from './pages/ChatPage/ChatPage';
 import Nav from './components/Header/Nav';
 import Loading from './components/Loading/Loading';
 import WrongApproach from './pages/WrongApproach/WrongApproach';
+import RegisterSuccess from './components/RegisterSuccess/RegisterSuccess';
 
 const App = () => {
   const userId = useSelector((state) => state.user.userId);
@@ -33,6 +34,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route path="/map" component={MapPage} />
+            <Route path="/welcome" component={RegisterSuccess} />
             {userId ? (
               <>
                 {userCrewId ? (

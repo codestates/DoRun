@@ -19,7 +19,7 @@ $error: #ff7545;
   margin: 0 auto;
   border: 1px solid $inputBorder;
   border-radius: 2rem;
-  height: 50rem;
+  height: 52rem;
 
   h1 {
     font-weight: 700;
@@ -68,7 +68,7 @@ $error: #ff7545;
     padding: 20px;
     font-size: 16px;
     font-weight: 400;
-    letter-spacing: 10px;
+    letter-spacing: 0.1rem;
     cursor: pointer;
     border-radius: 100px;
     -webkit-appearance: none;
@@ -98,6 +98,54 @@ $error: #ff7545;
     font-weight: 500;
     background: $backgroundColorWhite;
   }
+}
+// 체크박스
+#someID {
+  display: none;
+}
+
+.checkbox-1 {
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.8rem;
+  font-family: 'Cafe24Ohsquareair';
+}
+
+.checkbox-1:before {
+  position: absolute;
+  content: '';
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid $inputBorder;
+  background: $backgroundColorWhite;
+  text-align: center;
+  left: 0;
+  top: 2px;
+
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.checkbox-1:after {
+  position: absolute;
+  content: '✔';
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  color: $cyan;
+  left: 4px;
+  top: 4px;
+
+  transform: scale(0);
+
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#someID:checked + .checkbox-1:after {
+  transform: scale(1);
 }
 
 @media screen and (max-width: 768px) {

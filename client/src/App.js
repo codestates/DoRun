@@ -16,12 +16,12 @@ const App = () => {
   const userCrewId = useSelector((state) => state.user.userCrewId);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 1200);
-  // }, []);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+  }, []);
 
   return (
     <>

@@ -1,6 +1,7 @@
+import './Walk.scss';
 import React, { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './Walk.scss';
+import { useSelector } from 'react-redux';
 import GuestModeModal from '../GuestModeModal/GuestModeModal';
 import GuestModeModalBack from '../GuestModeModal/GuestModeModalBack';
 import walk from './LandingSVG/walk.svg';
@@ -13,62 +14,65 @@ gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 function Walk() {
 
-    const run = useRef(null);
-    const line = useRef(null);
-    const [guestMode, setGuestMode] = useState(false);
+  const run = useRef(null);
+  const line = useRef(null);
+  const [guestMode, setGuestMode] = useState(false);
+  const userId = useSelector((state) => state.user.userId);
 
-    useEffect(() => {
+  useEffect(() => {
 
-        gsap.to(run.current, {
-            x: '20%',
-            duration: 5,
-            ease: 'back',
-            opacity: 1,
-            repeat: -1,
-            repeatDelay: 2,
-        });
-
-        gsap.to(line.current, {
-            y: '-50%',
-            duration: 5,
-            ease: 'back',
-            opacity: 1,
-            repeat: -1,
-            repeatDelay: 2,
-        });
-
+    gsap.to(run.current, {
+      x: '20%',
+      duration: 5,
+      ease: 'back',
+      opacity: 1,
+      repeat: -1,
+      repeatDelay: 2,
     });
 
-    const history = useHistory();
+    gsap.to(line.current, {
+      y: '-50%',
+      duration: 5,
+      ease: 'back',
+      opacity: 1,
+      repeat: -1,
+      repeatDelay: 2,
+    });
 
-    const pagehandler = () => {
-        history.push('/map')
-    }
+  });
 
-    const guestModeHandler = () => {
-        setGuestMode(true);
-    }
+  const history = useHistory();
+
+  const pagehandler = () => {
+    history.push('/map')
+  }
+
+  const guestModeHandler = () => {
+    setGuestMode(true);
+
+  }
 
 
 
-    return (
-        <>
-            <div className='walkWrapper'>
-                <img className='walk' src={walk} ref={run} />
-                <div className='walkInfo' ref={line} >
-                    <div className='line' > 혼자 뛰기 심심할 때, </div>
-                    <div className='line' > '오늘만 함께 할' </div>
-                    <div className='line' > Do Run 메이트를 만들어보세요! </div>
-                    <div className='btnWrapper'>
-                        <div className='walkBtn' onClick={pagehandler}> Do Run!! </div>
-                        <div className='guestBtn' onClick={guestModeHandler}> Guest Mode </div>
-                    </div>
-                </div>
-                <GuestModeModal guestMode={guestMode} setGuestMode={setGuestMode} />
-                <GuestModeModalBack guestMode={guestMode} />
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div className='walkWrapper'>
+        <img className='walk' src={walk} ref={run} />
+        <div className='walkInfo' ref={line} >
+          <div className='line' > 혼자 뛰기 심심할 때, </div>
+          <div className='line' > '오늘만 함께 할' </div>
+          <div className='line' > Do Run 메이트를 만들어보세요! </div>
+          <div className='btnWrapper'>
+            <div className='walkBtn' onClick={pagehandler}> Do Run!! </div>
+            {userId ? '' :
+              <div className='guestBtn' onClick={guestModeHandler}> Guest Mode </div>}
+          </div>
+        </div>
+        <GuestModeModal guestMode={guestMode} setGuestMode={setGuestMode} />
+        <GuestModeModalBack guestMode={guestMode} />
+      </div>
+    </>
+  )
 }
 
 export default Walk;

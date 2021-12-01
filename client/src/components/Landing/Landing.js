@@ -5,9 +5,6 @@ import Search from './Search';
 import Create from './Create';
 import DoChat from './DoChat';
 import Medal from './Medal';
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TextPlugin } from "gsap/TextPlugin";
 
 const Landing = () => {
   return (

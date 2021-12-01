@@ -5,6 +5,7 @@ import {
   GOOGLE_USER,
   LOGOUT_USER,
   SIGNOUT_USER,
+  GUEST_USER
 } from './types';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
@@ -100,6 +101,21 @@ async function signoutUser(userId) {
   };
 }
 
+
+async function guestUser() {
+  const request = await axios
+    .post(`${process.env.REACT_APP_SERVER}/user/guest_login`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((e) => console.log(e));
+
+  return {
+    type: GUEST_USER,
+    payload: request,
+  };
+}
+
 export {
   loginUser,
   registerUser,
@@ -107,4 +123,5 @@ export {
   kakaoUser,
   logoutUser,
   signoutUser,
+  guestUser
 };

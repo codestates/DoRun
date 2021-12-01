@@ -1,8 +1,9 @@
 .walkWrapper {
   width: 100%;
   display: flex;
-  margin: 15rem auto 10rem auto;
-  // border: 1px solid blue;
+  margin: 10vh auto 5vh auto;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
 }
 
 .walk {
@@ -33,30 +34,69 @@
   }
 }
 
+.btnWrapper{
+  display: flex;
+}
+
 .walkBtn {
-  width: 8rem;
+  // min-width: 4rem;
+  // max-width: 8rem;
+  // height: 3rem;
+  max-width: 13vw;
   margin-top: 1rem;
   padding: 0.7rem 1rem;
   text-align: center;
   justify-content: center;
   color: white;
   font-style: italic;
-  font-size: 1.3rem;
+  // font-size: 1.3rem;
+  font-size: 1.5vw;
   font-weight: 800;
   transition: 0.5s;
   background-size: 200% auto;
-  box-shadow: 0 0 20px lightgray;
+  box-shadow: 1px 1px 20px rgb(185, 185, 185);
+  border-radius: 20px;
   background-image: linear-gradient(
     to right,
     #1fa2ff 0%,
     #12d8fa 51%,
     #1fa2ff 100%
   );
-  border-radius: 20px;
   &:hover {
     background-position: right center;
     color: #fff;
-    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.guestBtn{
+  // min-width: 4rem;
+  // max-width: 8rem;
+  // height: 3rem;
+  max-width: 13vw;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  justify-content: center;
+  color: #1fa2ff;
+  font-style: italic;
+  font-size: 1.3vw;
+  font-weight: 900;
+  transition: 0.5s;
+  background-size: 200% auto;
+  box-shadow: 0 0 20px lightgray;
+  border-radius: 20px;
+  background-image: linear-gradient(
+    to right,
+    #1fa2ff 0%,
+    #12d8fa 51%,
+    #1fa2ff 100%
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  &:hover {
+    background-position: right center;
     cursor: pointer;
   }
 }

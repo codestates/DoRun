@@ -9,7 +9,9 @@ import topBtn from './LandingSVG/topBtn.png';
 import medalsBack from './LandingSVG/medalBack.svg';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 
 
@@ -29,8 +31,8 @@ function Medal() {
       x: "60%",
       duration: 4,
       scrollTrigger: {
-        scrub: 1,
-        start: '65% top',
+        scrub: 3,
+        start: '60% top',
         // markers: true,
       }
     });
@@ -38,54 +40,53 @@ function Medal() {
     gsap.to(medalFirst.current, {
       y: '-250%',
       duration: 11,
-      ease: 'back',
+      ease: 'none',
       opacity: 1,
       scrollTrigger: {
-        scrub: 1,
-        start: '65% top',
+        scrub: 3,
+        start: '40% top',
         // markers: true,
       }
     });
     gsap.to(medalSecond.current, {
       y: '-250%',
-      duration: 15,
-      ease: 'back',
+      duration: 13,
+      ease: 'none',
       opacity: 1,
       scrollTrigger: {
-        scrub: 1,
-        start: '66% top',
+        scrub: 3,
+        start: '43% top',
         // markers: true,
       }
     });
     gsap.to(medalThird.current, {
       y: '-250%',
-      duration: 17,
-      ease: 'back',
+      duration: 13,
+      ease: 'none',
       opacity: 1,
       scrollTrigger: {
-        scrub: 1,
-        start: '68% top',
+        scrub: 3,
+        start: '47% top',
         // markers: true,
       }
     });
     gsap.to(winnerTrophy.current, {
       y: '-250%',
-      duration: 20,
-      ease: 'back',
+      duration: 13,
+      ease: 'none',
       opacity: 1,
       scrollTrigger: {
-        scrub: 1,
-        start: '70% top',
+        scrub: 3,
+        start: '50% top',
         // markers: true,
       }
     });
 
     gsap.to(theTopBtn.current, {
-      y: '-150%',
+      y: '-250%',
       duration: 1,
       ease: 'back',
       opacity: 1,
-      satrt: "90%",
       repeat: -1,
       repeatDelay: 1,
       // markers: true,
@@ -100,10 +101,10 @@ function Medal() {
       {
 
         scrollTrigger: {
-          start: "55% top",
+          start: "50% top",
           end: "bottom bottom",
           opacity: 0,
-          scrub: 1,
+          scrub: 3,
           // markers: true,
           toggleActions: "play reverse play reverse",
         }

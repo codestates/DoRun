@@ -4,7 +4,9 @@ import map from './LandingSVG/map.svg'
 import search from './LandingSVG/search2.gif'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 
 function Search() {
@@ -17,12 +19,12 @@ function Search() {
 
   useEffect(() => {
     gsap.to(searchGIF.current, {
-      y: '75%',
+      y: '55%',
       duration: 2,
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
-        scrub: 1,
+        scrub: 1.5,
         start: '10% top',
         // markers: true,
       }
@@ -55,18 +57,18 @@ function Search() {
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
-        scrub: 1,
+        scrub: 1.5,
         start: '10% top',
         // markers: true,
       }
     });
     gsap.to(searchText.current, {
-      x: '25%',
+      x: '20%',
       duration: 1,
       ease: 'back',
       opacity: 1,
       scrollTrigger: {
-        scrub: 1,
+        scrub: 1.5,
         start: '10% top',
       }
     });

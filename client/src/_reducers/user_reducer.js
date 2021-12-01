@@ -5,6 +5,7 @@ import {
   GOOGLE_USER,
   LOGOUT_USER,
   SIGNOUT_USER,
+  GUEST_USER,
   CREATE_CREW,
   JOIN_CREW,
   WITHDRAWAL_CREW,
@@ -85,6 +86,18 @@ export default function user(
         image: null,
         userCrewId: null,
         isauth: null,
+        accessToken: null,
+      };
+      break;
+
+    case GUEST_USER:
+      return {
+        userId: action.payload.data.id,
+        email: action.payload.data.email,
+        nickname: action.payload.data.nickname,
+        image: action.payload.data.image,
+        userCrewId: null,
+        isauth: action.payload.data.isauth,
         accessToken: null,
       };
       break;

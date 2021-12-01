@@ -4,7 +4,9 @@ import create from './LandingSVG/createNew.gif';
 import createBack from './LandingSVG/createBack.svg'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 function Join() {
     const joinGIF = useRef(null);
@@ -19,31 +21,31 @@ function Join() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
                 start: '35% top',
                 // markers: true,
 
             }
         });
         gsap.to(joinText.current, {
-            y: '-60%',
+            y: '-50%',
             duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
                 start: '35% top',
                 // markers: true,
             }
         });
 
         gsap.to(joinBack.current, {
-            x: '70%',
+            x: '40%',
             duration: 1,
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
                 start: '30% top',
                 // markers: true,
             }

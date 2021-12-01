@@ -4,7 +4,9 @@ import friends from './LandingSVG/friends.svg'
 import readingGlasses from './LandingSVG/readingGlasses.svg'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 
 function Mate() {
@@ -27,7 +29,7 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
                 start: '50 top',
                 // markers: true,
             }
@@ -39,7 +41,7 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
                 // markers: true,
             }
         });
@@ -49,7 +51,7 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
             }
         });
 
@@ -59,7 +61,7 @@ function Mate() {
             ease: 'back',
             opacity: 1,
             scrollTrigger: {
-                scrub: 1,
+                scrub: 1.5,
 
             }
         });

@@ -16,5 +16,6 @@ userRoter.get("/confirm/:token/:userId", UserController.userConfirmEmail);
 userRoter.post("/confirm_email", UserController.ConfirmEmailReSend);
 userRoter.patch("/reset_password", UserController.PasswordReset);
 userRoter.post("/guest_login", UserController.GuestLogin);
+userRoter.patch("/history", UserController.EditHistory);
 
 export default userRoter;

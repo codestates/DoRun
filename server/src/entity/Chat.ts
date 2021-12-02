@@ -38,6 +38,6 @@ export class Chat extends BaseEntity {
   // @OneToOne(() => Crew)
   // @JoinColumn()
   // crew: Crew;
-  @ManyToOne((type) => Crew, (crew) => crew.chat)
+  @ManyToOne((type) => Crew, (crew) => crew.chat, { onDelete: "CASCADE" })
   crew: Crew;
 }

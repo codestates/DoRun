@@ -23,7 +23,7 @@ export const signUpEmail = async (email: string, userId: number, token: string) 
       //text: `링크:${url}`,
       html: `<body>
       <div
-        style="font-family: 'Apple SD Gothic Neo', 'sans-serif' !important; width: 540px; height: 600px; margin: 100px auto; padding: 30px 0; box-sizing: border-box;">
+    style="font-family: 'Apple SD Gothic Neo', 'sans-serif' !important; width: 540px; height: 600px; margin: auto 50px; padding: 30px 0px; box-sizing: border-box;">
         <h1 style="margin: 0; color: #3bc9db; font-size: 60px;">Do Run</h1>
         <hr style="height: 0; border: 0; border-top: 1px solid #ddd; margin-bottom: 30px;" />
         <div>

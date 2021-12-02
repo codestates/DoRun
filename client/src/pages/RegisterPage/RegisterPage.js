@@ -16,6 +16,7 @@ const RegisterPage = (props) => {
 
   const onSubmit = async (data) => {
     const { email, nickname, password } = getValues();
+    console.log(data);
     let body = {
       email,
       nickname,
@@ -24,7 +25,7 @@ const RegisterPage = (props) => {
 
     dispatch(registerUser(body)).then((res) => {
       if (res.payload.message === 'success') {
-        props.history.push('/login');
+        props.history.push('/welcome');
       } else {
         alert('Failed to sign up');
       }
@@ -108,8 +109,28 @@ const RegisterPage = (props) => {
               errors.password_confirm.type === 'validate' && (
                 <p> Do not match. 비밀번호를 확인해주세요.</p>
               )}
-
-            <input type="submit" style={{ marginTop: '100px' }} />
+            {/* 체크박스 */}
+            {/* <label className="labelTitle">
+              <input type="checkbox" ref={register} />
+              <span>[필수] 이메일 인증을 위한 개인정보 수집에 동의합니다.</span>
+            </label> */}
+            <input
+              name="checkbox"
+              type="checkbox"
+              id="someID"
+              ref={register({ required: true })}
+            />
+            <label htmlFor="someID" className="labelTitle checkbox-1">
+              [필수] 이메일 인증을 위한 개인정보 수집 및 이용에 동의합니다.
+            </label>
+            {errors.checkbox && errors.checkbox.type === 'required' && (
+              <p>필수 조건에 체크해주세요!</p>
+            )}
+            <input
+              type="submit"
+              value="DoRun!"
+              style={{ marginTop: '100px' }}
+            />
           </form>
         </div>
       </div>

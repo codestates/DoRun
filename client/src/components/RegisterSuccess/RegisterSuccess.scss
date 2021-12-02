@@ -1,0 +1,60 @@
+$backgroundColorWhite: #ffffff;
+$cyan: #3bc9db;
+$cyanDark: #15aabf;
+
+.msgWrapper {
+  width: 500px;
+  height: 600px;
+  margin: 100px auto;
+  text-align: center;
+
+  h1 {
+    letter-spacing: 0.1rem;
+    color: $cyanDark;
+  }
+
+  h3 {
+    margin-top: 30px;
+  }
+}
+
+.msgBtn {
+  margin-top: 50px;
+  width: 23rem;
+  background: $cyan;
+  color: $backgroundColorWhite;
+  text-transform: uppercase;
+  border: none;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  -webkit-appearance: none;
+
+  &:hover {
+    background: $cyanDark;
+  }
+  &:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .msgWrapper {
+    width: 60%;
+    word-break: keep-all;
+
+    h3 {
+      letter-spacing: 0rem;
+    }
+  }
+  .msgBtn {
+    margin-top: 60px;
+    width: 80%;
+  }
+}

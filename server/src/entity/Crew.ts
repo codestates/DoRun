@@ -45,6 +45,9 @@ export class Crew extends BaseEntity {
   @Column({ type: "varchar" })
   distance: string;
 
+  @Column({ type: "boolean", nullable: true, default: false })
+  Completed: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 

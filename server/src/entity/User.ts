@@ -54,6 +54,6 @@ export class User extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne((type) => Crew, (crew) => crew.users)
+  @ManyToOne((type) => Crew, (crew) => crew.users, { onDelete: "CASCADE" })
   crew: Crew;
 }

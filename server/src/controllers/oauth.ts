@@ -18,6 +18,7 @@ const Google = async (req: Request, res: Response) => {
         image: req.body.imageUrl,
         oauth: "google",
         //isauth: true,
+        isauth: true,
       });
       userInfo = await User.save(userInfo);
     }
@@ -94,6 +95,7 @@ const Kakao = async (req: Request, res: Response) => {
         email: kakaoEmail,
         password: kakaoUserInfo.data["id"],
         oauth: "kakao",
+        isauth: true,
       });
       userInfo = await User.save(userInfo);
     }

@@ -31,6 +31,10 @@ const CreateCrew = async (req: Request, res: Response) => {
       distance,
     });
 
+    let now = new Date();
+    let endDate = new Date(`${date}T${time.substr(8)}:00`);
+    let endMs = endDate.getTime() - now.getTime();
+
     if (!crewInfo) return res.status(400).send();
 
     crewInfo = await Crew.save(crewInfo);
@@ -48,6 +52,16 @@ const CreateCrew = async (req: Request, res: Response) => {
       const accessToken = req.body.token;
       return res.status(201).send({ data: crewInfo, accessToken, message: "success" });
     }
+
+    setTimeout(() => {
+      // 여기서 크루에 속해있는 유저에 로그와 메달을 저장
+      crewInfo.Completed = true;
+      Crew.save(crewInfo);
+    }, endMs);
+
+    setTimeout(() => {
+      Crew.remove(crewInfo);
+    }, endMs + 1000 * 60 * 60 * 24 * 15); // 15day
 
     return res.status(201).send({ data: crewInfo, message: "success" });
   } catch (err) {

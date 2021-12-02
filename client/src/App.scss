@@ -7,13 +7,21 @@
   transform: translate(-50%, -50%);
   text-align: center;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 20px;
   box-shadow: 1px 1px 3px lightgray;
   z-index: 9999;
   // border: 1px solid red;
 }
 
 .guestModeTimeoutNotice{
-  margin-top: 80px;
+  margin-top: 60px;
+  font-size: 25px;
+  font-family: 'GmarketSans';
+  font-weight: 900;
+  line-height: 40px;
   // border: 1px solid red;
+}
+
+.blue {
+  color: #FF7545;
 }

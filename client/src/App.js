@@ -31,27 +31,27 @@ const App = () => {
       setLoading(false);
     }, 1200);
 
+    // ! 게스트 로그인 시,
     if (userEmail === "Guest@Guest.com") {
-      setTimeout(() => { // 전체 시간(15)초가 지난 뒤에 종료
+
+      //! 전체 시간이 지난 뒤에 종료
+      setTimeout(() => {
         dispatch(guestLogoutUser());
       }, 1000 * 20);
 
-      setTimeout(() => { // 5초가 지난 뒤, 1초마다 한번씩 반복
-        setGuestModeTimeout(true);
+      //! 끝나기 10초 전부터, 1초마다 한번씩 반복
+      setTimeout(() => {
+        setGuestModeTimeout(true); //시간 종료 모달 open
         setInterval(() => {
           setGuestModeTime(guestModeTime -= 1)
           if (guestModeTime === 0) {
-            setGuestModeTimeout(false);
+            setGuestModeTimeout(false); //시간 종료 모달 close
             document.location.href = '/';
           }
         }, 1000 * 1);
       }, 1000 * 10);
 
     }
-
-
-
-
 
   }, []);
 
@@ -88,7 +88,8 @@ const App = () => {
           </Switch>
           {guestModeTimeout ?
             <div className="guestModeTimeoutAlret">
-              <div className="guestModeTimeoutNotice">{guestModeTime}초 뒤, <br /> 게스트 모드가 종료됩니다.</div>
+              <div className="guestModeTimeoutNotice">
+                <span className="blue"> {guestModeTime}</span> 초 뒤, <br />게스트 모드가 종료됩니다.</div>
             </div>
             : ''}
         </>

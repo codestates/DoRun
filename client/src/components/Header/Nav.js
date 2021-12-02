@@ -20,9 +20,17 @@ const Nav = () => {
         />
         <nav className="navbar" onClick={(e) => e.stopPropagation()}>
           <div className="nav-container">
-            <a className="nav-logo" href="/">
+            {/* <a className="nav-logo" href="/">
               <img src="/DoRun.png" alt="logo" width="120px" />
-            </a>
+            </a> */}
+            <NavLink
+              to='/'
+              onClick={click ? handleClick : null}
+            >
+              <div className="nav-logo" >
+                <img src="/DoRun.png" alt="logo" width="120px" />
+              </div>
+            </NavLink>
 
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className="nav-item">

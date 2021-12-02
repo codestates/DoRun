@@ -18,7 +18,7 @@ const MyMedal = () => {
         }}
       >
         <div className="card_left">
-          <img className="card_img" src="/MyMedal.png" alt="Card Img" />
+          <img className="card_img" src="MyMedal/MyMedal.png" alt="Card Img" />
         </div>
         <div className="card_right">
           <h2 className="card_title">My Medal</h2>

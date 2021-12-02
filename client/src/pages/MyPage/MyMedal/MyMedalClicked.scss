@@ -8,7 +8,6 @@
   .MyMedal_wrapper {
     width: 360px;
     height: 530px;
-    margin: 0 auto;
     border-top: 1px solid #dee2e6;
     background-color: #ffffff;
     padding-top: 1rem;
@@ -23,28 +22,63 @@
       padding: 10px;
       width: 100%;
       height: 100%;
-      gap: 3vw;
+      // gap: 3vw;
+      gap: 50px;
+
       .medal_imgArea {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 108.25px;
         height: 108.25px;
+        // border: 1px solid blue;
 
         .medal_img {
           width: 70px;
           height: 70px;
+          padding: 2px;
+          background-color: white;
+          z-index: 10;
+          // border: 1px solid green;
         }
       }
 
-      .medal_info {
-        display: flex;
+      .medal_description{
+        margin-left: -20px;
+        // border: 1px solid skyblue;
+      }
+
+      .medal_title {
+        font-size: 17px;
         align-items: center;
         justify-content: right;
-        height: 100%;
+        // border: 1px solid black;
       }
+
+      .medal_info{
+        margin-top: 5px;
+        font-family: 'Cafe24Ohsquareair' !important;
+        font-weight: 20 !important;
+        // border: 1px solid pink;
+      }
+
     }
+
   }
+  
+}
+
+.next_medal{
+  position: absolute;
+  width: 5px;
+  height: 300px;
+  margin-top: 350px;
+  margin-left: 50px;
+  margin-bottom: -40px;
+  border-radius: 50px;
+  background-image: linear-gradient(to bottom, #39ffba, #00fad2, #00f3e6, #00ebf4, #00e2fc, #00dafe, #00d2ff, #1ecaff, #00c2ff, #00b9ff, #00b0ff, #00a7ff);
+  z-index: 1;
+
 }
 
 .Preparing {

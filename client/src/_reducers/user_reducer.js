@@ -6,6 +6,7 @@ import {
   LOGOUT_USER,
   SIGNOUT_USER,
   GUEST_USER,
+  GUEST_LOGOUT,
   CREATE_CREW,
   JOIN_CREW,
   WITHDRAWAL_CREW,
@@ -101,6 +102,17 @@ export default function user(
         accessToken: null,
       };
       break;
+
+    case GUEST_LOGOUT:
+      return {
+        userId: null,
+        email: null,
+        nickname: null,
+        image: null,
+        userCrewId: null,
+        isauth: null,
+        accessToken: null,
+      }
 
     case CREATE_CREW:
       return {

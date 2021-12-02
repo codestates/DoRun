@@ -6,6 +6,7 @@ export const KAKAO_USER = 'kakao_user';
 export const LOGOUT_USER = 'logout_user';
 export const SIGNOUT_USER = 'signout_user';
 export const GUEST_USER = 'guest_user';
+export const GUEST_LOGOUT = 'guest_logout';
 
 export const CREATE_CREW = 'create_crew';
 export const JOIN_CREW = 'join_crew';

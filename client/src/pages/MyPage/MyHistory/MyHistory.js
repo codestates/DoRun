@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 import MyHistoryClicked from './MyHistoryClicked';
 import './MyHistory.scss';
 
 const MyHistory = () => {
   const [focused, setFocused] = useState('');
   const [clicked, setClicked] = useState(false);
+
+  //* My History 기록 로드
+  const [filteredLog, setFilteredLog] = useState([]);
+  const userId = useSelector((state) => state.user.userId);
+  useEffect(() => {
+    const log = [];
+    axios.get(`${process.env.REACT_APP_SERVER}/user/${userId}`).then((res) => {
+      if (res.data.data.log) {
+        res.data.data.log.map((el) => log.push(el));
+        log.map((el) => filteredLog.push(el.split('/-/')));
+      }
+    });
+  }, []);
 
   return (
     <div className={`card${focused}`}>
@@ -27,7 +42,7 @@ const MyHistory = () => {
       </div>
       {clicked && (
         <>
-          <MyHistoryClicked />
+          <MyHistoryClicked filteredLog={filteredLog} />
           <div
             className="content_opened"
             onClick={() => {

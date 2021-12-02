@@ -144,7 +144,7 @@ input[type='submit'] {
 //   border-radius: 4px;
 // }
 
-.socialLogin{
+.socialLogin {
   display: flex;
   position: relative;
   width: 100%;
@@ -158,18 +158,19 @@ input[type='submit'] {
   margin: 8% 22.5%;
 }
 
-.socialKakao{
+.socialKakao {
   position: absolute;
   width: 100%;
   margin: 25% 22.5%;
 }
 
-
 .reset_password {
+  width: 100px;
   line-height: 2;
   text-align: right;
   display: block;
   margin-top: 5px;
+  margin-left: 70%;
   color: #868e96;
   font-size: 14px;
   font-weight: 500;

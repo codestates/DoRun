@@ -99,6 +99,19 @@ $error: #ff7545;
     background: $backgroundColorWhite;
   }
 }
+// 패스워드
+.passwordField {
+  position: relative;
+}
+
+#toggler {
+  position: absolute;
+  right: 15px;
+  top: 70%;
+  transform: translateY(-50%);
+  color: $gray_6;
+  cursor: pointer;
+}
 // 체크박스
 #someID {
   display: none;

@@ -235,6 +235,31 @@ const GuestLogin = async (req: Request, res: Response) => {
   }
 };
 
+const EditHistory = async (req: Request, res: Response) => {
+  try {
+    const { data, userId } = req.body;
+
+    let userInfo = await User.findOne({ id: userId });
+    if (!userInfo || !userId) {
+      return res.status(400).send({ message: "invalid userinfo" });
+    }
+
+    const logged = userInfo.log;
+    if (!logged) {
+      userInfo.log = [data];
+    } else {
+      userInfo.log = [...logged, data];
+    }
+
+    User.save(userInfo);
+
+    res.status(200).send({ message: "success", data: userInfo });
+  } catch (err) {
+    return res.status(500).send({ message: "Internal Server Error", err: err });
+  }
+};
+
+//
 export {
   SignUp,
   SignOut,
@@ -246,4 +271,5 @@ export {
   ConfirmEmailReSend,
   PasswordReset,
   GuestLogin,
+  EditHistory,
 };

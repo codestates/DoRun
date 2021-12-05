@@ -21,41 +21,20 @@ const MyMedalClicked = ({ userMedalLog }) => {
     // LEVET 3 : 20회, 150km이상
     // LEVET 4 : 30회, 250km이상
 
-    // if (userMedalLog.length < 1 || runningDistance < 5) {
-    //   setMedalLevel(0);
-    // }
-    // else if (userMedalLog.length <= 10 && 5 <= runningDistance) {
-    //   setMedalLevel(1);
-    // }
-    // else if (userMedalLog.length <= 20 && 50 <= runningDistance) {
-    //   setMedalLevel(2);
-    // }
-    // else if ((userMedalLog.length <= 30 && 150 <= runningDistance)
-    //   || (30 <= userMedalLog.length && runningDistance <= 250)) {
-    //   setMedalLevel(3);
-    // }
-    // else if (30 <= userMedalLog.length && 250 <= runningDistance) {
-    //   setMedalLevel(4);
-    // }
-
-    let length = 20;
-    let distance = 150;
-
-
-    if (length < 1 || distance < 5) {
+    if (userMedalLog.length < 1 || runningDistance < 5) {
       setMedalLevel(0);
     }
-    else if (length < 10 && 5 <= distance) {
+    else if (userMedalLog.length < 10 && 5 <= runningDistance) {
       setMedalLevel(1);
     }
-    else if (length < 20 && 50 <= distance) {
+    else if (userMedalLog.length < 20 && 50 <= runningDistance) {
       setMedalLevel(2);
     }
-    else if ((length < 30 && 150 <= distance)
-      || (30 <= length && distance < 250)) {
+    else if ((userMedalLog.length < 30 && 150 <= runningDistance)
+      || (30 <= userMedalLog.length && runningDistance < 250)) {
       setMedalLevel(3);
     }
-    else if (30 <= length && 250 <= distance) {
+    else if (30 <= userMedalLog.length && 250 <= runningDistance) {
       setMedalLevel(4);
     }
 
@@ -72,14 +51,13 @@ const MyMedalClicked = ({ userMedalLog }) => {
 
   return (
     <>
-      {/* <div className="Preparing">서비스 준비 중...</div> */}
       <div className="MyMedal">
         <div className="MyMedal_wrapper">
           {/* <div className="next_medal" /> */}
           <div className="MyMedal_medalArea">
             <div className="medal_imgArea">
               <img className={1 <= medalLevel ? "medal_img success" : "medal_img"} src="MyMedal/beginner.png" alt="Medal Img" />
-              <div className={1 <= medalLevel ? "next_medal success" : "next_medal"}> </div>
+              <div className={1 <= medalLevel ? "next_medal success first" : "next_medal"}> </div>
             </div>
             <div className="medal_description">
               <div className="medal_title">Beginner</div>
@@ -89,7 +67,7 @@ const MyMedalClicked = ({ userMedalLog }) => {
           <div className="MyMedal_medalArea">
             <div className="medal_imgArea">
               <img className={2 <= medalLevel ? "medal_img success" : "medal_img"} src="MyMedal/intermediate.png" alt="Medal Img" />
-              <div className={2 <= medalLevel ? "next_medal success" : "next_medal"}> </div>
+              <div className={2 <= medalLevel ? "next_medal success second" : "next_medal"}> </div>
             </div>
             <div className="medal_description">
               <div className="medal_title">Intermediate</div>

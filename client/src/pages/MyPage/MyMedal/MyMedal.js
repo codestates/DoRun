@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import MyMedalClicked from './MyMedalClicked';
 import './MyMedal.scss';
+import { checkUserLog } from '../../../_actions/user_action';
 
 const MyMedal = () => {
   const [focused, setFocused] = useState('');
   const [clicked, setClicked] = useState(false);
+  const [userMedalLog, setUserMedalLog] = useState([]);
+  const userId = useSelector((state) => state.user.userId);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const userLog = [];
+    dispatch(checkUserLog(userId))
+      .then((res) => {
+        res.payload.log.map((el) => userLog.push(el));
+        userLog.map((el) => userMedalLog.push(el.split('/-/')));
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
 
   return (
     <div className={`card${focused}`}>
@@ -27,7 +43,7 @@ const MyMedal = () => {
       </div>
       {clicked && (
         <>
-          <MyMedalClicked />
+          <MyMedalClicked userMedalLog={userMedalLog} />
           <div
             className="content_opened"
             onClick={() => {

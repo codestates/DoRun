@@ -3,6 +3,7 @@ import {
   REGISTER_USER,
   KAKAO_USER,
   GOOGLE_USER,
+  CHECK_USERLOG,
   LOGOUT_USER,
   SIGNOUT_USER,
   GUEST_USER,
@@ -74,6 +75,21 @@ async function kakaoUser(dataToSubmit) {
   };
 }
 
+async function checkUserLog(dataTosubmit) {
+  const request = await axios
+    .get(`${process.env.REACT_APP_SERVER}/user/${dataTosubmit}`)
+    .then((res) => {
+      // console.log('받아오는 로그', res.data.data)
+      return res.data.data
+    })
+    .catch((e) => console.log(e));
+
+  return {
+    type: CHECK_USERLOG,
+    payload: request,
+  };
+}
+
 async function logoutUser(dataToSubmit) {
   const request = await axios
     .post(`${process.env.REACT_APP_SERVER}/user/logout`, dataToSubmit)
@@ -140,6 +156,7 @@ export {
   registerUser,
   googleUser,
   kakaoUser,
+  checkUserLog,
   logoutUser,
   signoutUser,
   guestUser,

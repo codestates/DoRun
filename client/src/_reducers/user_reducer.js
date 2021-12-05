@@ -3,6 +3,7 @@ import {
   REGISTER_USER,
   KAKAO_USER,
   GOOGLE_USER,
+  CHECK_USERLOG,
   LOGOUT_USER,
   SIGNOUT_USER,
   GUEST_USER,
@@ -66,6 +67,19 @@ export default function user(
         accessToken: action.payload.accessToken,
       };
       break;
+
+    case CHECK_USERLOG:
+      return {
+        ...state,
+        userId: action.payload.id,
+        email: action.payload.email,
+        nickname: action.payload.nickname,
+        image: action.payload.image,
+        userCrewId: action.payload.crewId,
+        isauth: action.payload.isauth,
+        accessToken: action.payload.accessToken,
+        log: action.payload.log,
+      }
 
     case LOGOUT_USER:
       return {

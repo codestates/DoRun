@@ -1,12 +1,12 @@
 import React from 'react';
 import './GuestModeModal.scss';
-import { useSelector, useDispatch } from 'react-redux';
-import { guestUser, logoutUser } from '../../_actions/user_action';
+import { useDispatch } from 'react-redux';
+import { guestUser } from '../../_actions/user_action';
 
 function GuestModeModal({ guestMode, setGuestMode }) {
 
   const dispatch = useDispatch()
-  const userId = useSelector((state) => state.user.userId);
+
 
   const guestModeCancel = () => {
     setGuestMode(false)

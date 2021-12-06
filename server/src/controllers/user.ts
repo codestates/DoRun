@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../entity/User";
+import { Crew } from "../entity/Crew";
+import { Chat } from "../entity/Chat";
 import { TokensCreate, ConfirmEmailToken, AccessTokenVerify } from "../utils/token";
 import * as bcrypt from "bcrypt";
 import { signUpEmail, passwordSend } from "../utils/nodemailer";
@@ -51,6 +53,10 @@ const SignOut = async (req: Request, res: Response) => {
     const userInfo = await User.findOneOrFail(userId);
     await User.remove(userInfo);
     res.clearCookie("refreshToken");
+
+    if (userInfo.crewId) {
+      DeleteCrewInUser(userInfo.crewId);
+    }
     return res.status(200).send({ message: "success" });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
@@ -227,9 +233,15 @@ const GuestLogin = async (req: Request, res: Response) => {
 
     res.status(200).send({ data: userInfo, Message: "success" });
 
-    setTimeout(() => {
+    setTimeout(async () => {
       User.remove(userInfo);
-    }, 1000 * 60 * 30); //30min
+      userInfo = await User.findOne({ id: userInfo.id });
+      if (userInfo.crewId) {
+        DeleteCrewInUser(userInfo.crewId);
+      }
+
+      //}, 1000 * 60 * 30); //30min
+    }, 1000 * 60 * 1); //30min
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
@@ -256,6 +268,17 @@ const EditHistory = async (req: Request, res: Response) => {
     res.status(200).send({ message: "success", data: userInfo });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
+  }
+};
+
+const DeleteCrewInUser = async (crewId: number) => {
+  const CrewInUser = await User.find({ crewId });
+
+  if (CrewInUser.length === 0) {
+    const chatInfo = await Chat.find({ crewId });
+    await Chat.remove(chatInfo);
+    const crewInfo = await Crew.findOne({ id: crewId });
+    await Crew.remove(crewInfo);
   }
 };
 

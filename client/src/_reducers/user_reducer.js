@@ -3,9 +3,11 @@ import {
   REGISTER_USER,
   KAKAO_USER,
   GOOGLE_USER,
+  CHECK_USERLOG,
   LOGOUT_USER,
   SIGNOUT_USER,
   GUEST_USER,
+  GUEST_LOGOUT,
   CREATE_CREW,
   JOIN_CREW,
   WITHDRAWAL_CREW,
@@ -66,6 +68,19 @@ export default function user(
       };
       break;
 
+    case CHECK_USERLOG:
+      return {
+        ...state,
+        userId: action.payload.id,
+        email: action.payload.email,
+        nickname: action.payload.nickname,
+        image: action.payload.image,
+        userCrewId: action.payload.crewId,
+        isauth: action.payload.isauth,
+        accessToken: action.payload.accessToken,
+        log: action.payload.log,
+      }
+
     case LOGOUT_USER:
       return {
         userId: null,
@@ -101,6 +116,17 @@ export default function user(
         accessToken: null,
       };
       break;
+
+    case GUEST_LOGOUT:
+      return {
+        userId: null,
+        email: null,
+        nickname: null,
+        image: null,
+        userCrewId: null,
+        isauth: null,
+        accessToken: null,
+      }
 
     case CREATE_CREW:
       return {

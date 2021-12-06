@@ -2,8 +2,8 @@ import './Walk.scss';
 import React, { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import GuestModeModal from '../_Modal/GuestModeModal/GuestModeModal';
-import GuestModeModalBack from '../_Modal/GuestModeModal/GuestModeModalBack';
+import GuestModeModal from '../GuestModeModal/GuestModeModal';
+import GuestModeModalBack from '../GuestModeModal/GuestModeModalBack';
 import walk from './LandingSVG/walk.svg';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,11 +11,11 @@ import { TextPlugin } from 'gsap/TextPlugin';
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-function Walk() {
+function Walk({ guestTimeout, setGuestTimeout }) {
   const run = useRef(null);
   const line = useRef(null);
-  const [guestMode, setGuestMode] = useState(false);
   const userId = useSelector((state) => state.user.userId);
+  const [guestMode, setGuestMode] = useState(false);
 
   useEffect(() => {
     gsap.to(run.current, {
@@ -57,15 +57,13 @@ function Walk() {
           <div className="line"> Do Run 메이트를 만들어보세요! </div>
           <div className="btnWrapper">
             <div className="walkBtn" onClick={pagehandler}>
-              {' '}
-              Do Run!!{' '}
+              Do Run!!
             </div>
             {userId ? (
               ''
             ) : (
               <div className="guestBtn" onClick={guestModeHandler}>
-                {' '}
-                Guest Mode{' '}
+                Guest Mode
               </div>
             )}
           </div>

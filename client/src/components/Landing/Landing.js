@@ -7,6 +7,8 @@ import DoChat from './DoChat';
 import Medal from './Medal';
 
 const Landing = () => {
+
+
   return (
     <>
       <div className="top">

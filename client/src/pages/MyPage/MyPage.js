@@ -3,15 +3,14 @@ import { useSelector } from 'react-redux';
 import { OutsideClick } from '../../components/DropDown/OutsideClick';
 import axios from 'axios';
 import DropDown from '../../components/DropDown/DropDown';
-import EmailVerification from '../../components/EmailVerification/EmailVerification';
+import EmailVerification from '../../components/_Modal/EmailVerification/EmailVerification';
+import EndedCrewModal from '../../components/_Modal/EndedCrewModal/EndedCrewModal';
 import MyAccount from './MyAccount/MyAccount';
 import MyDoRun from './MyDoRun/MyDoRun';
 import MyHistory from './MyHistory/MyHistory';
 import MyMedal from './MyMedal/MyMedal';
 import Footer from '../../components/Footer/Footer';
 import './MyPage.scss';
-
-import EndedCrewModal from '../../components/EndedCrewModal/EndedCrewModal';
 
 const MyPage = () => {
   //* 드롭 다운

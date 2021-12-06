@@ -3,7 +3,7 @@ import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import axios from 'axios';
 import './CrewModal.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { joinCrew } from '../../_actions/crew_action';
+import { joinCrew } from '../../../_actions/crew_action';
 
 const CrewModal = ({ crewModalHandler, crewId }) => {
   const dispatch = useDispatch();

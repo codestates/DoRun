@@ -6,6 +6,7 @@ const ResetPassword = ({ resetPasswordHandler }) => {
   const [email, setEmail] = useState('');
   const [clicked, setClicked] = useState(false);
   const [passed, setPassed] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const submitHandler = () => {
     let body = {
@@ -14,20 +15,15 @@ const ResetPassword = ({ resetPasswordHandler }) => {
     axios
       .patch(`${process.env.REACT_APP_SERVER}/user/reset_password`, body)
       .then((res) => {
-        console.log(res);
         setClicked(true);
         if (res.data.message === 'success') {
           setPassed(true);
+          setChecked(true);
         } else {
           setPassed(false);
+          setChecked(false);
         }
       });
-    // setClicked(true);
-    // if (email.includes('@') && email.includes('.')) {
-    //   setPassed(true);
-    // } else {
-    //   setPassed(false);
-    // }
   };
   return (
     <div className="resetPasswordContainer">
@@ -69,9 +65,22 @@ const ResetPassword = ({ resetPasswordHandler }) => {
                 ⚠ 입력한 이메일을 다시 확인해 주세요!
               </div>
             ))}
-          <button className="resetPassword_btn" onClick={submitHandler}>
-            제출
-          </button>
+          {checked ? (
+            <>
+              <button
+                className="resetPassword_btn"
+                onClick={resetPasswordHandler}
+              >
+                확인
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="resetPassword_btn" onClick={submitHandler}>
+                제출
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

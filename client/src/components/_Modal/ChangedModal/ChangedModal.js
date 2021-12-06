@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../../_actions/user_action';
+import { logoutUser } from '../../../_actions/user_action';
 import './ChangedModal.scss';
 
 // const [isChangedModalOpen, setIsChangedModalOpen] = useState(false);

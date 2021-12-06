@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Withdrawal.scss';
-import WithdrawalModal from '../WithdrawalModal/WithdrawalModal';
+import WithdrawalModal from '../_Modal/WithdrawalModal/WithdrawalModal';
 
 const Withdrawal = () => {
   const [isActive, setIsActive] = useState(false);

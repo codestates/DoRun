@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
 import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
-import ResetPassword from '../../components/ResetPassword/ResetPassword';
+import ResetPassword from '../../components/_Modal/ResetPassword/ResetPassword';
 import Footer from '../../components/Footer/Footer';
 
 const LoginPage = () => {

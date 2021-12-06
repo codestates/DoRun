@@ -7,6 +7,7 @@ function GuestModeModal({ guestMode, setGuestMode }) {
 
   const dispatch = useDispatch()
 
+
   const guestModeCancel = () => {
     setGuestMode(false)
   }

@@ -3,9 +3,11 @@ import {
   REGISTER_USER,
   KAKAO_USER,
   GOOGLE_USER,
+  CHECK_USERLOG,
   LOGOUT_USER,
   SIGNOUT_USER,
-  GUEST_USER
+  GUEST_USER,
+  GUEST_LOGOUT,
 } from './types';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
@@ -73,6 +75,21 @@ async function kakaoUser(dataToSubmit) {
   };
 }
 
+async function checkUserLog(dataTosubmit) {
+  const request = await axios
+    .get(`${process.env.REACT_APP_SERVER}/user/${dataTosubmit}`)
+    .then((res) => {
+      // console.log('받아오는 로그', res.data.data)
+      return res.data.data
+    })
+    .catch((e) => console.log(e));
+
+  return {
+    type: CHECK_USERLOG,
+    payload: request,
+  };
+}
+
 async function logoutUser(dataToSubmit) {
   const request = await axios
     .post(`${process.env.REACT_APP_SERVER}/user/logout`, dataToSubmit)
@@ -106,9 +123,11 @@ async function guestUser() {
   const request = await axios
     .post(`${process.env.REACT_APP_SERVER}/user/guest_login`)
     .then((response) => {
+      // console.log('게스트 로그인', response)
       return response.data;
     })
     .catch((e) => console.log(e));
+
 
   return {
     type: GUEST_USER,
@@ -116,12 +135,30 @@ async function guestUser() {
   };
 }
 
+function guestLogoutUser() {
+  const request = {
+    userId: null,
+    email: null,
+    nickname: null,
+    image: null,
+    userCrewId: null,
+    isauth: null,
+    accessToken: null,
+  }
+  return {
+    type: GUEST_LOGOUT,
+    payload: request
+  }
+}
+
 export {
   loginUser,
   registerUser,
   googleUser,
   kakaoUser,
+  checkUserLog,
   logoutUser,
   signoutUser,
-  guestUser
+  guestUser,
+  guestLogoutUser
 };

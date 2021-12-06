@@ -12,12 +12,13 @@ import { TextPlugin } from "gsap/TextPlugin";
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 
-function Walk() {
+function Walk({ guestTimeout, setGuestTimeout }) {
 
   const run = useRef(null);
   const line = useRef(null);
-  const [guestMode, setGuestMode] = useState(false);
   const userId = useSelector((state) => state.user.userId);
+  const [guestMode, setGuestMode] = useState(false);
+
 
   useEffect(() => {
 
@@ -49,8 +50,9 @@ function Walk() {
 
   const guestModeHandler = () => {
     setGuestMode(true);
-
   }
+
+
 
 
 

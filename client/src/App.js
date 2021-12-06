@@ -37,7 +37,7 @@ const App = () => {
       //! 전체 시간이 지난 뒤에 종료
       setTimeout(() => {
         dispatch(guestLogoutUser());
-      }, 1000 * 20);
+      }, 1000 * 60 * 29.99);
 
       //! 끝나기 10초 전부터, 1초마다 한번씩 반복
       setTimeout(() => {
@@ -49,7 +49,7 @@ const App = () => {
             document.location.href = '/';
           }
         }, 1000 * 1);
-      }, 1000 * 10);
+      }, 1000 * 60 * 29.83);
 
     }
 

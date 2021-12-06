@@ -40,7 +40,7 @@ const MyMedalClicked = ({ userMedalLog }) => {
 
   }, [])
 
-  console.log('현재 메달 레벨', medalLevel)
+  // console.log('현재 메달 레벨', medalLevel)
 
 
 

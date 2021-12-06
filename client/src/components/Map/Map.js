@@ -1,8 +1,8 @@
 /*global kakao*/
 import React, { useState, useEffect } from 'react';
-import CreateModal from '../CreateModal/CreateModal';
+import CreateModal from '../_Modal/CreateModal/CreateModal';
+import CrewModal from '../_Modal/CrewModal/CrewModal';
 import './Map.scss';
-import CrewModal from '../CrewModal/CrewModal';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 const { REACT_APP_KAKAO_MAP } = process.env;

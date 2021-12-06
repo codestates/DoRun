@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createCrew } from '../../_actions/crew_action';
+import { createCrew } from '../../../_actions/crew_action';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import SuccessModal from '../SuccessModal/SuccessModal';
 import './CreateModal.scss';

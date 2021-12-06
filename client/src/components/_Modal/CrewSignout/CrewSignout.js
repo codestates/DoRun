@@ -2,7 +2,7 @@ import React from 'react';
 import './CrewSignout.scss';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { withdrawalCrew } from '../../_actions/crew_action';
+import { withdrawalCrew } from '../../../_actions/crew_action';
 axios.defaults.withCredentials = true;
 
 function CrewSignout({ crewSignoutOpen, setCrewSignoutOpen }) {

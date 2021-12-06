@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import CrewSignout from '../../../components/CrewSignout/CrewSignout';
-import CrewSignoutBack from '../../../components/CrewSignout/CrewSignoutBack';
+import CrewSignout from '../../../components/_Modal/CrewSignout/CrewSignout';
+import CrewSignoutBack from '../../../components/_Modal/CrewSignout/CrewSignoutBack';
 import './MyDoRunClicked.scss';
 
 const MyDoRunClicked = () => {

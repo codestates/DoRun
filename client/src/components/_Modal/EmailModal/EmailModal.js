@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../../_actions/user_action';
+import { logoutUser } from '../../../_actions/user_action';
 import './EmailModal.scss';
 
 // const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);

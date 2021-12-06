@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { withdrawalCrew } from '../../_actions/crew_action';
+import { withdrawalCrew } from '../../../_actions/crew_action';
 import './EndedCrewModal.scss';
 
 // const [isEndedCrewModalOpen, setIsEndedCrewModalOpen] = useState(false);

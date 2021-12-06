@@ -1,8 +1,8 @@
 import React from 'react';
 import './WithdrawalModal.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { signoutUser } from '../../_actions/user_action';
-import { withdrawalCrew } from '../../_actions/crew_action';
+import { signoutUser } from '../../../_actions/user_action';
+import { withdrawalCrew } from '../../../_actions/crew_action';
 
 // const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
 // const WithdrawalModalHandler = () => {

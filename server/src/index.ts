@@ -1,19 +1,14 @@
 import "reflect-metadata";
-import * as express from "express";
+import "dotenv/config";
 import * as cookieParser from "cookie-parser";
+import * as express from "express";
 import * as cors from "cors";
+import { SchedulerCrewDelete } from "./utils/scheduler";
 import { createConnection } from "typeorm";
+import { socketInit } from "./soket";
 import config from "../ormconfig";
 import router from "./routes";
-import "dotenv/config";
-import { socketInit } from "./soket";
-/////
-// const cluster = require("cluster");
-// const { setupMaster } = require("@socket.io/sticky");
-// const { setupPrimary } = require("@socket.io/cluster-adapter");
-// const recluster = require("recluster");
-// const path = require("path");
-//////
+
 const app = express();
 const http = require("http");
 
@@ -42,26 +37,13 @@ app.get("/", (req: express.Request, res: express.Response) => {
 });
 
 const server = http.createServer(app);
-//import { Server } from "socket.io";
-
-/////////////
-// setupMaster(server, {
-//   loadBalancingMethod: "least-connection",
-// });
-// setupPrimary();
-// cluster.setupMaster({
-//   serialization: "advanced",
-// });
-/////////////
 
 server.listen(process.env.SERVER_PORT, () => {
-  console.log(`listen Port = ${process.env.SERVER_PORT}
- 
-  `);
+  console.log(`listen Port = ${process.env.SERVER_PORT}`);
 });
-
-// const balancer = recluster(path.join(__dirname, "index.ts"));
-
-// balancer.run();
+console.log(process.env.NODE_APP_INSTANCE);
+if (process.env.NODE_APP_INSTANCE === "0") {
+  SchedulerCrewDelete();
+}
 
 socketInit(server);

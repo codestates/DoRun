@@ -1,3 +1,4 @@
+
 .walkWrapper {
   width: 100%;
   display: flex;
@@ -39,9 +40,6 @@
 }
 
 .walkBtn {
-  // min-width: 4rem;
-  // max-width: 8rem;
-  // height: 3rem;
   max-width: 13vw;
   margin-top: 1rem;
   padding: 0.7rem 1rem;
@@ -49,7 +47,6 @@
   justify-content: center;
   color: white;
   font-style: italic;
-  // font-size: 1.3rem;
   font-size: 1.5vw;
   font-weight: 800;
   transition: 0.5s;
@@ -70,16 +67,12 @@
 }
 
 .guestBtn{
-  // min-width: 4rem;
-  // max-width: 8rem;
-  // height: 3rem;
   max-width: 13vw;
   margin-top: 1rem;
   margin-left: 1rem;
   padding: 0.7rem 1rem;
   text-align: center;
   justify-content: center;
-  color: #1fa2ff;
   font-style: italic;
   font-size: 1.3vw;
   font-weight: 900;

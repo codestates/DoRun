@@ -1,3 +1,6 @@
+@import '../../../styles/styles.scss';
+
+
 .guestModalWrapper{
   position: absolute;
   width: 350px;
@@ -6,9 +9,9 @@
   top:50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background-color: white;
+  background-color: $white;
   border-radius: 12px;
-  box-shadow: 1px 1px 3px lightgray;
+  box-shadow: 1px 1px 3px $--light-gray;
   z-index: 9999;
   // border: 1px solid red;
 }
@@ -45,7 +48,7 @@
   margin-left: 25px;
   font-size: 15px;
   padding: 5px;
-  color: rgb(0, 195, 255);
+  color: $default;
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   box-shadow: 1px 1px 3px lightgray;
@@ -64,7 +67,7 @@
   margin-left: 20px;
   font-size: 15px;
   padding: 5px;
-  color: rgb(0, 195, 255);
+  color: $default;
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   box-shadow: 1px 1px 3px lightgray;

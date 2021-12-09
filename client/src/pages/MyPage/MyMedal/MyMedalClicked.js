@@ -16,11 +16,6 @@ const MyMedalClicked = ({ userMedalLog }) => {
 
   useEffect(() => {
 
-    // LEVET 1 : 1회, 5km이상
-    // LEVET 2 : 10회, 50km이상
-    // LEVET 3 : 20회, 150km이상
-    // LEVET 4 : 30회, 250km이상
-
     if (userMedalLog.length < 1 || runningDistance < 5) {
       setMedalLevel(0);
     }
@@ -53,7 +48,6 @@ const MyMedalClicked = ({ userMedalLog }) => {
     <>
       <div className="MyMedal">
         <div className="MyMedal_wrapper">
-          {/* <div className="next_medal" /> */}
           <div className="MyMedal_medalArea">
             <div className="medal_imgArea">
               <img className={1 <= medalLevel ? "medal_img success" : "medal_img"} src="MyMedal/beginner.png" alt="Medal Img" />

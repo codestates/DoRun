@@ -16,7 +16,6 @@
 .doChatGIF{
   width: 45vw;
   height: 30vw;
-  margin: 5vw 30% 0px 30%;
   margin: 5vw 27%;
   z-index: 999;
   // border: 1px solid orange;
@@ -44,7 +43,6 @@
 
 .doChatBubblesLine{
   font-size: 2vw;
-  font-weight: 600;
   &:nth-child(1) {
     margin-top: 3vw;
   }
@@ -55,30 +53,26 @@
   height: 15vw;
   flex-direction: column;
   margin-left: 3vw;
-  background-image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 15vw;
+  background: {
+    image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
+    position: center;
+    repeat: no-repeat;
+    size: 15vw;
+  };
   // border: 1px solid pink;
 }
 
 .doChatBubbleLeftDots{
-  text-align: center;
-  justify-content: center;
   margin: 25% 35%;
   font-size: 3vw;
-  font-weight: 900;
   letter-spacing: 1vw;
   color: white;
   z-index: 9999;
 }
 
 .doChatBubbleRightDots{
-  text-align: center;
-  justify-content: center;
   margin: 25% 35%;
   font-size: 3vw;
-  font-weight: 900;
   letter-spacing: 1vw;
   color: white;
   z-index: 9999;
@@ -90,10 +84,12 @@
   height: 15vw;
   flex-direction: column;
   // margin-left: 7vw;
-  background-image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 15vw;
+  background: {
+    image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
+    position: center;
+    repeat: no-repeat;
+    size: 15vw;
+  };
   transform: scaleX(-1);
   // border: 1px solid pink;
 }

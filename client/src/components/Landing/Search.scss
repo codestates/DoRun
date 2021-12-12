@@ -2,11 +2,11 @@
 
 .searchWrapper{
   width: 100%;
-  // margin: 15rem auto auto auto;
-  margin: 5vh auto 0px auto; 
-  // border: 2px solid blue;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  margin: 5vh auto 0px auto;
+  overflow: {
+    x: hidden;
+    y: hidden;
+  }; 
 }
 
 
@@ -23,8 +23,8 @@
   height: 20vh;
   margin-top: 3vw;
   font-size: 5vw !important;
-  z-index: 5;
   color:rgba(90, 206, 235, 0.322);
+  z-index: 5;
   // border: 2px solid blue;
 
   }
@@ -56,8 +56,8 @@
   height: 35vw;
   margin: auto 25%;
   border-radius: 12px;
-  z-index: 99;
   box-shadow: 1 1 1 1;
+  z-index: 99;
   // border: 2px solid green;
 }
 
@@ -66,18 +66,22 @@
 }
 
 .searchContentText{
-    flex-direction: column;
-    width: 50vw;
-    height: 50vw;
-    margin-top: -27vh;
-    margin-left: 9vw;
-    z-index: 999;
+  flex-direction: column;
+  width: 50vw;
+  height: 50vw;
+  margin: {
+    top: -27vh;
+    left: 9vw;
+  }
+  z-index: 999;
     // border: 2px solid black;
 }
 
 .searchContentLine {
-  font-size: 2vw;
-  font-weight: 500;
+  font: {
+    size: 2vw;
+    weight: 500;
+  }
   color: $--text-color;
   &:nth-child(1) {
     margin-top: 25vw;
@@ -88,8 +92,10 @@
   flex-direction: column;
   width: 30vw;
   height: 50vw;
-  margin-top: -30vh;
-  margin-left: 25vw;
+  margin: {
+    top: -30vh;
+    left: 25vw;
+  }
   z-index: 999;
   // border: 2px solid black;
 }

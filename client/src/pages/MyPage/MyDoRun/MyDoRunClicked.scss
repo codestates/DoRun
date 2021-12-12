@@ -23,8 +23,10 @@
   &:nth-child(1) {
     //* 크루 타이틀
     height: 43px;
-    margin-top: 0px !important;
-    margin-bottom: 20px;
+    margin: {
+      top: 0px !important;
+      bottom: 20px;
+    }
     text-align: left !important;
     overflow: auto;
     &::-webkit-scrollbar {
@@ -42,15 +44,19 @@
 .listCategory {
   width: 75px;
   padding: 1px;
-  font-weight: 600;
-  font-size: 18px;
+  font: {
+    weight: 600;
+    size: 18px;
+  }
   color: $default;
   &_desc {
     width: 75px;
     height: 100px;
     padding: 1px;
-    font-weight: 600;
-    font-size: 18px;
+    font: {
+      weight: 600;
+      size: 18px;
+    }
     color: $default;
   }
 }
@@ -136,10 +142,12 @@
     width: 7px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: $default;
-    border-radius: 10px;
-    background-clip: padding-box;
+    background: {
+      color: $default;
+      clip: padding-box;
+    };
     border: 2px solid transparent;
+    border-radius: 10px;
   }
   &::-webkit-scrollbar-track {
     border-radius: 10px;
@@ -156,8 +164,7 @@
   flex: 0 1 1;
   width: 150px;
   padding: 10px 15px;
-  margin: auto;
-  margin-right: 10px;
+  margin-left: 17px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -172,7 +179,6 @@
   flex-direction: column;
   flex: 0 1 1;
   width: 150px;
-  margin: auto;
   margin-left: 5px;
   padding: 10px 15px;
   text-align: center;

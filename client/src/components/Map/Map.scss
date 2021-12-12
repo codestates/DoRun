@@ -6,31 +6,32 @@
 }
 
 .wrapping {
-  /* background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%); */
-  background-image: linear-gradient(
+  margin: -75px 0px;
+  padding: 5px 15px;
+  text-align: center;
+  color: #ffff;
+  font: {
+    family: 'Noto Sans KR', sans-serif;
+    style: italic;
+    weight: 900;
+  }
+  transition: 0.5s;
+  background: {
+    image: linear-gradient(
     to right,
     #ff512f 0%,
     #f89e20 51%,
     #ff512f 100%
   );
-  margin: -75px 0px;
-  padding: 5px 15px;
-  text-align: center;
-  font-style: italic;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 900;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px lightgray;
+    size: 200% auto;
+  };
   border-radius: 10px;
-  display: block;
+  box-shadow: 0 0 20px lightgray;
 }
 
 .wrapping:hover {
+  color: #ffff;;
   background-position: right center;
-  color: #fff;
-  text-decoration: none;
 }
 
 .up {

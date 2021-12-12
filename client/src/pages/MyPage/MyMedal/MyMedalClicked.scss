@@ -3,37 +3,34 @@
 .MyMedal {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin-top: 1rem;
 
   .MyMedal_wrapper {
+    display: flex;
+    flex-direction: column;
     width: 360px;
     height: 530px;
     border-top: 1px solid #dee2e6;
     background-color: $white;
     padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     //132.5
     .MyMedal_medalArea {
       display: flex;
       align-items: center;
-      padding: 10px;
       width: 100%;
       height: 100%;
-      // gap: 3vw;
+      padding: 10px;
       gap: 25px;
       // border: 1px solid red;
 
       .medal_imgArea {
         display: flex;
-        align-items: center;
-        justify-content: center;
         width: 108.25px;
         height: 108.25px;
+        align-items: center;
+        justify-content: center;
         // border: 1px solid blue;
 
         .medal_img {
@@ -41,11 +38,8 @@
           height: 70px;
           padding: 2px;
           background-color: $white;
-          z-index: 10;
-          // border: 1px solid green;
-          // -webkit-filter: opacity(.1) drop-shadow(0 0 0 black);
           filter: opacity(0.2);
-
+          z-index: 10;
           &.success {
             filter: opacity(1) !important;
           }
@@ -66,39 +60,40 @@
 
       .medal_info{
         margin-top: 5px;
-        font-family: 'Cafe24Ohsquareair' !important;
-        font-weight: 20 !important;
+        font: {
+          family: 'Cafe24Ohsquareair' !important;
+          weight: 20 !important;
+        }
         // border: 1px solid pink;
       }
-
     }
-
   }
-  
 }
 
 .next_medal{
   position: absolute;
   width: 5px;
   height: 55px;
-  margin-top: 90px;
-  margin-left: 2px;
-  margin-bottom: -40px;
+  margin: {
+    top: 90px;
+    left: 2px;
+    bottom: -40px;
+  }
   border-radius: 50px;
   background-image: linear-gradient(to bottom, #39ffe5, #00f2fa, #00ebf3, #00ebf4, #00e2fc, #00dafe, #00d2ff, #1ecaff, #00c2ff, #00b9ff, #00b0ff, #00a7ff);
   z-index: 1;
   filter: opacity(0.2);
-
   &.success {
     filter: opacity(1) !important;
   }
 }
 
-.Preparing {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 540px;
-  color: #6e6e6e;
-  font-size: 20px;
-}
+// .Preparing {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 540px;
+//   color: #6e6e6e;
+//   font-size: 20px;
+//   background-color: red;
+// }

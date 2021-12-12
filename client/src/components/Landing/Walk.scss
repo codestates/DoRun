@@ -1,10 +1,13 @@
+@import '../../styles/styles.scss';
 
 .walkWrapper {
   width: 100%;
   display: flex;
   margin: 10vh auto 5vh auto;
-  overflow-x: hidden !important;
-  overflow-y: hidden !important;
+  overflow: {
+    x: hidden !important;
+    y: hidden !important;
+  }
 }
 
 .walk {
@@ -18,18 +21,19 @@
 .walkInfo {
   flex-direction: column;
   flex: 1 1 auto;
-  min-width: 30vw;
-  max-width: 60vw;
   height: 15vh;
   margin-top: 23vh;
-  font-size: 2rem;
-  font-weight: 500;
+  font: {
+    size: 2rem;
+    weight: 500
+  }
   // border: 1px solid red;
 }
 
 .line {
   font-size: 2vw;
   line-height: 3vw;
+  color: $--text-color;
   &:nth-child(1) {
     margin-top: 3vh;
   }
@@ -39,58 +43,64 @@
   display: flex;
 }
 
-.walkBtn {
+.doRunBtn {
   max-width: 13vw;
   margin-top: 1rem;
   padding: 0.7rem 1rem;
+  color: $white;
   text-align: center;
-  justify-content: center;
-  color: white;
-  font-style: italic;
-  font-size: 1.5vw;
-  font-weight: 800;
-  transition: 0.5s;
-  background-size: 200% auto;
-  box-shadow: 1px 1px 20px rgb(185, 185, 185);
-  border-radius: 20px;
-  background-image: linear-gradient(
+  font: {
+    style: italic;
+    size: 1.5vw;
+  }
+  background: {
+    size: 200% auto;
+    image: linear-gradient(
     to right,
     #1fa2ff 0%,
     #12d8fa 51%,
     #1fa2ff 100%
   );
+  };
+  transition: 0.5s;
+  box-shadow: 1px 1px 20px rgb(185, 185, 185);
+  border-radius: 20px;
   &:hover {
-    background-position: right center;
-    color: #fff;
+    color: $white;
     cursor: pointer;
+    background-position: right center;
   }
 }
 
 .guestBtn{
+  margin: {
+    top: 1rem;
+    left: 1rem;
+  }
   max-width: 13vw;
-  margin-top: 1rem;
-  margin-left: 1rem;
   padding: 0.7rem 1rem;
   text-align: center;
-  justify-content: center;
-  font-style: italic;
-  font-size: 1.3vw;
-  font-weight: 900;
+  font: {
+    style: italic;
+    size: 1.3vw;
+  }
+  color: transparent;
   transition: 0.5s;
-  background-size: 200% auto;
-  box-shadow: 0 0 20px lightgray;
-  border-radius: 20px;
-  background-image: linear-gradient(
+  background: {
+    size: 200% auto;
+    image: linear-gradient(
     to right,
     #1fa2ff 0%,
     #12d8fa 51%,
     #1fa2ff 100%
-  );
-  color: transparent;
+  ); 
+  };
+  box-shadow: 0 0 20px lightgray;
+  border-radius: 20px;
   -webkit-background-clip: text;
   &:hover {
-    background-position: right center;
     cursor: pointer;
+    background-position: right center;
   }
 }
 

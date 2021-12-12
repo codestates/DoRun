@@ -56,7 +56,7 @@ function Walk({ guestTimeout, setGuestTimeout }) {
           <div className="line"> '오늘만 함께 할' </div>
           <div className="line"> Do Run 메이트를 만들어보세요! </div>
           <div className="btnWrapper">
-            <div className="walkBtn" onClick={pagehandler}>
+            <div className="doRunBtn" onClick={pagehandler}>
               Do Run!!
             </div>
             {userId ? (

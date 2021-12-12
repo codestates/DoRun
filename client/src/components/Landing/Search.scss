@@ -1,3 +1,5 @@
+@import '../../styles/styles.scss';
+
 .searchWrapper{
   width: 100%;
   // margin: 15rem auto auto auto;
@@ -76,6 +78,7 @@
 .searchContentLine {
   font-size: 2vw;
   font-weight: 500;
+  color: $--text-color;
   &:nth-child(1) {
     margin-top: 25vw;
   }

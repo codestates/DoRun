@@ -1,4 +1,37 @@
 @import '../../styles/styles.scss';
+@mixin flex-column {
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+@mixin button( $font-size: 1.5vw, $color: $white, $prefixes: ()) {
+  max-width: 13vw;
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  color: $white;
+  text-align: center;
+  font: {
+    style: italic;
+    size: $font-size;
+  }
+  background: {
+    size: 200% auto;
+    image: linear-gradient(
+    to right,
+    #1fa2ff 0%,
+    #12d8fa 51%,
+    #1fa2ff 100%
+  );
+  };
+  transition: 0.5s;
+  box-shadow: 1px 1px 20px rgb(202, 202, 202);
+  border-radius: 20px;
+  &:hover {
+    cursor: pointer;
+    background-position: right center;
+  }
+  @content
+}
+
 
 .walkWrapper {
   width: 100%;
@@ -11,16 +44,14 @@
 }
 
 .walk {
-  flex-direction: column;
-  flex: 1 1 auto;
+  @include flex-column;
   width: 30vw;
   height: 50vh;
   // border: 1px solid red;
 }
 
 .walkInfo {
-  flex-direction: column;
-  flex: 1 1 auto;
+  @include flex-column;
   height: 15vh;
   margin-top: 23vh;
   font: {
@@ -44,64 +75,15 @@
 }
 
 .doRunBtn {
-  max-width: 13vw;
-  margin-top: 1rem;
-  padding: 0.7rem 1rem;
-  color: $white;
-  text-align: center;
-  font: {
-    style: italic;
-    size: 1.5vw;
-  }
-  background: {
-    size: 200% auto;
-    image: linear-gradient(
-    to right,
-    #1fa2ff 0%,
-    #12d8fa 51%,
-    #1fa2ff 100%
-  );
-  };
-  transition: 0.5s;
-  box-shadow: 1px 1px 20px rgb(185, 185, 185);
-  border-radius: 20px;
-  &:hover {
-    color: $white;
-    cursor: pointer;
-    background-position: right center;
-  }
+  @include button;
 }
 
 .guestBtn{
-  margin: {
-    top: 1rem;
-    left: 1rem;
-  }
-  max-width: 13vw;
-  padding: 0.7rem 1rem;
-  text-align: center;
-  font: {
-    style: italic;
-    size: 1.3vw;
-  }
-  color: transparent;
-  transition: 0.5s;
-  background: {
-    size: 200% auto;
-    image: linear-gradient(
-    to right,
-    #1fa2ff 0%,
-    #12d8fa 51%,
-    #1fa2ff 100%
-  ); 
-  };
-  box-shadow: 0 0 20px lightgray;
-  border-radius: 20px;
+  @include button(1.3vw, transparent, webkit);
+  margin-left: 1rem;
+  font-size: 1.3vw;
   -webkit-background-clip: text;
-  &:hover {
-    cursor: pointer;
-    background-position: right center;
-  }
+  -webkit-text-fill-color: transparent;
 }
 
 @media screen and (max-width: 768px) {

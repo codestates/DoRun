@@ -1,4 +1,23 @@
 @import '../../styles/styles.scss';
+@mixin bubble {
+  width: 15vw;
+  height: 15vw;
+  flex-direction: column;
+  background: {
+    image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
+    position: center;
+    repeat: no-repeat;
+    size: 15vw;
+  };
+  @content;
+}
+@mixin dots {
+  margin: 25% 35%;
+  font-size: 3vw;
+  letter-spacing: 1vw;
+  color: #ffff;
+  z-index: 9999;
+}
 
 .doChatWrapper{
   width: 100%;
@@ -35,7 +54,6 @@
   margin: 5vw 7vw;
   font-size: 2vw;
   text-align: center;
-  justify-content: center;
   color: $--text-color;
   z-index: 1;
   // border: 1px solid olive;
@@ -49,51 +67,24 @@
 }
 
 .doChatBubbleLeft {
-  width: 15vw;
-  height: 15vw;
-  flex-direction: column;
+  @include bubble;
   margin-left: 3vw;
-  background: {
-    image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
-    position: center;
-    repeat: no-repeat;
-    size: 15vw;
-  };
   // border: 1px solid pink;
 }
 
 .doChatBubbleLeftDots{
-  margin: 25% 35%;
-  font-size: 3vw;
-  letter-spacing: 1vw;
-  color: #ffff;
-  z-index: 9999;
+  @include dots;
 }
-
-.doChatBubbleRightDots{
-  margin: 25% 35%;
-  font-size: 3vw;
-  letter-spacing: 1vw;
-  color: #ffff;
-  z-index: 9999;
-}
-
 
 .doChatBubbleRight{
-  width: 15vw;
-  height: 15vw;
-  flex-direction: column;
-  // margin-left: 7vw;
-  background: {
-    image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
-    position: center;
-    repeat: no-repeat;
-    size: 15vw;
-  };
+  @include bubble;
   transform: scaleX(-1);
   // border: 1px solid pink;
 }
 
+.doChatBubbleRightDots{
+  @include dots;
+}
 
 @media screen and (max-width: 768px) {
     .doChatWrapper {

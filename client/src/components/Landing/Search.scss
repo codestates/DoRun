@@ -1,8 +1,16 @@
 @import '../../styles/styles.scss';
+@mixin left-right-setting {
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 20vh;
+  font-size: 5vw !important;
+  @content;
+}
 
 .searchWrapper{
   width: 100%;
-  margin: 5vh auto 0px auto;
+  margin-top: 5vh;
+  // margin: 5vh auto 0px auto;
   overflow: {
     x: hidden;
     y: hidden;
@@ -16,28 +24,18 @@
 }
 
 .searchLeft{
+  @include left-right-setting;
   position: absolute;
-  flex-direction: column;
-  flex: 1 1 auto;
-  width: fit-content;
-  height: 20vh;
   margin-top: 3vw;
-  font-size: 5vw !important;
   color:rgba(90, 206, 235, 0.322);
-  z-index: 5;
   // border: 2px solid blue;
 
   }
   
 .searchRight {
+  @include left-right-setting;
   position:relative;
-  flex-direction: column;
-  flex: 1 1 auto;
-  width: fit-content;
-  height: 20vh;
   text-align: right;
-  font-size: 5vw !important;
-  z-index: 1;
   color:rgba(93, 182, 223, 0.445);
   // border: 2px solid red;
 }
@@ -68,13 +66,13 @@
 .searchContentText{
   flex-direction: column;
   width: 50vw;
-  height: 50vw;
+  // height: 50vw;
   margin: {
     top: -27vh;
     left: 9vw;
   }
   z-index: 999;
-    // border: 2px solid black;
+  // border: 2px solid black;
 }
 
 .searchContentLine {
@@ -94,7 +92,7 @@
   height: 50vw;
   margin: {
     top: -30vh;
-    left: 25vw;
+    left: 20vw;
   }
   z-index: 999;
   // border: 2px solid black;

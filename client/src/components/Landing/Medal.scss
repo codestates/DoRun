@@ -2,7 +2,10 @@
 
 .medalWrapper{
   width: 100%;
-  margin: 20vh auto 2vh auto;
+  margin: {
+    top: 20vh;
+    bottom: 2vh;
+  }
   // border: 1px solid rgb(175, 175, 179);
 }
 
@@ -41,7 +44,6 @@
     size: 2.5vw;
     weight: 600;
   }
-  z-index: 999;
   // border: 1px solid gray;
 }
 
@@ -51,11 +53,10 @@
 
 
 .growing{
-  flex-direction: column;
   width: 30%;
   height: 50%;
   margin-top: 10vw;
-  z-index: 999;
+  z-index: 999; 
   // border: 1px solid red;
 }
 
@@ -67,7 +68,6 @@
     top: 30%;
     left: 20vw;
   }
-  z-index: 999;
   // border: 1px solid red;
 
 }

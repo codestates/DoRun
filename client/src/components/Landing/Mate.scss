@@ -1,24 +1,29 @@
 @import '../../styles/styles.scss';
 
+@mixin picture-setting {
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 30vw;
+  height: 30vw;
+  @content
+}
 
 .mateWrapper{
   width: 100%;
   position: relative;
-  margin: 10vw auto 5vh auto; 
+  margin: {
+    top: 10vw;
+    bottom: 5vh;
+  }
   background: {
     image: url("../Landing/LandingSVG/blob.svg");
     position: center;
     repeat: no-repeat;
     size: 60vw;
-
   };
     // border: 1px solid red;
 }
 
-.mateBack{
-    z-index: 1;
-    // border: 1px solid red;
-}
 
 .mateLine {
   font: {
@@ -28,7 +33,6 @@
   line-height: 160%;
   text-align: center;
   color: $--text-color;
-  z-index: 9999;
 }
 
 .matePicture{
@@ -37,24 +41,17 @@
     top: 12vh;
     bottom: 10vh;
   }
-  z-index: 9999;
-}
-
-
-.FAQ{
-    flex-direction: column;
-    flex: 1 1 auto;
-    width: 30vw;
-    height: 30vw;
-    transform: rotate(90deg);
 }
 
 .mate{
-    flex-direction: column;
-    flex: 1 1 auto;
-    width: 30vw;
-    height: 30vw;
+  @include picture-setting; 
 }
+
+.FAQ{
+  @include picture-setting; 
+  transform: rotate(90deg);
+}
+
 
 
 @media screen and (max-width: 768px) {

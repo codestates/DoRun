@@ -1,3 +1,5 @@
+@import '../../styles/mixins', '../../styles/styles';
+
 .main-container {
   position: absolute;
   // top: calc(100vh - 130vw);
@@ -12,8 +14,13 @@
 header {
   position: sticky;
   top: 0;
-  background: #f8f9fa;
+  background: $--default-background-color;
   z-index: 8999;
+
+  @include mobile {
+    min-width: 320px;
+    z-index: 9001;
+  }
 }
 
 .navbar {
@@ -26,7 +33,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // flex-wrap: wrap;
   width: 100%;
   max-width: 1500px;
 }
@@ -36,48 +42,92 @@ header {
   align-items: center;
   padding: 0 1rem;
   cursor: pointer;
-  // flex-grow: 1;
 }
 
 .nav-menu {
-  display: flex;
-  list-style: none;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.6rem;
+  @include desktop {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.6rem;
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1px solid $white;
+    position: absolute;
+    top: 80px;
+    left: -110%;
+    opacity: 1;
+    margin-top: 0px;
+    transition: all 0.5s ease;
+
+    &.active {
+      background: $default;
+      left: 0px;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 20;
+    }
+  }
 }
 
 :link {
-  color: #111;
+  color: $black;
   text-decoration: none;
 }
 
 .nav-links {
-  font-size: 1.2rem;
-  text-decoration: none;
-  letter-spacing: 0.1rem;
-  padding: 0.5rem 1.2rem;
-  cursor: pointer;
+  @include desktop {
+    font-size: 1.2rem;
+    text-decoration: none;
+    letter-spacing: 0.1rem;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
 
-  &:hover {
-    color: #3bc9db !important;
+    &:hover {
+      color: $default !important;
+    }
+
+    &:visited {
+      color: $black;
+      text-decoration: none;
+    }
   }
 
-  &:visited {
-    color: #111;
-    text-decoration: none;
+  @include mobile {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+    &:hover {
+      color: $yellow !important;
+    }
   }
 }
 
 .logoutBtn {
-  font-size: 1.2rem;
-  letter-spacing: 0.1rem;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  &:hover {
-    color: #3bc9db;
+  @include desktop {
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    &:hover {
+      color: $default;
+    }
+  }
+
+  @include mobile {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+    &:hover {
+      color: $yellow;
+    }
   }
 }
 
@@ -86,71 +136,30 @@ header {
 }
 
 .nav-item {
-  line-height: 70px;
-  margin: 0 1rem 0 1rem;
+  @include desktop {
+    line-height: 70px;
+    margin: 0 1rem 0 1rem;
 
-  .active {
-    color: #3bc9db;
+    .active {
+      color: $default;
+    }
+  }
+  @include mobile {
+    text-align: center;
+
+    .active {
+      color: $yellow;
+      border: none;
+    }
   }
 }
 
 .nav-icon {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  header {
-    min-width: 320px;
-    z-index: 9001;
-  }
-  .nav-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border-top: 1px solid #fff;
-    position: absolute;
-    top: 80px;
-    left: -110%;
-    opacity: 1;
-    margin-top: 0px;
-    transition: all 0.5s ease;
+  @include desktop {
+    display: none;
   }
 
-  .nav-menu {
-    &.active {
-      background: #3bc9db;
-      left: 0px;
-      opacity: 1;
-      transition: all 0.5s ease;
-      z-index: 20;
-    }
-  }
-
-  .nav-item {
-    .active {
-      color: #ffdd40;
-      border: none;
-    }
-  }
-
-  .nav-links {
-    padding: 1.5rem;
-    width: 100%;
-    display: table;
-    &:hover {
-      color: #ffdd40 !important;
-    }
-  }
-  .logoutBtn {
-    padding: 1.5rem;
-    width: 100%;
-    display: table;
-    &:hover {
-      color: #ffdd40;
-    }
-  }
-
-  .nav-icon {
+  @include mobile {
     display: block;
     position: absolute;
     top: 0;
@@ -159,6 +168,6 @@ header {
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
-    color: #3bc9db;
+    color: $default;
   }
 }

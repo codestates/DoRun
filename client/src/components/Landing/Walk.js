@@ -3,7 +3,11 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import GuestModeModal from '../_Modal/GuestModeModal/GuestModeModal';
+<<<<<<< HEAD
 import GuestModeModalBack from '../_Modal/GuestModeModal/GuestModeModal';
+=======
+import GuestModeModalBack from '../_Modal/GuestModeModal/GuestModeModalBack';
+>>>>>>> d4111cbc49f5a80a90db7116a77d955d6ed46605
 import walk from './LandingSVG/walk.svg';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

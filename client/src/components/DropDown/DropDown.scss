@@ -1,7 +1,7 @@
+@import '../../styles//styles.scss';
+
 .menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-setting(center, center, '');
   background: #ffffff;
   border-radius: 10px;
   border: 1px solid #dee2e6;
@@ -18,10 +18,8 @@
   z-index: 9999;
 
   .tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #5f6368;
+    @include flex-setting(center, center, '');
+    color: $--text-color;
     font-weight: 550;
     cursor: pointer;
   }
@@ -37,8 +35,7 @@
   height: 400px;
 
   .tab_clicked {
-    display: flex;
-    flex-direction: column;
+    @include flex-setting('', '', column);
     padding: 20px;
   }
 }

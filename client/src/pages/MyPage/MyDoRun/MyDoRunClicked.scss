@@ -1,4 +1,4 @@
-$main: rgb(59, 201, 219);
+@import '../../../styles/styles.scss';
 
 .myDoRunForm {
   height: 540px;
@@ -12,13 +12,12 @@ $main: rgb(59, 201, 219);
 }
 
 .myDoRunList {
-  display: flex;
+  @include flex-setting(center, '', '');
   width: auto;
   height: 40px;
   margin: 10px auto;
   padding: 3px;
   text-align: right;
-  align-items: center;
 
   &:nth-child(1) {
     //* 크루 타이틀
@@ -27,6 +26,7 @@ $main: rgb(59, 201, 219);
     margin-bottom: 20px;
     text-align: left !important;
     overflow: auto;
+
     &::-webkit-scrollbar {
       display: none;
     }
@@ -44,27 +44,28 @@ $main: rgb(59, 201, 219);
   padding: 1px;
   font-weight: 600;
   font-size: 18px;
-  color: $main;
+  color: $default;
+
   &_desc {
     width: 75px;
     height: 100px;
     padding: 1px;
     font-weight: 600;
     font-size: 18px;
-    color: $main;
+    color: $default;
   }
 }
 
 .title {
   margin: auto;
   font-size: 20px;
-  color: $main;
+  color: $default;
 }
 
 .departure {
   margin: auto;
   padding: 2px;
-  color: #6e6e6e;
+  color: $--text-color;
   text-align: center;
   overflow: auto;
   font-family: 'Cafe24Ohsquareair';
@@ -72,27 +73,27 @@ $main: rgb(59, 201, 219);
 
 .date {
   margin: auto;
-  color: #6e6e6e;
+  color: $--text-color;
   text-align: left;
   font-family: 'Cafe24Ohsquareair';
 }
 
 .time {
   margin: auto;
-  color: #6e6e6e;
+  color: $--text-color;
   font-family: 'Cafe24Ohsquareair';
 }
 
 .personnel {
   margin: auto;
-  color: #6e6e6e;
+  color: $--text-color;
   font-family: 'Cafe24Ohsquareair';
 }
 
 .level {
   display: flex;
   margin: auto;
-  color: #6e6e6e;
+  color: $--text-color;
   font-family: 'Cafe24Ohsquareair';
 }
 
@@ -102,7 +103,7 @@ $main: rgb(59, 201, 219);
   // height: 35px;
   padding: 5px 5px;
   margin: 2px 5px 5px 5px;
-  border: 2px solid $main;
+  border: 2px solid $default;
   text-align: center;
   align-items: center;
   border-radius: 30px;
@@ -110,15 +111,15 @@ $main: rgb(59, 201, 219);
   color: #c2c2c2;
   font-family: 'Cafe24Ohsquareair';
   &.picked {
-    color: white;
-    background-color: $main;
+    color: $white;
+    background-color: $default;
   }
 }
 
 .distance {
   display: flex;
   margin: auto;
-  color: $main;
+  color: $default;
   font-family: 'Cafe24Ohsquareair';
 }
 .Desc {
@@ -128,21 +129,24 @@ $main: rgb(59, 201, 219);
   padding: 0px 20px;
   text-align: left;
   font-weight: 450;
-  color: #6e6e6e;
+  color: $--text-color;
   overflow: auto;
   font-family: 'Cafe24Ohsquareair';
+
   &::-webkit-scrollbar {
     width: 7px;
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: #3bc9db;
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
   }
+
   &::-webkit-scrollbar-track {
     border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
+    box-shadow: inset 0px 0px 5px $white;
   }
 }
 
@@ -151,50 +155,45 @@ $main: rgb(59, 201, 219);
 }
 
 .crewSigout {
-  flex-direction: column;
+  @include flex-setting(center, center, column);
   flex: 0 1 1;
   width: 150px;
   padding: 10px 15px;
   margin: auto;
   margin-right: 10px;
-  display: flex;
-  align-items: center;
-  text-align: center;
   cursor: pointer;
-  color: #ffffff;
+  color: $white;
   font-weight: bold;
-  background-color: $main;
+  background-color: $default;
   border-radius: 20px;
 }
 
 .crewChat {
-  flex-direction: column;
-  flex: 0 1 1;
+  @include flex-setting(center, '', column);
   width: 150px;
   margin: auto;
   margin-left: 5px;
   padding: 10px 15px;
-  text-align: center;
+
   cursor: pointer;
-  color: #ffffff;
+  color: $white;
   font-weight: bold;
-  background-color: #ffe457;
+  background-color: $yellow;
   border-radius: 20px;
 }
 
 .MyDoRun_unjoined {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex-setting(center, center, column);
   height: 540px;
+
   .unjoined_content {
     font-size: 20px;
     margin: 20px;
   }
+
   .unjoined_link {
     &:visited {
-      color: $main;
+      color: $default;
       text-decoration: none;
     }
   }

@@ -1,41 +1,35 @@
+@import '../../../styles/styles.scss';
+
 .MyHistory {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex-setting(center, center, column);
   margin-top: 1rem;
 
   .MyHistory_wrapper {
     width: 360px;
     height: 530px;
     margin: 0 auto;
-    border-top: 1px solid #dee2e6;
-    background-color: #ffffff;
+    border-top: 1px solid $--input-border;
+    background-color: $white;
     padding-top: 1rem;
 
     .MyHistory_top {
-      display: flex;
-      justify-content: center;
-      text-align: center;
+      @include flex-setting(center, center, '');
       margin-bottom: 1rem;
 
       .MyHistory_title {
         font-size: 18px;
         font-weight: bold;
-        color: #3bc9db;
+        color: $default;
       }
     }
 
     .MyHistory_mid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      @include flex-setting(center, '', column);
       height: 468px;
       overflow: scroll;
 
       .MyHistory_content {
-        display: flex;
-        justify-content: right;
+        @include flex-setting('', right, '');
         width: 90%;
         padding: 15px 0px;
         border-bottom: solid 1px #000;
@@ -58,23 +52,21 @@
       width: 7px;
     }
     .MyHistory_mid::-webkit-scrollbar-thumb {
-      background-color: #3bc9db;
+      background-color: $default;
       border-radius: 10px;
       background-clip: padding-box;
       border: 2px solid transparent;
     }
     .MyHistory_mid::-webkit-scrollbar-track {
       border-radius: 10px;
-      box-shadow: inset 0px 0px 5px white;
+      box-shadow: inset 0px 0px 5px $white;
     }
   }
 }
 
 .Preparing {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-setting(center, center, '');
   height: 540px;
-  color: #6e6e6e;
+  color: $--text-gray;
   font-size: 20px;
 }

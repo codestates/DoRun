@@ -1,24 +1,20 @@
+@import '../../../styles//styles.scss';
+
 .MyMedal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex-setting(center, center, column);
   margin-top: 1rem;
 
   .MyMedal_wrapper {
+    @include flex-setting(center, center, column);
     width: 360px;
     height: 530px;
-    border-top: 1px solid #dee2e6;
-    background-color: #ffffff;
+    border-top: 1px solid $--input-border;
+    background-color: $white;
     padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+
     //132.5
     .MyMedal_medalArea {
-      display: flex;
-      align-items: center;
+      @include flex-setting(center, '', '');
       padding: 10px;
       width: 100%;
       height: 100%;
@@ -27,9 +23,7 @@
       // border: 1px solid red;
 
       .medal_imgArea {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-setting(center, center, '');
         width: 108.25px;
         height: 108.25px;
         // border: 1px solid blue;
@@ -50,7 +44,7 @@
         }
       }
 
-      .medal_description{
+      .medal_description {
         margin-left: -20px;
         // border: 1px solid skyblue;
       }
@@ -62,20 +56,17 @@
         // border: 1px solid black;
       }
 
-      .medal_info{
+      .medal_info {
         margin-top: 5px;
         font-family: 'Cafe24Ohsquareair' !important;
         font-weight: 20 !important;
         // border: 1px solid pink;
       }
-
     }
-
   }
-  
 }
 
-.next_medal{
+.next_medal {
   position: absolute;
   width: 5px;
   height: 55px;
@@ -83,7 +74,21 @@
   margin-left: 2px;
   margin-bottom: -40px;
   border-radius: 50px;
-  background-image: linear-gradient(to bottom, #39ffe5, #00f2fa, #00ebf3, #00ebf4, #00e2fc, #00dafe, #00d2ff, #1ecaff, #00c2ff, #00b9ff, #00b0ff, #00a7ff);
+  background-image: linear-gradient(
+    to bottom,
+    #39ffe5,
+    #00f2fa,
+    #00ebf3,
+    #00ebf4,
+    #00e2fc,
+    #00dafe,
+    #00d2ff,
+    #1ecaff,
+    #00c2ff,
+    #00b9ff,
+    #00b0ff,
+    #00a7ff
+  );
   z-index: 1;
   filter: opacity(0.2);
 
@@ -93,10 +98,8 @@
 }
 
 .Preparing {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-setting(center, center, '');
   height: 540px;
-  color: #6e6e6e;
+  color: $--text-gray;
   font-size: 20px;
 }

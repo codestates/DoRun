@@ -1,8 +1,7 @@
+@import '../../styles/styles.scss';
+
 .WrongApproach {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex-setting(center, center, column);
   padding-top: 100px;
 
   .WrongApproach_img {
@@ -14,22 +13,21 @@
   }
   .WrongApproach_text {
     margin-bottom: 5px;
-    color: #6e6e6e;
+    color: $--text-gray;
     font-family: 'Cafe24Ohsquareair';
   }
   .WrongApproach_toHome {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-setting(center, center, '');
     margin: 20px;
     padding: 10px;
-    background-color: #f8f9fa;
-    color: #3bc9db;
-    border: 1px solid #3bc9db;
+    background-color: $--default-background-color;
+    color: $default;
+    border: 1px solid $default;
     border-radius: 10px;
     font-family: 'Cafe24Ohsquareair';
+
     &:visited {
-      color: #3bc9db;
+      color: $default;
     }
   }
 }

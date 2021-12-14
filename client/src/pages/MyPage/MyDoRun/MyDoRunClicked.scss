@@ -1,4 +1,35 @@
 @import "../../../styles/styles.scss";
+@mixin myDoRun-category{
+  width: 75px;
+  padding: 1px;
+  font: {
+    weight: 600;
+    size: 18px;
+  }
+  color: $default;
+  @content;
+}
+@mixin myDoRun-content($margin ,$text-color) {
+  margin: $margin;
+  color: $text-color;
+  font-family: 'Cafe24Ohsquareair';
+  // background-color: red;
+  @content;
+}
+@mixin myDorun-Button($btn-margin-left, $btn-color){
+  flex-direction: column;
+  flex: 0 1 1;
+  width: 150px;
+  margin-left: $btn-margin-left;
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  color: $white;
+  font-weight: bold;
+  background-color: $btn-color;
+  border-radius: 20px;
+  @content;
+}
 
 .myDoRunForm {
   height: 540px;
@@ -19,7 +50,6 @@
   padding: 3px;
   text-align: right;
   align-items: center;
-
   &:nth-child(1) {
     //* 크루 타이틀
     height: 43px;
@@ -33,7 +63,6 @@
       display: none;
     }
   }
-
   &:last-child {
     //* 크루 세부 사항
     height: 120px;
@@ -42,79 +71,52 @@
 }
 
 .listCategory {
-  width: 75px;
-  padding: 1px;
-  font: {
-    weight: 600;
-    size: 18px;
-  }
-  color: $default;
-  &_desc {
-    width: 75px;
-    height: 100px;
-    padding: 1px;
-    font: {
-      weight: 600;
-      size: 18px;
+  @include myDoRun-category;
+  &.desc {
+      height: 100px;
     }
-    color: $default;
-  }
 }
 
 .title {
-  margin: auto;
+  @include myDoRun-content(auto, $default);
   font-size: 20px;
-  color: $default;
 }
 
 .departure {
-  margin: auto;
+  @include myDoRun-content(auto, $--mypage-text-color);
   padding: 2px;
-  color: $--mypage-text-color;
   text-align: center;
   overflow: auto;
-  font-family: 'Cafe24Ohsquareair';
+
 }
 
 .date {
-  margin: auto;
-  color: $--mypage-text-color;
+  @include myDoRun-content(auto, $--mypage-text-color);
   text-align: left;
-  font-family: 'Cafe24Ohsquareair';
 }
 
 .time {
-  margin: auto;
-  color: $--mypage-text-color;
-  font-family: 'Cafe24Ohsquareair';
+  @include myDoRun-content(auto, $--mypage-text-color);
 }
 
 .personnel {
-  margin: auto;
-  color: $--mypage-text-color;
-  font-family: 'Cafe24Ohsquareair';
+  @include myDoRun-content(auto, $--mypage-text-color);
 }
 
 .level {
+  @include myDoRun-content(auto, $--mypage-text-color);
   display: flex;
-  margin: auto;
-  color: $--mypage-text-color;
-  font-family: 'Cafe24Ohsquareair';
 }
 
 .crewLevel {
+  @include myDoRun-content( 2px 5px 5px 5px , $--mypage-text-color);
   flex-direction: column;
   width: 63px;
-  // height: 35px;
   padding: 5px 5px;
-  margin: 2px 5px 5px 5px;
   border: 2px solid $default;
   text-align: center;
-  align-items: center;
   border-radius: 30px;
   font-size: 0.9rem;
-  color: $--mypage-text-color;
-  font-family: 'Cafe24Ohsquareair';
   &.picked {
     color: $white;
     background-color: $default;
@@ -122,27 +124,24 @@
 }
 
 .distance {
+  @include myDoRun-content(auto, $--mypage-text-color);
   display: flex;
-  margin: auto;
-  color: $default;
-  font-family: 'Cafe24Ohsquareair';
 }
 
 .Desc {
+  @include myDoRun-content(auto, $--mypage-text-color);
   width: 250px;
   height: 100px;
-  margin-left: 3px;
   padding: 0px 20px;
   text-align: left;
   font-weight: 450;
-  color: $--mypage-text-color;
   overflow: auto;
-  font-family: 'Cafe24Ohsquareair';
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar{
     width: 7px;
   }
   &::-webkit-scrollbar-thumb {
     background: {
+      width: 10px;
       color: $default;
       clip: padding-box;
     };
@@ -160,33 +159,11 @@
 }
 
 .crewSigout {
-  flex-direction: column;
-  flex: 0 1 1;
-  width: 150px;
-  padding: 10px 15px;
-  margin-left: 17px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-  color: $white;
-  font-weight: bold;
-  background-color: $default;
-  border-radius: 20px;
+  @include myDorun-Button(17px, $default);
 }
 
 .crewChat {
-  flex-direction: column;
-  flex: 0 1 1;
-  width: 150px;
-  margin-left: 5px;
-  padding: 10px 15px;
-  text-align: center;
-  cursor: pointer;
-  color: $white;
-  font-weight: bold;
-  background-color: $yellow;
-  border-radius: 20px;
+  @include myDorun-Button(5px, $yellow);
 }
 
 .MyDoRun_unjoined {
@@ -202,7 +179,6 @@
   .unjoined_link {
     &:visited {
       color: $default;
-      text-decoration: none;
     }
   }
 }

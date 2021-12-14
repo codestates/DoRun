@@ -1,6 +1,9 @@
 @import '../../styles/styles.scss';
+@mixin flex {
+  flex: 1 1 auto;
+  flex-direction: column;
+}
 $symbolColor: rgba(0, 0, 0, 0.9);
-$flex: 1 1 auto;
 
 
 .kakaoBtnWrapper{
@@ -18,8 +21,7 @@ $flex: 1 1 auto;
 
 
 .kakaoBtn {
-  flex-direction: column;
-  flex: $flex;
+  @include flex;
   position: relative;
   width: 0.7rem;
   height: 0.9rem;
@@ -27,8 +29,7 @@ $flex: 1 1 auto;
   border-radius: 50%;
   background-color: $symbolColor;
   &:after {
-    flex-direction: column;
-    flex: $flex;
+    @include flex;
     position: absolute;
     height: 10px;
     top: 7px;

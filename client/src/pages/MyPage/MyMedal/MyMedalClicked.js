@@ -6,12 +6,22 @@ const MyMedalClicked = ({ userMedalLog }) => {
   let [medalLevel, setMedalLevel] = useState(0);
 
   let runningDistance = userMedalLog.reduce((acc, cur) => {
-    return acc += Number(cur[2].slice(0, 2));
+    // console.log(cur[2])
+    if (cur[2] === '~5km') {
+      return acc += 5;
+    }
+    else if (cur[2] === '~10km') {
+      return acc += 10;
+    }
+    else {
+      return acc += 15;
+    }
   }, 0)
 
-  // console.log(userMedalLog);
-  // console.log('횟수', userMedalLog.length);
-  // console.log('거리', runningDistance)
+
+  console.log(userMedalLog);
+  console.log('횟수', userMedalLog.length);
+  console.log('거리', runningDistance)
 
 
   useEffect(() => {

@@ -46,12 +46,12 @@ const MyAccountClicked = () => {
             if (res.data.message) {
               setErrMsg('');
               ChangedModalHandler();
-              for (const keyValue of formData) console.log(keyValue);
+              // for (const keyValue of formData) console.log(keyValue);
             }
           })
           .catch((error) => {
             setErrMsg('⚠ 현재 비밀번호를 정확히 입력해주세요!!');
-            for (const keyValue of formData) console.log(keyValue);
+            // for (const keyValue of formData) console.log(keyValue);
           });
       } else {
         setErrMsg('⚠ 새로운 비밀번호가 서로 일치하지 않습니다!!');

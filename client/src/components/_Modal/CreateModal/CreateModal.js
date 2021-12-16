@@ -79,20 +79,20 @@ const CreateModal = ({ createModalHandler, location }) => {
   };
 
   return (
-    <div className="createModalContainer">
+    <div className="createModal_container">
       <div className="createModal">
-        <div className="createModalHeader">
-          <div className="createModalExit" onClick={createModalHandler}>
+        <div className="createModal_header">
+          <div className="createModal_exit" onClick={createModalHandler}>
             x
           </div>
         </div>
 
         <div className="createModalBody">
-          <div className="bodyTop">
-            <div className="createTitle">DoRun 크루 생성하기</div>
+          <div className="createModal_bodyTop">
+            <div className="createModal_title">DoRun 크루 생성하기</div>
             <br />
           </div>
-          <div className="cbodyMid">
+          <div className="createModal_bodyMid">
             <div className="mid_options">
               <div className="left_title">제목</div>
               <input
@@ -282,11 +282,13 @@ const CreateModal = ({ createModalHandler, location }) => {
             </div>
           </div>
           {isEnough && (
-            <div className="crewErrMsg">⚠ 크루정보를 모두 입력해주세요!!</div>
+            <div className="createModal_ErrMsg">
+              ⚠ 크루정보를 모두 입력해주세요!!
+            </div>
           )}
           <br />
-          <div className="createModalFooter">
-            <button className="toCreate" onClick={onSubmitHandler}>
+          <div className="createModal_footer">
+            <button className="createModal_toCreate" onClick={onSubmitHandler}>
               Create !!
             </button>
             {isConfirmModalOpen && (

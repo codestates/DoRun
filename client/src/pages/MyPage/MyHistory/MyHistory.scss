@@ -1,29 +1,31 @@
+@import '../../../styles/mixins', '../../../styles/styles';
+
 .card {
   display: flex;
-  border: 1px solid #dee2e6;
+  border: 1px solid $--input-border;
   border-radius: 1rem;
-  background-color: #ffffff;
+  background-color: $white;
   gap: 1vw;
   width: 400px;
   height: 162px;
   transition: all 0.5s;
+
   &_focused {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #dee2e6;
+    @include flex-setting('', '', column);
+    border: 1px solid $--input-border;
     border-radius: 1rem;
-    background-color: #ffffff;
+    background-color: $white;
     padding: 20px;
     width: 400px;
     height: 750px;
     transition: all 0.5s;
+
     .card_wrapper {
       display: flex;
       gap: 1vw;
+
       .card_left {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-setting(center, center, '');
         padding: 10px;
 
         .card_img {
@@ -40,15 +42,13 @@
 
         .card_content {
           margin-top: 5px;
-          color: #5f6368;
+          color: $--text-color;
           font-family: 'Cafe24Ohsquareair';
         }
       }
     }
     .content_opened {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      @include flex-setting(center, '', column);
       margin-top: 20px;
       cursor: pointer;
       min-height: 20px;
@@ -73,6 +73,7 @@
     height: 120px;
     gap: 1vw;
     cursor: pointer;
+
     &:hover {
       margin: 18px;
       width: 362px;
@@ -81,10 +82,9 @@
     }
 
     .card_left {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-setting(center, center, '');
       padding: 10px;
+
       .card_img {
         padding: 10px 0px;
         width: 100px;
@@ -99,7 +99,7 @@
 
       .card_content {
         margin-top: 5px;
-        color: #5f6368;
+        color: $--text-gray;
         font-family: 'Cafe24Ohsquareair';
       }
     }

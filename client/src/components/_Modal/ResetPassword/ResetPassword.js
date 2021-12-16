@@ -26,15 +26,16 @@ const ResetPassword = ({ resetPasswordHandler }) => {
       });
   };
   return (
-    <div className="resetPasswordContainer">
+    <div className="resetPassword_container">
       <div className="resetPassword">
         <div className="resetPassword_header">
           <div className="resetPassword_exit" onClick={resetPasswordHandler}>
             X
           </div>
         </div>
-        <div className="resetPassword_title">Reset Password</div>
+
         <div className="resetPassword_body">
+          <div className="resetPassword_title">Reset Password</div>
           <div className="resetPassword_text">
             이메일 입력 후 제출 시, 해당 이메일로
           </div>

@@ -1,64 +1,37 @@
-.WithdrawalModalmodalContainer {
-  all: unset;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: 9998;
-}
+@import '../../../styles/styles', '../../../styles/mixins';
 
-.WithdrawalModalmodal {
-  width: 350px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 5px;
-  box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
-  border-radius: 10px;
-  background-color: #ffffff;
-  z-index: 9999;
-}
+.withdrawalModal_container {
+  @include modalBackground-setting;
 
-.modalHeader {
-  display: flex;
-  flex-direction: row-reverse;
-}
-.modalExit {
-  width: 20px;
-  height: 20px;
-  margin: 10px;
-  cursor: pointer;
-}
+  .withdrawalModal {
+    width: 350px;
+    @include modal-setting;
 
-.modalBody {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .WithdrawalModalmodal_title {
-    width: 80%;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #dee2e6;
+    .withdrawalModal_body {
+      @include flex-setting(center, '', column);
+
+      .withdrawalModal_title {
+        width: 80%;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #dee2e6;
+      }
+    }
+
+    .withdrawalModal_footer {
+      @include flex-setting('', center, '');
+      gap: 20px;
+
+      .withdrawalModal_toHome {
+        padding: 5px 10px 6px;
+        @include flex-setting('', center, '');
+        cursor: pointer;
+        color: $white;
+        font-weight: bold;
+        background-color: $--button-color;
+        border: 1px solid $--button-color;
+        border-radius: 10px;
+      }
+    }
   }
-}
-
-.modalFooter {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.toHome {
-  padding: 5px 10px 6px;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  color: #ffffff;
-  font-weight: bold;
-  background-color: #436f75;
-  border: 1px solid #436f75;
-  border-radius: 10px;
 }

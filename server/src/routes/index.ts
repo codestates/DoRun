@@ -6,9 +6,7 @@ import crewRoter from "./crew";
 const app = express();
 
 app.use("/oauth", OauthRouter);
-
 app.use("/user", userRoter);
-
 app.use("/crew", crewRoter);
 
 export default app;

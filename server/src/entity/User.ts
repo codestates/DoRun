@@ -36,9 +36,6 @@ export class User extends BaseEntity {
   @Column({ type: "simple-array", nullable: true })
   log: string[];
 
-  // @Column({ type: "varchar", nullable: true })
-  // token: number;
-
   @Column({ type: "varchar", nullable: true })
   oauth: string;
 

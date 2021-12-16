@@ -46,7 +46,6 @@ const RefreshTokenVerify = (accessToken: string) => {
 
 const ConfirmEmailToken = async (email: string) => {
   try {
-    //const token = sign({ email }, process.env.ACCESS_SECRET, { expiresIn: "15m" });
     return sign({ email }, process.env.ACCESS_SECRET, { expiresIn: "15m" });
   } catch (err) {
     console.log(err);

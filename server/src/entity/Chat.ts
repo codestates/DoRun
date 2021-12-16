@@ -35,9 +35,6 @@ export class Chat extends BaseEntity {
   @Column({ type: "int", nullable: true })
   userId: number;
 
-  // @OneToOne(() => Crew)
-  // @JoinColumn()
-  // crew: Crew;
   @ManyToOne((type) => Crew, (crew) => crew.chat, { onDelete: "CASCADE" })
   crew: Crew;
 }

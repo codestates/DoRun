@@ -38,7 +38,7 @@ const CreateCrew = async (req: Request, res: Response) => {
     if (!crewInfo) return res.status(400).send();
 
     crewInfo = await Crew.save(crewInfo);
-    //크루 생성했을때 생성한 유저가 크루 가입
+
     const userInfo = await User.findOne({ id: userId });
     userInfo.crewId = crewInfo.id;
     await User.save(userInfo);
@@ -54,7 +54,6 @@ const CreateCrew = async (req: Request, res: Response) => {
     }
 
     setTimeout(() => {
-      // 여기서 크루에 속해있는 유저에 로그와 메달을 저장
       crewInfo.Completed = true;
       Crew.save(crewInfo);
     }, endMs);
@@ -82,7 +81,6 @@ const EditCrew = async (req: Request, res: Response) => {
     crewInfo.level = req.body.level || crewInfo.level;
     crewInfo.time = req.body.time || crewInfo.time;
     crewInfo.date = req.body.date || crewInfo.date;
-    //crewInfo.location = req.body.location || crewInfo.location;
     crewInfo.locationLa = req.body.locationLa || crewInfo.locationLa;
     crewInfo.locationMa = req.body.locationMa || crewInfo.locationMa;
     crewInfo.departure = req.body.departure || crewInfo.departure;
@@ -160,7 +158,7 @@ const FindAllCrew = async (req: Request, res: Response) => {
 
 const JoinCrew = async (req: Request, res: Response) => {
   try {
-    const { userId, crewId }: any = req.params;
+    const { userId, crewId }: any = Number(req.params);
 
     let userInfo = await User.findOne({ id: userId });
     userInfo.crewId = crewId;

@@ -13,14 +13,12 @@ export const signUpEmail = async (email: string, userId: number, token: string) 
         pass: process.env.NODEMAILER_PASSWORD,
       },
     });
-    //const url = `http://localhost:3001/user/confirm/${token}/${userId}`;
     const url = `${process.env.SERVER_URL}/user/confirm/${token}/${userId}`;
 
     const emailInfo = await transporter.sendMail({
       from: `Dorun ${process.env.NODEMAILER_USER}`,
       to: email,
       subject: "이메일 인증",
-      //text: `링크:${url}`,
       html: `<body>
       <div
     style="font-family: 'Apple SD Gothic Neo', 'sans-serif' !important; width: 540px; height: 600px; margin: auto 50px; padding: 30px 0px; box-sizing: border-box;">

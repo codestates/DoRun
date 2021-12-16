@@ -17,7 +17,6 @@ const Google = async (req: Request, res: Response) => {
         email: req.body.email,
         image: req.body.imageUrl,
         oauth: "google",
-        //isauth: true,
         isauth: true,
       });
       userInfo = await User.save(userInfo);
@@ -44,37 +43,6 @@ const Google = async (req: Request, res: Response) => {
 
 const Kakao = async (req: Request, res: Response) => {
   try {
-    // const tokenUrl = "https://kauth.kakao.com/oauth/token";
-    // const userInfoUrl = "https://kapi.kakao.com/v2/user/me";
-
-    // const { data } = await axios.post(
-    //   tokenUrl,
-    //   formUrlEncoded({
-    //     code: req.body.authorizationCode,
-    //     grant_type: "authorization_code",
-    //     client_id: process.env.KAKAO_CLIENT_ID,
-    //     redirect_uri: process.env.KAKAO_REDIRECT_URL,
-    //   }),
-    //   {
-    //     headers: {
-    //       "Content-type": "application/x-www-form-urlencoded",
-    //     },
-    //   }
-    // );
-
-    // if (!data) {
-    //   return res.status(500).send({
-    //     message: "invalid authorizationCode",
-    //   });
-    // }
-
-    // const kakaoAccessToken = data["access_token"];
-    // const kakaoUserInfo = await axios.get(userInfoUrl, {
-    //   headers: {
-    //     Authorization: `Bearer ${kakaoAccessToken}`,
-    //   },
-    // });
-
     const kakaoUserInfo: any = await kakaoLogin(req.body.authorizationCode);
 
     if (!kakaoUserInfo) {

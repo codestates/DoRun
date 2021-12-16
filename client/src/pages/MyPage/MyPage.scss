@@ -1,4 +1,4 @@
-@import '../../styles/styles.scss';
+@import '../../styles/mixins', '../../styles/styles';
 
 .MyPage {
   @include flex-setting(center, center, column);
@@ -42,8 +42,14 @@
     gap: 3vw;
 
     .body_cards {
-      @include flex-setting('', center, '');
-      gap: 3vw;
+      @include desktop {
+        @include flex-setting('', center, '');
+        gap: 3vw;
+      }
+      @include mobile {
+        @include flex-setting('', center, column);
+        gap: 3vw;
+      }
     }
 
     .nonVerified {
@@ -56,12 +62,5 @@
         font-size: 20px;
       }
     }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .body_cards {
-    @include flex-setting('', center, column);
-    gap: 3vw;
   }
 }

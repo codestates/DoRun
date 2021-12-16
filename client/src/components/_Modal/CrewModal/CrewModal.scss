@@ -1,50 +1,40 @@
-.crewModalHeader {
-  display: flex;
-  flex-direction: row-reverse;
+@import '../../../styles/styles.scss', '../../../styles/mixins';
 
-  .crewModalExit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.crewModal_header {
+  @include flex-setting('', '', row-reverse);
+
+  .crewModal_exit {
+    @include flex-setting(center, center, column);
     width: 40px;
     height: 40px;
     cursor: pointer;
   }
 }
 
-.bodyTop {
+.crewModal_bodyTop {
   text-align: center;
   padding: 10px;
   // width: 400px; //! 고친부분
 
-  .crewTitle {
+  .crewModal_title {
     max-width: 300px;
-    display: flex;
-    justify-content: center;
+    @include flex-setting('', center, '');
     padding-bottom: 10px;
     margin: 0 auto;
-    color: #3bc9db;
+    color: $default;
     font-size: 1.25rem;
     font-weight: bold;
   }
   hr {
     margin-top: 5px;
-    border-top: 1px solid #3bc9db;
-  }
-
-  .leaderImg {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
+    border-top: 1px solid $default;
   }
 }
 
-.bodyMid {
+.crewModal_bodyMid {
   padding: 10px;
   .mid_option {
-    color: #3bc9db;
+    color: $default;
     font-weight: bold;
     display: flex;
     gap: 3vw;
@@ -52,26 +42,21 @@
     .left_title {
       width: 86px;
       height: 40px;
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
+      @include flex-setting(center, '', row-reverse);
     }
 
     .left_details {
       width: 86px;
       height: 40px;
-      display: flex;
-      flex-direction: row-reverse;
+      @include flex-setting('', '', row-reverse);
       margin-top: 10px;
     }
 
     .right_text {
       width: 245px;
       height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6e6e6e;
+      @include flex-setting(center, center, '');
+      color: $--text-color;
       font-family: 'Cafe24Ohsquareair';
 
       //! 아래로 고친부분
@@ -89,21 +74,17 @@
       width: 245px;
       font-size: 0.9rem;
       height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-setting(center, center, '');
       gap: 1vw;
 
       .right_option {
         width: 4rem;
         height: 2rem;
         padding: 1rem 0.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex-setting(center, center, '');
         color: #c2c2c2;
         font-weight: bold;
-        border: 2px solid #3bc9db;
+        border: 2px solid $default;
         border-radius: 30px;
         font-family: 'Cafe24Ohsquareair';
       }
@@ -111,13 +92,11 @@
         width: 4rem;
         height: 30px;
         padding: 16px 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #3bc9db;
-        color: #ffffff;
+        @include flex-setting(center, center, '');
+        background-color: $default;
+        color: $white;
         font-weight: bold;
-        border: 2px solid #3bc9db;
+        border: 2px solid $default;
         border-radius: 30px;
         font-family: 'Cafe24Ohsquareair';
       }
@@ -128,7 +107,7 @@
       max-height: 100px;
       margin-top: 10px;
       padding: 0px 20px;
-      color: #6e6e6e;
+      color: $--text-color;
       font-weight: normal;
       font-family: 'Cafe24Ohsquareair';
       align-items: normal;
@@ -137,65 +116,63 @@
         width: 7px;
       }
       &::-webkit-scrollbar-thumb {
-        background-color: #3bc9db;
+        background-color: $default;
         border-radius: 10px;
         background-clip: padding-box;
         border: 2px solid transparent;
       }
       &::-webkit-scrollbar-track {
         border-radius: 10px;
-        box-shadow: inset 0px 0px 5px white;
+        box-shadow: inset 0px 0px 5px $white;
       }
     }
   }
 }
 
-.crewModalFooter {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.crewModal_footer {
+  @include flex-setting(center, center, column);
   gap: 20px;
-  .crewErrMsg {
-    color: #ff7545;
+
+  .crewModal_errMsg {
+    color: $--error-color;
     font-weight: 500;
     text-align: center;
   }
-  .toDoRun {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  .crewModal_toDoRun {
+    @include flex-setting(center, center, '');
     margin: 0px;
     padding: 5px;
     cursor: pointer;
-    color: #ffffff;
+    color: $white;
     width: 10rem;
     height: 2.5rem;
     font-size: 16px;
     font-weight: bold;
-    background-color: #3bc9db;
-    border: 1px solid #3bc9db;
+    background-color: $default;
+    border: 1px solid $default;
     border-radius: 3rem;
   }
 }
+
 @media screen and (max-width: 768px) {
   .crewModal {
-    .crewModalBody {
+    .crewModal_body {
       height: 315px;
       overflow: auto;
     }
-    .crewModalBody::-webkit-scrollbar {
+    .crewModal_body::-webkit-scrollbar {
       width: 7px;
     }
-    .crewModalBody::-webkit-scrollbar-thumb {
-      background-color: #3bc9db;
+    .crewModal_body::-webkit-scrollbar-thumb {
+      background-color: $default;
       border-radius: 10px;
       background-clip: padding-box;
       border: 2px solid transparent;
     }
-    .crewModalBody::-webkit-scrollbar-track {
+    .crewModal_body::-webkit-scrollbar-track {
       border-radius: 10px;
-      box-shadow: inset 0px 0px 5px white;
+      box-shadow: inset 0px 0px 5px $white;
     }
   }
 }

@@ -1,10 +1,17 @@
-@import '../../styles/styles.scss';
+@import '../../styles/mixins', '../../styles/styles';
 
 .footer {
   padding: 50px;
 
   .footer__wrap {
-    @include flex-setting('', space-around, '');
+    @include desktop {
+      @include flex-setting('', space-around, '');
+    }
+
+    @include mobile {
+      @include flex-setting(center, '', column);
+      gap: 5vw;
+    }
 
     .footer__logo {
       @include flex-setting(center, '', '');
@@ -46,25 +53,5 @@
     @include flex-setting('', center, '');
     font-size: 12px;
     margin-top: 30px;
-  }
-}
-
-// @media screen and (max-width: 768px) {
-//   .footer__wrap {
-//     // @include flex-setting(center, '', column);
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 5vw;
-//   }
-// }
-
-@include respond-to('mobile') {
-  .footer__wrap {
-    // @include flex-setting(center, '', column);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5vw;
   }
 }

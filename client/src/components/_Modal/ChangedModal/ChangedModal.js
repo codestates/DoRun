@@ -20,17 +20,16 @@ const ChangedModal = () => {
     }, 500);
   };
   return (
-    <div className="modalContainer">
-      <div className="modal">
-        <div className="modalHeader"></div>
+    <div className="changedModal_container">
+      <div className="changedModal">
         <br />
-        <div className="modalBody">
+        <div className="changedModal_body">
           <div>개인정보 수정이 완료되었습니다</div>
           <div>다시 로그인 해주세요!!</div>
         </div>
         <br />
-        <div className="modalFooter">
-          <div className="toHome" onClick={handleLogout}>
+        <div className="changedModal_footer">
+          <div className="changedModal_toHome" onClick={handleLogout}>
             확 인
           </div>
         </div>

@@ -19,17 +19,17 @@ const WithdrawalModal = () => {
     document.location.href = '/';
   };
   return (
-    <div className="WithdrawalModalmodalContainer">
-      <div className="WithdrawalModalmodal">
+    <div className="withdrawalModal_container">
+      <div className="withdrawalModal">
         <br />
-        <div className="modalBody">
-          <h3 className="WithdrawalModalmodal_title">DoRun 회원탈퇴 완료</h3>
+        <div className="withdrawalModal_body">
+          <h3 className="withdrawalModal_title">DoRun 회원탈퇴 완료</h3>
           <div>DoRun 서비스를 이용해주셔서 감사합니다.</div>
           <div>DoRun 홈으로 이동합니다.</div>
         </div>
         <br />
-        <div className="modalFooter">
-          <div className="toHome" onClick={clicked}>
+        <div className="withdrawalModal_footer">
+          <div className="withdrawalModal_toHome" onClick={clicked}>
             확 인
           </div>
         </div>

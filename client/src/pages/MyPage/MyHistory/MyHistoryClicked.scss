@@ -1,4 +1,4 @@
-@import '../../../styles/styles.scss';
+@import '../../../styles/mixins', '../../../styles/styles';
 
 .MyHistory {
   @include flex-setting(center, center, column);

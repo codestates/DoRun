@@ -10,24 +10,24 @@ import './SuccessModal.scss';
 
 const SuccessModal = ({ SuccessModalHandler }) => {
   return (
-    <div className="modalContainer">
-      <div className="modal">
-        <div className="modalHeader">
-          <div className="modalExit" onClick={SuccessModalHandler}>
+    <div className="successModal_container">
+      <div className="successModal">
+        <div className="successModal_header">
+          <div className="successModal_exit" onClick={SuccessModalHandler}>
             x
           </div>
         </div>
         <br />
-        <div className="modalBody">
+        <div className="successModal_body">
           <div>크루 생성이 완료되었습니다!</div>
         </div>
         <br />
-        <div className="modalFooter">
+        <div className="successModal_footer">
           <Link to="/mypage">
-            <div className="toLogin">확인하기</div>
+            <div className="successModal_toLogin">확인하기</div>
           </Link>
           <div
-            className="toExit"
+            className="successModal_toExit"
             onClick={() => {
               location.reload();
             }}

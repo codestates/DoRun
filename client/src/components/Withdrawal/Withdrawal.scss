@@ -1,4 +1,4 @@
-@import '../../styles/styles.scss';
+@import '../../styles/mixins', '../../styles/styles';
 
 .clicked_header {
   width: 100%;
@@ -54,7 +54,7 @@
     width: 110px;
     height: 37px;
     padding: 5px 10px 6px;
-    color: #436f75;
+    color: $--button-color;
     font-weight: bold;
     border: 1px solid $--button-color;
     background-color: $white;

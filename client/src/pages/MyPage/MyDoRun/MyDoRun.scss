@@ -1,31 +1,29 @@
-@import '../../../styles/styles.scss';
-
 .card {
   display: flex;
-  border: 1px solid $--input-border;
+  border: 1px solid #dee2e6;
   border-radius: 1rem;
-  background-color: $white;
+  background-color: #ffffff;
   gap: 1vw;
   width: 400px;
   height: 162px;
   transition: all 0.5s;
-
   &_focused {
-    @include flex-setting('', '', column);
-    border: 1px solid $--input-border;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dee2e6;
     border-radius: 1rem;
-    background-color: $white;
+    background-color: #ffffff;
     padding: 20px;
     width: 400px;
     height: 750px;
     transition: all 0.5s;
-
     .card_wrapper {
       display: flex;
       gap: 1vw;
-
       .card_left {
-        @include flex-setting(center, center, '');
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 10px;
 
         .card_img {
@@ -42,13 +40,15 @@
 
         .card_content {
           margin-top: 5px;
-          color: $--text-color;
+          color: #5f6368;
           font-family: 'Cafe24Ohsquareair';
         }
       }
     }
     .content_opened {
-      @include flex-setting(center, '', column);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       margin-top: 20px;
       cursor: pointer;
       min-height: 20px;
@@ -73,7 +73,6 @@
     height: 120px;
     gap: 1vw;
     cursor: pointer;
-
     &:hover {
       margin: 18px;
       width: 362px;
@@ -82,9 +81,10 @@
     }
 
     .card_left {
-      @include flex-setting(center, center, '');
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 10px;
-
       .card_img {
         padding: 10px 0px;
         width: 100px;
@@ -99,7 +99,7 @@
 
       .card_content {
         margin-top: 5px;
-        color: $--text-gray;
+        color: #5f6368;
         font-family: 'Cafe24Ohsquareair';
       }
     }

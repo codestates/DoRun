@@ -7,6 +7,11 @@ import SocialLoginGoogle from '../../components/SocialLogin/Google';
 import SocialLoginKakao from '../../components/SocialLogin/Kakao';
 import ResetPassword from '../../components/_Modal/ResetPassword/ResetPassword';
 import Footer from '../../components/Footer/Footer';
+import GuestModeModal from '../../components/_Modal/GuestModeModal/GuestModeModal';
+import GuestModeModalBack from '../../components/_Modal/GuestModeModal/GuestModeModalBack';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
+import { faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -14,13 +19,19 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [visibility, setVisibility] = useState('password');
   const [mismatched, setMismatched] = useState(false);
+  const [guestMode, setGuestMode] = useState(false);
+  const [passwordType, setPasswordType] = useState({
+    type: 'password',
+    visible: false,
+  });
 
-  const isVisible = () => {
-    if (visibility === 'password') {
-      setVisibility('text');
-    } else {
-      setVisibility('password');
-    }
+  const handlePasswordType = (e) => {
+    setPasswordType(() => {
+      if (!passwordType.visible) {
+        return { type: 'text', visible: true };
+      }
+      return { type: 'password', visible: false };
+    });
   };
 
   const onSubmitHandler = async (e) => {
@@ -73,16 +84,20 @@ const LoginPage = () => {
             <div className="inputArea">
               <input
                 className="input"
-                type={visibility}
+                type={passwordType.type}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 style={{
                   fontFamily: 'GmarketSans',
                 }}
               />
-              <div className="showBtn" onClick={isVisible}>
-                show
-              </div>
+              <span className="showPassword" onClick={handlePasswordType}>
+                {passwordType.visible ? (
+                  <FontAwesomeIcon icon={faEyeSlash} />
+                ) : (
+                  <FontAwesomeIcon icon={faEye} />
+                )}
+              </span>
             </div>
             <div className="reset_password" onClick={resetPasswordHandler}>
               비밀번호 재설정
@@ -100,6 +115,19 @@ const LoginPage = () => {
               </Link>
             </div>
             <div className="socialLogin">
+              <div
+                className="guestMode"
+                onClick={() => {
+                  setGuestMode(true);
+                }}
+              >
+                게스트모드로 이용하기
+              </div>
+              <GuestModeModal
+                guestMode={guestMode}
+                setGuestMode={setGuestMode}
+              />
+              <GuestModeModalBack guestMode={guestMode} />
               <div className="socialGoogle">
                 <SocialLoginGoogle />
               </div>

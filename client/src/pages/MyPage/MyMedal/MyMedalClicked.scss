@@ -1,20 +1,24 @@
-@import '../../../styles//styles.scss';
-
 .MyMedal {
-  @include flex-setting(center, center, column);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 1rem;
 
   .MyMedal_wrapper {
-    @include flex-setting(center, center, column);
     width: 360px;
     height: 530px;
-    border-top: 1px solid $--input-border;
-    background-color: $white;
+    border-top: 1px solid #dee2e6;
+    background-color: #ffffff;
     padding-top: 1rem;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     //132.5
     .MyMedal_medalArea {
-      @include flex-setting(center, '', '');
+      display: flex;
+      align-items: center;
       padding: 10px;
       width: 100%;
       height: 100%;
@@ -23,7 +27,9 @@
       // border: 1px solid red;
 
       .medal_imgArea {
-        @include flex-setting(center, center, '');
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 108.25px;
         height: 108.25px;
         // border: 1px solid blue;
@@ -98,8 +104,10 @@
 }
 
 .Preparing {
-  @include flex-setting(center, center, '');
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 540px;
-  color: $--text-gray;
+  color: #6e6e6e;
   font-size: 20px;
 }

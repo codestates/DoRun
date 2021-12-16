@@ -15,7 +15,7 @@ const EmailModal = () => {
   const userId = useSelector((state) => state.user.userId);
 
   return (
-    <div className="emailModalContainer">
+    <div className="emailModal_container">
       <div className="emailModal">
         <div className="emailModal_body">
           <div className="emailModal_text">

@@ -1,49 +1,33 @@
-.emailModalContainer {
-  all: unset;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: 9998;
-}
+@import '../../../styles/styles.scss', '../../../styles/mixins';
 
-.emailModal {
-  width: 300px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 5px;
-  box-shadow: -2px 2px 10px 10px rgba(107, 107, 107, 0.2);
-  border-radius: 10px;
-  background-color: #f8f9fa;
-  z-index: 9999;
+.emailModal_container {
+  @include modalBackground-setting;
 
-  .emailModal_body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0px;
-    .emailModal_text {
-      margin: 5px;
-      font-family: 'Cafe24Ohsquareair';
-    }
-    .emailModal_btn {
-      margin-top: 20px;
-      width: 100px;
-      padding: 5px 10px 6px;
-      display: flex;
-      justify-content: center;
-      cursor: pointer;
-      color: #ffffff;
-      font-weight: bold;
-      background-color: #3bc9db;
-      border: 1px solid #3bc9db;
-      border-radius: 20px;
+  .emailModal {
+    width: 300px;
+    @include modal-setting;
+
+    .emailModal_body {
+      @include flex-setting(center, center, column);
+      margin: 20px 0px;
+
+      .emailModal_text {
+        margin: 5px;
+        font-family: 'Cafe24Ohsquareair';
+      }
+
+      .emailModal_btn {
+        margin-top: 20px;
+        width: 100px;
+        padding: 5px 10px 6px;
+        @include flex-setting('', center, '');
+        cursor: pointer;
+        color: $white;
+        font-weight: bold;
+        background-color: $default;
+        border: 1px solid $default;
+        border-radius: 20px;
+      }
     }
   }
 }

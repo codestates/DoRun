@@ -1,57 +1,50 @@
-.createModalHeader {
-  display: flex;
-  flex-direction: row-reverse;
+@import '../../../styles/styles.scss', '../../../styles/mixins';
 
-  .createModalExit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.createModal_header {
+  @include flex-setting('', '', row-reverse);
+
+  .createModal_exit {
+    @include flex-setting(center, center, '');
     width: 40px;
     height: 40px;
     cursor: pointer;
   }
 }
 
-.bodyTop {
+.createModal_bodyTop {
   text-align: center;
   padding: 10px;
 
-  .createTitle {
-    display: flex;
-    justify-content: center;
+  .createModal_title {
+    @include flex-setting('', center, '');
     padding-bottom: 10px;
     margin: 0px 20px;
-    color: #3bc9db;
+    color: $default;
     font-size: 1.25rem;
     font-weight: bold;
-    border-bottom: 1px solid #3bc9db;
+    border-bottom: 1px solid $default;
   }
 }
 
-.cbodyMid {
+.createModal_bodyMid {
   padding: 10px;
-  display: flex;
-  flex-direction: column;
+  @include flex-setting('', '', column);
   gap: 1vh;
   .mid_options {
-    color: #3bc9db;
+    color: $default;
     font-weight: bold;
-    display: flex;
+    @include flex-setting(center, '', '');
     gap: 2rem;
-    align-items: center;
     .left_title {
       width: 86px;
       height: 40px;
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
+      @include flex-setting(center, '', row-reverse);
     }
 
     .left_details {
       width: 86px;
       height: 40px;
-      display: flex;
-      flex-direction: row-reverse;
+      @include flex-setting('', '', row-reverse);
       margin-bottom: 50px;
     }
 
@@ -60,28 +53,26 @@
       height: 35px;
       resize: none;
       padding: 10px;
-      background-color: #eeeeee;
-      border: 1px solid #dee2e6;
+      background-color: $--input-color;
+      border: 1px solid $--input-border;
       border-radius: 4px;
       font-family: 'Cafe24Ohsquareair';
     }
     .right_date {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-setting(center, center, '');
       width: 245px;
       height: 35px;
       margin: 0px;
-      background-color: #eeeeee;
+      background-color: $--input-color;
       font-weight: bold;
-      border: 1px solid #dee2e6;
+      border: 1px solid $--input-border;
       border-radius: 4px;
       .date {
         font-size: 0.8rem;
         width: 240px;
         height: 32px;
         border: none;
-        background-color: #eeeeee;
+        background-color: $--input-color;
         font-family: 'Cafe24Ohsquareair';
       }
       input[type='date']::-webkit-calendar-picker-indicator {
@@ -91,22 +82,18 @@
         margin-top: 3px;
       }
       input[type='date']::-webkit-datetime-edit-fields-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-setting(center, center, '');
       }
     }
     .right_time {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-setting(center, center, '');
       width: 245px;
       height: 35px;
       margin: 0px;
-      color: #999999;
-      background-color: #eeeeee;
+      color: $--text-gray;
+      background-color: $--input-color;
       font-weight: bold;
-      border: 1px solid #dee2e6;
+      border: 1px solid $--input-border;
       border-radius: 4px;
       gap: 3px;
       .time {
@@ -114,7 +101,7 @@
         width: 110px;
         height: 32px;
         border: none;
-        background-color: #eeeeee;
+        background-color: $--input-color;
         font-family: 'Cafe24Ohsquareair';
       }
       input[type='time']::-webkit-calendar-picker-indicator {
@@ -123,26 +110,20 @@
         margin-top: 3px;
       }
       input[type='time']::-webkit-datetime-edit-fields-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-setting(center, center, '');
       }
     }
     .right_radios {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-setting(center, center, '');
       width: 245px;
       .right_radio {
         cursor: pointer;
         width: 80px;
         height: 30px;
         margin-left: 10px;
-        color: #999999;
-        background-color: #f8f9fa;
-        display: flex;
-        align-items: center;
-        justify-content: left;
+        color: $--text-gray;
+        background-color: $--default-background-color;
+        @include flex-setting(center, left, '');
         font-size: 0.8rem;
         font-family: 'Cafe24Ohsquareair';
         .radios {
@@ -153,10 +134,10 @@
           width: 16px;
           height: 16px;
           margin-right: 7px;
-          border: 1px solid darkgray;
+          border: 1px solid $--input-border;
           border-radius: 50%;
           outline: none;
-          background: #eeeeee;
+          background: $--input-color;
           cursor: pointer;
         }
         input[type='radio']:before {
@@ -168,7 +149,7 @@
           border-radius: 50%;
         }
         input[type='radio']:checked:before {
-          background: #3bc9db;
+          background: $default;
         }
       }
     }
@@ -178,36 +159,34 @@
       height: 100px;
       resize: none;
       padding: 10px;
-      background-color: #eeeeee;
-      border: 1px solid #dee2e6;
+      background-color: $--input-color;
+      border: 1px solid $--input-border;
       border-radius: 4px;
       font-family: 'Cafe24Ohsquareair';
     }
   }
 }
 
-.crewErrMsg {
-  color: #ff7545;
+.createModal_ErrMsg {
+  color: $--error-color;
   font-weight: 500;
   text-align: center;
 }
 
-.createModalFooter {
-  display: flex;
-  justify-content: center;
+.createModal_footer {
+  @include flex-setting('', center, '');
   gap: 20px;
 
-  .toCreate {
-    display: flex;
-    justify-content: center;
+  .createModal_toCreate {
+    @include flex-setting('', center, '');
     cursor: pointer;
     padding: 10px 15px;
-    color: #ffffff;
+    color: $white;
     width: 15rem;
     font-size: 1rem;
     font-weight: bold;
-    background-color: #3bc9db;
-    border: 1px solid #3bc9db;
+    background-color: $default;
+    border: 1px solid $default;
     border-radius: 3rem;
   }
 }
@@ -222,14 +201,14 @@
       width: 7px;
     }
     .createModalBody::-webkit-scrollbar-thumb {
-      background-color: #3bc9db;
+      background-color: $default;
       border-radius: 10px;
       background-clip: padding-box;
       border: 2px solid transparent;
     }
     .createModalBody::-webkit-scrollbar-track {
       border-radius: 10px;
-      box-shadow: inset 0px 0px 5px white;
+      box-shadow: inset 0px 0px 5px $white;
     }
   }
 }

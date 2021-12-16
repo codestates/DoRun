@@ -43,7 +43,7 @@
         }
       }
 
-      .medal_description{
+      .medal_description {
         margin-left: -20px;
         // border: 1px solid skyblue;
       }
@@ -55,7 +55,7 @@
         // border: 1px solid black;
       }
 
-      .medal_info{
+      .medal_info {
         margin-top: 5px;
         font: {
           family: 'Cafe24Ohsquareair' !important;
@@ -67,7 +67,7 @@
   }
 }
 
-.next_medal{
+.next_medal {
   position: absolute;
   width: 5px;
   height: 55px;
@@ -77,7 +77,21 @@
     bottom: -40px;
   }
   border-radius: 50px;
-  background-image: linear-gradient(to bottom, #39ffe5, #00f2fa, #00ebf3, #00ebf4, #00e2fc, #00dafe, #00d2ff, #1ecaff, #00c2ff, #00b9ff, #00b0ff, #00a7ff);
+  background-image: linear-gradient(
+    to bottom,
+    #39ffe5,
+    #00f2fa,
+    #00ebf3,
+    #00ebf4,
+    #00e2fc,
+    #00dafe,
+    #00d2ff,
+    #1ecaff,
+    #00c2ff,
+    #00b9ff,
+    #00b0ff,
+    #00a7ff
+  );
   z-index: 1;
   filter: opacity(0.2);
   &.success {

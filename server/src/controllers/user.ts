@@ -6,9 +6,17 @@ import { TokensCreate, ConfirmEmailToken, AccessTokenVerify } from "../utils/tok
 import * as bcrypt from "bcrypt";
 import { signUpEmail, passwordSend } from "../utils/nodemailer";
 
+interface User_interface {
+  id?: number;
+  nickname?: string;
+  password?: string;
+  email?: string;
+  token?: string;
+}
+
 const SignUp = async (req: Request, res: Response) => {
   try {
-    const { nickname, email }: { nickname: string; email: string } = req.body;
+    const { nickname, email }: User_interface = req.body;
 
     const password = await bcrypt.hash(req.body.password, 10);
 
@@ -46,7 +54,7 @@ const SignUp = async (req: Request, res: Response) => {
 
 const SignOut = async (req: Request, res: Response) => {
   try {
-    const userId = req.params.userId;
+    const userId: number = Number(req.params.userId);
     if (!userId) {
       return res.status(500).send({ message: "Not UserId" });
     }
@@ -61,24 +69,16 @@ const SignOut = async (req: Request, res: Response) => {
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
-
-  //유저 탈퇴할때 크루멤버가 0이면 삭제
 };
 const Login = async (req: Request, res: Response) => {
   try {
-    const { password, email } = req.body;
-
+    const { password, email }: User_interface = req.body;
     const userInfo = await User.findOne({ email });
-
-    //if (!userInfo || password !== userInfo.password) {
-    console.log(userInfo.password);
     const hash = await bcrypt.compare(password, userInfo.password);
-    if (!userInfo || !hash) {
-      return res.status(400).send(); //400은 message를 줄수없음
-    }
 
-    //const isauth = true;
-    //await User.update(userInfo.id, { isauth });
+    if (!userInfo || !hash) {
+      return res.status(400).send();
+    }
 
     const { accessToken, refreshToken } = await TokensCreate(userInfo);
     res.cookie("refreshToken", refreshToken, {
@@ -96,8 +96,6 @@ const Login = async (req: Request, res: Response) => {
 const logout = async (req: Request, res: Response) => {
   try {
     const userInfo = await User.findOne(req.body.userId);
-    //const isauth = false;
-    //await User.update(userInfo.id, { isauth });
     res.clearCookie("refreshToken");
     return res.status(200).send({ message: "success" });
   } catch (err) {
@@ -109,7 +107,7 @@ const Edit = async (req: Request, res: Response) => {
     let userInfo = await User.findOne({ id: req.body.userId });
     const hash = await bcrypt.compare(req.body.password, userInfo.password);
     if (!userInfo || !hash) {
-      return res.status(400).send(); //400은 message를 줄수없음
+      return res.status(400).send();
     }
 
     userInfo.nickname = req.body.nickname || userInfo.nickname;
@@ -155,6 +153,7 @@ const userInfo = async (req: Request, res: Response) => {
 const userConfirmEmail = async (req: Request, res: Response) => {
   try {
     const { userId, token }: any = req.params;
+    console.log("test");
 
     const data = await AccessTokenVerify(token);
 
@@ -182,14 +181,14 @@ const userConfirmEmail = async (req: Request, res: Response) => {
 
 const ConfirmEmailReSend = async (req: Request, res: Response) => {
   try {
-    const { userId, email }: { userId: number; email: string } = req.body;
-    if (!userId || !email) {
+    const { id, email }: User_interface = req.body;
+    if (!id || !email) {
       return res.status(400).send({ message: "invalid user info" });
     }
 
     const token = await ConfirmEmailToken(email);
 
-    signUpEmail(email, userId, token);
+    signUpEmail(email, id, token);
 
     res.status(200).send({ message: "success" });
   } catch (err) {
@@ -199,7 +198,7 @@ const ConfirmEmailReSend = async (req: Request, res: Response) => {
 
 const PasswordReset = async (req: Request, res: Response) => {
   try {
-    const { email }: { email: string } = req.body;
+    const { email }: User_interface = req.body;
 
     const userInfo = await User.findOne({ email });
 
@@ -239,9 +238,7 @@ const GuestLogin = async (req: Request, res: Response) => {
       if (userInfo.crewId) {
         DeleteCrewInUser(userInfo.crewId);
       }
-
-      //}, 1000 * 60 * 30); //30min
-    }, 1000 * 60 * 1); //30min
+    }, 1000 * 60 * 30); //30min
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
@@ -249,7 +246,7 @@ const GuestLogin = async (req: Request, res: Response) => {
 
 const EditHistory = async (req: Request, res: Response) => {
   try {
-    const { data, userId } = req.body;
+    const { data, userId }: { data: string; userId: number } = req.body;
 
     let userInfo = await User.findOne({ id: userId });
     if (!userInfo || !userId) {

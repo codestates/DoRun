@@ -1,10 +1,13 @@
 @import '../../styles/styles.scss';
-@mixin flex-column {
-  flex: 1 1 auto;
-  flex-direction: column;
-}
+@import '../../styles/mixins.scss';
+
 @mixin button( $font-size: 1.5vw, $color: $white, $prefixes: ()) {
-  max-width: 13vw;
+  @include mobile {
+    max-width: 13vw;
+  }
+  @include desktop {
+    width: 150px;
+  }
   margin-top: 1rem;
   padding: 0.7rem 1rem;
   color: $white;
@@ -29,29 +32,30 @@
     cursor: pointer;
     background-position: right center;
   }
-  @content
+  @content;
 }
 
 
 .walkWrapper {
-  width: 100%;
-  display: flex;
-  margin: 10vh auto 5vh auto;
-  overflow: {
-    x: hidden !important;
-    y: hidden !important;
-  }
+  @include landing-section-wrapper; 
 }
 
 .walk {
-  @include flex-column;
-  width: 30vw;
-  height: 50vh;
+  @include flex-column-settting;
+  @include mobile {
+    width: 25vw;
+    height: 45vh;
+  }
+  @include desktop {
+    width: 500px;
+    height: 700px;
+    margin-left: -150px;
+  }
   // border: 1px solid red;
 }
 
 .walkInfo {
-  @include flex-column;
+  @include flex-column-settting;
   height: 15vh;
   margin-top: 23vh;
   font: {
@@ -62,8 +66,14 @@
 }
 
 .line {
-  font-size: 2vw;
-  line-height: 3vw;
+  // font-size: 2vw;
+  @include mobile {
+    font-size: 2vw;
+  }
+  @include desktop {
+    font-size: 30px;
+  }
+  line-height: 130%;
   color: $--text-color;
   &:nth-child(1) {
     margin-top: 3vh;
@@ -76,18 +86,23 @@
 
 .doRunBtn {
   @include button;
+  @include mobile {
+    font-size: 1.3vw;
+  }
+  @include desktop {
+    font-size: 18px;
+  }
 }
 
 .guestBtn{
   @include button(1.3vw, transparent, webkit);
+  @include mobile {
+    font-size: 1.3vw;
+  }
+  @include desktop {
+    font-size: 18px;
+  }
   margin-left: 1rem;
-  font-size: 1.3vw;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-@media screen and (max-width: 768px) {
-  .walkWrapper {
-    min-width: 320px;
-  }
 }

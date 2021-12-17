@@ -19,6 +19,11 @@
   flex-direction: if($direction == '', row, $direction);
 }
 
+@mixin flex-column-settting {
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
 @mixin modalBackground-setting {
   all: unset;
   width: 100%;
@@ -41,4 +46,29 @@
   border-radius: 10px;
   background-color: $white;
   z-index: 9999;
+}
+
+
+@mixin landing-section-wrapper {
+  @include mobile {
+    min-width: 326px;
+    display: flex;
+    margin: 10vh auto 5vh auto;
+    overflow: {
+      x: hidden !important;
+      y: hidden !important;
+    }
+    border: 1px solid red;
+  }
+
+  @include desktop {
+    max-width: 1000px;
+    display: flex;
+    margin: 10vh auto 5vh auto;
+    overflow: {
+      x: hidden !important;
+      y: hidden !important;
+    }
+    border: 1px solid red;
+  }
 }

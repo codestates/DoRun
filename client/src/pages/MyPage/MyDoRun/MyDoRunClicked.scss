@@ -51,7 +51,6 @@
   text-align: right;
   align-items: center;
   &:nth-child(1) {
-    //* 크루 타이틀
     height: 43px;
     margin: {
       top: 0px !important;
@@ -83,7 +82,7 @@
 }
 
 .departure {
-  @include myDoRun-content(auto, $--mypage-text-color);
+  @include myDoRun-content(auto, $--text-gray);
   padding: 2px;
   text-align: center;
   overflow: auto;
@@ -91,25 +90,25 @@
 }
 
 .date {
-  @include myDoRun-content(auto, $--mypage-text-color);
+  @include myDoRun-content(auto, $--text-gray);
   text-align: left;
 }
 
 .time {
-  @include myDoRun-content(auto, $--mypage-text-color);
+  @include myDoRun-content(auto, $--text-gray);
 }
 
 .personnel {
-  @include myDoRun-content(auto, $--mypage-text-color);
+  @include myDoRun-content(auto, $--text-gray);
 }
 
 .level {
-  @include myDoRun-content(auto, $--mypage-text-color);
+  @include myDoRun-content(auto, $--text-gray);
   display: flex;
 }
 
 .crewLevel {
-  @include myDoRun-content( 2px 5px 5px 5px , $--mypage-text-color);
+  @include myDoRun-content( 2px 5px 5px 5px , $--text-gray);
   flex-direction: column;
   width: 63px;
   padding: 5px 5px;
@@ -124,12 +123,12 @@
 }
 
 .distance {
-  @include myDoRun-content(auto, $--mypage-text-color);
+  @include myDoRun-content(auto, $--text-gray);
   display: flex;
 }
 
 .Desc {
-  @include myDoRun-content(auto, $--mypage-text-color);
+  @include myDoRun-content(auto, $--text-gray);
   width: 250px;
   height: 100px;
   padding: 0px 20px;

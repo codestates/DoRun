@@ -1,35 +1,41 @@
-@import '../../styles/styles.scss';
-@import '../../styles/mixins.scss';
-
+@import '../../styles/styles.scss' , '../../styles/mixins.scss';
 @mixin picture-setting {
   flex: 1 1 auto;
   flex-direction: column;
-  width: 30vw;
-  height: 30vw;
-  @content
+  @include mobile {    
+    width: 30vw;
+    height: 30vw;
+  }
+  @include desktop {
+    width: 400px;
+    height: 400px;
+  }
+  @content; 
 }
 
 .mateWrapper{
-  width: 100%;
+  @include landing-section-wrapper(10vw auto 5vh auto);
   position: relative;
-  margin: {
-    top: 10vw;
-    bottom: 5vh;
-  }
   background: {
     image: url("../Landing/LandingSVG/blob.svg");
     position: center;
     repeat: no-repeat;
-    size: 60vw;
   };
+  @include mobile {
+    background-size: 60vw;
+  }
+  @include desktop {
+    background-size: 1000px;
+  }
     // border: 1px solid red;
 }
 
-
 .mateLine {
-  font: {
-    size: 2.3vw;
-    weight: 500;
+  @include mobile {
+    font-size: 2vw;
+  }
+  @include desktop {
+    font-size: 30px;
   }
   line-height: 160%;
   text-align: center;

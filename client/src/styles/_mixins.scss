@@ -49,26 +49,19 @@
 }
 
 
-@mixin landing-section-wrapper {
+@mixin landing-section-wrapper ($section-margin) {
   @include mobile {
     min-width: 326px;
-    display: flex;
-    margin: 10vh auto 5vh auto;
-    overflow: {
-      x: hidden !important;
-      y: hidden !important;
-    }
-    border: 1px solid red;
   }
 
   @include desktop {
     max-width: 1000px;
-    display: flex;
-    margin: 10vh auto 5vh auto;
-    overflow: {
-      x: hidden !important;
-      y: hidden !important;
-    }
-    border: 1px solid red;
   }
+  margin: $section-margin;
+  overflow: {
+    x: hidden !important;
+    y: hidden !important;
+  }
+  border: 1px solid red;
+  @content;
 }

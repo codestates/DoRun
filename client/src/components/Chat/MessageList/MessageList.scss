@@ -1,12 +1,4 @@
-$--message-time-color: #ddd;
-$--message-user-color: #999;
-$--message-text-color: #333;
-$--dark-color-a: #15aabf;
-$--dark-color-b: #22b8cf;
-$--light-color: #c5f6fa;
-$--light-gray: #f6f6f6;
-$--success-color: #5cb85c;
-$--error-color: #d9534f;
+@import '../../../styles/mixins', '../../../styles/styles';
 
 #chatMessageList {
   grid-area: chatMessageList;
@@ -96,7 +88,7 @@ $--error-color: #d9534f;
 
         > .message-text {
           background: $--light-color;
-          color: $--message-text-color;
+          color: $--text-color;
           border: 1px solid $--light-color;
           border-radius: 14px 14px 0 14px;
           font-family: 'Cafe24Ohsquareair';
@@ -114,8 +106,8 @@ $--error-color: #d9534f;
 
         > .message-text {
           background: $--light-gray;
-          color: $--message-text-color;
-          border: 1px solid #eee;
+          color: $--text-color;
+          border: 1px solid $--input-color;
           border-radius: 14px 14px 14px 0;
           font-family: 'Cafe24Ohsquareair';
         }

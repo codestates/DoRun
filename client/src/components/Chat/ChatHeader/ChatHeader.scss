@@ -1,14 +1,8 @@
-$--dark-color-a: #15aabf;
-$--dark-color-b: #22b8cf;
-$--yellow-color-b: #ffd43b;
-$--light-color: #c5f6fa;
-$--light-gray: #f6f6f6;
-$--success-color: #5cb85c;
-$--error-color: #d9534f;
+@import '../../../styles/mixins', '../../../styles/styles';
 
 .chatContainer {
   max-width: 1000px;
-  background: #fff;
+  background: $white;
   height: 100%;
   margin: 20px auto;
   overflow: hidden;
@@ -17,7 +11,7 @@ $--error-color: #d9534f;
 
 .chatHeader {
   background: $--dark-color-a;
-  color: #fff;
+  color: $white;
   padding: 20px;
   padding-left: 20px;
   display: flex;

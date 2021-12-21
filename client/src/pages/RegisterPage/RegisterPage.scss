@@ -1,23 +1,19 @@
-$backgroundColorWhite: #ffffff;
-$inputBorder: #dee2e6;
-$inputBackground: #eeeeee;
-$cyan: #3bc9db;
-$cyanDark: #15aabf;
-$gray_6: #868e96;
-$gray_7: #495057;
-$error: #ff7545;
+@import '../../styles/mixins', '../../styles/styles';
 
 .registerBlock {
   margin-top: 3rem;
   margin-bottom: 4rem;
   width: 100%;
+  @include mobile {
+    margin-top: 0;
+  }
 }
 
 .registerWrapper {
-  background: $backgroundColorWhite;
+  background: $white;
   max-width: 390px;
   margin: 0 auto;
-  border: 1px solid $inputBorder;
+  border: 1px solid $--input-border;
   border-radius: 2rem;
   height: 52rem;
 
@@ -26,21 +22,21 @@ $error: #ff7545;
     margin-top: 5rem;
     margin-bottom: 3rem;
     font-size: 3rem;
-    color: $gray_7;
+    color: $--gray-color-b;
     text-align: center;
     padding-bottom: 10px;
-    background: $backgroundColorWhite;
+    background: $white;
   }
 }
 
 .registerFrm {
-  background: $backgroundColorWhite;
+  background: $white;
   width: 90%;
   margin: 0 auto;
 
   p {
-    color: $error;
-    background: $backgroundColorWhite;
+    color: $--error-color;
+    background: $white;
     font-weight: 500;
     font-size: 0.5rem;
     &::before {
@@ -54,27 +50,17 @@ $error: #ff7545;
     box-sizing: border-box;
     width: 100%;
     border-radius: 4px;
-    border: 1px solid $inputBorder;
+    border: 1px solid $--input-border;
     padding: 10px 15px;
     font-size: 14px;
-    background: $inputBackground;
+    background: $--input-border;
   }
 
   input[type='submit'] {
-    background: $cyan;
-    color: $backgroundColorWhite;
-    text-transform: uppercase;
-    border: none;
-    padding: 20px;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-    cursor: pointer;
-    border-radius: 100px;
-    -webkit-appearance: none;
+    @include register-btn;
 
     &:hover {
-      background: $cyanDark;
+      background: $--dark-color-a;
     }
     &:active {
       transition: 0.3s all;
@@ -93,10 +79,10 @@ $error: #ff7545;
     text-align: left;
     display: block;
     margin-top: 10px;
-    color: $gray_6;
+    color: $--gray-color-a;
     font-size: 14px;
     font-weight: 500;
-    background: $backgroundColorWhite;
+    background: $white;
   }
 }
 // 패스워드
@@ -109,7 +95,7 @@ $error: #ff7545;
   right: 15px;
   top: 70%;
   transform: translateY(-50%);
-  color: $gray_6;
+  color: $--gray-color-a;
   cursor: pointer;
 }
 // 체크박스
@@ -122,50 +108,39 @@ $error: #ff7545;
   position: relative;
   padding-left: 1.8rem;
   font-family: 'Cafe24Ohsquareair';
-}
+  &::before {
+    position: absolute;
+    content: '';
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid $--input-border;
+    background: $white;
+    text-align: center;
+    left: 0;
+    top: 2px;
 
-.checkbox-1:before {
-  position: absolute;
-  content: '';
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 5px;
-  border: 1px solid $inputBorder;
-  background: $backgroundColorWhite;
-  text-align: center;
-  left: 0;
-  top: 2px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  &::after {
+    position: absolute;
+    content: '✔';
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    color: $default;
+    left: 4px;
+    top: 4px;
 
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
+    transform: scale(0);
 
-.checkbox-1:after {
-  position: absolute;
-  content: '✔';
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 20px;
-  text-align: center;
-  color: $cyan;
-  left: 4px;
-  top: 4px;
-
-  transform: scale(0);
-
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
 }
 
 #someID:checked + .checkbox-1:after {
   transform: scale(1);
-}
-
-@media screen and (max-width: 768px) {
-  .registerBlock {
-    margin-top: 0;
-  }
-  .registerWrapper {
-    min-width: 320px;
-  }
 }

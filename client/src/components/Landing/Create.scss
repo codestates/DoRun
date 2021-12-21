@@ -1,15 +1,7 @@
 @import '../../styles/styles.scss' , '../../styles/mixins.scss';
 
 .joinWrapper{
-  width: 100%;
-  height: 65vw;
-  margin: 5vh auto;
-  overflow: {
-    x: hidden !important;
-    y: hidden !important;
-  };
-
-  border: 1px solid blue;
+  @include landing-section-wrapper(10vw auto 5vh auto);
 }
 
 .join{
@@ -22,12 +14,17 @@
 
 .joinGIF{
   flex-direction: column;
-  width: 40vw;
-  height: 40vw;
+  @include mobile {
+    width: 50vw;
+    height: 50vw;
+  }
+  @include desktop {
+    width: 50%;
+    height: 80%;
+  }
   margin: {
-    top: 5vw;
-    left: 7vw;
-    bottom: 50vw;
+    top: -5vw;
+    left: 5vw;
   }
   border-radius: 8px;
   z-index: 10;
@@ -36,8 +33,14 @@
 
 .joinContentBack {
   position: absolute;
-  width: 60vw;
-  height: 60vw;
+  @include mobile {
+    width: 60vw;
+    height: 60vw;
+  }
+  @include desktop {
+    width: 50%;
+    height: 70%;
+  }
   margin: {
     top: 8%;
     left: 20vw;
@@ -51,14 +54,20 @@
 .joinContentText{
   position: relative;
   flex-direction: column;
-  width: 50vw;
-  height: 30vw;
+  @include mobile {
+    width: 50vw;
+    height: 30vw;
+  }
+  @include desktop {
+    width: 50%;
+    height: 30%;
+  }
   margin-top: 45vw;
   text-align: center;
   font-size: 2vw;
   color: $--text-color;
   z-index: 10;
-  // border: 1px solid navy;
+  border: 1px solid navy;
 }
 
 .joinContenLine{

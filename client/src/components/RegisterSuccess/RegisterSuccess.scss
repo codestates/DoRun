@@ -1,6 +1,4 @@
-$backgroundColorWhite: #ffffff;
-$cyan: #3bc9db;
-$cyanDark: #15aabf;
+@import '../../styles/mixins', '../../styles/styles';
 
 .msgWrapper {
   width: 500px;
@@ -8,21 +6,28 @@ $cyanDark: #15aabf;
   margin: 100px auto;
   text-align: center;
 
+  @include mobile {
+    width: 60%;
+    word-break: keep-all;
+  }
   h1 {
     letter-spacing: 0.1rem;
-    color: $cyanDark;
+    color: $--dark-color-a;
   }
 
   h3 {
     margin-top: 30px;
+    @include mobile {
+      letter-spacing: 0rem;
+    }
   }
 }
 
 .msgBtn {
   margin-top: 50px;
   width: 23rem;
-  background: $cyan;
-  color: $backgroundColorWhite;
+  background: $default;
+  color: $white;
   text-transform: uppercase;
   border: none;
   padding: 1.2rem;
@@ -32,29 +37,18 @@ $cyanDark: #15aabf;
   cursor: pointer;
   border-radius: 2rem;
   -webkit-appearance: none;
+  @include mobile {
+    margin-top: 60px;
+    width: 80%;
+  }
 
   &:hover {
-    background: $cyanDark;
+    background: $--dark-color-a;
   }
   &:active {
     transition: 0.3s all;
     transform: translateY(3px);
     border: 1px solid transparent;
     opacity: 0.8;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .msgWrapper {
-    width: 60%;
-    word-break: keep-all;
-
-    h3 {
-      letter-spacing: 0rem;
-    }
-  }
-  .msgBtn {
-    margin-top: 60px;
-    width: 80%;
   }
 }

@@ -65,3 +65,17 @@
   border: 1px solid red;
   @content;
 }
+
+@mixin register-btn {
+  background: $default;
+  color: $white;
+  text-transform: uppercase;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  border-radius: 100px;
+  -webkit-appearance: none;
+}

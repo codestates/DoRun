@@ -126,40 +126,20 @@
 }
 
 input[type='submit'] {
+  @include register-btn;
   width: 100%;
-  background: $default;
-  color: $white;
-  text-transform: uppercase;
-  border: none;
-  padding: 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.1rem;
-  cursor: pointer;
-  border-radius: 100px;
-}
 
-input[type='submit']:hover {
-  background: $--dark-color-a;
-}
-
-input[type='button']:active,
-input[type='submit']:active {
-  transition: 0.3s all;
-  transform: translateY(3px);
-  border: 1px solid transparent;
-  opacity: 0.8;
+  &:hover {
+    background: $--dark-color-a;
+  }
+  &:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
 }
 
 input:disabled {
   opacity: 0.4;
-}
-
-input[type='button']:hover {
-  transition: 0.3s all;
-}
-
-input[type='button'],
-input[type='submit'] {
-  -webkit-appearance: none;
 }

@@ -108,15 +108,13 @@ header {
 }
 
 .logoutBtn {
-  @include desktop {
-    font-size: 1.2rem;
-    letter-spacing: 0.1rem;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    &:hover {
-      color: $default;
-    }
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  &:hover {
+    color: $default;
   }
 
   @include mobile {

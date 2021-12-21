@@ -1,13 +1,13 @@
 @import './variables';
 
 @mixin mobile {
-  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-desktop - 1px}) {
+  @media screen and (max-width: #{$breakpoint-desktop - 1px}) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: #{$breakpoint-desktop}) {
+  @media screen and (min-width: #{$breakpoint-desktop}) {
     @content;
   }
 }
@@ -41,4 +41,18 @@
   border-radius: 10px;
   background-color: $white;
   z-index: 9999;
+}
+
+@mixin register-btn {
+  background: $default;
+  color: $white;
+  text-transform: uppercase;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  border-radius: 100px;
+  -webkit-appearance: none;
 }

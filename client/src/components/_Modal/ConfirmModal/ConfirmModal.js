@@ -10,21 +10,21 @@ import './ConfirmModal.scss';
 
 const ConfirmModal = ({ confirmModalHandler, userId }) => {
   return (
-    <div className="modalContainer">
+    <div className="confirmModal_container">
       {userId ? (
-        <div className="modal">
-          <div className="modalHeader">
-            <div className="modalExit" onClick={confirmModalHandler}>
+        <div className="confirmModal">
+          <div className="confirmModal_header">
+            <div className="confirmModal_exit" onClick={confirmModalHandler}>
               x
             </div>
           </div>
-          <div className="modalBody">
+          <div className="confirmModal_body">
             <div>크루 가입이 완료되었습니다!!</div>
           </div>
           <br />
-          <div className="modalFooter">
+          <div className="confirmModal_footer">
             <div
-              className="toLogin"
+              className="confirmModal_toLogin"
               onClick={() => {
                 location.reload();
               }}
@@ -32,29 +32,29 @@ const ConfirmModal = ({ confirmModalHandler, userId }) => {
               다른 크루 둘러보기
             </div>
             <Link to="/chat">
-              <div className="toDoChat">Do Chat!!</div>
+              <div className="confirmModal_toDoChat">Do Chat!!</div>
             </Link>
           </div>
           <br />
         </div>
       ) : (
-        <div className="modal">
-          <div className="modalHeader">
-            <div className="modalExit" onClick={confirmModalHandler}>
+        <div className="confirmModal">
+          <div className="confirmModal_header">
+            <div className="confirmModal_exit" onClick={confirmModalHandler}>
               x
             </div>
           </div>
           <br />
-          <div className="modalBody">
+          <div className="confirmModal_body">
             <div>로그인이 필요한 서비스입니다.</div>
             <div>로그인 페이지로 이동하시겠습니까?</div>
           </div>
           <br />
-          <div className="modalFooter">
+          <div className="confirmModal_footer">
             <Link to="/login">
-              <div className="toLogin">이동하기</div>
+              <div className="confirmModal_toLogin">이동하기</div>
             </Link>
-            <div className="toExit" onClick={confirmModalHandler}>
+            <div className="confirmModal_toExit" onClick={confirmModalHandler}>
               나가기
             </div>
           </div>

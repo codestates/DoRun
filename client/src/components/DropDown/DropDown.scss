@@ -1,10 +1,10 @@
+@import '../../styles/mixins', '../../styles/styles';
+
 .menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
+  @include flex-setting(center, center, '');
+  background: $white;
   border-radius: 10px;
-  border: 1px solid #dee2e6;
+  border: 1px solid $--input-border;
   position: absolute;
   top: 26px;
   right: 0;
@@ -18,10 +18,8 @@
   z-index: 9999;
 
   .tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #5f6368;
+    @include flex-setting(center, center, '');
+    color: $--text-color;
     font-weight: 550;
     cursor: pointer;
   }
@@ -37,8 +35,7 @@
   height: 400px;
 
   .tab_clicked {
-    display: flex;
-    flex-direction: column;
+    @include flex-setting('', '', column);
     padding: 20px;
   }
 }

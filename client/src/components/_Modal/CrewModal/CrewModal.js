@@ -44,7 +44,9 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
       crewData.participant.length === Number(crewData.personnel.slice(1, 3))
     ) {
       // console.log(crewData);
-      setErrMsg(<div className="crewErrMsg">⚠ 크루인원이 가득 찼습니다!!</div>);
+      setErrMsg(
+        <div className="crewModal_errMsg">⚠ 크루인원이 가득 찼습니다!!</div>
+      );
     } else {
       setErrMsg(null);
       if (!userId) {
@@ -56,7 +58,9 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
         });
       } else {
         setErrMsg(
-          <div className="crewErrMsg">⚠ 이미 가입한 크루가 존재합니다!!</div>
+          <div className="crewModal_errMsg">
+            ⚠ 이미 가입한 크루가 존재합니다!!
+          </div>
         );
       }
     }
@@ -71,22 +75,21 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
   };
 
   return (
-    <div className="crewModalContainer">
+    <div className="crewModal_container">
       {/* {console.log(crewData)} */}
       <div className="crewModal">
-        <div className="crewModalHeader">
-          <div className="crewModalExit" onClick={crewModalHandler}>
+        <div className="crewModal_header">
+          <div className="crewModal_exit" onClick={crewModalHandler}>
             x
           </div>
         </div>
 
-        <div className="crewModalBody">
-          <div className="bodyTop">
-            <div className="crewTitle">{crewData.title}</div>
+        <div className="crewModal_body">
+          <div className="crewModal_bodyTop">
+            <div className="crewModal_title">{crewData.title}</div>
             <hr />
-            {/* <img className="leaderImg" src={crewData.leaderImg} alt="" /> */}
           </div>
-          <div className="bodyMid">
+          <div className="crewModal_bodyMid">
             {/* <div className="mid_option">
               <div className="left_title">크루 리더</div>
               <div className="right_text">{crewData.leader}</div>
@@ -166,22 +169,22 @@ const CrewModal = ({ crewModalHandler, crewId }) => {
               <div className="right_details">{crewData.desc}</div>
             </div>
             <br />
-
-            <div className="crewModalFooter">
-              {errMsg}
-              <button className="toDoRun" onClick={joinCheck}>
-                Do Run!!
-              </button>
-              {isConfirmModalOpen && (
-                <ConfirmModal
-                  confirmModalHandler={confirmModalHandler}
-                  userId={userId}
-                />
-              )}
-            </div>
-            <br />
           </div>
         </div>
+
+        <div className="crewModal_footer">
+          {errMsg}
+          <button className="crewModal_toDoRun" onClick={joinCheck}>
+            Do Run!!
+          </button>
+          {isConfirmModalOpen && (
+            <ConfirmModal
+              confirmModalHandler={confirmModalHandler}
+              userId={userId}
+            />
+          )}
+        </div>
+        <br />
       </div>
     </div>
   );

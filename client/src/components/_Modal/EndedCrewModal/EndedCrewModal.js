@@ -54,12 +54,12 @@ const EndedCrewModal = ({ endedCrewModalHandler }) => {
   };
 
   return (
-    <div className="endedCrewContainer">
+    <div className="endedCrew_container">
       <div className="endedCrew">
         {record ? (
           <>
             <div className="endedCrew_body">
-              <div className="endedCrew_crewTitle">{crewInfo.title}</div>
+              <div className="endedCrew_title">{crewInfo.title}</div>
               <div>활동 기록이 저장되었습니다!</div>
             </div>
             <br />
@@ -82,7 +82,7 @@ const EndedCrewModal = ({ endedCrewModalHandler }) => {
         ) : (
           <>
             <div className="endedCrew_body">
-              <div className="endedCrew_crewTitle">{crewInfo.title}</div>
+              <div className="endedCrew_title">{crewInfo.title}</div>
               <div className="endedCrew_content">
                 크루의 활동시간이 종료되었습니다.
               </div>

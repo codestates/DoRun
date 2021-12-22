@@ -1,41 +1,6 @@
 @import '../../styles/styles.scss' , '../../styles/mixins.scss';
 
 
-@mixin button( $font-size: 1.5vw, $color: $white, $prefixes: ()) {
-  @include mobile {
-    max-width: 13vw;
-  }
-  @include desktop {
-    width: 150px;
-  }
-  margin-top: 1rem;
-  padding: 0.7rem 1rem;
-  color: $white;
-  text-align: center;
-  font: {
-    style: italic;
-    size: $font-size;
-  }
-  border-radius: 20px;
-  background: {
-    size: 200% auto;
-    image: linear-gradient(
-    to right,
-    #1fa2ff 0%,
-    #12d8fa 51%,
-    #1fa2ff 100%
-  );
-  };
-  transition: 0.5s;
-  box-shadow: 1px 1px 20px rgb(202, 202, 202);
-  &:hover {
-    cursor: pointer;
-    background-position: right center;
-  }
-  @content;
-}
-
-
 .walkWrapper {
   @include landing-section-wrapper(10vh auto 5vh auto);
   display: flex;  
@@ -86,7 +51,7 @@
 }
 
 .doRunBtn {
-  @include button;
+  @include gradient-btn( $font-size: 1.5vw, $color: $white, $prefixes: ());
   @include mobile {
     font-size: 1.3vw;
   }
@@ -96,7 +61,7 @@
 }
 
 .guestBtn{
-  @include button(1.3vw, transparent, webkit);
+  @include gradient-btn(1.3vw, transparent, webkit);
   @include mobile {
     font-size: 1.3vw;
   }

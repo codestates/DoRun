@@ -36,14 +36,18 @@
   @include mobile {
     width: 60vw;
     height: 60vw;
+    margin: {
+      top: 8%;
+      left: 20vw;
+    }
   }
   @include desktop {
     width: 50%;
     height: 70%;
-  }
-  margin: {
-    top: 8%;
-    left: 20vw;
+    margin: {
+      top: 15%;
+      left: 30%;
+    }
   }
   opacity: 0.5;
   overflow-x: hidden;
@@ -57,29 +61,34 @@
   @include mobile {
     width: 50vw;
     height: 30vw;
+    margin-top: 45vw;
+    font-size: 2vw;
   }
   @include desktop {
     width: 50%;
     height: 30%;
+    margin-top: 45%;
+    font-size: 20px;
   }
-  margin-top: 45vw;
   text-align: center;
-  font-size: 2vw;
   color: $--text-color;
   z-index: 10;
-  border: 1px solid navy;
+  // border: 1px solid navy;
 }
 
 .joinContenLine{
   position: relative;
-  font: {
-    size: 2vw;
-    weight: 500;
+  @include mobile {
+    &:nth-child(1) {
+      margin-top: 12vw;
+    }
+  }
+  @include desktop {
+    &:nth-child(1) {
+      margin-top: 20%;
+    }
   }
   z-index: 10;
-  &:nth-child(1) {
-    margin-top: 12vw;
-  }
   // border: 1px solid gray;
 }
 

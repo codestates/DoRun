@@ -1,62 +1,95 @@
-@import '../../styles/styles.scss';
+@import '../../styles/styles.scss' , '../../styles/mixins.scss';
+
 @mixin bubble {
-  width: 15vw;
-  height: 15vw;
+  @include mobile {
+    width: 15vw;
+    height: 15vw;
+    background-size: 15vw;
+  }
+  @include desktop {
+    width: 160px;
+    height: 160px;
+    background-size: 80%;
+  }
   flex-direction: column;
   background: {
     image: url(https://cdn-icons-png.flaticon.com/512/2598/2598830.png);
     position: center;
     repeat: no-repeat;
-    size: 15vw;
   };
   @content;
 }
 @mixin dots {
+  @include mobile {
+    font-size: 3vw;
+    letter-spacing: 1vw;
+  }
+  @include desktop {
+    font-size: 35px;
+    letter-spacing: 10px;
+  }
   margin: 25% 35%;
-  font-size: 3vw;
-  letter-spacing: 1vw;
   color: #ffff;
   z-index: 9999;
 }
 
 .doChatWrapper{
-  width: 100%;
-  margin: 15vh auto;
-  overflow-x: hidden;
-  // border: 1px solid blue;
+  @include landing-section-wrapper( 15vh auto);
 }
 
 .doChat{
-  height: 66vw;
+  // height: 66vw;
   z-index:999;
   // border: 1px solid red;
 }
 
 .doChatGIF{
-  width: 45vw;
-  height: 30vw;
-  margin: 5vw 27%;
+  @include mobile {
+    width: 45vw;
+    height: 30vw;
+    margin: 5vw 27%;
+  }
+  @include desktop {
+    width: 50%;
+    height: 40%;
+    margin: 10% 27%;
+  }
   z-index: 999;
   // border: 1px solid orange;
 }
 
 .doChatBubbles{
   display: flex;
-  width: 85vw;
-  height: 5vw;
-  margin: 10vw auto;
-  // border: 1px solid black
+  @include mobile {
+    width: 85vw;
+    height: 5vw;
+    margin: 10vw auto;
+  }
+  @include desktop {
+    width: 850px;
+    height: 50px;
+    margin: 50px auto;
+  }
+  border: 1px solid black
 }
 
 .doChatBubblesText{
-  width: 35vw;
-  height: 5vw;
-  margin: 5vw 7vw;
-  font-size: 2vw;
+  @include mobile {
+    width: 35vw;
+    height: 5vw;
+    margin: 5vw 7vw;
+    font-size: 2vw;
+  }
+  @include desktop {
+    width: 400px;
+    height: 90px;
+    margin: 0px 50px;
+    font-size: 20px;
+  }
   text-align: center;
   color: $--text-color;
   z-index: 1;
-  // border: 1px solid olive;
+  border: 1px solid olive;
 }
 
 .doChatBubblesLine{
@@ -68,7 +101,12 @@
 
 .doChatBubbleLeft {
   @include bubble;
-  margin-left: 3vw;
+  @include mobile {
+    margin-left: 3vw;
+  };
+  @include desktop {
+    margin-left: 35px;
+  }
   // border: 1px solid pink;
 }
 

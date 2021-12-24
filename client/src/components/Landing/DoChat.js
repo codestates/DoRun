@@ -40,7 +40,7 @@ function DoChat() {
         })
         gsap.to(chatText.current, {
             text: {
-                value: "같은 크루의 Do Run 메이트들과 간편하게 연락을 주고 받아보세요!"
+                value: "같은 크루에 있는 Do Run 메이트들과 간편하게 연락을 주고 받아보세요!"
             },
             duration: 5,
             ease: "none",

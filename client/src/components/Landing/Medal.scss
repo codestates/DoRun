@@ -30,6 +30,7 @@
   @include desktop {
     width: 1000px;
     height: 800px;
+    margin-top: -10%; 
   }
   position: relative;
   // border: 1px solid purple;
@@ -137,25 +138,38 @@
 
 .topBtn{
   // float: right;
-  width: 8vh;
-  height: 12vh;
-  margin: {
-    top: 10vh;
-    left: 81vw;
-  }
+  @include mobile {
+    width: 8vh;
+    height: 12vh;
+    margin: {
+      top: 10vh;
+      left: 81vw;
+    }
+  };
+  @include desktop {
+    width: 20px;
+    height: 20px;
+    margin: {
+      top: 30%;
+      left: 90%;
+    }
+  };
   text-align: center;
-  font: {
-    weight: 600;
-    size: 1.5vh;
-  }
   color: rgb(90, 200, 214);
   // border:1px solid red;
 }
 
 .topBtnImg{
-  width: 3vw;
-  height: 3vw;
-  margin-top: 50%;
+  @include mobile {
+    width: 3vw;
+    height: 3vw;
+    margin-top: 50%;
+  }
+  @include desktop {
+    width: 30px;
+    height: 30px;
+    margin-top: 50%;
+  }
   transform: rotate(90deg);
   cursor: pointer;
   &:hover{

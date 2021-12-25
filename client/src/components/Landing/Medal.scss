@@ -7,14 +7,12 @@
 
 .medalBackWrapper{
   position: absolute;
-  margin-top: 5vw;
   @include mobile {
     margin-top: 5vw;
   }
   @include desktop {
     margin-top: 10px;
   }
-  
   // border: 1px solid rgb(175, 175, 179);
 }
 
@@ -28,12 +26,11 @@
     }
   }
   @include desktop {
-    width: 1000px;
-    height: 800px;
-    margin-top: -10%; 
+    width: 95%;
+    height: 45rem;
+    margin-top: -3%;
   }
   position: relative;
-  // border: 1px solid purple;
   // background-color: olive;
 }
 
@@ -42,14 +39,17 @@
   position:absolute;
   @include mobile {
     height: 10vw;
-    margin-left: 30%;
   }
   @include desktop {
-    height: 40px;
-    margin-left: 300px;
+    width:450px; 
+  }
+  left:0; 
+  right:0; 
+  margin: {
+    left: auto;
+    right: auto;
   }
   text-align: center;
-  justify-content: center;
   color: $--text-color;
   z-index: 999;
   // border: 1px solid purple;
@@ -71,9 +71,6 @@
 
 
 .growing{
-  width: 30%;
-  height: 50%;
-  margin-top: 10vw;
   z-index: 999; 
   @include mobile {
     width: 30%;
@@ -106,7 +103,7 @@
       left: 200px;
     }
   }
-  border: 1px solid red;
+  // border: 1px solid red;
 
 }
 

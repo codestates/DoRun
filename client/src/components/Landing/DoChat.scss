@@ -34,7 +34,7 @@
 }
 
 .doChatWrapper{
-  @include landing-section-wrapper( 15vh auto);
+  @include landing-section-wrapper(10vh auto);
 }
 
 .doChat{
@@ -50,9 +50,9 @@
     margin: 5vw 27%;
   }
   @include desktop {
-    width: 50%;
+    width: 60%;
     height: 40%;
-    margin: 10% 27%;
+    margin: 5% 21.5%;
   }
   z-index: 999;
   // border: 1px solid orange;
@@ -68,7 +68,7 @@
   @include desktop {
     width: 850px;
     height: 50px;
-    margin: 50px auto;
+    margin: 20% auto 5% auto;
   }
   // border: 1px solid black
 }

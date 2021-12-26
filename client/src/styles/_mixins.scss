@@ -57,12 +57,12 @@
   @include desktop {
     max-width: 1000px;
   }
-  margin: $section-margin;
   overflow: {
     x: hidden !important;
     y: hidden !important;
   }
   border: 1px solid red;
+  margin: $section-margin;
   @content;
 }
 

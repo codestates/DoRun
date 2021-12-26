@@ -1,14 +1,19 @@
 @import '../../styles/styles.scss' , '../../styles/mixins.scss';
 
 .joinWrapper{
-  @include landing-section-wrapper(10vw auto 5vh auto);
+  @include landing-section-wrapper(7vw auto 5vh auto);
 }
 
 .join{
   position: relative;
   display: flex;
-  height: 50vh;
-  // border: 1px solid red;
+  @include mobile {
+    height: 50vh;
+  }
+  @include desktop {
+    height: 800px;
+  }
+  border: 1px solid green;
 }
 
 
@@ -17,18 +22,22 @@
   @include mobile {
     width: 50vw;
     height: 50vw;
+    margin: {
+      top: -5vw;
+      left: 5vw;
+    }
   }
   @include desktop {
-    width: 50%;
-    height: 80%;
-  }
-  margin: {
-    top: -5vw;
-    left: 5vw;
+    width: 45%;
+    height: 60%;
+    margin: {
+      top: 10%;
+      left: 10%;
+    }
   }
   border-radius: 8px;
   z-index: 10;
-  // border: 1px solid green;
+  border: 1px solid green;
 }
 
 .joinContentBack {
@@ -42,11 +51,11 @@
     }
   }
   @include desktop {
-    width: 50%;
+    width: 55%;
     height: 70%;
     margin: {
       top: 15%;
-      left: 30%;
+      left: 25%;
     }
   }
   opacity: 0.5;
@@ -67,7 +76,7 @@
   @include desktop {
     width: 50%;
     height: 30%;
-    margin-top: 45%;
+    margin-top: 53%;
     font-size: 20px;
   }
   text-align: center;

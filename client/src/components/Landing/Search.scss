@@ -71,6 +71,7 @@
 }
 
 .searchContentText{
+    flex: 1 1 0;
   @include mobile{
     width: 35vw;
     height: 50vw;
@@ -80,7 +81,7 @@
     }
   }
   @include desktop {
-    min-width: 300px;
+    min-width: 330px;
     height: 500px;
     margin: {
       top: -27vh;
@@ -88,7 +89,7 @@
     }
   }
   z-index: 999;
-  // border: 2px solid black; 
+  border: 2px solid black; 
 }
 
 .searchContentLine {
@@ -99,12 +100,11 @@
     }
   }
   @include desktop {
-    font-size: 20px;
+    font-size: 23px;
     &:nth-child(1) {
       margin-top: 250px;
     }
   }
-  flex: 1 1 0;
   color: $--text-color;
 }
 

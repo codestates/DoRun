@@ -61,8 +61,8 @@
     x: hidden !important;
     y: hidden !important;
   }
-  border: 1px solid red;
   margin: $section-margin;
+  // border: 1px solid red;
   @content;
 }
 

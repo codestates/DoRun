@@ -1,3 +1,6 @@
+@import '../../styles/mixins', '../../styles/styles.scss';
+
+
 #Mymap {
   position: absolute;
   width: 100vw;
@@ -6,16 +9,9 @@
 }
 
 .wrapping {
+  @include gradient-btn(15px);
   margin: -75px 0px;
   padding: 5px 15px;
-  text-align: center;
-  color: #ffff;
-  font: {
-    family: 'Noto Sans KR', sans-serif;
-    style: italic;
-    weight: 900;
-  }
-  transition: 0.5s;
   background: {
     image: linear-gradient(
     to right,
@@ -23,10 +19,8 @@
     #f89e20 51%,
     #ff512f 100%
   );
-    size: 200% auto;
   };
   border-radius: 10px;
-  box-shadow: 0 0 20px lightgray;
 }
 
 .wrapping:hover {

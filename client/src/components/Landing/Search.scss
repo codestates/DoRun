@@ -81,15 +81,15 @@
     }
   }
   @include desktop {
-    min-width: 330px;
+    min-width: 350px;
     height: 500px;
     margin: {
       top: -27vh;
-      left: 10%;
+      left: 5%;
     }
   }
   z-index: 999;
-  border: 2px solid black; 
+  // border: 2px solid black; 
 }
 
 .searchContentLine {

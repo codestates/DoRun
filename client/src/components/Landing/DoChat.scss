@@ -116,6 +116,9 @@
 
 .doChatBubbleRight{
   @include bubble;
+  @include desktop {
+    margin-left: 35px;
+  }
   transform: scaleX(-1);
   // border: 1px solid pink;
 }

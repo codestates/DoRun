@@ -13,7 +13,6 @@
   @include desktop {
     height: 800px;
   }
-  // border: 1px solid green;
 }
 
 
@@ -37,7 +36,6 @@
   }
   border-radius: 8px;
   z-index: 10;
-  // border: 1px solid green;
 }
 
 .joinContentBack {
@@ -61,7 +59,6 @@
   opacity: 0.5;
   overflow-x: hidden;
   z-index: 1;
-  // border: 1px solid red;
 }
 
 .joinContentText{
@@ -82,7 +79,6 @@
   text-align: center;
   color: $--text-color;
   z-index: 10;
-  // border: 1px solid navy;
 }
 
 .joinContenLine{
@@ -98,7 +94,6 @@
     }
   }
   z-index: 10;
-  // border: 1px solid gray;
 }
 
 @media screen and (max-width: 768px) {

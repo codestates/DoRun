@@ -2,7 +2,6 @@
 
 .medalWrapper{
   @include  landing-section-wrapper(20vh auto 2vh auto);
-  // border: 1px solid rgb(175, 175, 179);
 }
 
 .medalBackWrapper{
@@ -13,7 +12,6 @@
   @include desktop {
     margin-top: 10px;
   }
-  // border: 1px solid rgb(175, 175, 179);
 }
 
 .medalBack{
@@ -31,7 +29,6 @@
     margin-top: -3%;
   }
   position: relative;
-  // background-color: olive;
 }
 
 
@@ -52,7 +49,6 @@
   text-align: center;
   color: $--text-color;
   z-index: 999;
-  // border: 1px solid purple;
 }
 
 .growingLine{
@@ -63,7 +59,6 @@
     font-size:  25px;
   }
   line-height: 1.5;
-  // border: 1px solid gray;
 }
 
 .growingPicWrapper{
@@ -76,14 +71,16 @@
   @include mobile {
     width: 30%;
     height: 50%;
-    margin-top: 10vw;
+    margin : {
+      top: 10vw;
+      left: 3vw;
+    }
   }
   @include desktop {
     width: 300px;
     height: 350px;
     margin-top: 150px;
   }
-  // border: 1px solid red;
 }
 
 .medals{
@@ -98,14 +95,11 @@
   }
   @include desktop {
     width: 400px;
-    // height: 100px;
     margin: {
       top: 300px;
       left: 200px;
     }
   }
-  // border: 1px solid red;
-
 }
 
 .medal{ 
@@ -131,11 +125,9 @@
       height: 40px;
     }
   }
-  // border: 1px solid green;
 }
 
 .topBtn{
-  // float: right;
   @include mobile {
     width: 8vh;
     height: 12vh;
@@ -154,7 +146,6 @@
   };
   text-align: center;
   color: rgb(90, 200, 214);
-  // border:1px solid red;
 }
 
 .topBtnImg{

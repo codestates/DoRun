@@ -21,7 +21,6 @@
 .searchGIFWrapperBack {
   display: flex;
   position: relative;
-  // background-color: red;
 }
 
 .searchLeft{
@@ -29,8 +28,6 @@
   position: absolute;
   margin-top: 3vw;
   color:rgba(90, 206, 235, 0.322);
-  // border: 2px solid blue;
-
   }
   
 .searchRight {
@@ -38,14 +35,12 @@
   position:relative;
   text-align: right;
   color:rgba(93, 182, 223, 0.445);
-  // border: 2px solid red;
 }
 
 .searchGIFWrapper{
   position: relative;
   margin-top: 5vw;
   z-index: 99;
-  // border: 1px solid blue;
 }
 
 
@@ -63,7 +58,6 @@
   margin: auto 20%;
   box-shadow: 1 1 1 1;
   z-index: 99;
-  // border: 2px solid green;
 }
 
 .searchContentWrapper{
@@ -83,13 +77,9 @@
   @include desktop {
     min-width: 350px;
     height: 500px;
-    margin: {
-      top: -27vh;
-      left: 5%;
-    }
+    margin-top: -27vh;
   }
-  z-index: 999;
-  // border: 2px solid black; 
+  z-index: 999; 
 }
 
 .searchContentLine {
@@ -116,7 +106,6 @@
       top: -25vh;
       left: 20vw;
     }
-
   }
   @include desktop {
     width: 300px;
@@ -128,7 +117,6 @@
   }
   flex: 1 1 0;
   z-index: 999;
-  // border: 2px solid black;
 }
 
 @media screen and (max-width: 768px) {

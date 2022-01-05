@@ -38,9 +38,7 @@
 }
 
 .doChat{
-  // height: 66vw;
   z-index:999;
-  // border: 1px solid red;
 }
 
 .doChatGIF{
@@ -50,12 +48,11 @@
     margin: 5vw 27%;
   }
   @include desktop {
-    width: 60%;
+    width: 65%;
     height: 40%;
     margin: 5% 21.5%;
   }
   z-index: 999;
-  // border: 1px solid orange;
 }
 
 .doChatBubbles{
@@ -66,11 +63,10 @@
     margin: 10vw auto;
   }
   @include desktop {
-    width: 850px;
+    max-width: 850px;
     height: 50px;
-    margin: 20% auto 5% auto;
+    margin: 20% 5% 5% 10%;
   }
-  // border: 1px solid black
 }
 
 .doChatBubblesText{
@@ -83,13 +79,12 @@
   @include desktop {
     width: 400px;
     height: 90px;
-    margin: 0px 50px;
+    margin: 0px 5px;
     font-size: 25px;
   }
   text-align: center;
   color: $--text-color;
   z-index: 1;
-  // border: 1px solid olive;
 }
 
 .doChatBubblesLine{
@@ -105,9 +100,8 @@
     margin-left: 3vw;
   };
   @include desktop {
-    margin-left: 35px;
+    margin-left: 5%;
   }
-  // border: 1px solid pink;
 }
 
 .doChatBubbleLeftDots{
@@ -117,10 +111,9 @@
 .doChatBubbleRight{
   @include bubble;
   @include desktop {
-    margin-left: 35px;
+    // margin-left: 35px;
   }
   transform: scaleX(-1);
-  // border: 1px solid pink;
 }
 
 .doChatBubbleRightDots{

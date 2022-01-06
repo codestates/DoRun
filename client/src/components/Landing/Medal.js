@@ -28,7 +28,7 @@ function Medal() {
 
 
     gsap.to(growing.current, {
-      x: "60%",
+      x: "40%",
       duration: 4,
       scrollTrigger: {
         scrub: 3,

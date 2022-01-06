@@ -67,7 +67,6 @@
 
 
 .growing{
-  z-index: 999; 
   @include mobile {
     width: 30%;
     height: 50%;
@@ -81,9 +80,12 @@
     height: 350px;
     margin-top: 150px;
   }
+  flex: 1 1 auto;
+  z-index: 999; 
 }
 
 .medals{
+  flex: 1 1 auto;
   display: flex;
   @include mobile {
     width: 50%;
@@ -97,7 +99,7 @@
     width: 400px;
     margin: {
       top: 300px;
-      left: 200px;
+      left: 20%;
     }
   }
 }

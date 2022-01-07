@@ -1,36 +1,45 @@
+@import '../../styles/styles.scss' , '../../styles/mixins.scss';
+
+
 .walkWrapper {
-  width: 100%;
-  display: flex;
-  margin: 10vh auto 5vh auto;
-  overflow-x: hidden !important;
-  overflow-y: hidden !important;
+  @include landing-section-wrapper(10vh auto 5vh auto);
+  display: flex;  
 }
 
 .walk {
-  flex-direction: column;
-  flex: 1 1 auto;
-  width: 30vw;
-  height: 50vh;
-  // border: 1px solid red;
+  @include flex-column-settting;
+  @include mobile {
+    width: 25vw;
+    height: 45vh;
+  }
+  @include desktop {
+    width: 500px;
+    height: 700px;
+    margin-left: -150px;
+  }
 }
 
 .walkInfo {
-  flex-direction: column;
-  flex: 1 1 auto;
-  min-width: 30vw;
-  max-width: 60vw;
+  @include flex-column-settting;
   height: 15vh;
   margin-top: 23vh;
-  font-size: 2rem;
-  font-weight: 500;
-  // border: 1px solid red;
+  font: {
+    size: 2rem;
+    weight: 500
+  }
 }
 
 .line {
-  font-size: 2vw;
-  line-height: 3vw;
+  @include mobile {
+    font-size: 2vw;
+  }
+  @include desktop {
+    font-size: 30px;
+  }
+  line-height: 130%;
+  color: $--text-color;
   &:nth-child(1) {
-    margin-top: 3vh;
+    margin-top: 6vw;
   }
 }
 
@@ -38,71 +47,25 @@
   display: flex;
 }
 
-.walkBtn {
-  // min-width: 4rem;
-  // max-width: 8rem;
-  // height: 3rem;
-  max-width: 13vw;
-  margin-top: 1rem;
-  padding: 0.7rem 1rem;
-  text-align: center;
-  justify-content: center;
-  color: white;
-  font-style: italic;
-  // font-size: 1.3rem;
-  font-size: 1.5vw;
-  font-weight: 800;
-  transition: 0.5s;
-  background-size: 200% auto;
-  box-shadow: 1px 1px 20px rgb(185, 185, 185);
-  border-radius: 20px;
-  background-image: linear-gradient(
-    to right,
-    #1fa2ff 0%,
-    #12d8fa 51%,
-    #1fa2ff 100%
-  );
-  &:hover {
-    background-position: right center;
-    color: #fff;
-    cursor: pointer;
+.doRunBtn {
+  @include gradient-btn( $font-size: 1.5vw, $color: $white, $prefixes: ());
+  @include mobile {
+    font-size: 1.3vw;
+  }
+  @include desktop {
+    font-size: 18px;
   }
 }
 
 .guestBtn{
-  // min-width: 4rem;
-  // max-width: 8rem;
-  // height: 3rem;
-  max-width: 13vw;
-  margin-top: 1rem;
+  @include gradient-btn(1.3vw, transparent, webkit);
+  @include mobile {
+    font-size: 1.3vw;
+  }
+  @include desktop {
+    font-size: 18px;
+  }
   margin-left: 1rem;
-  padding: 0.7rem 1rem;
-  text-align: center;
-  justify-content: center;
-  color: #1fa2ff;
-  font-style: italic;
-  font-size: 1.3vw;
-  font-weight: 900;
-  transition: 0.5s;
-  background-size: 200% auto;
-  box-shadow: 0 0 20px lightgray;
-  border-radius: 20px;
-  background-image: linear-gradient(
-    to right,
-    #1fa2ff 0%,
-    #12d8fa 51%,
-    #1fa2ff 100%
-  );
-  color: transparent;
   -webkit-background-clip: text;
-  &:hover {
-    background-position: right center;
-    cursor: pointer;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .walkWrapper {
-    min-width: 320px;
-  }
+  -webkit-text-fill-color: transparent;
 }

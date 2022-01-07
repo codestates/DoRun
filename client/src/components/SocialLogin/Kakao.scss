@@ -1,13 +1,16 @@
+@import '../../styles/styles.scss';
+@mixin flex {
+  flex: 1 1 auto;
+  flex-direction: column;
+}
 $symbolColor: rgba(0, 0, 0, 0.9);
-$symbolHover: rgba(0, 0, 0, 0.8);
-$flex: 1 1 auto;
 
 
 .kakaoBtnWrapper{
   display: flex;
   width: 187px;
   height: 2.8rem;
-  background-color: #FEE500;
+  background-color: $yellow;
   border-radius: 4px;
   box-shadow: 0px 1px 0px 0.5px lightgray;
   cursor: pointer;
@@ -18,8 +21,7 @@ $flex: 1 1 auto;
 
 
 .kakaoBtn {
-  flex-direction: column;
-  flex: $flex;
+  @include flex;
   position: relative;
   width: 0.7rem;
   height: 0.9rem;
@@ -27,16 +29,17 @@ $flex: 1 1 auto;
   border-radius: 50%;
   background-color: $symbolColor;
   &:after {
-    flex-direction: column;
-    flex: $flex;
+    @include flex;
     position: absolute;
     height: 10px;
     top: 7px;
     left: 6px;
-    border-top: 0px solid transparent;
-    border-left: 0px solid transparent;
-    border-right: 13px solid transparent;
-    border-bottom: 10px solid $symbolColor;
+    border: {
+      top: 0px solid transparent;
+      left: 0px solid transparent;
+      right: 13px solid transparent;
+      bottom: 10px solid $symbolColor;
+    }
     transform: rotate(120deg);
     content:"";
   }
@@ -48,9 +51,11 @@ $flex: 1 1 auto;
   width: 110px;
   height: 20px;
   margin: auto 1vh;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 12.5px;
-  font-weight: 450;
+  font: {
+    family: 'Noto Sans KR', sans-serif;
+    size: 12.5px;
+    weight: 450;
+  }
   letter-spacing: 0.5px;
   color: $symbolColor;
 }

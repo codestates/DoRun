@@ -1,3 +1,6 @@
+@import './styles/styles.scss';
+
+
 .guestModeTimeoutAlret{
   position: absolute;
   width: 350px;
@@ -6,7 +9,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background-color: white;
+  background-color: $white;
   border-radius: 20px;
   box-shadow: 1px 1px 3px lightgray;
   z-index: 9999;
@@ -19,9 +22,10 @@
   font-family: 'GmarketSans';
   font-weight: 900;
   line-height: 40px;
+  color: $--text-color;
   // border: 1px solid red;
 }
 
 .blue {
-  color: #FF7545;
+  color: $--error-color;
 }

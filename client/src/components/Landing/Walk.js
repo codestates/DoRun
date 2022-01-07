@@ -2,7 +2,7 @@ import './Walk.scss';
 import React, { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import GuestModeModal from '../_Modal/GuestModeModal/GuestModeModal';
+import GuestModeModal from '../_Modal/GuestModeModal/GuestModeModal'
 import GuestModeModalBack from '../_Modal/GuestModeModal/GuestModeModalBack';
 import walk from './LandingSVG/walk.svg';
 import { gsap } from 'gsap';
@@ -56,7 +56,7 @@ function Walk({ guestTimeout, setGuestTimeout }) {
           <div className="line"> '오늘만 함께 할' </div>
           <div className="line"> Do Run 메이트를 만들어보세요! </div>
           <div className="btnWrapper">
-            <div className="walkBtn" onClick={pagehandler}>
+            <div className="doRunBtn" onClick={pagehandler}>
               Do Run!!
             </div>
             {userId ? (

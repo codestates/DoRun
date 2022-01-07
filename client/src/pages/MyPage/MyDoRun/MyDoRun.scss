@@ -1,3 +1,5 @@
+@import "../../../styles/styles.scss";
+
 .card {
   display: flex;
   border: 1px solid #dee2e6;
@@ -40,7 +42,7 @@
 
         .card_content {
           margin-top: 5px;
-          color: #5f6368;
+          color: $--text-color;
           font-family: 'Cafe24Ohsquareair';
         }
       }
@@ -99,7 +101,7 @@
 
       .card_content {
         margin-top: 5px;
-        color: #5f6368;
+        color: $--text-color;
         font-family: 'Cafe24Ohsquareair';
       }
     }

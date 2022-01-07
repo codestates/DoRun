@@ -1,51 +1,63 @@
-.mateWrapper{
-    width: 100%;
-    position: relative;
-    margin: 10vw auto 5vh auto; 
-    background-image: url("../Landing/LandingSVG/blob.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 60vw;
-    // border: 1px solid red;
+@import '../../styles/styles.scss' , '../../styles/mixins.scss';
+@mixin picture-setting {
+  flex: 1 1 auto;
+  flex-direction: column;
+  @include mobile {    
+    width: 30vw;
+    height: 30vw;
+  }
+  @include desktop {
+    width: 400px;
+    height: 400px;
+  }
+  @content; 
 }
 
-.mateBack{
-    z-index: 1;
-    // border: 1px solid red;
+.mateWrapper{
+  @include landing-section-wrapper(10vw auto 5vh auto);
+  position: relative;
+  background: {
+    image: url("../Landing/LandingSVG/blob.svg");
+    position: center;
+    repeat: no-repeat;
+  };
+  @include mobile {
+    background-size: 60vw;
+  }
+  @include desktop {
+    background-size: 1000px;
+  }
 }
 
 .mateLine {
-    font-family: 'Cafe24Ohsquare';
-    font-size: 2.3vw;
-    font-weight: 500;
-    line-height: 160%;
-    text-align: center;
-    z-index: 9999;
+  @include mobile {
+    font-size: 2vw;
+  }
+  @include desktop {
+    font-size: 30px;
+  }
+  line-height: 160%;
+  text-align: center;
+  color: $--text-color;
 }
 
 .matePicture{
-    display: flex;
-    margin-top: 12vh;
-    margin-bottom: 10vh;
-    z-index: 9999;
-}
-
-
-.FAQ{
-    flex-direction: column;
-    flex: 1 1 auto;
-    width: 30vw;
-    height: 30vw;
-    // margin-top: 5vw;
-    transform: rotate(90deg);
+  display: flex;
+  margin: {
+    top: 12vh;
+    bottom: 10vh;
+  }
 }
 
 .mate{
-    flex-direction: column;
-    flex: 1 1 auto;
-    width: 30vw;
-    height: 30vw;
+  @include picture-setting; 
 }
+
+.FAQ{
+  @include picture-setting; 
+  transform: rotate(90deg);
+}
+
 
 
 @media screen and (max-width: 768px) {

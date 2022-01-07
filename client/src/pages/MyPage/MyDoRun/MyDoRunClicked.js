@@ -32,9 +32,8 @@ const MyDoRunClicked = () => {
         .then((res) => {
           setDorunInfo({
             ...res.data.data,
-            personnel: `${
-              res.data.CrewInUser.length
-            }명 / ${res.data.data.personnel.slice(1)}`,
+            personnel: `${res.data.CrewInUser.length
+              }명 / ${res.data.data.personnel.slice(1)}`,
           });
         });
     }
@@ -117,7 +116,7 @@ const MyDoRunClicked = () => {
               </div>
             </div>
             <div className="myDoRunList">
-              <div className="listCategory_desc">세부사항</div>
+              <div className="listCategory desc">세부사항</div>
               <div className="Desc"> {dorunInfo.desc} </div>
             </div>
           </div>

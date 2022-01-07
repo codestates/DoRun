@@ -26,10 +26,10 @@ const App = () => {
 
 
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1200);
+    // setLoading(true);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 1200);
 
     // ! 게스트 로그인 시,
     if (userEmail === "Guest@Guest.com") {

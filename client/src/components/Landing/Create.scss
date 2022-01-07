@@ -1,66 +1,99 @@
+@import '../../styles/styles.scss' , '../../styles/mixins.scss';
+
 .joinWrapper{
-  width: 100%;
-  height: 65vw;
-  margin: 5vh auto;
-  overflow-x: hidden !important;
-  overflow-y: hidden !important;
-  // border: 1px solid blue;
+  @include landing-section-wrapper(7vw auto 5vh auto);
 }
 
 .join{
-  display: flex;
   position: relative;
-  height: 50vh;
-  // border: 1px solid red;
+  display: flex;
+  @include mobile {
+    height: 50vh;
+  }
+  @include desktop {
+    height: 800px;
+  }
 }
 
 
 .joinGIF{
   flex-direction: column;
-  width: 40vw;
-  height: 40vw;
-  margin-top: 5vw;
-  margin-left: 7vw;
-  margin-bottom: 50vw;
+  @include mobile {
+    width: 50vw;
+    height: 50vw;
+    margin: {
+      top: -5vw;
+      left: 5vw;
+    }
+  }
+  @include desktop {
+    width: 45%;
+    height: 60%;
+    margin: {
+      top: 10%;
+      left: 6%;
+    }
+  }
   border-radius: 8px;
   z-index: 10;
-  // border: 1px solid green;
 }
 
 .joinContentBack {
   position: absolute;
-  width: 60vw;
-  height: 60vw;
-  margin-top: 8%;
-  margin-left: 20vw;
-  z-index: 1;
+  @include mobile {
+    width: 60vw;
+    height: 60vw;
+    margin: {
+      top: 8%;
+      left: 20vw;
+    }
+  }
+  @include desktop {
+    width: 55%;
+    height: 70%;
+    margin: {
+      top: 20%;
+      left: 28%;
+    }
+  }
   opacity: 0.5;
   overflow-x: hidden;
-  // border: 1px solid red;
+  z-index: 1;
 }
 
 .joinContentText{
   position: relative;
   flex-direction: column;
-  width: 50vw;
-  height: 30vw;
-  margin-top: 45vw;
+  @include mobile {
+    width: 50vw;
+    height: 30vw;
+    margin-top: 45vw;
+    font-size: 2vw;
+  }
+  @include desktop {
+    width: 50%;
+    height: 30%;
+    margin-top: 53%;
+    font-size: 23px;
+  }
   text-align: center;
-  font-size: 2vw;
-  justify-content: center;
+  color: $--text-color;
   z-index: 10;
-  // border: 1px solid navy;
 }
 
 .joinContenLine{
   position: relative;
-  font-size: 2vw;
-  font-weight: 500;
-  z-index: 10;
-  &:nth-child(1) {
-    margin-top: 12vw;
+  @include mobile {
+    &:nth-child(1) {
+      margin-top: 12vw;
+    }
   }
-  // border: 1px solid gray;
+  @include desktop {
+    &:nth-child(1) {
+      margin-top: 20%;
+    }
+  }
+  z-index: 10;
 }
 
 @media screen and (max-width: 768px) {

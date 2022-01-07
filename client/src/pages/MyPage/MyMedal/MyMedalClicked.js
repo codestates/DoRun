@@ -6,20 +6,25 @@ const MyMedalClicked = ({ userMedalLog }) => {
   let [medalLevel, setMedalLevel] = useState(0);
 
   let runningDistance = userMedalLog.reduce((acc, cur) => {
-    return acc += Number(cur[2].slice(0, 2));
+    // console.log(cur[2])
+    if (cur[2] === '~5km') {
+      return acc += 5;
+    }
+    else if (cur[2] === '~10km') {
+      return acc += 10;
+    }
+    else {
+      return acc += 15;
+    }
   }, 0)
 
-  // console.log(userMedalLog);
-  // console.log('횟수', userMedalLog.length);
-  // console.log('거리', runningDistance)
+
+  console.log(userMedalLog);
+  console.log('횟수', userMedalLog.length);
+  console.log('거리', runningDistance)
 
 
   useEffect(() => {
-
-    // LEVET 1 : 1회, 5km이상
-    // LEVET 2 : 10회, 50km이상
-    // LEVET 3 : 20회, 150km이상
-    // LEVET 4 : 30회, 250km이상
 
     if (userMedalLog.length < 1 || runningDistance < 5) {
       setMedalLevel(0);
@@ -53,7 +58,6 @@ const MyMedalClicked = ({ userMedalLog }) => {
     <>
       <div className="MyMedal">
         <div className="MyMedal_wrapper">
-          {/* <div className="next_medal" /> */}
           <div className="MyMedal_medalArea">
             <div className="medal_imgArea">
               <img className={1 <= medalLevel ? "medal_img success" : "medal_img"} src="MyMedal/beginner.png" alt="Medal Img" />

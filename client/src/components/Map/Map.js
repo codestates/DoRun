@@ -55,7 +55,6 @@ const Map = () => {
         };
         const createdMap = new kakao.maps.Map(container, options);
         setMap(createdMap);
-        // ----------------------------------------------------------------------- basic setting
 
         //! userID가 있고, Crew에 속해있지 않은 사람에게 crewCreate 마커 생성
         if (userId && userCrewId === null) {
@@ -92,8 +91,6 @@ const Map = () => {
             setCrewModalPosition('down');
           });
 
-          // console.log('생성마커 모달 값', createModalPosition)
-
           //! createMarker 이외의 지도 클릭시: 해당 좌표(위치)반환
           //! 열려 있던 customOverlay, crewCreate 모달 닫힘
 
@@ -101,10 +98,6 @@ const Map = () => {
             createdMap,
             'click',
             function (mouseEvent) {
-              // console.log(
-              //   '생성마커 모달 값 in 지도 이벤트',
-              //   createModalPosition
-              // );
               var latlng = mouseEvent.latLng;
               createMarker.setPosition(latlng);
               let overlayPosition = customOverlay.getPosition();
@@ -142,33 +135,23 @@ const Map = () => {
             .then((res) => {
               //! 단순히 지도에 렌더만 담당(forEach)
               let crewData = res.data.data;
-              // console.log();
-              // console.log('지도 렌더 시에 렌더 되는 내용들입니다', res);
+
               crewData.forEach((el) => {
-                // console.log('크루 데이터 속', el)
                 let Ma = el.locationMa;
                 let La = el.locationLa;
-                // 마커를 생성
+
                 let joinMarker = new kakao.maps.Marker({
                   image: crewMarkerImg,
-                  // 마커가 표시 될 지도
                   map: createdMap,
-                  // 마커가 표시 될 위치
                   position: new kakao.maps.LatLng(Ma, La),
-                  // 마커에 hover시 나타날 title
-                  // 여기서는 crewId를 할당
                   title: el.id,
                 });
 
                 joinMarker.addListener('click', function () {
                   setCrewModalPosition('up');
                   setCreateModalPosition('down');
-                  // console.log('정보 좀 줘', joinMarker.getPosition())
-                  // console.log('크루 아이디로 정보를 주세요', joinMarker.Gb)
-                  const joinMarkerId = joinMarker.Gb;
-                  // console.log('마커의 데이터', joinMarkerId);
-                  // setCrewIdInfo('왜 안 될까')
 
+                  const joinMarkerId = joinMarker.Gb;
                   setCrewIdInfo(joinMarkerId);
                 });
               });
@@ -187,7 +170,7 @@ const Map = () => {
     if (state) {
       createMap();
     }
-    return () => setState(false); // useEffect console err
+    return () => setState(false);
   }, []);
 
   return (

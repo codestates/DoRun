@@ -8,7 +8,6 @@ const { REACT_APP_GOOGLE_CLIENT_ID } = process.env;
 const SocialLoginGoogle = () => {
   const dispatch = useDispatch();
 
-  // 구글 연동 성공 시 실행되는 함수
   const responseSucess = async (response) => {
     const handleLogin = async (e) => {
       dispatch(googleUser(response.profileObj))
@@ -17,13 +16,12 @@ const SocialLoginGoogle = () => {
             document.location.href = '/';
           }
         })
-        .catch((e) => console.log(e))
+        .catch((e) => console.log(e));
     };
 
     handleLogin();
   };
 
-  // 구글 연동 실패 시 실행되는 함수
   const responseFail = (e) => {
     console.log(e);
   };

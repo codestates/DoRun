@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, createStore, compose } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
-import rootReducer from './_reducers';
 import persistedReducer from './_reducers';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+// import rootReducer from './_reducers';
 
 const store = createStore(
   persistedReducer,

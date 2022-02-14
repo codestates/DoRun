@@ -12,14 +12,14 @@ const Google = async (req: Request, res: Response) => {
     let userinfo = await User.findOne({ email: req.body.email });
 
     if (!userinfo) {
-      let userInfo = User.create({
+      userinfo = User.create({
         nickname: req.body.name,
         email: req.body.email,
         image: req.body.imageUrl,
         oauth: "google",
         isauth: true,
       });
-      userInfo = await User.save(userInfo);
+      userinfo = await User.save(userinfo);
     }
 
     const { accessToken, refreshToken } = await TokensCreate(userinfo);

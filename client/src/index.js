@@ -9,14 +9,10 @@ import ReduxThunk from 'redux-thunk';
 import persistedReducer from './_reducers';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
-// import rootReducer from './_reducers';
 
 const store = createStore(
   persistedReducer,
-  compose(
-    applyMiddleware(promiseMiddleware, ReduxThunk)
-    // , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  compose(applyMiddleware(promiseMiddleware, ReduxThunk))
 );
 const persistor = persistStore(store);
 

@@ -7,13 +7,11 @@ import medal3 from './LandingSVG/medal3.png';
 import winner from './LandingSVG/winner.png';
 import topBtn from './LandingSVG/topBtn.png';
 import medalsBack from './LandingSVG/medalBack.svg';
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TextPlugin } from "gsap/TextPlugin";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-
 
 function Medal() {
   const growing = useRef(null);
@@ -25,16 +23,13 @@ function Medal() {
   const medalBackIMG = useRef(null);
 
   useEffect(() => {
-
-
     gsap.to(growing.current, {
-      x: "40%",
+      x: '40%',
       duration: 4,
       scrollTrigger: {
         scrub: 3,
         start: '60% top',
-        // markers: true,
-      }
+      },
     });
 
     gsap.to(medalFirst.current, {
@@ -45,8 +40,7 @@ function Medal() {
       scrollTrigger: {
         scrub: 3,
         start: '40% top',
-        // markers: true,
-      }
+      },
     });
     gsap.to(medalSecond.current, {
       y: '-250%',
@@ -56,8 +50,7 @@ function Medal() {
       scrollTrigger: {
         scrub: 3,
         start: '43% top',
-        // markers: true,
-      }
+      },
     });
     gsap.to(medalThird.current, {
       y: '-250%',
@@ -67,8 +60,7 @@ function Medal() {
       scrollTrigger: {
         scrub: 3,
         start: '47% top',
-        // markers: true,
-      }
+      },
     });
     gsap.to(winnerTrophy.current, {
       y: '-250%',
@@ -78,8 +70,7 @@ function Medal() {
       scrollTrigger: {
         scrub: 3,
         start: '50% top',
-        // markers: true,
-      }
+      },
     });
 
     gsap.to(theTopBtn.current, {
@@ -89,66 +80,44 @@ function Medal() {
       opacity: 1,
       repeat: -1,
       repeatDelay: 1,
-      // markers: true,
-      // scrollTrigger: {
-      //   scrub: 1,
-      //   start: "75%",
-      //   markers: true,
-      // }
-    })
+    });
 
-    var tl = gsap.timeline(
-      {
-
-        scrollTrigger: {
-          start: "50% top",
-          end: "bottom bottom",
-          opacity: 0,
-          scrub: 3,
-          // markers: true,
-          toggleActions: "play reverse play reverse",
-        }
-      }
-    );
-
-
-    tl.to(medalBackIMG.current,
-      {
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        start: '50% top',
+        end: 'bottom bottom',
         opacity: 0,
+        scrub: 3,
+        toggleActions: 'play reverse play reverse',
+      },
+    });
 
-      }
-    )
-    tl.to(medalBackIMG.current,
-      {
-        opacity: 0.3,
-
-      })
-    tl.to(medalBackIMG.current,
-      {
-        opacity: 1,
-
-      })
-
+    tl.to(medalBackIMG.current, {
+      opacity: 0,
+    });
+    tl.to(medalBackIMG.current, {
+      opacity: 0.3,
+    });
+    tl.to(medalBackIMG.current, {
+      opacity: 1,
+    });
   });
 
-
-
-
   const pageMovingHandler = () => {
-
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: 'smooth',
     });
-  }
-
-
+  };
 
   return (
     <div className="medalWrapper">
       <div className="growingTextWrapper">
         <div className="growingLine"> Do Run 메이트와 함께 달리며 </div>
-        <div className="growingLine"> 어느새 성장해있는 나의 실력을 확인하세요! </div>
+        <div className="growingLine">
+          {' '}
+          어느새 성장해있는 나의 실력을 확인하세요!{' '}
+        </div>
       </div>
       <div className="growingPicWrapper">
         <img className="growing" src={grow} ref={growing} />
@@ -166,7 +135,7 @@ function Medal() {
         <img className="topBtnImg" src={topBtn} ref={theTopBtn} />
       </div>
     </div>
-  )
+  );
 }
 
-export default Medal
+export default Medal;

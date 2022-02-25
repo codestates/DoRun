@@ -233,8 +233,8 @@ const GuestLogin = async (req: Request, res: Response) => {
     res.status(200).send({ data: userInfo, Message: "success" });
 
     setTimeout(async () => {
-      User.remove(userInfo);
       userInfo = await User.findOne({ id: userInfo.id });
+      await User.remove(userInfo);
       if (userInfo.crewId) {
         DeleteCrewInUser(userInfo.crewId);
       }

@@ -53,9 +53,12 @@ const CreateCrew = async (req: Request, res: Response) => {
       return res.status(201).send({ data: crewInfo, accessToken, message: "success" });
     }
 
-    setTimeout(() => {
-      crewInfo.Completed = true;
-      Crew.save(crewInfo);
+    setTimeout(async () => {
+      crewInfo = await Crew.findOne({ id: crewInfo.id });
+      if (crewInfo) {
+        crewInfo.Completed = true;
+        Crew.save(crewInfo);
+      }
     }, endMs);
 
     setTimeout(() => {

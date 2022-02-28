@@ -161,7 +161,7 @@ const FindAllCrew = async (req: Request, res: Response) => {
 
 const JoinCrew = async (req: Request, res: Response) => {
   try {
-    const { userId, crewId }: any = Number(req.params);
+    const { userId, crewId }: any = req.params;
 
     let userInfo = await User.findOne({ id: userId });
     userInfo.crewId = crewId;

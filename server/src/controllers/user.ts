@@ -181,14 +181,14 @@ const userConfirmEmail = async (req: Request, res: Response) => {
 
 const ConfirmEmailReSend = async (req: Request, res: Response) => {
   try {
-    const { id, email }: User_interface = req.body;
-    if (!id || !email) {
+    const { userId, email } = req.body;
+    if (!userId || !email) {
       return res.status(400).send({ message: "invalid user info" });
     }
 
     const token = await ConfirmEmailToken(email);
 
-    signUpEmail(email, id, token);
+    signUpEmail(email, userId, token);
 
     res.status(200).send({ message: "success" });
   } catch (err) {

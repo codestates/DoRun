@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: true,
+    origin: ["https://dorunapp.com", "http://localhost:3000"],
     methods: ["GET", "POST", "PATCH", "DELETE"],
   })
 );

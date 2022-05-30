@@ -34,19 +34,20 @@ const SignUp = async (req: Request, res: Response) => {
 
     userInfo = await User.save(userInfo);
 
-    const { accessToken, refreshToken } = await TokensCreate(userInfo);
-    res.cookie("refreshToken", refreshToken, {
-      maxAge: 60 * 60 * 24 * 3, //3day
-      sameSite: "none",
-      httpOnly: true,
-      secure: true,
-    });
+    //const { accessToken, refreshToken } = await TokensCreate(userInfo);
+    // res.cookie("refreshToken", refreshToken, {
+    //   maxAge: 60 * 60 * 24 * 3, //3day
+    //   sameSite: "none",
+    //   httpOnly: true,
+    //   secure: true,
+    // });
 
     const token = await ConfirmEmailToken(email);
 
     signUpEmail(email, userInfo.id, token);
 
-    return res.status(200).send({ data: userInfo, accessToken, message: "success" });
+    //return res.status(200).send({ data: userInfo, accessToken, message: "success" });
+    return res.status(200).send({ data: userInfo, message: "success" });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }

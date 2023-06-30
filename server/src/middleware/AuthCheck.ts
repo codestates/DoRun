@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { AccessTokenCreate, RefreshTokenVerify } from "../utils/token";
+import { createAccessToken, verifyRefreshToken } from "../utils/token";
 
 export const authCheck = async (req: Request, res: Response, next: NextFunction) => {
   const accessTokenData = req.headers.authorization
@@ -8,7 +8,7 @@ export const authCheck = async (req: Request, res: Response, next: NextFunction)
     : null;
 
   if (!accessTokenData) {
-    const refreshTokenData: any = RefreshTokenVerify(req.cookies.refreshToken);
+    const refreshTokenData: any = verifyRefreshToken(req.cookies.refreshToken);
 
     if (!refreshTokenData) {
       return res.status(401).send({ message: "Unauthorized" });
@@ -18,7 +18,7 @@ export const authCheck = async (req: Request, res: Response, next: NextFunction)
         email: refreshTokenData.email,
       };
 
-      const accessToken = AccessTokenCreate(userinfo);
+      const accessToken = createAccessToken(userinfo);
       req.body.token = accessToken;
       next();
     }

@@ -62,7 +62,6 @@ async function socketInit(server) {
           userId,
         });
         const { createdAt } = await Chat.save(ChatDB);
-        //const userInfo = await User.find({ id: userId });
         const profileImg = await User.findOne({
           select: ["image"],
           where: { id: userId },

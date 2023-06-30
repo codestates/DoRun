@@ -5,11 +5,11 @@ import { authCheck } from "../middleware/AuthCheck";
 const crewRoter = Router();
 
 //crewRoter.post("/", authCheck, CrewController.CreateCrew);
-crewRoter.post("/", CrewController.CreateCrew);
-crewRoter.patch("/:crewId", CrewController.EditCrew);
-crewRoter.get("/:crewId", CrewController.InfoCrew);
-crewRoter.delete("/:userId", CrewController.DeleteCrew);
-crewRoter.get("/", CrewController.FindAllCrew);
-crewRoter.post("/:userId/:crewId", CrewController.JoinCrew);
+crewRoter.post("/", CrewController.createCrew);
+crewRoter.patch("/:crewId", CrewController.modifyCrew);
+crewRoter.get("/:crewId", CrewController.findCrew);
+crewRoter.delete("/:userId", CrewController.deleteCrew);
+crewRoter.get("/", CrewController.findAllCrew);
+crewRoter.post("/:userId/:crewId", CrewController.joinCrew);
 
 export default crewRoter;

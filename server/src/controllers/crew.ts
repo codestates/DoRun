@@ -3,7 +3,7 @@ import { Crew } from "../entity/Crew";
 import { Chat } from "../entity/Chat";
 import { Request, Response } from "express";
 
-const CreateCrew = async (req: Request, res: Response) => {
+const createCrew = async (req: Request, res: Response) => {
   try {
     const {
       title,
@@ -71,7 +71,7 @@ const CreateCrew = async (req: Request, res: Response) => {
   }
 };
 
-const EditCrew = async (req: Request, res: Response) => {
+const modifyCrew = async (req: Request, res: Response) => {
   try {
     const crewId = Number(req.params.crewId);
     if (!crewId) return res.status(400).send();
@@ -101,7 +101,7 @@ const EditCrew = async (req: Request, res: Response) => {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
 };
-const InfoCrew = async (req: Request, res: Response) => {
+const findCrew = async (req: Request, res: Response) => {
   try {
     const crewId = Number(req.params.crewId);
 
@@ -124,7 +124,7 @@ const InfoCrew = async (req: Request, res: Response) => {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
 };
-const DeleteCrew = async (req: Request, res: Response) => {
+const deleteCrew = async (req: Request, res: Response) => {
   try {
     const userId = Number(req.params.userId);
 
@@ -135,9 +135,9 @@ const DeleteCrew = async (req: Request, res: Response) => {
 
     await User.save(userInfo);
 
-    const CrewInUser = await User.find({ crewId });
+    const crewInUser = await User.find({ crewId });
 
-    if (CrewInUser.length === 0) {
+    if (crewInUser.length === 0) {
       const chatInfo = await Chat.find({ crewId });
       await Chat.remove(chatInfo);
       const crewInfo = await Crew.findOne({ id: crewId });
@@ -149,7 +149,7 @@ const DeleteCrew = async (req: Request, res: Response) => {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
 };
-const FindAllCrew = async (req: Request, res: Response) => {
+const findAllCrew = async (req: Request, res: Response) => {
   try {
     const crewInfo = await Crew.find({ select: ["id", "locationLa", "locationMa"] });
 
@@ -159,7 +159,7 @@ const FindAllCrew = async (req: Request, res: Response) => {
   }
 };
 
-const JoinCrew = async (req: Request, res: Response) => {
+const joinCrew = async (req: Request, res: Response) => {
   try {
     const { userId, crewId }: any = req.params;
 
@@ -174,4 +174,4 @@ const JoinCrew = async (req: Request, res: Response) => {
   }
 };
 
-export { CreateCrew, EditCrew, InfoCrew, DeleteCrew, FindAllCrew, JoinCrew };
+export { createCrew, modifyCrew, findCrew, deleteCrew, findAllCrew, joinCrew };

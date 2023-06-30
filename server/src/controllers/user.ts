@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { User } from "../entity/User";
 import { Crew } from "../entity/Crew";
 import { Chat } from "../entity/Chat";
-import { TokensCreate, ConfirmEmailToken, AccessTokenVerify } from "../utils/token";
+import { createTokens, confirmEmailToken, verifyAccessToken } from "../utils/token";
 import * as bcrypt from "bcrypt";
 import { signUpEmail, passwordSend } from "../utils/nodemailer";
 
@@ -14,7 +14,7 @@ interface UserInterface {
   token?: string;
 }
 
-const DeleteCrewInUser = async (crewId: number) => {
+const deleteCrewInUser = async (crewId: number) => {
   const CrewInUser = await User.find({ crewId });
 
   if (CrewInUser.length === 0) {
@@ -25,7 +25,7 @@ const DeleteCrewInUser = async (crewId: number) => {
   }
 };
 
-const SignUp = async (req: Request, res: Response) => {
+const createUser = async (req: Request, res: Response) => {
   try {
     const { nickname, email }: UserInterface = req.body;
 
@@ -53,7 +53,7 @@ const SignUp = async (req: Request, res: Response) => {
     //   secure: true,
     // });
 
-    const token = await ConfirmEmailToken(email);
+    const token = await confirmEmailToken(email);
 
     signUpEmail(email, userInfo.id, token);
 
@@ -64,7 +64,7 @@ const SignUp = async (req: Request, res: Response) => {
   }
 };
 
-const SignOut = async (req: Request, res: Response) => {
+const deleteUser = async (req: Request, res: Response) => {
   try {
     const userId = Number(req.params.userId);
     if (!userId) {
@@ -75,14 +75,14 @@ const SignOut = async (req: Request, res: Response) => {
     res.clearCookie("refreshToken");
 
     if (userInfo.crewId) {
-      DeleteCrewInUser(userInfo.crewId);
+      deleteCrewInUser(userInfo.crewId);
     }
     return res.status(200).send({ message: "success" });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
 };
-const Login = async (req: Request, res: Response) => {
+const logInUser = async (req: Request, res: Response) => {
   try {
     const { password, email }: UserInterface = req.body;
     const userInfo = await User.findOne({ email });
@@ -92,7 +92,7 @@ const Login = async (req: Request, res: Response) => {
       return res.status(400).send();
     }
 
-    const { accessToken, refreshToken } = await TokensCreate(userInfo);
+    const { accessToken, refreshToken } = await createTokens(userInfo);
     res.cookie("refreshToken", refreshToken, {
       maxAge: 60 * 60 * 24 * 3, //3day
       sameSite: "none",
@@ -105,7 +105,7 @@ const Login = async (req: Request, res: Response) => {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
 };
-const logout = async (req: Request, res: Response) => {
+const logOutUser = async (req: Request, res: Response) => {
   try {
     res.clearCookie("refreshToken");
     return res.status(200).send({ message: "success" });
@@ -113,7 +113,7 @@ const logout = async (req: Request, res: Response) => {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
 };
-const Edit = async (req: Request, res: Response) => {
+const modifyUser = async (req: Request, res: Response) => {
   try {
     const userInfo = await User.findOne({ id: req.body.userId });
     const hash = await bcrypt.compare(req.body.password, userInfo.password);
@@ -142,7 +142,7 @@ const Edit = async (req: Request, res: Response) => {
   }
 };
 
-const userInfo = async (req: Request, res: Response) => {
+const findUser = async (req: Request, res: Response) => {
   try {
     const { userId }: any = req.params;
 
@@ -161,12 +161,10 @@ const userInfo = async (req: Request, res: Response) => {
   }
 };
 
-const userConfirmEmail = async (req: Request, res: Response) => {
+const confirmUserEmail = async (req: Request, res: Response) => {
   try {
     const { userId, token }: any = req.params;
-    console.log("test");
-
-    const data = await AccessTokenVerify(token);
+    const data = await verifyAccessToken(token);
 
     const userInfo = await User.findOne({ id: userId });
 
@@ -190,15 +188,14 @@ const userConfirmEmail = async (req: Request, res: Response) => {
   }
 };
 
-const ConfirmEmailReSend = async (req: Request, res: Response) => {
+const sendConfirmEmail = async (req: Request, res: Response) => {
   try {
     const { userId, email } = req.body;
     if (!userId || !email) {
       return res.status(400).send({ message: "invalid user info" });
     }
 
-    const token = await ConfirmEmailToken(email);
-
+    const token = await confirmEmailToken(email);
     signUpEmail(email, userId, token);
 
     res.status(200).send({ message: "success" });
@@ -207,23 +204,21 @@ const ConfirmEmailReSend = async (req: Request, res: Response) => {
   }
 };
 
-const PasswordReset = async (req: Request, res: Response) => {
+const resetPassword = async (req: Request, res: Response) => {
   try {
     const { email }: UserInterface = req.body;
-
     const userInfo = await User.findOne({ email });
+    const randomPassword = Math.random().toString(36).substr(2, 11);
+    const hashingPassword = await bcrypt.hash(randomPassword, 10);
 
     if (!userInfo) {
       return res.status(400).send({ message: "invalid user email" });
     }
 
-    const randomPassword = Math.random().toString(36).substr(2, 11);
-    passwordSend(email, randomPassword);
+    await passwordSend(email, randomPassword);
 
-    const hashingPassword = await bcrypt.hash(randomPassword, 10);
     userInfo.password = hashingPassword;
-
-    const SavedUser = User.save(userInfo);
+    await User.save(userInfo);
 
     res.status(200).send({ message: "success" });
   } catch (err) {
@@ -231,7 +226,7 @@ const PasswordReset = async (req: Request, res: Response) => {
   }
 };
 
-const GuestLogin = async (req: Request, res: Response) => {
+const logInGuest = async (req: Request, res: Response) => {
   try {
     let userInfo = User.create({
       nickname: "Guest",
@@ -247,7 +242,7 @@ const GuestLogin = async (req: Request, res: Response) => {
       userInfo = await User.findOne({ id: userInfo.id });
       await User.remove(userInfo);
       if (userInfo.crewId) {
-        DeleteCrewInUser(userInfo.crewId);
+        deleteCrewInUser(userInfo.crewId);
       }
     }, 1000 * 60 * 30); //30min
   } catch (err) {
@@ -255,11 +250,11 @@ const GuestLogin = async (req: Request, res: Response) => {
   }
 };
 
-const EditHistory = async (req: Request, res: Response) => {
+const modifyHistory = async (req: Request, res: Response) => {
   try {
     const { data, userId }: { data: string; userId: number } = req.body;
 
-    let userInfo = await User.findOne({ id: userId });
+    const userInfo = await User.findOne({ id: userId });
     if (!userInfo || !userId) {
       return res.status(400).send({ message: "invalid userinfo" });
     }
@@ -281,15 +276,15 @@ const EditHistory = async (req: Request, res: Response) => {
 
 //
 export {
-  SignUp,
-  SignOut,
-  Login,
-  logout,
-  Edit,
-  userInfo,
-  userConfirmEmail,
-  ConfirmEmailReSend,
-  PasswordReset,
-  GuestLogin,
-  EditHistory,
+  createUser,
+  deleteUser,
+  logInUser,
+  logOutUser,
+  modifyUser,
+  findUser,
+  confirmUserEmail,
+  sendConfirmEmail,
+  resetPassword,
+  logInGuest,
+  modifyHistory,
 };

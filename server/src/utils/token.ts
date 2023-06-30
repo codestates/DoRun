@@ -2,7 +2,7 @@ import { sign, verify } from "jsonwebtoken";
 import "dotenv/config";
 import { User } from "../entity/User";
 
-const AccessTokenCreate = (data: object) => {
+const createAccessToken = (data: object) => {
   try {
     return sign(data, process.env.ACCESS_SECRET, { expiresIn: "3h" });
   } catch (err) {
@@ -10,7 +10,7 @@ const AccessTokenCreate = (data: object) => {
   }
 };
 
-const RefreshTokenCreate = (data: object) => {
+const createRefreshToken = (data: object) => {
   try {
     return sign(data, process.env.REFRESH_SECRET, { expiresIn: "3d" });
   } catch (err) {
@@ -18,15 +18,15 @@ const RefreshTokenCreate = (data: object) => {
   }
 };
 
-const TokensCreate = async (userInfo: User) => {
+const createTokens = async (userInfo: User) => {
   const { id, email } = userInfo;
-  const accessToken: string = AccessTokenCreate({ id, email });
-  const refreshToken: string = RefreshTokenCreate({ id, email });
+  const accessToken: string = createAccessToken({ id, email });
+  const refreshToken: string = createRefreshToken({ id, email });
 
   return { accessToken, refreshToken };
 };
 
-const AccessTokenVerify = async (accessToken: string) => {
+const verifyAccessToken = async (accessToken: string) => {
   try {
     return verify(accessToken, process.env.ACCESS_SECRET);
   } catch (err) {
@@ -35,7 +35,7 @@ const AccessTokenVerify = async (accessToken: string) => {
   }
 };
 
-const RefreshTokenVerify = (accessToken: string) => {
+const verifyRefreshToken = (accessToken: string) => {
   try {
     return verify(accessToken, process.env.REFRESH_SECRET);
   } catch (err) {
@@ -44,7 +44,7 @@ const RefreshTokenVerify = (accessToken: string) => {
   }
 };
 
-const ConfirmEmailToken = async (email: string) => {
+const confirmEmailToken = async (email: string) => {
   try {
     return sign({ email }, process.env.ACCESS_SECRET, { expiresIn: "15m" });
   } catch (err) {
@@ -53,9 +53,9 @@ const ConfirmEmailToken = async (email: string) => {
 };
 
 export {
-  TokensCreate,
-  AccessTokenCreate,
-  AccessTokenVerify,
-  RefreshTokenVerify,
-  ConfirmEmailToken,
+  createTokens,
+  createAccessToken,
+  verifyAccessToken,
+  verifyRefreshToken,
+  confirmEmailToken,
 };

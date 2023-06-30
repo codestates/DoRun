@@ -1,6 +1,4 @@
-import { Strings } from "aws-sdk/clients/opsworks";
 import * as nodemailer from "nodemailer";
-import { callbackify } from "util";
 
 export const signUpEmail = async (email: string, userId: number, token: string) => {
   try {
@@ -15,7 +13,7 @@ export const signUpEmail = async (email: string, userId: number, token: string) 
     });
     const url = `${process.env.SERVER_URL}/user/confirm/${token}/${userId}`;
 
-    const emailInfo = await transporter.sendMail({
+    await transporter.sendMail({
       from: `Dorun ${process.env.NODEMAILER_USER}`,
       to: email,
       subject: "이메일 인증",
@@ -67,7 +65,7 @@ export const passwordSend = async (email: string, password: string) => {
       },
     });
 
-    const emailInfo = await transporter.sendMail({
+    await transporter.sendMail({
       from: `Dorun ${process.env.NODEMAILER_USER}`,
       to: email,
       subject: "비밀번호 초기화",

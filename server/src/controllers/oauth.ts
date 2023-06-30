@@ -1,13 +1,13 @@
 import { User } from "../entity/User";
 import { Request, Response } from "express";
 import axios from "axios";
-import { TokensCreate } from "../utils/token";
+import { createTokens } from "../utils/token";
 
 const formUrlEncoded = (x) => {
   Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, "");
 };
 
-const kakaoLogin = async (authorizationCode: string) => {
+const getKakaoUserInfo = async (authorizationCode: string) => {
   try {
     const tokenUrl = "https://kauth.kakao.com/oauth/token";
     const userInfoUrl = "https://kapi.kakao.com/v2/user/me";
@@ -15,7 +15,7 @@ const kakaoLogin = async (authorizationCode: string) => {
     console.log({
       authorizationCode,
       clint: process.env.KAKAO_CLIENT_ID,
-      Url: process.env.KAKAO_REDIRECT_URL,
+      url: process.env.KAKAO_REDIRECT_URL,
     });
 
     const { data }: any = await axios.post(
@@ -46,47 +46,9 @@ const kakaoLogin = async (authorizationCode: string) => {
   }
 };
 
-const Google = async (req: Request, res: Response) => {
+const loginKakao = async (req: Request, res: Response) => {
   try {
-    if (!req.body) {
-      return res.status(500).send({ message: "Internal Server Error" });
-    }
-
-    let userinfo = await User.findOne({ email: req.body.email });
-
-    if (!userinfo) {
-      userinfo = User.create({
-        nickname: req.body.name,
-        email: req.body.email,
-        image: req.body.imageUrl,
-        oauth: "google",
-        isauth: true,
-      });
-      userinfo = await User.save(userinfo);
-    }
-
-    const { accessToken, refreshToken } = await TokensCreate(userinfo);
-    res.cookie("refreshToken", refreshToken, {
-      maxAge: 60 * 60 * 24 * 7, //7day
-      sameSite: "none",
-      httpOnly: true,
-      secure: true,
-    });
-
-    return res.send({
-      data: userinfo,
-      accessToken,
-      message: "success",
-    });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send({ message: "Internal Server Error", err: err });
-  }
-};
-
-const Kakao = async (req: Request, res: Response) => {
-  try {
-    const kakaoUserInfo: any = await kakaoLogin(req.body.authorizationCode);
+    const kakaoUserInfo: any = await getKakaoUserInfo(req.body.authorizationCode);
 
     if (!kakaoUserInfo) {
       return res.status(500).send({
@@ -111,7 +73,7 @@ const Kakao = async (req: Request, res: Response) => {
       userInfo = await User.save(userInfo);
     }
 
-    const { accessToken, refreshToken } = await TokensCreate(userInfo);
+    const { accessToken, refreshToken } = await createTokens(userInfo);
     res.cookie("refreshToken", refreshToken, {
       maxAge: 60 * 60 * 24 * 7, //7day
       sameSite: "none",
@@ -126,4 +88,42 @@ const Kakao = async (req: Request, res: Response) => {
   }
 };
 
-export { Google, Kakao };
+const loginGoogle = async (req: Request, res: Response) => {
+  try {
+    if (!req.body) {
+      return res.status(500).send({ message: "Internal Server Error" });
+    }
+
+    let userinfo = await User.findOne({ email: req.body.email });
+
+    if (!userinfo) {
+      userinfo = User.create({
+        nickname: req.body.name,
+        email: req.body.email,
+        image: req.body.imageUrl,
+        oauth: "google",
+        isauth: true,
+      });
+      userinfo = await User.save(userinfo);
+    }
+
+    const { accessToken, refreshToken } = await createTokens(userinfo);
+    res.cookie("refreshToken", refreshToken, {
+      maxAge: 60 * 60 * 24 * 7, //7day
+      sameSite: "none",
+      httpOnly: true,
+      secure: true,
+    });
+
+    return res.send({
+      data: userinfo,
+      accessToken,
+      message: "success",
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ message: "Internal Server Error", err: err });
+  }
+};
+
+export { loginGoogle, loginKakao };

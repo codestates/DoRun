@@ -1,7 +1,5 @@
 import * as scheduler from "node-schedule";
 import { Crew } from "../entity/Crew";
-import { Chat } from "../entity/Chat";
-import { User } from "../entity/User";
 
 export const SchedulerCrewDelete = () =>
   scheduler.scheduleJob("0 0 * * *", async () => {

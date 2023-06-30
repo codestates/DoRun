@@ -3,6 +3,49 @@ import { Request, Response } from "express";
 import axios from "axios";
 import { TokensCreate } from "../utils/token";
 
+const formUrlEncoded = (x) => {
+  Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, "");
+};
+
+const kakaoLogin = async (authorizationCode: string) => {
+  try {
+    const tokenUrl = "https://kauth.kakao.com/oauth/token";
+    const userInfoUrl = "https://kapi.kakao.com/v2/user/me";
+
+    console.log({
+      authorizationCode,
+      clint: process.env.KAKAO_CLIENT_ID,
+      Url: process.env.KAKAO_REDIRECT_URL,
+    });
+
+    const { data }: any = await axios.post(
+      tokenUrl,
+      formUrlEncoded({
+        code: authorizationCode,
+        grant_type: "authorization_code",
+        client_id: process.env.KAKAO_CLIENT_ID,
+        redirect_uri: process.env.KAKAO_REDIRECT_URL,
+      }),
+      {
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+
+    const kakaoAccessToken = data.access_token;
+    const kakaoUserInfo = await axios.get(userInfoUrl, {
+      headers: {
+        Authorization: `Bearer ${kakaoAccessToken}`,
+      },
+    });
+
+    return kakaoUserInfo;
+  } catch (err) {
+    return null;
+  }
+};
+
 const Google = async (req: Request, res: Response) => {
   try {
     if (!req.body) {
@@ -51,17 +94,17 @@ const Kakao = async (req: Request, res: Response) => {
       });
     }
 
-    const kakaoEmail = `${kakaoUserInfo.data["id"]}@kakao.com`;
+    const kakaoEmail = `${kakaoUserInfo.data.id}@kakao.com`;
 
     let userInfo = await User.findOne({ email: kakaoEmail });
     if (!userInfo) {
-      const nickname = kakaoUserInfo.data["kakao_account"].profile.nickname;
-      const image = kakaoUserInfo.data["kakao_account"].profile.profile_image_url;
+      const nickname = kakaoUserInfo.data.kakao_account.profile.nickname;
+      const image = kakaoUserInfo.data.kakao_account.profile.profile_image_url;
       userInfo = User.create({
         nickname,
         image,
         email: kakaoEmail,
-        password: kakaoUserInfo.data["id"],
+        password: kakaoUserInfo.data.id,
         oauth: "kakao",
         isauth: true,
       });
@@ -82,47 +125,5 @@ const Kakao = async (req: Request, res: Response) => {
     return res.status(500).send({ message: "Internal Server Error", err: err });
   }
 };
-
-const kakaoLogin = async (authorizationCode: string) => {
-  try {
-    const tokenUrl = "https://kauth.kakao.com/oauth/token";
-    const userInfoUrl = "https://kapi.kakao.com/v2/user/me";
-
-    console.log({
-      authorizationCode,
-      clint: process.env.KAKAO_CLIENT_ID,
-      Url: process.env.KAKAO_REDIRECT_URL,
-    });
-
-    const { data } = await axios.post(
-      tokenUrl,
-      formUrlEncoded({
-        code: authorizationCode,
-        grant_type: "authorization_code",
-        client_id: process.env.KAKAO_CLIENT_ID,
-        redirect_uri: process.env.KAKAO_REDIRECT_URL,
-      }),
-      {
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded",
-        },
-      }
-    );
-
-    const kakaoAccessToken = data["access_token"];
-    const kakaoUserInfo = await axios.get(userInfoUrl, {
-      headers: {
-        Authorization: `Bearer ${kakaoAccessToken}`,
-      },
-    });
-
-    return kakaoUserInfo;
-  } catch (err) {
-    return null;
-  }
-};
-
-const formUrlEncoded = (x) =>
-  Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, "");
 
 export { Google, Kakao };

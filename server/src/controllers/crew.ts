@@ -31,9 +31,9 @@ const CreateCrew = async (req: Request, res: Response) => {
       distance,
     });
 
-    let now = new Date();
-    let endDate = new Date(`${date}T${time.substr(8)}:00`);
-    let endMs = endDate.getTime() - now.getTime();
+    const now = new Date();
+    const endDate = new Date(`${date}T${time.substr(8)}:00`);
+    const endMs = endDate.getTime() - now.getTime();
 
     if (!crewInfo) return res.status(400).send();
 
@@ -76,7 +76,7 @@ const EditCrew = async (req: Request, res: Response) => {
     const crewId = Number(req.params.crewId);
     if (!crewId) return res.status(400).send();
 
-    let crewInfo = await Crew.findOne({ id: crewId });
+    const crewInfo = await Crew.findOne({ id: crewId });
 
     crewInfo.title = req.body.title || crewInfo.title;
     crewInfo.desc = req.body.desc || crewInfo.desc;
@@ -128,7 +128,7 @@ const DeleteCrew = async (req: Request, res: Response) => {
   try {
     const userId = Number(req.params.userId);
 
-    let userInfo = await User.findOne({ id: userId });
+    const userInfo = await User.findOne({ id: userId });
     if (!userInfo || userInfo.crewId === null) return res.status(400).send();
     const crewId = userInfo.crewId;
     userInfo.crewId = null;

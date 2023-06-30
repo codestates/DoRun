@@ -1,11 +1,12 @@
 import { Chat } from "./entity/Chat";
 import { User } from "./entity/User";
-import { getRepository, MoreThanOrEqual } from "typeorm";
+import { getRepository } from "typeorm";
 import { createAdapter } from "@socket.io/redis-adapter";
 import { RedisClient } from "redis";
+import { Server } from "socket.io";
 
 async function socketInit(server) {
-  const io = require("socket.io")(server, {
+  const io = new Server(server, {
     transports: ["websocket"],
   });
   if (process.env.NODE_ENV !== "dev") {
@@ -40,12 +41,17 @@ async function socketInit(server) {
           });
           const { createdAt, message, serverMsg } = await Chat.save(ChatDB);
 
-          io.to(String(crewId)).emit("recvMessage", { userId, message, createdAt, serverMsg });
+          io.to(String(crewId)).emit("recvMessage", {
+            userId,
+            message,
+            createdAt,
+            serverMsg,
+          });
         }
       });
 
       socket.on("leaveRoom", async (crewId) => {
-        io.leave(String(crewId));
+        io.socketsLeave(String(crewId));
       });
 
       socket.on("sendMessage", async (userId, crewId, nickname, message) => {
@@ -56,8 +62,11 @@ async function socketInit(server) {
           userId,
         });
         const { createdAt } = await Chat.save(ChatDB);
-        const userInfo = await User.find({ id: userId });
-        const profileImg = await User.findOne({ select: ["image"], where: { id: userId } });
+        //const userInfo = await User.find({ id: userId });
+        const profileImg = await User.findOne({
+          select: ["image"],
+          where: { id: userId },
+        });
         if (!profileImg) {
           io.to(String(crewId)).emit("recvMessage", {
             userId,
@@ -85,7 +94,7 @@ async function socketInit(server) {
             crewId,
           },
         });
-        if (!!StartChatId) {
+        if (StartChatId) {
           const filteredChat = await getRepository(Chat)
             .createQueryBuilder("chat")
             .where("chat.crewId = :crewId", { crewId })

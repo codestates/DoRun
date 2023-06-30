@@ -8,9 +8,9 @@ import { createConnection } from "typeorm";
 import { socketInit } from "./soket";
 import config from "../ormconfig";
 import router from "./routes";
+import * as http from "http";
 
 const app = express();
-const http = require("http");
 
 createConnection(config)
   .then(() => {

@@ -6,7 +6,7 @@ import { TokensCreate, ConfirmEmailToken, AccessTokenVerify } from "../utils/tok
 import * as bcrypt from "bcrypt";
 import { signUpEmail, passwordSend } from "../utils/nodemailer";
 
-interface User_interface {
+interface UserInterface {
   id?: number;
   nickname?: string;
   password?: string;
@@ -14,9 +14,20 @@ interface User_interface {
   token?: string;
 }
 
+const DeleteCrewInUser = async (crewId: number) => {
+  const CrewInUser = await User.find({ crewId });
+
+  if (CrewInUser.length === 0) {
+    const chatInfo = await Chat.find({ crewId });
+    await Chat.remove(chatInfo);
+    const crewInfo = await Crew.findOne({ id: crewId });
+    await Crew.remove(crewInfo);
+  }
+};
+
 const SignUp = async (req: Request, res: Response) => {
   try {
-    const { nickname, email }: User_interface = req.body;
+    const { nickname, email }: UserInterface = req.body;
 
     const password = await bcrypt.hash(req.body.password, 10);
 
@@ -55,7 +66,7 @@ const SignUp = async (req: Request, res: Response) => {
 
 const SignOut = async (req: Request, res: Response) => {
   try {
-    const userId: number = Number(req.params.userId);
+    const userId = Number(req.params.userId);
     if (!userId) {
       return res.status(500).send({ message: "Not UserId" });
     }
@@ -73,7 +84,7 @@ const SignOut = async (req: Request, res: Response) => {
 };
 const Login = async (req: Request, res: Response) => {
   try {
-    const { password, email }: User_interface = req.body;
+    const { password, email }: UserInterface = req.body;
     const userInfo = await User.findOne({ email });
     const hash = await bcrypt.compare(password, userInfo.password);
 
@@ -96,7 +107,6 @@ const Login = async (req: Request, res: Response) => {
 };
 const logout = async (req: Request, res: Response) => {
   try {
-    const userInfo = await User.findOne(req.body.userId);
     res.clearCookie("refreshToken");
     return res.status(200).send({ message: "success" });
   } catch (err) {
@@ -105,15 +115,15 @@ const logout = async (req: Request, res: Response) => {
 };
 const Edit = async (req: Request, res: Response) => {
   try {
-    let userInfo = await User.findOne({ id: req.body.userId });
+    const userInfo = await User.findOne({ id: req.body.userId });
     const hash = await bcrypt.compare(req.body.password, userInfo.password);
     if (!userInfo || !hash) {
       return res.status(400).send();
     }
 
     userInfo.nickname = req.body.nickname || userInfo.nickname;
-    if (!!req.file) {
-      userInfo.image = req.file["location"] || userInfo.image;
+    if (req.file) {
+      userInfo.image = (req.file as Express.MulterS3.File).location || userInfo.image;
     }
     if (req.body.newPassword) {
       const hashingPassword = await bcrypt.hash(req.body.newPassword, 10);
@@ -199,7 +209,7 @@ const ConfirmEmailReSend = async (req: Request, res: Response) => {
 
 const PasswordReset = async (req: Request, res: Response) => {
   try {
-    const { email }: User_interface = req.body;
+    const { email }: UserInterface = req.body;
 
     const userInfo = await User.findOne({ email });
 
@@ -266,17 +276,6 @@ const EditHistory = async (req: Request, res: Response) => {
     res.status(200).send({ message: "success", data: userInfo });
   } catch (err) {
     return res.status(500).send({ message: "Internal Server Error", err: err });
-  }
-};
-
-const DeleteCrewInUser = async (crewId: number) => {
-  const CrewInUser = await User.find({ crewId });
-
-  if (CrewInUser.length === 0) {
-    const chatInfo = await Chat.find({ crewId });
-    await Chat.remove(chatInfo);
-    const crewInfo = await Crew.findOne({ id: crewId });
-    await Crew.remove(crewInfo);
   }
 };
 

@@ -56,7 +56,7 @@
 **Name** | **Position** | **Github**
 :-------:|:-------------:|:----------:
 김민경   |   Front-End   | [`95mg`](https://github.com/95mg)
-김현수   |   Front-End  | [`raonzane`](https://github.com/raonzane) 
+김현수   |   Front-End  | [`nnswwd`](https://github.com/nnswwd) 
 안지균   |   Back-End    | [`JigyunAn`](https://github.com/JigyunAn)
 차예진   |   Front-End   | [`chayezo`](https://github.com/chayezo)
  
